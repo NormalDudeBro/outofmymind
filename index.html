@@ -422,6 +422,172 @@
             color: #666;
         }
 
+		/* ===== CHARACTER QUALITIES FRAMEWORK ===== */
+		.qualities-intro {
+			background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+			border-left: 4px solid var(--gradient-1);
+			padding: 1.5rem;
+			margin: 2rem 0 2.5rem;
+			border-radius: 0 12px 12px 0;
+			font-size: 1.05rem;
+			color: #444;
+		}
+
+		.qualities-intro strong {
+			color: var(--primary);
+		}
+
+		.qualities-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+			gap: 1.5rem;
+			margin: 2rem 0;
+		}
+
+		.quality-card {
+			background: white;
+			border-radius: 16px;
+			padding: 1.8rem;
+			box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			border: 2px solid transparent;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.quality-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 4px;
+			background: var(--quality-color);
+			opacity: 0.85;
+		}
+
+		.quality-card:hover {
+			transform: translateY(-6px);
+			border-color: var(--quality-color);
+			box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+		}
+
+		.quality-icon {
+			font-size: 2.2rem;
+			margin-bottom: 0.8rem;
+			display: block;
+		}
+
+		.quality-title {
+			font-family: 'Cormorant Garamond', serif;
+			font-size: 1.4rem;
+			font-weight: 600;
+			color: var(--primary);
+			margin-bottom: 0.6rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.quality-title::after {
+			content: '';
+			flex: 1;
+			height: 1px;
+			background: linear-gradient(90deg, var(--quality-color), transparent);
+			opacity: 0.4;
+		}
+
+		.quality-desc {
+			font-size: 0.95rem;
+			color: #555;
+			line-height: 1.7;
+			margin: 0;
+		}
+
+		/* Quality Type Colors */
+		.quality-mental { --quality-color: var(--gradient-1); }
+		.quality-moral { --quality-color: var(--accent); }
+		.quality-physical { --quality-color: var(--secondary); }
+		.quality-social { --quality-color: var(--gradient-2); }
+
+		/* Enhanced Character Card Layout */
+		.character-card-enhanced {
+			background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+			border-radius: 20px;
+			padding: 2.2rem;
+			margin: 1.5rem 0;
+			box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+			transition: all 0.35s ease;
+			border: 2px solid transparent;
+			position: relative;
+		}
+
+		.character-card-enhanced:hover {
+			transform: translateY(-8px);
+			border-color: var(--gradient-1);
+			box-shadow: 0 20px 50px rgba(102, 126, 234, 0.25);
+		}
+
+		.character-header {
+			display: flex;
+			align-items: center;
+			gap: 1.2rem;
+			margin-bottom: 1.5rem;
+			padding-bottom: 1.2rem;
+			border-bottom: 1px solid rgba(0,0,0,0.08);
+		}
+
+		.character-avatar-lg {
+			width: 70px;
+			height: 70px;
+			background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 2rem;
+			color: white;
+			flex-shrink: 0;
+			box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+		}
+
+		.character-name-role h3 {
+			font-family: 'Cormorant Garamond', serif;
+			font-size: 1.6rem;
+			color: var(--primary);
+			margin: 0 0 0.3rem 0;
+		}
+
+		.character-name-role .role {
+			font-size: 0.9rem;
+			color: var(--gradient-2);
+			font-weight: 500;
+			font-style: italic;
+		}
+
+		.character-summary {
+			font-size: 1rem;
+			color: #555;
+			line-height: 1.7;
+			margin-bottom: 1.8rem;
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.character-header {
+				flex-direction: column;
+				text-align: center;
+			}
+			
+			.quality-title::after {
+				display: none;
+			}
+			
+			.qualities-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
         /* Quote Styling */
         .quote {
             font-family: 'Cormorant Garamond', serif;
@@ -451,14 +617,16 @@
             text-align: center;
         }
 
-        .citation {
-            padding-left: 3rem;
-            text-indent: -3rem;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-            font-size: 1rem;
-            color: #555;
-        }
+		.citation {
+			padding-left: 4.5rem;
+			text-indent: -4.5rem;
+			margin-bottom: 1.2rem;
+			line-height: 1.8;
+			font-size: 1rem;
+			color: #555;
+			position: relative;
+			overflow: visible; /* Prevents marker clipping on narrow screens */
+		}
 
         /* Footer */
         footer {
@@ -547,6 +715,132 @@
         .highlight-box strong {
             color: var(--primary);
         }
+		
+		.cite-ref {
+			font-size: 0.7em;
+			vertical-align: super;
+			color: var(--gradient-2);
+			text-decoration: none;
+			font-weight: 700;
+			cursor: pointer;
+			transition: all 0.25s ease;
+			margin-left: 2px;
+			padding: 2px 5px;
+			border-radius: 4px;
+			white-space: nowrap;
+			position: relative;
+			line-height: 1;
+			display: inline-block;
+		}
+
+		.cite-ref:hover {
+			color: var(--secondary);
+			background: rgba(231, 76, 60, 0.12);
+			transform: scale(1.05);
+		}
+
+		/* Tooltip styling - flexible width with smart wrapping */
+		.cite-ref::after {
+			content: attr(data-tooltip);
+			position: absolute;
+			bottom: calc(100% + 10px);
+			left: 50%;
+			transform: translateX(-50%) translateY(8px);
+			width: max-content;
+			min-width: 0px;
+			max-width: min(90vw, 420px); /* Responsive: never wider than viewport or 420px */
+			background: var(--dark);
+			color: #fff;
+			font-family: 'Montserrat', sans-serif;
+			font-size: 0.75rem;
+			font-weight: 400;
+			font-style: normal;
+			line-height: 1.5;
+			padding: 12px 16px;
+			border-radius: 10px;
+			box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+			transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+			z-index: 1000;
+			text-align: left;
+			white-space: normal; /* Allow tooltip text to wrap naturally */
+			word-wrap: break-word;
+		}
+
+		/* Tooltip arrow */
+		.cite-ref::before {
+			content: "";
+			position: absolute;
+			bottom: calc(100% + 4px);
+			left: 50%;
+			transform: translateX(-50%) translateY(8px);
+			border: 7px solid transparent;
+			border-top-color: var(--dark);
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+			z-index: 1000;
+		}
+
+		.cite-ref:hover::after,
+		.cite-ref:hover::before {
+			opacity: 1;
+			visibility: visible;
+			transform: translateX(-50%) translateY(0);
+		}
+
+		/* Mobile optimization: shift tooltip left if near edge */
+		@media (max-width: 480px) {
+			.cite-ref::after {
+				left: auto;
+				right: 0;
+				transform: translateX(0) translateY(8px);
+			}
+			.cite-ref::before {
+				left: auto;
+				right: 12px;
+				transform: translateX(0) translateY(8px);
+			}
+		}
+		
+		html { scroll-behavior: smooth; } /* Ensures smooth anchor jumps */
+
+		.cite-backref {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 24px;
+			height: 24px;
+			background: rgba(102, 126, 234, 0.1);
+			color: var(--gradient-1);
+			font-family: 'Montserrat', sans-serif;
+			font-size: 0.7rem;
+			font-weight: 700;
+			border-radius: 4px;
+			text-decoration: none;
+			margin-right: 0.4rem;
+			vertical-align: -0.15em; /* Optically aligns with citation text baseline */
+			transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+			flex-shrink: 0;
+			line-height: 1;
+			cursor: pointer;
+		}
+
+		.cite-backref:hover,
+		.cite-backref:focus-visible {
+			background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+			color: #ffffff;
+			transform: translateY(-1px);
+			box-shadow: 0 3px 8px rgba(102, 126, 234, 0.35);
+			outline: none;
+		}
+
+		.cite-backref:active {
+			transform: translateY(0);
+			box-shadow: 0 2px 5px rgba(102, 126, 234, 0.25);
+		}
     </style>
 </head>
 <body>
@@ -597,13 +891,13 @@
 
             <div class="content-card">
                 <h2>About This Book</h2>
-                <p><em>Out of My Mind</em> is a groundbreaking novel that encourages its readers to look beyond first glances and recognize the humanity and brilliance contained in every person.</p>
+                <p><em>Out of My Mind</em> is a groundbreaking novel that encourages its readers to look beyond first impressions and recognize the humanity and brilliance contained in every person.</p>
                 
-                <div class="highlight-box">
-                    <strong>Published:</strong> March 9, 2010 by Atheneum Books for Young Readers<br>
-                    <strong>Awards:</strong> New York Times Bestseller, Multiple Coretta Scott King Award considerations<br>
-                    <strong>Recommended for:</strong> Ages 10-14, Grades 5-8
-                </div>
+			<div class="highlight-box">
+				<strong>Published:</strong> March 9, 2010 by Atheneum Books for Young Readers<br>
+				<strong>Awards:</strong> New York Times Bestseller, Multiple Coretta Scott King Award considerations<br>
+				<strong>Recommended for:</strong> Ages 10-13, Grades 5-8<a href="#cite-1" class="cite-ref" id="ref-1" data-tooltip="(Scholastic)">[1]</a>
+			</div>	
 
                 <p>This remarkable story was on the New York Times bestseller list for over three years and has impacted millions of readers with its brutally honest depiction of disability, inclusion, and the universal desire to be understood.</p>
             </div>
@@ -614,12 +908,12 @@
             <div class="content-card">
                 <h2>Author Information</h2>
                 
-                <div class="image-container author-photo" style="margin-bottom: 3rem;">
+				<div class="image-container author-photo" style="margin-bottom: 2rem; height: auto; aspect-ratio: 2000 / 1541; max-height: 650px;">
 					<img src="author.jpg" alt="Sharon M. Draper - Author Photo" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit;">
 				</div>
 
                 <h3>Sharon M. Draper</h3>
-                <p>Sharon Mills Draper is an award-winning author, educator, speaker, poet, and National Teacher of the Year. Her exemplerary career spans over three decades in education and literature.</p>
+                <p>Sharon Mills Draper is an award-winning author, educator, speaker, poet, and National Teacher of the Year. Her career spans over three decades in education and literature.</p>
 
                 <div class="highlight-box">
                     <strong>National Teacher of the Year</strong> - Recognized for excellence in education<br>
@@ -629,18 +923,18 @@
                 </div>
 
                 <h3>Educational Background</h3>
-                <p>Draper taught high school English for more than twenty-five years before becoming a full-time author. She holds degrees from Howard University School of Education and has received the Dean's Award from both Howard University and Pepperdine University.</p>
+                <p>Draper taught high school English for over twenty-five years before becoming a full-time author. She has degrees from Howard University School of Education and has received the Dean's Award from both Howard University and Pepperdine University.<a href="#cite-1" class="cite-ref" id="ref-1" data-tooltip="(Draper)">[3]</a></p>
 
                 <h3>Literary Achievements</h3>
                 <ul>
                     <li>Recipient of the Margaret Edwards Award for lifetime literary achievement</li>
                     <li>YWCA Career Woman of Achievement</li>
                     <li>Her novels focus on young adult experiences, particularly African-American youth</li>
-                    <li>Known for the Hazelwood High trilogy and the Out of My Mind series</li>
+                    <li>Known for the Hazelwood High trilogy and the Out of My Mind series<a href="#cite-1" class="cite-ref" id="ref-1" data-tooltip="(Draper)">[3]</a></li>
                 </ul>
 
                 <div class="quote">
-                    "Words are my voice. Writing is my way of making a difference in the world."
+                    "What's right isn't always popular, and whats popular isn't always right."<a href="#cite-1" class="cite-ref" id="ref-1" data-tooltip="(Goodreads)">[2]</a>
                 </div>
 
                 <p>Draper's work consistently addresses important social issues including disability rights, education equity, and the power of perseverance. Her novel <em>Out of My Mind</em> was adapted into a Disney+ film in 2024, bringing Melody's story to an even wider audience.</p>
@@ -658,113 +952,137 @@
                 </div>
 
                 <h3>Historical and Social Context</h3>
-                <p><em>Out of My Mind</em> was published in 2010, a time when awareness about disability rights and inclusion in education was growing but still faced significant challenges. The novel is set around 2002, reflecting the educational landscape of that era.</p>
+                <p><em>Out of My Mind</em> was published in 2010, a time of growth and change regarding societal views of disability, yet still a time of prejudice and second glances. The novel itself takes place during the awkward middle-ground of this century's view of disability, and both the educational and societal landscapes are reflective of that.<a href="#cite-1" class="cite-ref" id="ref-1" data-tooltip="(Audible)">[4]</a></p>
 
                 <h3>Educational Context</h3>
-                <p>The story addresses critical issues in special education:</p>
+                <p>The story challenges several critical "norms" in special education:</p>
                 <ul>
                     <li><strong>Inclusion vs. Segregation:</strong> The debate over whether students with disabilities should be educated in separate classrooms or included in general education</li>
                     <li><strong>Assumptions about Intelligence:</strong> How physical disabilities are often mistakenly equated with cognitive limitations</li>
                     <li><strong>Assistive Technology:</strong> The emergence of communication devices that give voice to non-verbal individuals</li>
-                    <li><strong>Individuals with Disabilities Education Act (IDEA):</strong> Federal law ensuring services to children with disabilities</li>
+                    <li><strong>Implicit Bias of Disability:</strong> How average people treat and react to, even subconsciously, those with disabilities.</li>
                 </ul>
 
                 <h3>Cultural Significance</h3>
-                <p>Draper's novel came at a crucial time when representation of disability in young adult literature was limited. The book:</p>
+                <p>Draper's novel came at a time when representation of disability in literature was few and far between. The book:</p>
                 <ul>
-                    <li>Challenges stereotypes about cerebral palsy and intelligence</li>
-                    <li>Advocates for seeing the person beyond the disability</li>
-                    <li>Highlights the importance of communication access</li>
+                    <li>Challenges stereotypes about cerebral palsy and disability intelligence</li>
+                    <li>Encourages seeing the person beyond the disability</li>
+                    <li>Highlights the importance of access to communication</li>
                     <li>Addresses bullying and social exclusion</li>
                 </ul>
 
                 <div class="highlight-box">
-                    <strong>Impact:</strong> The novel has been used in schools nationwide to promote empathy, understanding, and discussions about inclusion and accessibility.
+                    <strong>Impact:</strong> The novel has been used in schools all over the nation to promote empathy, understanding, and discussions about inclusion and accessibility.
                 </div>
 
                 <h3>Contemporary Relevance</h3>
-                <p>The themes remain highly relevant today as schools continue to work toward true inclusion and as assistive technology continues to evolve, giving more individuals like Melody the ability to communicate and participate fully in society.</p>
+                <p>The themes remain extremely relevant today as schools and society work towards true inclusion and as assistive technology continues to evolve, giving more individuals like Melody the ability to communicate and participate fully in society.</p>
             </div>
         </div>
 
-        <!-- Characters -->
-        <div id="characters" class="page">
-            <div class="content-card">
-                <h2>Characters</h2>
+		<!-- Characters -->
+		<div id="characters" class="page">
+			<div class="content-card">
+				<h2>Characters</h2>
+				
+				<div class="qualities-intro">
+					<strong>Character Analysis Framework:</strong> Each character is examined through four interconnected dimensions—<strong>Mental</strong> (cognition, memory, intellect), <strong>Moral</strong> (values, ethics, integrity), <strong>Physical</strong> (body, abilities, limitations), and <strong>Social</strong> (relationships, interactions, community). This holistic approach reveals the full humanity of Draper's characters.
+				</div>
 
-                <div class="character-grid">
-                    <div class="character-card">
-                        <div class="character-avatar">🌟</div>
-                        <h3>Melody Brooks</h3>
-                        <p><strong>Protagonist</strong> - An eleven-year-old girl with cerebral palsy who cannot speak or walk but possesses a photographic memory and brilliant mind. She fights to prove her intelligence and find her voice.</p>
-                    </div>
+				<!-- Melody Brooks - Featured Character -->
+				<div class="character-card-enhanced">
+					<div class="character-header">
+						<div class="character-avatar-lg">🌟</div>
+						<div class="character-name-role">
+							<h3>Melody Brooks</h3>
+							<span class="role">Protagonist • Age 11</span>
+						</div>
+					</div>
+					<p class="character-summary">An eleven-year-old girl with cerebral palsy who cannot speak or walk but possesses a photographic memory and brilliant mind. She fights to prove her intelligence and find her voice in a world that judges by appearance.</p>
+					
+					<div class="qualities-grid">
+						<div class="quality-card quality-mental">
+							<span class="quality-icon">🧠</span>
+							<h4 class="quality-title">Mental</h4>
+							<p class="quality-desc">Photographic memory; processes information rapidly; deeply analytical; creative problem-solver; absorbs language, music, and patterns with exceptional clarity.</p>
+						</div>
+						
+						<div class="quality-card quality-moral">
+							<span class="quality-icon">⚖️</span>
+							<h4 class="quality-title">Moral</h4>
+							<p class="quality-desc">Fiercely values honesty and fairness; empathetic toward others' struggles; persistent in seeking justice; learns to balance forgiveness with self-respect.</p>
+						</div>
+						
+						<div class="quality-card quality-physical">
+							<span class="quality-icon">♿</span>
+							<h4 class="quality-title">Physical</h4>
+							<p class="quality-desc">Cerebral palsy limits mobility and speech; relies on wheelchair and assistive devices; experiences involuntary movements; physical body does not reflect cognitive ability.</p>
+						</div>
+						
+						<div class="quality-card quality-social">
+							<span class="quality-icon">🤝</span>
+							<h4 class="quality-title">Social</h4>
+							<p class="quality-desc">Craves genuine connection; navigates complex peer dynamics; learns to advocate for inclusion; builds trust with Mrs. V and family; experiences both betrayal and authentic friendship.</p>
+						</div>
+					</div>
+				</div>
 
-                    <div class="character-card">
-                        <div class="character-avatar">💙</div>
-                        <h3>Diane Brooks</h3>
-                        <p><strong>Mother</strong> - Melody's devoted mother who works tirelessly to support her daughter, advocate for her education, and help her overcome obstacles.</p>
-                    </div>
+				<!-- Other Characters - Condensed Format -->
+				<h3 style="margin: 2.5rem 0 1.5rem; font-family: 'Cormorant Garamond', serif; color: var(--primary);">Supporting Characters</h3>
+				
+				<div class="character-grid">
+					<div class="character-card">
+						<div class="character-avatar">💙</div>
+						<h3>Diane Brooks</h3>
+						<p><strong>Mother</strong> - Devoted advocate who balances fierce protection with encouraging Melody's independence.</p>
+						<div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+							<strong>Key Quality:</strong> <span style="color: var(--accent);">Moral</span> - Unwavering integrity in fighting for her daughter's dignity.
+						</div>
+					</div>
 
-                    <div class="character-card">
-                        <div class="character-avatar">👨</div>
-                        <h3>Chuck Brooks</h3>
-                        <p><strong>Father</strong> - A loving, supportive father who works hard to provide for his family and always believes in Melody's potential.</p>
-                    </div>
+					<div class="character-card">
+						<div class="character-avatar">👨</div>
+						<h3>Chuck Brooks</h3>
+						<p><strong>Father</strong> - Steady, hardworking, and emotionally supportive; believes in Melody's potential without condition.</p>
+						<div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+							<strong>Key Quality:</strong> <span style="color: var(--gradient-1);">Mental</span> - Practical wisdom and quiet resilience.
+						</div>
+					</div>
 
-                    <div class="character-card">
-                        <div class="character-avatar">👧</div>
-                        <h3>Penny Brooks</h3>
-                        <p><strong>Younger Sister</strong> - Melody's spirited little sister who is sometimes annoying but deeply loves her big sister.</p>
-                    </div>
+					<div class="character-card">
+						<div class="character-avatar">👵</div>
+						<h3>Mrs. V</h3>
+						<p><strong>Neighbor & Advocate</strong> - Former special ed teacher who sees Melody's mind first; teaches her to communicate and believe in herself.</p>
+						<div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+							<strong>Key Quality:</strong> <span style="color: var(--gradient-2);">Social</span> - Bridges isolation with mentorship and fierce loyalty.
+						</div>
+					</div>
 
-                    <div class="character-card">
-                        <div class="character-avatar">👵</div>
-                        <h3>Mrs. Violet Valencia (Mrs. V)</h3>
-                        <p><strong>Neighbor & Caregiver</strong> - Former special education teacher who becomes Melody's assistant and fierce advocate, helping her learn to communicate.</p>
-                    </div>
+					<div class="character-card">
+						<div class="character-avatar">👧</div>
+						<h3>Rose Spencer</h3>
+						<p><strong>Classmate</strong> - Popular, initially kind, but ultimately reveals the fragility of conditional friendship.</p>
+						<div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+							<strong>Key Quality:</strong> <span style="color: var(--secondary);">Physical</span> - Represents societal bias: valuing appearance over substance.
+						</div>
+					</div>
+				</div>
 
-                    <div class="character-card">
-                        <div class="character-avatar">👩</div>
-                        <h3>Catherine</h3>
-                        <p><strong>Health Aide</strong> - Melody's school aide who provides daily care and support, though their relationship is sometimes complicated.</p>
-                    </div>
-
-                    <div class="character-card">
-                        <div class="character-avatar">👩🏫</div>
-                        <h3>Mrs. Shannon</h3>
-                        <p><strong>Inclusion Teacher</strong> - Teacher of Room H-5, the special needs classroom where Melody spends her early school years.</p>
-                    </div>
-
-                    <div class="character-card">
-                        <div class="character-avatar">👩‍🏫</div>
-                        <h3>Mr. Dimming</h3>
-                        <p><strong>General Education Teacher</strong> - Fifth-grade teacher who initially underestimates Melody but eventually recognizes her abilities.</p>
-                    </div>
-
-                    <div class="character-card">
-                        <div class="character-avatar">👧</div>
-                        <h3>Rose Spencer</h3>
-                        <p><strong>Classmate</strong> - A popular girl in Melody's class who initially befriends Melody but ultimately disappoints her.</p>
-                    </div>
-
-                    <div class="character-card">
-                        <div class="character-avatar">👧</div>
-                        <h3>Claire Wilson</h3>
-                        <p><strong>Classmate</strong> - Another student in Melody's class who shows kindness and genuine friendship.</p>
-                    </div>
-                </div>
-
-                <h3>Character Development</h3>
-                <p>Melody's character arc is one of the most compelling aspects of the novel. Throughout the story, she:</p>
-                <ul>
-                    <li>Struggles with frustration at being unable to communicate her thoughts</li>
-                    <li>Gains hope when she receives her Medi-Talker communication device</li>
-                    <li>Experiences both triumph and heartbreak as she navigates social relationships</li>
-                    <li>Grows in confidence and self-advocacy</li>
-                    <li>Learns resilience in the face of disappointment</li>
-                </ul>
-            </div>
-        </div>
+				<h3 style="margin: 2.5rem 0 1.5rem; font-family: 'Cormorant Garamond', serif; color: var(--primary);">Character Development Arc</h3>
+				<p style="line-height: 1.8; color: #555; margin-bottom: 1.5rem;">Melody's journey embodies growth across all four dimensions:</p>
+				<ul style="margin-left: 2rem; margin-bottom: 1.5rem; line-height: 1.8; color: #555;">
+					<li><strong>Mental:</strong> From silent observation → strategic communication via Medi-Talker → academic recognition</li>
+					<li><strong>Moral:</strong> From passive acceptance → questioning unfairness → asserting her right to be heard</li>
+					<li><strong>Physical:</strong> From frustration with limitations → mastering assistive tools → redefining ability on her own terms</li>
+					<li><strong>Social:</strong> From isolation → cautious connection → discerning authentic vs. performative friendship</li>
+				</ul>
+				
+				<div class="quote" style="margin-top: 2rem;">
+					"Just because I can't speak doesn't mean I don't have a voice."
+				</div>
+			</div>
+		</div>
 
         <!-- Setting -->
         <div id="setting" class="page">
@@ -1051,20 +1369,20 @@
             <div class="works-cited">
                 <h2>Works Cited</h2>
                 
+			<div class="citation" id="cite-1">
+				[1] Scholastic. “Out of My Mind.” Scholastic Book Clubs, clubs.scholastic.com/out-of-my-mind/9781416971719-rco-us.html. Accessed 18 May 2026.
+			</div>
+
                 <div class="citation">
-                    Draper, Sharon M. <em>Out of My Mind</em>. Atheneum Books for Young Readers, 2010.
+                    [2] Goodreads. “Sharon M. Draper Quotes  (Author of out of My Mind).” Goodreads, www.goodreads.com/author/quotes/51942.Sharon_M_Draper. Accessed 18 May 2026.
                 </div>
 
                 <div class="citation">
-                    Draper, Sharon M. "Biography." <em>Sharon M. Draper</em>, www.sharondraper.com/biography. Accessed 19 May 2026.
+                    [3] Draper, Sharon. “Biography.” Sharon M. Draper, 2021, www.sharondraper.com/biography.
                 </div>
 
                 <div class="citation">
-                    "Out of My Mind." <em>Goodreads</em>, www.goodreads.com/book/show/239992.Out_of_My_Mind. Accessed 19 May 2026.
-                </div>
-
-                <div class="citation">
-                    "Out of My Mind Character Analysis." <em>LitCharts</em>, www.litcharts.com/lit/out-of-my-mind/characters. Accessed 19 May 2026.
+                    [4] Audible. “Out of My Mind by Sharon M. Draper.” Audible Blog, 2026, www.audible.com/blog/summary-out-of-my-mind-by-sharon-m-draper. Accessed 19 May 2026.
                 </div>
 
                 <div class="citation">
