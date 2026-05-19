@@ -498,6 +498,9 @@
             }
         }
 
+		.author-photo::before,
+		.author-photo::after { content: none; }
+
         /* Loading Animation */
         .loader {
             position: fixed;
@@ -611,7 +614,9 @@
             <div class="content-card">
                 <h2>Author Information</h2>
                 
-                <div class="image-container" data-label="Sharon M. Draper - Author Photo" style="margin-bottom: 2rem;"></div>
+                <div class="image-container author-photo" style="margin-bottom: 2rem;">
+					<img src="author.jpg" alt="Sharon M. Draper - Author Photo" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit;">
+				</div>
 
                 <h3>Sharon M. Draper</h3>
                 <p>Sharon Mills Draper is an award-winning author, educator, speaker, poet, and National Teacher of the Year. Her exemplerary career spans over three decades in education and literature.</p>
