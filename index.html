@@ -572,6 +572,77 @@
 			margin-bottom: 1.8rem;
 		}
 
+		/* ===== 4-CHARACTER LAYOUT ===== */
+		.character-full {
+			background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+			border-radius: 20px;
+			padding: 2rem;
+			margin: 2.5rem 0;
+			box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+			border: 2px solid transparent;
+			transition: all 0.35s ease;
+		}
+
+		.character-full:hover {
+			transform: translateY(-5px);
+			border-color: var(--gradient-1);
+			box-shadow: 0 20px 50px rgba(102, 126, 234, 0.25);
+		}
+
+		.character-full-header {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			margin-bottom: 1.2rem;
+			padding-bottom: 1rem;
+			border-bottom: 1px solid rgba(0,0,0,0.08);
+		}
+
+		.character-full-avatar {
+			width: 55px;
+			height: 55px;
+			background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.6rem;
+			color: white;
+			flex-shrink: 0;
+		}
+
+		.character-full-name h3 {
+			font-family: 'Cormorant Garamond', serif;
+			font-size: 1.5rem;
+			color: var(--primary);
+			margin: 0 0 0.2rem 0;
+		}
+
+		.character-full-role {
+			font-size: 0.85rem;
+			color: var(--gradient-2);
+			font-style: italic;
+			font-weight: 500;
+		}
+
+		.character-full-summary {
+			font-size: 1rem;
+			color: #555;
+			line-height: 1.7;
+			margin: 0 0 1.5rem 0;
+		}
+
+		/* Responsive: stack header on mobile */
+		@media (max-width: 600px) {
+			.character-full-header {
+				flex-direction: column;
+				text-align: center;
+			}
+			.quality-title::after {
+				display: none;
+			}
+		}
+
 		/* Responsive adjustments */
 		@media (max-width: 768px) {
 			.character-header {
@@ -841,6 +912,19 @@
 			transform: translateY(0);
 			box-shadow: 0 2px 5px rgba(102, 126, 234, 0.25);
 		}
+		
+		.image-container.has-image::before,
+		.image-container.has-image::after {
+			display: none;
+		}
+
+		.image-container.has-image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+			border-radius: inherit;
+		}
     </style>
 </head>
 <body>
@@ -913,18 +997,242 @@
 				</div>
 
                 <h3>Sharon M. Draper</h3>
+                <p>Sharon Mills Draper is an award-winning author, educator, speaker, poet, and National Teacher of the Year. Her career spans over three decades in education and literature.</p>
+
+                <div class="highlight-box">
+                    <strong>National Teacher of the Year</strong> - Recognized for excellence in education<br>
+                    <strong>Five-time Coretta Scott King Award Winner</strong> - Including awards for <em>Copper Sun</em> and <em>Forged by Fire</em><br>
+                    <strong>New York Times Bestselling Author</strong> - Over thirty novels published<br>
+                    <strong>Milken Educator Award Recipient</strong> (1997)
+                </div>
+
+                <h3>Educational Background</h3>
+                <p>Draper taught high school English for over twenty-five years before becoming a full-time author. She has degrees from Howard University School of Education and has received the Dean's Award from both Howard University and Pepperdine University.<a href="#cite-1" class="cite-ref" id="ref-1" data-tooltip="(Draper)">[3]</a></p>
+
+                <h3>Literary Achievements</h3>
+                <ul>
+                    <li>Recipient of the Margaret Edwards Award for lifetime literary achievement</li>
+                    <li>YWCA Career Woman of Achievement</li>
+                    <li>Her novels focus on young adult experiences, particularly African-American youth</li>
+                    <li>Known for the Hazelwood High trilogy and the Out of My Mind series<a href="#cite-1" class="cite-ref" id="ref-1" data-tooltip="(Draper)">[3]</a></li>
+                </ul>
+
+                <div class="quote">
+                    "What's right isn't always popular, and whats popular isn't always right."<a href="#cite-1" class="cite-ref" id="ref-1" data-tooltip="(Goodreads)">[2]</a>
+                </div>
+
+                <p>Draper's work consistently addresses important social issues including disability rights, education equity, and the power of perseverance. Her novel <em>Out of My Mind</em> was adapted into a Disney+ film in 2024, bringing Melody's story to an even wider audience.</p>
             </div>
         </div>
 
         <!-- Contextual Information -->
         <div id="context" class="page">
             <div class="content-card">
+                <h2>Contextual Information</h2>
+
+				<div class="image-grid">
+					<div class="image-container has-image">
+						<img src="class.jpg" alt="Special Education Classroom 2000s">
+					</div>
+					<div class="image-container has-image">
+						<img src="talker.jpg" alt="Communication Device">
+					</div>
+				</div>
+
+                <h3>Historical and Social Context</h3>
+                <p><em>Out of My Mind</em> was published in 2010, a time of growth and change regarding societal views of disability, yet still a time of prejudice and second glances. The novel itself takes place during the awkward middle-ground of this century's view of disability, and both the educational and societal landscapes are reflective of that.<a href="#cite-1" class="cite-ref" id="ref-1" data-tooltip="(Audible)">[4]</a></p>
+
+                <h3>Educational Context</h3>
+                <p>The story challenges several critical "norms" in special education:</p>
+                <ul>
+                    <li><strong>Inclusion vs. Segregation:</strong> The debate over whether students with disabilities should be educated in separate classrooms or included in general education</li>
+                    <li><strong>Assumptions about Intelligence:</strong> How physical disabilities are often mistakenly equated with cognitive limitations</li>
+                    <li><strong>Assistive Technology:</strong> The emergence of communication devices that give voice to non-verbal individuals</li>
+                    <li><strong>Implicit Bias of Disability:</strong> How average people treat and react to, even subconsciously, those with disabilities.</li>
+                </ul>
+
+                <h3>Cultural Significance</h3>
+                <p>Draper's novel came at a time when representation of disability in literature was few and far between. The book:</p>
+                <ul>
+                    <li>Challenges stereotypes about cerebral palsy and disability intelligence</li>
+                    <li>Encourages seeing the person beyond the disability</li>
+                    <li>Highlights the importance of access to communication</li>
+                    <li>Addresses bullying and social exclusion</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Impact:</strong> The novel has been used in schools all over the nation to promote empathy, understanding, and discussions about inclusion and accessibility.
+                </div>
+
+                <h3>Relevance</h3>
+                <p>The themes remain relevant today as schools and society fight towards true inclusion and as assistive technology continues to evolve, giving more people like Melody their own Medi-Talker.</p>
             </div>
         </div>
 
 		<!-- Characters -->
 		<div id="characters" class="page">
 			<div class="content-card">
+				<h2>Characters</h2>
+				
+				<div class="qualities-intro">
+					<strong>Character Traits:</strong> Each character is categorized by four traits. <strong>Mental</strong> (cognition, memory, intellect), <strong>Moral</strong> (values, ethics, integrity), <strong>Physical</strong> (body, abilities, limitations), and <strong>Social</strong> (relationships, interactions, community).
+				</div>
+
+				<!-- Character 1: Melody Brooks -->
+				<div class="character-full">
+					<div class="character-full-header">
+						<div class="character-full-avatar">🌟</div>
+						<div class="character-full-name">
+							<h3>Melody Brooks</h3>
+							<span class="character-full-role">Protagonist • Age 11</span>
+						</div>
+					</div>
+					<p class="character-full-summary">An eleven-year-old girl with cerebral palsy, she cannot speak or walk but has an excellent memory and a brilliant mind. She fights every day to prove her intelligence and her place in a world unaccepting.</p>
+					
+					<div class="qualities-grid">
+						<div class="quality-card quality-mental">
+							<span class="quality-icon">🧠</span>
+							<h4 class="quality-title">Mental</h4>
+							<p class="quality-desc">She has a photographic memory, processes information extremely fast while being deeply <strong>analytical</strong> with the ability to comprehend language, music, and patterns with amazing clarity.</p>
+						</div>
+						
+						<div class="quality-card quality-physical">
+							<span class="quality-icon">♿</span>
+							<h4 class="quality-title">Physical</h4>
+							<p class="quality-desc"><strong>Vulnerable</strong> because of her physical condition, Melody relies on others for basic care despite being so mentally capable.</p>
+						</div>
+						
+						<div class="quality-card quality-moral">
+							<span class="quality-icon">⚖️</span>
+							<h4 class="quality-title">Moral</h4>
+							<p class="quality-desc">Because of her own situation, she is very <strong>empathetic</strong> towards others and fights for fairness.</p>
+						</div>
+						
+						<div class="quality-card quality-social">
+							<span class="quality-icon">🤝</span>
+							<h4 class="quality-title">Social</h4>
+							<p class="quality-desc">Melody seeks real connection and struggles with <strong>isolation</strong> whilst facing betrayal and true friendship.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Character 2: Mrs. Violet Valencia (Mrs. V) -->
+				<div class="character-full">
+					<div class="character-full-header">
+						<div class="character-full-avatar">👵</div>
+						<div class="character-full-name">
+							<h3>Mrs. Violet Valencia (Mrs. V)</h3>
+							<span class="character-full-role">Neighbor & Advocate • Former Special Ed Teacher</span>
+						</div>
+					</div>
+					<p class="character-full-summary">A neighbor and an advocate, she is a former special education teacher who sees beyond Melody’s appearance and into her vast ability.</p>
+					
+					<div class="qualities-grid">
+						<div class="quality-card quality-mental">
+							<span class="quality-icon">🧠</span>
+							<h4 class="quality-title">Mental</h4>
+							<p class="quality-desc">With the development of the initial talking board and the Medi-Talker, Mrs V. is exceptionally <strong>ingenious</strong> in creating brilliant solutions.</p>
+						</div>
+						
+						<div class="quality-card quality-physical">
+							<span class="quality-icon">♿</span>
+							<h4 class="quality-title">Physical</h4>
+							<p class="quality-desc">Always eager to help, she is very <strong>energetic.</strong></p>
+						</div>
+						
+						<div class="quality-card quality-moral">
+							<span class="quality-icon">⚖️</span>
+							<h4 class="quality-title">Moral</h4>
+							<p class="quality-desc">One of the few people who understand Melody, she is uniquely <strong>empathetic</strong> to the invisible internal struggle that Melody battles every day.</p>
+						</div>
+						
+						<div class="quality-card quality-social">
+							<span class="quality-icon">🤝</span>
+							<h4 class="quality-title">Social</h4>
+							<p class="quality-desc">Being patient, understanding, and calm, Mrs V. radiants a <strong>cordial</strong> cloud, acting as a positive role model and inspiration for Melody.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Character 3: Rose Spencer -->
+				<div class="character-full">
+					<div class="character-full-header">
+						<div class="character-full-avatar">👧</div>
+						<div class="character-full-name">
+							<h3>Rose Spencer</h3>
+							<span class="character-full-role">Classmate • Popular Student</span>
+						</div>
+					</div>
+					<p class="character-full-summary">A popular girl in Melody's class, she is Melody's first real friend and connection, but later reveals the effects of betrayal and fake friendship.</p>
+					
+					<div class="qualities-grid">
+						<div class="quality-card quality-mental">
+							<span class="quality-icon">🧠</span>
+							<h4 class="quality-title">Mental</h4>
+							<p class="quality-desc"><strong>Calcuating</strong> and very socially aware, Rose grasps social dynamics well but often lets principles slip for convenience.</p>
+						</div>
+						
+						<div class="quality-card quality-physical">
+							<span class="quality-icon">♿</span>
+							<h4 class="quality-title">Physical</h4>
+							<p class="quality-desc"><strong>Privileged</strong> from being unburdened, Rose has a hard time fully understanding Melody's condition.</p>
+						</div>
+						
+						<div class="quality-card quality-moral">
+							<span class="quality-icon">⚖️</span>
+							<h4 class="quality-title">Moral</h4>
+							<p class="quality-desc"><strong>Inconsistent in her morals</strong>, Rose will show kindness and love at times but crumble relationships under pressure.</p>
+						</div>
+						
+						<div class="quality-card quality-social">
+							<span class="quality-icon">🤝</span>
+							<h4 class="quality-title">Social</h4>
+							<p class="quality-desc"><strong>Conformative</strong> to peer pressure, Rose will distance from Melody when seen as uncool.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Character 4: Diane Brooks -->
+				<div class="character-full">
+					<div class="character-full-header">
+						<div class="character-full-avatar">💙</div>
+						<div class="character-full-name">
+							<h3>Diane Brooks</h3>
+							<span class="character-full-role">Mother • Primary Caregiver</span>
+						</div>
+					</div>
+					<p class="character-full-summary">As Melody’s mother, Diane is Melody’s rock and support; one of the few people who truly understand her.</p>
+					
+					<div class="qualities-grid">
+						<div class="quality-card quality-mental">
+							<span class="quality-icon">🧠</span>
+							<h4 class="quality-title">Mental</h4>
+							<p class="quality-desc">Similar to Mrs. V, Diane is exceptionally <strong>creative</strong> in creating solutions for Melody, as she has been by her side from day one.</p>
+						</div>
+						
+						<div class="quality-card quality-physical">
+							<span class="quality-icon">♿</span>
+							<h4 class="quality-title">Physical</h4>
+							<p class="quality-desc">Always taking care of Melody's needs and getting her in and out of wherever she goes, Diane is <strong>strong.</strong></p>
+						</div>
+						
+						<div class="quality-card quality-moral">
+							<span class="quality-icon">⚖️</span>
+							<h4 class="quality-title">Moral</h4>
+							<p class="quality-desc">Melody is never alone with her mother always being fiercely <strong>defensive</strong> for her daughter’s dignity and encouraging her independence.</p>
+						</div>
+						
+						<div class="quality-card quality-social">
+							<span class="quality-icon">🤝</span>
+							<h4 class="quality-title">Social</h4>
+							<p class="quality-desc">Always speaking up and never settling,<strong> Diane</strong> is an advocate for Melody.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="quote" style="margin-top: 2.5rem;">
+					"Maybe I'm not so different from everyone else after all."<a href="#cite-1" class="cite-ref" id="ref-1" data-tooltip="(Goodreads)">[2]</a>
+				</div>
 			</div>
 		</div>
 
