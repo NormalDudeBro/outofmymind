@@ -1,0 +1,20 @@
+{
+  "name": "outofmymind-literary-journal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static educational literary journal for Out of My Mind by Sharon M. Draper",
+  "scripts": {
+    "validate": "html-validate index.html && node tests/static-checks.mjs",
+    "test:e2e": "playwright test",
+    "test": "npm run validate && npm run test:e2e"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
+    "@playwright/test": "1.62.1",
+    "html-validate": "11.6.2"
+  }
+}

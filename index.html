@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests">
     <title>Out of My Mind | A Literary Journal</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <style>
         /* ===== BASE & VARIABLES - WARM, ORGANIC, HUMAN ===== */
         :root {
@@ -13,10 +16,10 @@
             --paper-texture: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4c5a9' fill-opacity='0.03'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'/%3E%3C/g%3E%3C/svg%3E");
             --ink: #2a2620;
             --ink-light: #5a544a;
-            --accent-warm: #b8956a;
-            --accent-cool: #6b8e84;
-            --accent-soft: #c9a996;
-            --accent-muted: #9a8f7f;
+            --accent-warm: #76502a;
+            --accent-cool: #42675f;
+            --accent-soft: #765445;
+            --accent-muted: #655d52;
             
             /* Section tones - subtle, earthy */
             --home-bg: #f8f5f0;
@@ -30,14 +33,18 @@
             --citations-bg: #f8f5f0;
             
             /* Accessibility */
-            --focus-ring: 0 0 0 3px var(--accent-warm), 0 0 0 6px rgba(184, 149, 106, 0.25);
+            --focus-ring: 0 0 0 3px var(--accent-warm), 0 0 0 6px rgba(118, 80, 42, 0.25);
         }
 
         /* High contrast mode */
         body.high-contrast {
             --paper: #fff;
             --ink: #000;
-            --accent-warm: #00f;
+            --ink-light: #000;
+            --accent-warm: #0000c7;
+            --accent-cool: #005a00;
+            --accent-soft: #7a1f00;
+            --accent-muted: #333;
             background: #fff !important;
         }
         
@@ -49,15 +56,15 @@
             box-shadow: 0 0 0 2px #000 !important;
         }
 
-        /* Dyslexia-friendly font */
+        /* Readable alternative font */
         body.dyslexia-friendly {
-            font-family: 'OpenDyslexic', 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif !important;
+            font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', Arial, sans-serif !important;
         }
         body.dyslexia-friendly h1, 
         body.dyslexia-friendly h2, 
         body.dyslexia-friendly h3,
         body.dyslexia-friendly .quote {
-            font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+            font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', Arial, sans-serif !important;
             letter-spacing: 0.05em !important;
             line-height: 1.6 !important;
         }
@@ -79,6 +86,31 @@
             font-size: 1.05rem;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body.reduce-motion *,
+        body.reduce-motion *::before,
+        body.reduce-motion *::after {
+            scroll-behavior: auto !important;
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
         /* ===== SUBTLE BACKGROUND ===== */
@@ -128,6 +160,10 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.04);
         }
 
+        nav.scrolled {
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
         nav ul {
             list-style: none;
             display: flex;
@@ -173,9 +209,17 @@
 
         nav a:hover, 
         nav a.active {
-            background: rgba(184, 149, 106, 0.08);
+            background: rgba(118, 80, 42, 0.1);
             color: var(--accent-warm);
             transform: translateY(-1px);
+        }
+
+        nav a:focus-visible,
+        .cta-button:focus-visible,
+        .cite-ref:focus-visible,
+        .citation a:focus-visible {
+            outline: none;
+            box-shadow: var(--focus-ring);
         }
 
         /* Accessibility controls - subtle, hand-drawn */
@@ -191,6 +235,10 @@
             border-radius: 40px;
             box-shadow: 0 3px 15px rgba(0,0,0,0.08);
             border: 1px dashed var(--accent-muted);
+        }
+
+        .no-js .accessibility-controls {
+            display: none;
         }
 
         .a11y-btn {
@@ -225,6 +273,11 @@
             box-shadow: 0 3px 10px rgba(184, 149, 106, 0.3);
         }
 
+        .a11y-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.75;
+        }
+
         /* ===== MAIN CONTAINER - JOURNAL STYLE ===== */
         .container {
             max-width: 980px;
@@ -255,17 +308,21 @@
 
         /* ===== PAGE SECTIONS ===== */
         .page {
-            display: none;
             animation: softReveal 0.7s ease-out;
+            scroll-margin-top: 90px;
         }
 
-        .page.active {
+        .js .page {
+            display: none;
+        }
+
+        .js .page.active {
             display: block;
         }
 
         @keyframes softReveal {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { transform: translateY(12px); }
+            to { transform: translateY(0); }
         }
 
         /* Page-specific subtle backgrounds */
@@ -1071,6 +1128,7 @@
             padding-top: 0.25rem;
             padding-bottom: 0.25rem;
             transition: all 0.25s ease;
+            scroll-margin-top: 90px;
         }
 
         .citation:hover {
@@ -1121,10 +1179,7 @@
             transform: rotate(0deg) translateY(-1px) scale(1.04);
         }
 
-        /* Optional: small legend */
-        .works-cited::before {
-            content: "✦ Badge numbers [1], [2] match in-text citations ✦";
-            display: block;
+        .citation-legend {
             font-family: 'Shadows Into Light', cursive;
             font-size: 0.98rem;
             color: var(--accent-cool);
@@ -1135,6 +1190,11 @@
             text-align: center;
             letter-spacing: 0.02em;
             opacity: 0.9;
+        }
+
+        .citation-source-link {
+            color: var(--accent-cool);
+            overflow-wrap: anywhere;
         }
 
         /* ===== HIGHLIGHT BOX - HAND-ANNOTATED ===== */
@@ -1197,7 +1257,8 @@
             letter-spacing: 0.2px;
         }
 
-        .cite-ref:hover {
+        .cite-ref:hover,
+        .cite-ref:focus-visible {
             color: white;
             background: var(--accent-soft);
             transform: scale(1.08);
@@ -1234,7 +1295,6 @@
             white-space: normal; /* Allow natural wrapping */
             word-wrap: break-word;
             border: 1px solid rgba(184, 149, 106, 0.45);
-            position: fixed; /* Prevent clipping */
         }
 
         /* Tooltip arrow */
@@ -1250,11 +1310,12 @@
             visibility: hidden;
             transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
             z-index: 1000;
-            position: fixed;
         }
 
         .cite-ref:hover::after,
-        .cite-ref:hover::before {
+        .cite-ref:hover::before,
+        .cite-ref:focus-visible::after,
+        .cite-ref:focus-visible::before {
             opacity: 1;
             visibility: visible;
             transform: translateX(-50%) translateY(0);
@@ -1320,17 +1381,6 @@
             margin-top: 0.8rem;
         }
 
-        /* Small signature */
-        footer::after {
-            content: '— crafted with care ✦';
-            display: block;
-            font-family: 'Shadows Into Light', cursive;
-            font-size: 1.1rem;
-            color: var(--accent-muted);
-            margin-top: 1.2rem;
-            opacity: 0.7;
-        }
-
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
             .hero h1 {
@@ -1352,6 +1402,15 @@
             nav a {
                 font-size: 0.85rem;
                 padding: 0.45rem 0.85rem;
+                white-space: nowrap;
+            }
+
+            nav ul {
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overscroll-behavior-inline: contain;
+                scrollbar-width: thin;
             }
             
             .book-cover {
@@ -1373,7 +1432,7 @@
 
         @media (max-width: 480px) {
             .container {
-                padding: 100px 20px 35px;
+                padding: 90px 20px 35px;
             }
             
             .hero {
@@ -1406,121 +1465,6 @@
             .container::before {
                 display: none;
             }
-        }
-
-        /* ===== LOADING ANIMATION - SIMPLE & WARM ===== */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--home-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-            visibility: visible;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .loader-content {
-            text-align: center;
-            color: var(--ink);
-            max-width: 380px;
-            padding: 1.8rem;
-        }
-
-        .loader-book {
-            width: 90px;
-            height: 130px;
-            background: linear-gradient(145deg, #fffef9, #f8f5f0);
-            border-radius: 2px 14px 14px 2px;
-            margin: 0 auto 1.8rem;
-            position: relative;
-            box-shadow: 
-                0 10px 30px rgba(0,0,0,0.15),
-                inset 0 0 18px rgba(0,0,0,0.04);
-            animation: gentleOpen 2.8s ease-in-out infinite;
-            border: 1px solid rgba(0,0,0,0.07);
-            transform: rotate(-1deg);
-        }
-
-        .loader-book::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 14px;
-            background: linear-gradient(90deg, rgba(0,0,0,0.12), transparent);
-        }
-
-        @keyframes gentleOpen {
-            0%, 100% { transform: rotate(-1deg) rotateY(0deg); }
-            50% { transform: rotate(0.5deg) rotateY(15deg); }
-        }
-
-        .loader-text {
-            font-family: 'Shadows Into Light', cursive;
-            font-size: 1.35rem;
-            margin-bottom: 1.3rem;
-            letter-spacing: 0.03em;
-            color: var(--ink-light);
-        }
-
-        .loader-dots {
-            display: flex;
-            justify-content: center;
-            gap: 7px;
-            margin-top: 1.3rem;
-        }
-
-        .loader-dot {
-            width: 10px;
-            height: 10px;
-            background: var(--accent-warm);
-            border-radius: 50%;
-            animation: gentleBounce 1.5s ease-in-out infinite both;
-            opacity: 0.85;
-        }
-
-        .loader-dot:nth-child(1) { animation-delay: -0.35s; }
-        .loader-dot:nth-child(2) { animation-delay: -0.18s; }
-        .loader-dot:nth-child(3) { animation-delay: 0s; }
-
-        @keyframes gentleBounce {
-            0%, 80%, 100% { transform: scale(0.85); opacity: 0.7; }
-            40% { transform: scale(1.15); opacity: 1; }
-        }
-
-        /* ===== FIXED TYPEWRITER EFFECT ===== */
-        .quote.typewriter-mode {
-            position: relative;
-        }
-
-        .quote.typewriter-mode::after {
-            content: '|';
-            position: absolute;
-            right: -4px;
-            bottom: 8px;
-            color: var(--accent-soft);
-            font-family: monospace;
-            font-weight: 400;
-            animation: blink 0.9s step-end infinite;
-            font-size: 1.4rem;
-            line-height: 1;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
         }
 
         /* ===== SKIP LINK FOR ACCESSIBILITY ===== */
@@ -1570,90 +1514,69 @@
             opacity: 0.4;
         }
 		
-		/* ===== AUTHOR PHOTO FIX ===== */
-		.image-container.author-photo {
-			height: auto !important;
-			aspect-ratio: 2000 / 1541;
-			max-height: 650px;
-			padding: 0 !important;
-		}
+        /* ===== AUTHOR PHOTO ===== */
+        .image-container.author-photo {
+            height: auto;
+            aspect-ratio: 2000 / 1541;
+            max-height: 650px;
+            margin-bottom: 2rem;
+            padding: 12px 12px 25px;
+            background: white;
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.12),
+                0 0 0 1px rgba(118, 80, 42, 0.2);
+            transform: rotate(-1.2deg);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
 
-		.image-container.author-photo img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			display: block;
-			border-radius: inherit;
-			/* Ensure image fills container even with aspect-ratio */
-			position: relative;
-			z-index: 2;
-		}
+        .image-container.author-photo::before {
+            display: none;
+        }
 
-		/* Prevent placeholder overlays from showing on author photo */
-		.image-container.author-photo::before,
-		.image-container.author-photo::after {
-			display: none !important;
-		}
-		
-		/* Polaroid-style author photo */
-		.image-container.author-photo {
-			background: white;
-			padding: 12px 12px 25px 12px; /* Extra bottom padding for "caption space" */
-			box-shadow: 
-				0 8px 25px rgba(0,0,0,0.12),
-				0 0 0 1px rgba(184, 149, 106, 0.2);
-			transform: rotate(-1.2deg);
-			transition: transform 0.4s ease, box-shadow 0.4s ease;
-		}
+        .image-container.author-photo::after {
+            content: "Sharon M. Draper";
+            display: block;
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            background: transparent;
+            padding: 0;
+            border: 0;
+            box-shadow: none;
+            color: var(--accent-muted);
+            font-family: 'Shadows Into Light', cursive;
+            font-size: 1.1rem;
+            text-align: center;
+            pointer-events: none;
+        }
 
-		.image-container.author-photo:hover {
-			transform: rotate(0deg) translateY(-4px);
-			box-shadow: 
-				0 12px 35px rgba(0,0,0,0.18),
-				0 0 0 2px var(--accent-warm);
-		}
+        .image-container.author-photo:hover {
+            transform: rotate(0deg) translateY(-4px);
+            box-shadow:
+                0 12px 35px rgba(0,0,0,0.18),
+                0 0 0 2px var(--accent-warm);
+        }
 
-		.image-container.author-photo img {
-			border-radius: 2px; /* Slightly sharper corners for photo */
-			box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-		}
-
-		/* Optional: handwritten caption area */
-		.image-container.author-photo::after {
-			content: "Sharon M. Draper";
-			position: absolute;
-			bottom: 8px;
-			left: 50%;
-			transform: translateX(-50%);
-			font-family: 'Shadows Into Light', cursive;
-			font-size: 1.1rem;
-			color: var(--accent-muted);
-			opacity: 0.85;
-			width: 90%;
-			text-align: center;
-			pointer-events: none;
-		}
+        .image-container.author-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            position: relative;
+            z-index: 2;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
     </style>
 </head>
 <body>
     <!-- Skip link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <!-- Loading Screen -->
-    <div class="loader" id="loader">
-        <div class="loader-content">
-            <div class="loader-book"></div>
-            <div class="loader-text">Turning the page...</div>
-            <div class="loader-dots">
-                <div class="loader-dot"></div>
-                <div class="loader-dot"></div>
-                <div class="loader-dot"></div>
-            </div>
-        </div>
-    </div>
-
     <!-- Subtle Background Elements -->
-    <div class="bg-elements">
+    <div class="bg-elements" aria-hidden="true">
         <div class="bg-element">✦</div>
         <div class="bg-element">✧</div>
         <div class="bg-element">✦</div>
@@ -1662,22 +1585,22 @@
     </div>
 
     <!-- Accessibility Controls -->
-    <div class="accessibility-controls" role="group" aria-label="Accessibility options">
-        <button class="a11y-btn" id="contrastToggle" aria-label="Toggle high contrast mode" title="High contrast">
+    <aside class="accessibility-controls" aria-label="Accessibility options">
+        <button type="button" class="a11y-btn" id="contrastToggle" aria-label="Toggle high contrast mode" aria-pressed="false" title="High contrast">
             ◐
         </button>
-        <button class="a11y-btn" id="dyslexiaToggle" aria-label="Toggle dyslexia-friendly font" title="Dyslexia font">
+        <button type="button" class="a11y-btn" id="dyslexiaToggle" aria-label="Toggle readable font" aria-pressed="false" title="Readable font">
             Aa
         </button>
-        <button class="a11y-btn" id="reduceMotionToggle" aria-label="Toggle reduced motion" title="Reduce motion">
+        <button type="button" class="a11y-btn" id="reduceMotionToggle" aria-label="Toggle reduced motion" aria-pressed="false" title="Reduce motion">
             ≋
         </button>
-    </div>
+    </aside>
 
     <!-- Navigation -->
     <nav id="main-nav">
         <ul>
-            <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+            <li><a href="#home" class="nav-link active" data-page="home" aria-current="page">Home</a></li>
             <li><a href="#author" class="nav-link" data-page="author">Author</a></li>
             <li><a href="#context" class="nav-link" data-page="context">Context</a></li>
             <li><a href="#characters" class="nav-link" data-page="characters">Characters</a></li>
@@ -1689,7 +1612,7 @@
         </ul>
     </nav>
 
-    <div class="container" id="main-content">
+    <main class="container" id="main-content" tabindex="-1">
         <!-- Home Page -->
         <div id="home" class="page active">
             <div class="hero">
@@ -1703,7 +1626,7 @@
                             <div class="author-name">Sharon M. Draper</div>
                         </div>
                     </div>
-                    <p><em>Out of My Mind</em> by Sharon M. Draper is a powerful story exploring themes of courage, hope, and the unbreakable human spirit. This book follows Melody Brooks, an eleven year old girl with cerebral palsy who has a sharp memory and a sharper mind, as she navigates a world not built for her in a fight to be heard.</p>
+                    <p><em>Out of My Mind</em> by Sharon M. Draper is a powerful story exploring themes of courage, hope, and the unbreakable human spirit. This book follows Melody Brooks, an eleven-year-old girl with cerebral palsy who has a sharp memory and a sharper mind, as she navigates a world not built for her in a fight to be heard.</p>
                     <a href="#context" class="cta-button nav-link" data-page="context">Explore the Story</a>
                 </div>
             </div>
@@ -1715,7 +1638,7 @@
                 <div class="highlight-box">
                     <strong>Published:</strong> March 9, 2010 by Atheneum Books for Young Readers<br>
                     <strong>Awards:</strong> New York Times Bestseller, Multiple Coretta Scott King Award considerations<br>
-                    <strong>Recommended for:</strong> Ages 10-13, Grades 5-8<a href="#cite-5" class="cite-ref" id="ref-1" data-tooltip="Scholastic. 'Out of My Mind.' Scholastic Book Clubs. Accessed 18 May 2026.">[1]</a>
+                    <strong>Recommended for:</strong> Ages 10-13, Grades 5-8<a href="#cite-5" class="cite-ref" id="ref-5-1" data-tooltip="Scholastic. 'Out of My Mind.' Scholastic Book Clubs. Accessed 18 May 2026.">[1]</a>
                 </div>	
 
                 <p>This remarkable story was on the New York Times bestseller list for over three years and has impacted millions of readers with its brutally honest depiction of disability, inclusion, and the universal desire to be understood.</p>
@@ -1727,8 +1650,8 @@
             <div class="content-card">
                 <h2>Author Information</h2>
                 
-				<div class="image-container author-photo" style="margin-bottom: 2rem;">
-					<img src="author.jpg" alt="Sharon M. Draper - Author Photo">
+				<div class="image-container author-photo">
+					<img src="author.jpg" alt="Sharon M. Draper - Author Photo" loading="lazy" decoding="async">
 				</div>
 
                 <h3>Sharon M. Draper</h3>
@@ -1742,18 +1665,18 @@
                 </div>
 
                 <h3>Educational Background</h3>
-                <p>Draper taught high school English for over twenty-five years before becoming a full-time author. She has degrees from Howard University School of Education and has received the Dean's Award from both Howard University and Pepperdine University.<a href="#cite-2" class="cite-ref" id="ref-2" data-tooltip="'Biography.' Sharon M. Draper, 2021.">[2]</a></p>
+                <p>Draper taught high school English for over twenty-five years before becoming a full-time author. She has degrees from Howard University School of Education and has received the Dean's Award from both Howard University and Pepperdine University.<a href="#cite-2" class="cite-ref" id="ref-2-1" data-tooltip="'Biography.' Sharon M. Draper, 2021.">[2]</a></p>
 
                 <h3>Literary Achievements</h3>
                 <ul>
                     <li>Recipient of the Margaret Edwards Award for lifetime literary achievement</li>
                     <li>YWCA Career Woman of Achievement</li>
                     <li>Her novels focus on young adult experiences, particularly African-American youth</li>
-                    <li>Known for the Hazelwood High trilogy and the Out of My Mind series<a href="#cite-2" class="cite-ref" id="ref-2" data-tooltip="'Biography.' Sharon M. Draper, 2021.">[2]</a></li>
+                    <li>Known for the Hazelwood High trilogy and the Out of My Mind series<a href="#cite-2" class="cite-ref" id="ref-2-2" data-tooltip="'Biography.' Sharon M. Draper, 2021.">[2]</a></li>
                 </ul>
 
                 <div class="quote">
-                    "What's right isn't always popular, and whats popular isn't always right."<a href="#cite-4" class="cite-ref" id="ref-3" data-tooltip="Goodreads. 'Sharon M. Draper Quotes.' Accessed 18 May 2026.">[3]</a>
+                    "What's right isn't always popular, and whats popular isn't always right."<a href="#cite-4" class="cite-ref" id="ref-4-1" data-tooltip="Goodreads. 'Sharon M. Draper Quotes.' Accessed 18 May 2026.">[3]</a>
                 </div>
 
                 <p>Draper's work consistently addresses important social issues including disability rights, education equity, and the power of perseverance. Her novel <em>Out of My Mind</em> was adapted into a Disney+ film in 2024, bringing Melody's story to an even wider audience.</p>
@@ -1767,15 +1690,15 @@
 
                 <div class="image-grid">
                     <div class="image-container has-image">
-                        <img src="class.jpg" alt="Special Education Classroom 2000s">
+                        <img src="class.jpg" alt="Special Education Classroom 2000s" loading="lazy" decoding="async">
                     </div>
                     <div class="image-container has-image">
-                        <img src="talker.jpg" alt="Communication Device">
+                        <img src="talker.jpg" alt="Communication Device" loading="lazy" decoding="async">
                     </div>
                 </div>
 
                 <h3>Historical and Social Context</h3>
-                <p><em>Out of My Mind</em> was published in 2010, a time of growth and change regarding societal views of disability, yet still a time of prejudice and second glances. The novel itself takes place during the awkward middle-ground of this century's view of disability, and both the educational and societal landscapes are reflective of that.<a href="#cite-1" class="cite-ref" id="ref-4" data-tooltip="Audible. 'Out of My Mind by Sharon M. Draper.' Audible Blog, 2026.">[4]</a></p>
+                <p><em>Out of My Mind</em> was published in 2010, a time of growth and change regarding societal views of disability, yet still a time of prejudice and second glances. The novel itself takes place during the awkward middle-ground of this century's view of disability, and both the educational and societal landscapes are reflective of that.<a href="#cite-1" class="cite-ref" id="ref-1-1" data-tooltip="Audible. 'Out of My Mind by Sharon M. Draper.' Audible Blog, 2026.">[4]</a></p>
 
                 <h3>Educational Context</h3>
                 <p>The story challenges several critical "norms" in special education:</p>
@@ -1813,8 +1736,8 @@
                     <strong>Character Traits:</strong> Each character is categorized by four traits. <strong>Mental</strong> (cognition, memory, intellect), <strong>Moral</strong> (values, ethics, integrity), <strong>Physical</strong> (body, abilities, limitations), and <strong>Social</strong> (relationships, interactions, community).
                 </div>
 				
-				<div class="image-container has-image" style="margin: 2.5rem 0;">
-					<img src="inclusiveness.jpg" alt="Diverse students collaborating in an inclusive classroom" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit;">
+				<div class="image-container has-image">
+					<img src="inclusiveness.jpg" alt="Diverse students collaborating in an inclusive classroom" loading="lazy" decoding="async">
 				</div>
 
                 <!-- Character 1: Melody Brooks -->
@@ -1861,7 +1784,7 @@
                         <div class="character-full-avatar">👵</div>
                         <div class="character-full-name">
                             <h3>Mrs. Violet Valencia (Mrs. V)</h3>
-                            <span class="character-full-role">Neighbor & Advocate • Former Special Ed Teacher</span>
+                            <span class="character-full-role">Neighbor &amp; Advocate • Former Special Ed Teacher</span>
                         </div>
                     </div>
                     <p class="character-full-summary">A neighbor and an advocate, she is a former special education teacher who sees beyond Melody's appearance and into her vast ability.</p>
@@ -1888,7 +1811,7 @@
                         <div class="quality-card quality-social">
                             <span class="quality-icon">🤝</span>
                             <h4 class="quality-title">Social</h4>
-                            <p class="quality-desc">Being patient, understanding, and calm, Mrs V. radiants a <mark>cordial</mark> cloud, acting as a positive role model and inspiration for Melody.</p>
+                            <p class="quality-desc">Being patient, understanding, and calm, Mrs. V radiates a <mark>cordial</mark> presence, acting as a positive role model and inspiration for Melody.</p>
                         </div>
                     </div>
                 </div>
@@ -1970,7 +1893,7 @@
                 </div>
 
                 <div class="quote">
-                    "Maybe I'm not so different from everyone else after all."<a href="#cite-2" class="cite-ref" id="ref-2" data-tooltip="'Biography.' Sharon M. Draper, 2021.">[2]</a>
+                    "Maybe I'm not so different from everyone else after all."<a href="#cite-3" class="cite-ref" id="ref-3-1" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a>
                 </div>
             </div>
         </div>
@@ -1982,21 +1905,21 @@
 
                 <div class="image-grid">
                     <div class="image-container has-image">
-                        <img src="school.jpg" alt="2000's Elementary School">
+                        <img src="school.jpg" alt="2000s elementary school" loading="lazy" decoding="async">
                     </div>
                     <div class="image-container has-image">
-                        <img src="home.jpg" alt="Suburban Home">
+                        <img src="home.jpg" alt="Suburban Home" loading="lazy" decoding="async">
                     </div>
                 </div>
 
                 <h3>Geographic Location</h3>
-                <p>The novel takes place in <strong>Ohio</strong>, in a modern-day American suburban community. While the specific city is not known, the setting shows a typical American town with both inclusive and segregated education and facilities.<a href="#cite-7" class="cite-ref" id="ref-5" data-tooltip="SparkNotes. 'Out of My Mind: Plot Overview.' Accessed 27 May 2026.">[5]</a></p>
+                <p>The novel takes place in <strong>Ohio</strong>, in a modern-day American suburban community. While the specific city is not known, the setting shows a typical American town with both inclusive and segregated education and facilities.<a href="#cite-7" class="cite-ref" id="ref-7-1" data-tooltip="SparkNotes. 'Out of My Mind: Plot Overview.' Accessed 27 May 2026.">[5]</a></p>
 
                 <h3>Time Period</h3>
-                <p>The story is set in the <strong>early 2000s</strong> (approximately 2002), when Melody is eleven years old and in fifth grade. This time period is significant because:</p>
+                <p>The story is set in the <strong>early 2000s</strong> (approximately 2002), when Melody is eleven years old and in fifth grade. This period is significant because:</p>
                 <ul>
                     <li>Assistive technology in communication was growing but was still relatively new</li>
-                    <li>School's inclusivity was more common but not yet universal</li>
+                    <li>Inclusive schooling was more common but not yet universal</li>
                     <li>Society's understanding of disability was advancing but was still limited by stereotypes</li>
                 </ul>
 
@@ -2039,25 +1962,25 @@
             <div class="content-card">
                 <h2>Tone</h2>
                 
-                <div class="highlight-box" style="margin-bottom: 2rem;">
+                <div class="highlight-box">
                     <strong>Main Attitude:</strong> <em>Alienation,</em> the bridge between Melody's inner mind and how the world sees her.
                 </div>
 
                 <p>The leading tone of <em>Out of My Mind</em> is one of <strong>alienation</strong>. In the beginning, Draper creates a strong feeling of isolation. Melody is mentally present, being sharp, observant, and brilliant, yet treated as incapable because of her physical disability. This divide between reality and stereotypes develops the novel's heavy emotional weight.</p>
 
                 <div class="quote">
-                    "There was the team, and there was me, and we were in the same room. But we weren't quite a team."<a href="#cite-6" class="cite-ref" id="ref-6" data-tooltip="SparkNotes. 'Out of My Mind: Famous Quotes Explained.' Accessed 27 May 2026.">[6]</a>
+                    "There was the team, and there was me, and we were in the same room. But we weren't quite a team."<a href="#cite-6" class="cite-ref" id="ref-6-1" data-tooltip="SparkNotes. 'Out of My Mind: Famous Quotes Explained.' Accessed 27 May 2026.">[6]</a>
                 </div>
 
                 <h3>How It Began</h3>
-                <ul style="margin-left: 2rem; line-height: 1.8; color: #555;">
+                <ul>
                     <li><strong>In the school:</strong> Teachers talked <em>about</em> Melody, not <em>to</em> her, and lessons in H-5 are simplified despite her photographic memory and sharp mind.</li>
                     <li><strong>In social spaces:</strong> Peers ignore her being there or act kind without any connection</li>
                     <li><strong>In narrative voice:</strong> Melody's internal monologue contrasts starkly with her external silence</li>
                 </ul>
 
-                <div class="image-container has-image" style="margin: 2rem 0;">
-                    <img src="excluded.jpg" alt="Visual metaphor for alienation: empty classroom, Melody observing from the edge" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit;">
+                <div class="image-container has-image">
+                    <img src="excluded.jpg" alt="Visual metaphor for alienation: empty classroom, Melody observing from the edge" loading="lazy" decoding="async">
                 </div>
 
                 <h3>How This Affects The Book</h3>
@@ -2074,8 +1997,8 @@
             <div class="content-card">
                 <h2>Point of View</h2>
 
-                <div class="image-container has-image" style="margin: 2rem 0;">
-                    <img src="perspective.jpg" alt="Inside Melody's Mind - First Person Perspective" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit;">
+                <div class="image-container has-image">
+                    <img src="perspective.jpg" alt="Inside Melody's Mind - First Person Perspective" loading="lazy" decoding="async">
                 </div>
 
                 <p><em>Out of My Mind</em> is told by <strong>Melody Brooks</strong> herself, in the <strong>first-person</strong> point of view and the <strong>past tense</strong>. This narrative choice is crucial to the novel: it places readers directly inside Melody's consciousness, overriding the assumptions others make about her from the outside.</p>
@@ -2089,14 +2012,14 @@
                 </ul>
 
                 <div class="quote">
-                    "I have never spoken one single word. I am almost eleven years old."<a href="#cite-2" class="cite-ref" id="ref-2" data-tooltip="'Biography.' Sharon M. Draper, 2021.">[2]</a>
+                    "I have never spoken one single word. I am almost eleven years old."<a href="#cite-3" class="cite-ref" id="ref-3-2" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a>
                 </div>
 
                 <div class="highlight-box">
                     <strong>How This Affects The Story:</strong> The first-person point of view depicts Melody as a person rather than an object of pity. As readers direct access to her mind, Draper ensures that we do not confuse her physical limitations with her intellectual ability. The narrative becomes the voice she doesn't have.
                 </div>
 
-                <p>As it is written in the past tense, Melody is reflective on both raw childhood emotion and understanding mistakes. This allows the story to talk about vulernablity and gaining insight, giving her story that raw authenticity.</p>
+                <p>Because it is written in the past tense, Melody reflects on both raw childhood emotion and past mistakes. This allows the story to explore vulnerability and insight while preserving her voice's authenticity.</p>
             </div>
         </div>
 
@@ -2106,28 +2029,28 @@
                 <h2>Plot</h2>
 
                 <div class="image-grid">
-                    <div class="image-container has-image" style="margin: 2rem 0;">
-                        <img src="voice.jpg" alt="Melody's Journey - Finding Her Voice" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit;">
+                    <div class="image-container has-image">
+                        <img src="voice.jpg" alt="Melody's Journey - Finding Her Voice" loading="lazy" decoding="async">
                     </div>
-                    <div class="image-container has-image" style="margin: 2rem 0;">
-                        <img src="meditalker.jpg" alt="The Medi-Talker Communication Device" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit;">
+                    <div class="image-container has-image">
+                        <img src="meditalker.jpg" alt="The Medi-Talker Communication Device" loading="lazy" decoding="async">
                     </div>
                 </div>
 
                 <h3>Exposition</h3>
-                <p>The novel opens by immediately establishing the biggest antagonist throughout the book: eleven-year-old Melody Brooks is physically unable to speak or move freely (p. 11). While her parents take care of her daily physical care, the narrative shows her true nature: mentally sharp, observant, and extremely competent. Her body traps her, but she is smart.<a href="#cite-3" class="cite-ref" id="ref-7" data-tooltip="Draper, Sharon M. Out of My Mind. Simon & Schuster, 9 Mar. 2010.">[7]</a></p>
+                <p>The novel opens by immediately establishing the biggest antagonist throughout the book: eleven-year-old Melody Brooks is physically unable to speak or move freely (p. 11). While her parents take care of her daily physical care, the narrative shows her true nature: mentally sharp, observant, and extremely competent. Her body traps her, but she is smart.<a href="#cite-3" class="cite-ref" id="ref-3-3" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
 
                 <h3>Rising Action</h3>
-                <p>Melody's journey is driven by her experience with the medical (p. 18) and educational (p. 27) systems, both of which assume her disability is immediately intellectual incapacity. As her inability to communicate becomes a central source of tension, she meets Mrs. V, a neighbor and former teacher who sees her Melody for who she is. A major turning point occurs when Melody receives the Medi-Talker (p. 138), granting her the ability to finally communicate. Suddenly, those around her begin to perceive her as an actual person (p. 143). Because of her smarts, she auditions for the academic Whiz Kids team and earns a spot, defying the beliefs of others (p. 190), and secures a place on the trip to Washington, D.C.<a href="#cite-3" class="cite-ref" id="ref-7" data-tooltip="Draper, Sharon M. Out of My Mind. Simon & Schuster, 9 Mar. 2010.">[7]</a></p>
+                <p>Melody's journey is driven by her experience with the medical (p. 18) and educational (p. 27) systems, both of which assume her disability is immediately intellectual incapacity. As her inability to communicate becomes a central source of tension, she meets Mrs. V, a neighbor and former teacher who sees her Melody for who she is. A major turning point occurs when Melody receives the Medi-Talker (p. 138), granting her the ability to finally communicate. Suddenly, those around her begin to perceive her as an actual person (p. 143). Because of her smarts, she auditions for the academic Whiz Kids team and earns a spot, defying the beliefs of others (p. 190), and secures a place on the trip to Washington, D.C.<a href="#cite-3" class="cite-ref" id="ref-3-4" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
 
                 <h3>Climax</h3>
-                <p>The narrative reaches a climax with two conflicts: the Whiz Kids, and Penny. The Whiz Kids team leave for Washington D.C. without Melody, after a silent, collective agreement not to call her: a deliberate betrayal mainly lead surprisingly by Rose (p. 291). This soul-shattering experience is added upon to by Penny's near-death experience (p. 276), which takes away Melody's feelings of safety and forces her to face vulnerability.<a href="#cite-3" class="cite-ref" id="ref-7" data-tooltip="Draper, Sharon M. Out of My Mind. Simon & Schuster, 9 Mar. 2010.">[7]</a></p>
+                <p>The narrative reaches a climax with two conflicts: the Whiz Kids and Penny. The Whiz Kids team leaves for Washington, D.C. without Melody after a silent, collective agreement not to call her: a deliberate betrayal led, surprisingly, by Rose (p. 291). This soul-shattering experience is compounded by Penny's near-death experience (p. 276), which takes away Melody's feelings of safety and forces her to face vulnerability.<a href="#cite-3" class="cite-ref" id="ref-3-5" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
 
                 <h3>Falling Action</h3>
-                <p>After the Whiz Kids team get backs, Rose and the team offer apologies out of social guilt more than any actual sincerity. Melody is left to swim blindly through the dissolution of her trust, fighting with tarnished self-worth after fighting so hard to be seen, only to be discarded by the very people who claimed to be there for her.<a href="#cite-3" class="cite-ref" id="ref-7" data-tooltip="Draper, Sharon M. Out of My Mind. Simon & Schuster, 9 Mar. 2010.">[7]</a></p>
+                <p>After the Whiz Kids team gets back, Rose and the team offer apologies out of social guilt more than genuine sincerity. Melody is left to navigate the dissolution of her trust, fighting with tarnished self-worth after struggling so hard to be seen, only to be discarded by the very people who claimed to support her.<a href="#cite-3" class="cite-ref" id="ref-3-6" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
 
                 <h3>Resolution</h3>
-                <p>Penny lives with no major injury, and peace is brought to the Brooks household (for once). More significantly, Melody comes to a profound internal conclusion: despite the inability of the world to understand and see her, she knows to her core that she is human. The novel concludes with a strong declaration of self-peace and freedom.<a href="#cite-3" class="cite-ref" id="ref-7" data-tooltip="Draper, Sharon M. Out of My Mind. Simon & Schuster, 9 Mar. 2010.">[7]</a></p>
+                <p>Penny lives with no major injury, and peace is brought to the Brooks household (for once). More significantly, Melody comes to a profound internal conclusion: despite the inability of the world to understand and see her, she knows to her core that she is human. The novel concludes with a strong declaration of self-peace and freedom.<a href="#cite-3" class="cite-ref" id="ref-3-7" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
 
                 <div class="highlight-box">
                     <strong>Central Conflict:</strong> The plot is driven by the contrast between Melody's internal ability and society's external interpretation. Every stage of her journey, from learning trust to ultimately being shattered, asks strong questions about who defines human worth?
@@ -2139,49 +2062,50 @@
         <div id="citations" class="page">
             <div class="works-cited">
                 <h2>Works Cited</h2>
+                <p class="citation-legend">Badge numbers match the in-text citations. Each badge returns to the most recently followed reference.</p>
                 
                 <div class="citation" id="cite-1">
-                    <a href="#ref-4" class="cite-badge" title="Back to in-text citation [4]">4</a>
-                    Audible. "Out of My Mind by Sharon M. Draper." <em>Audible Blog</em>, 2026, www.audible.com/blog/summary-out-of-my-mind-by-sharon-m-draper. Accessed 19 May 2026.
+                    <a href="#ref-1-1" class="cite-badge" aria-label="Back to in-text citation 4" title="Back to in-text citation [4]">4</a>
+                    Audible. "Out of My Mind by Sharon M. Draper." <em>Audible Blog</em>, 2026, <a class="citation-source-link" href="https://www.audible.com/blog/summary-out-of-my-mind-by-sharon-m-draper">audible.com/blog/summary-out-of-my-mind-by-sharon-m-draper</a>. Accessed 19 May 2026.
                 </div>
                 
                 <div class="citation" id="cite-2">
-                    <a href="#ref-2" class="cite-badge" title="Back to in-text citation [2]">2</a>
-                    "Biography." <em>Sharon M. Draper</em>, 2021, www.sharondraper.com/biography.
+                    <a href="#ref-2-1" class="cite-badge" aria-label="Back to in-text citation 2" title="Back to in-text citation [2]">2</a>
+                    "Biography." <em>Sharon M. Draper</em>, 2021, <a class="citation-source-link" href="https://www.sharondraper.com/biography">sharondraper.com/biography</a>.
                 </div>
                 
                 <div class="citation" id="cite-3">
-                    <a href="#ref-7" class="cite-badge" title="Back to in-text citation [7]">7</a>
-                    Draper, Sharon M. <em>Out of My Mind</em>. Simon & Schuster, 9 Mar. 2010.
+                    <a href="#ref-3-1" class="cite-badge" aria-label="Back to in-text citation 7" title="Back to in-text citation [7]">7</a>
+                    Draper, Sharon M. <em>Out of My Mind</em>. Simon &amp; Schuster, 9 Mar. 2010.
                 </div>
                 
                 <div class="citation" id="cite-4">
-                    <a href="#ref-3" class="cite-badge" title="Back to in-text citation [3]">3</a>
-                    Goodreads. "Sharon M. Draper Quotes (Author of Out of My Mind)." <em>Goodreads</em>, www.goodreads.com/author/quotes/51942.Sharon_M_Draper. Accessed 18 May 2026.
+                    <a href="#ref-4-1" class="cite-badge" aria-label="Back to in-text citation 3" title="Back to in-text citation [3]">3</a>
+                    Goodreads. "Sharon M. Draper Quotes (Author of Out of My Mind)." <em>Goodreads</em>, <a class="citation-source-link" href="https://www.goodreads.com/author/quotes/51942.Sharon_M_Draper">goodreads.com/author/quotes/51942.Sharon_M_Draper</a>. Accessed 18 May 2026.
                 </div>
                 
                 <div class="citation" id="cite-5">
-                    <a href="#ref-1" class="cite-badge" title="Back to in-text citation [1]">1</a>
-                    Scholastic. "Out of My Mind." <em>Scholastic Book Clubs</em>, clubs.scholastic.com/out-of-my-mind/9781416971719-rco-us.html. Accessed 18 May 2026.
+                    <a href="#ref-5-1" class="cite-badge" aria-label="Back to in-text citation 1" title="Back to in-text citation [1]">1</a>
+                    Scholastic. "Out of My Mind." <em>Scholastic Book Clubs</em>, <a class="citation-source-link" href="https://clubs.scholastic.com/out-of-my-mind/9781416971719-rco-us.html">clubs.scholastic.com/out-of-my-mind/9781416971719-rco-us.html</a>. Accessed 18 May 2026.
                 </div>
                 
                 <div class="citation" id="cite-6">
-                    <a href="#ref-6" class="cite-badge" title="Back to in-text citation [6]">6</a>
-                    SparkNotes. "Out of My Mind: Famous Quotes Explained." <em>SparkNotes</em>, www.sparknotes.com/lit/out-of-my-mind/quotes/. Accessed 27 May 2026.
+                    <a href="#ref-6-1" class="cite-badge" aria-label="Back to in-text citation 6" title="Back to in-text citation [6]">6</a>
+                    SparkNotes. "Out of My Mind: Famous Quotes Explained." <em>SparkNotes</em>, <a class="citation-source-link" href="https://www.sparknotes.com/lit/out-of-my-mind/quotes/">sparknotes.com/lit/out-of-my-mind/quotes/</a>. Accessed 27 May 2026.
                 </div>
                 
                 <div class="citation" id="cite-7">
-                    <a href="#ref-5" class="cite-badge" title="Back to in-text citation [5]">5</a>
-                    ---. "Out of My Mind: Plot Overview." <em>SparkNotes</em>, www.sparknotes.com/lit/out-of-my-mind/summary/. Accessed 27 May 2026.
+                    <a href="#ref-7-1" class="cite-badge" aria-label="Back to in-text citation 5" title="Back to in-text citation [5]">5</a>
+                    ---. "Out of My Mind: Plot Overview." <em>SparkNotes</em>, <a class="citation-source-link" href="https://www.sparknotes.com/lit/out-of-my-mind/summary/">sparknotes.com/lit/out-of-my-mind/summary/</a>. Accessed 27 May 2026.
                 </div>
             </div>
         </div>
 
         <!-- Personal touch: last updated -->
         <div class="last-updated">
-            Last updated: May 2026 ✦ Thank you for reading Melody's story
+            Last updated: August 2026 ✦ Thank you for reading Melody's story
         </div>
-    </div>
+    </main>
 
     <footer>
         <p>2026 Educational Resource | Out of My Mind by Sharon M. Draper</p>
@@ -2193,283 +2117,180 @@
         const contrastToggle = document.getElementById('contrastToggle');
         const dyslexiaToggle = document.getElementById('dyslexiaToggle');
         const reduceMotionToggle = document.getElementById('reduceMotionToggle');
-        
-        // Load saved preferences
-        if (localStorage.getItem('highContrast') === 'true') {
-            document.body.classList.add('high-contrast');
-            contrastToggle.classList.add('active');
-        }
-        
-        if (localStorage.getItem('dyslexiaFriendly') === 'true') {
-            document.body.classList.add('dyslexia-friendly');
-            dyslexiaToggle.classList.add('active');
-        }
-        
-        if (localStorage.getItem('reduceMotion') === 'true') {
-            document.documentElement.style.setProperty('scroll-behavior', 'auto');
-            document.querySelectorAll('*').forEach(el => {
-                el.style.transition = 'none';
-                el.style.animation = 'none';
-            });
-            reduceMotionToggle.classList.add('active');
-        }
-        
-        // Toggle high contrast
-        contrastToggle.addEventListener('click', () => {
-            document.body.classList.toggle('high-contrast');
-            contrastToggle.classList.toggle('active');
-            localStorage.setItem('highContrast', document.body.classList.contains('high-contrast'));
-        });
-        
-        // Toggle dyslexia-friendly font
-        dyslexiaToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dyslexia-friendly');
-            dyslexiaToggle.classList.toggle('active');
-            localStorage.setItem('dyslexiaFriendly', document.body.classList.contains('dyslexia-friendly'));
-        });
-        
-        // Toggle reduced motion
-        reduceMotionToggle.addEventListener('click', () => {
-            const isReduced = !document.body.classList.contains('reduce-motion');
-            document.body.classList.toggle('reduce-motion');
-            reduceMotionToggle.classList.toggle('active');
-            
-            if (isReduced) {
-                document.documentElement.style.setProperty('scroll-behavior', 'auto');
-                document.querySelectorAll('*').forEach(el => {
-                    el.style.transition = 'none';
-                    el.style.animation = 'none';
-                });
-            } else {
-                document.documentElement.style.setProperty('scroll-behavior', 'smooth');
-                document.querySelectorAll('*').forEach(el => {
-                    el.style.transition = '';
-                    el.style.animation = '';
-                });
+
+        function readPreference(key) {
+            try {
+                const value = localStorage.getItem(key);
+                return value === null ? null : value === 'true';
+            } catch {
+                return null;
             }
-            localStorage.setItem('reduceMotion', isReduced);
-        });
-        
-        // Keyboard navigation for accessibility controls
-        document.querySelectorAll('.a11y-btn').forEach(btn => {
-            btn.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    btn.click();
-                }
-            });
+        }
+
+        function writePreference(key, value) {
+            try {
+                localStorage.setItem(key, String(value));
+            } catch {
+                // Preferences still work for this visit when storage is unavailable.
+            }
+        }
+
+        function setToggleState(button, className, enabled) {
+            document.body.classList.toggle(className, enabled);
+            button.classList.toggle('active', enabled);
+            button.setAttribute('aria-pressed', String(enabled));
+        }
+
+        const reducedMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+        setToggleState(contrastToggle, 'high-contrast', readPreference('highContrast') === true);
+        setToggleState(dyslexiaToggle, 'dyslexia-friendly', readPreference('dyslexiaFriendly') === true);
+
+        function syncReducedMotion() {
+            const enabledBySystem = reducedMotionPreference.matches;
+            const enabled = enabledBySystem || readPreference('reduceMotion') === true;
+            setToggleState(reduceMotionToggle, 'reduce-motion', enabled);
+            reduceMotionToggle.disabled = enabledBySystem;
+            reduceMotionToggle.title = enabledBySystem ? 'Reduced motion enabled by system settings' : 'Reduce motion';
+        }
+        syncReducedMotion();
+        reducedMotionPreference.addEventListener('change', syncReducedMotion);
+
+        contrastToggle.addEventListener('click', () => {
+            const enabled = !document.body.classList.contains('high-contrast');
+            setToggleState(contrastToggle, 'high-contrast', enabled);
+            writePreference('highContrast', enabled);
         });
 
-        // ===== LOADER =====
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 1400);
+        dyslexiaToggle.addEventListener('click', () => {
+            const enabled = !document.body.classList.contains('dyslexia-friendly');
+            setToggleState(dyslexiaToggle, 'dyslexia-friendly', enabled);
+            writePreference('dyslexiaFriendly', enabled);
+        });
+
+        reduceMotionToggle.addEventListener('click', () => {
+            const enabled = !document.body.classList.contains('reduce-motion');
+            setToggleState(reduceMotionToggle, 'reduce-motion', enabled);
+            writePreference('reduceMotion', enabled);
         });
 
         // ===== NAVIGATION =====
-        function navigateTo(pageId) {
+        const pageIds = new Set(['home', 'author', 'context', 'characters', 'setting', 'tone', 'pov', 'plot', 'citations']);
+        const lastReferenceByCitation = new Map();
+
+        function scrollBehavior() {
+            return document.body.classList.contains('reduce-motion') ? 'auto' : 'smooth';
+        }
+
+        function activatePage(pageId) {
             const targetPage = document.getElementById(pageId);
-            if (!targetPage) return;
-            
-            // Update nav highlighting
-            document.querySelectorAll('.nav-link').forEach(l => {
-                l.classList.remove('active');
-                if (l.getAttribute('data-page') === pageId) l.classList.add('active');
+            if (!targetPage || !targetPage.classList.contains('page')) return null;
+
+            document.querySelectorAll('.page').forEach(page => page.classList.toggle('active', page === targetPage));
+            document.querySelectorAll('#main-nav .nav-link[data-page]').forEach(link => {
+                const active = link.dataset.page === pageId;
+                link.classList.toggle('active', active);
+                if (active) {
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
             });
-            
-            // Switch pages
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            targetPage.classList.add('active');
-            
-            // Update body background to match page theme
-            const pageBg = getComputedStyle(targetPage).backgroundColor;
-            document.body.style.background = pageBg;
-            
-            // Smooth scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.body.style.backgroundColor = getComputedStyle(targetPage).backgroundColor;
+            return targetPage;
+        }
+
+        function focusAndScroll(target, targetPage) {
+            const isPage = target === targetPage;
+            const focusTarget = isPage ? targetPage.querySelector('h1, h2') : target;
+            const block = isPage ? 'start' : 'center';
+
+            requestAnimationFrame(() => {
+                target.scrollIntoView({ behavior: scrollBehavior(), block });
+                if (focusTarget) {
+                    focusTarget.setAttribute('tabindex', '-1');
+                    focusTarget.focus({ preventScroll: true });
+                }
+            });
+        }
+
+        function navigateToTarget(targetId, { updateHistory = true, focus = true } = {}) {
+            const target = document.getElementById(targetId);
+            if (!target) return false;
+
+            const targetPage = target.classList.contains('page') ? target : target.closest('.page');
+            if (!targetPage || !pageIds.has(targetPage.id)) return false;
+
+            activatePage(targetPage.id);
+            if (updateHistory && location.hash !== `#${targetId}`) {
+                history.pushState(null, '', `#${targetId}`);
+            }
+            if (focus) focusAndScroll(target, targetPage);
+            return true;
         }
 
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                navigateTo(this.getAttribute('data-page'));
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                navigateToTarget(link.getAttribute('href').slice(1));
             });
         });
 
-        // ===== CITATION SYSTEM =====
-        // In-text citation links
         document.querySelectorAll('.cite-ref').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const refId = this.getAttribute('id');
-                navigateAndScroll(targetId, refId);
+            const tooltip = link.dataset.tooltip;
+            if (tooltip) link.setAttribute('aria-label', `Citation ${link.textContent.trim()}: ${tooltip}`);
+
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                const citationId = link.getAttribute('href').slice(1);
+                lastReferenceByCitation.set(citationId, link.id);
+                navigateToTarget(citationId);
             });
         });
 
-        // Works Cited badge links
         document.querySelectorAll('.cite-badge').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const badgeId = this.closest('.citation')?.id;
-                navigateAndScroll(targetId, badgeId);
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                const citationId = link.closest('.citation')?.id;
+                const targetId = lastReferenceByCitation.get(citationId) || link.getAttribute('href').slice(1);
+                navigateToTarget(targetId);
             });
         });
 
-        // ===== UTILITY: Navigate and Scroll =====
-        function navigateAndScroll(targetId, refId = null) {
-            const targetEl = document.getElementById(targetId);
-            if (!targetEl) return;
-            
-            const targetPage = targetEl.closest('.page');
-            if (!targetPage) return;
-            
-            const pageId = targetPage.id;
-            
-            // Activate target page
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            targetPage.classList.add('active');
-            
-            // Sync nav
-            document.querySelectorAll('.nav-link').forEach(l => {
-                l.classList.remove('active');
-                if (l.getAttribute('data-page') === pageId) l.classList.add('active');
-            });
-            
-            // Update body background
-            document.body.style.background = getComputedStyle(targetPage).backgroundColor;
-            
-            // Scroll after render
-            setTimeout(() => {
-                if (refId) {
-                    const refEl = document.getElementById(refId);
-                    if (refEl) {
-                        refEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        // Soft highlight
-                        refEl.style.transition = 'box-shadow 0.3s ease';
-                        refEl.style.boxShadow = '0 0 0 3px rgba(184, 149, 106, 0.5)';
-                        setTimeout(() => { refEl.style.boxShadow = ''; }, 1600);
-                    }
-                } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            }, 90);
-        }
+        window.addEventListener('hashchange', () => {
+            const targetId = decodeURIComponent(location.hash.slice(1));
+            navigateToTarget(targetId || 'home', { updateHistory: false });
+        });
+        window.addEventListener('popstate', () => {
+            const targetId = decodeURIComponent(location.hash.slice(1));
+            navigateToTarget(targetId || 'home', { updateHistory: false });
+        });
 
         // ===== NAV SCROLL EFFECT =====
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 40) {
-                nav.style.boxShadow = '0 3px 15px rgba(0,0,0,0.08)';
-            } else {
-                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.04)';
-            }
-        });
-
-        // ===== FADE-IN OBSERVER =====
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-        document.querySelectorAll('.content-card, .character-card, .character-full, .quality-card, .works-cited').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(18px)';
-            card.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
-            observer.observe(card);
-        });
-
-        // ===== FIXED TYPEWRITER EFFECT FOR QUOTES =====
-        function initTypewriterQuotes() {
-            const quotes = document.querySelectorAll('.quote');
-            
-            quotes.forEach(quote => {
-                // Skip if quote is too long for typewriter effect
-                if (quote.textContent.length > 180) {
-                    quote.style.opacity = '0';
-                    quote.style.transform = 'translateY(8px)';
-                    setTimeout(() => {
-                        quote.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                        quote.style.opacity = '1';
-                        quote.style.transform = 'translateY(0)';
-                    }, 300);
-                    return;
-                }
-                
-                // Store original text
-                const originalText = quote.textContent.trim();
-                quote.textContent = '';
-                quote.classList.add('typewriter-mode');
-                
-                // Cursor element
-                const cursor = document.createElement('span');
-                cursor.className = 'typewriter-cursor';
-                cursor.textContent = '|';
-                cursor.style.cssText = `
-                    position: absolute;
-                    right: -4px;
-                    bottom: 8px;
-                    color: var(--accent-soft);
-                    font-family: monospace;
-                    font-weight: 400;
-                    animation: blink 0.9s step-end infinite;
-                    font-size: 1.4rem;
-                    line-height: 1;
-                    pointer-events: none;
-                `;
-                quote.appendChild(cursor);
-                
-                // Type characters one by one
-                let charIndex = 0;
-                const type = () => {
-                    if (charIndex < originalText.length) {
-                        quote.textContent = originalText.substring(0, charIndex + 1);
-                        // Re-append cursor since textContent replaced it
-                        quote.appendChild(cursor);
-                        charIndex++;
-                        // Variable speed for natural feel
-                        const delay = 40 + Math.random() * 70;
-                        setTimeout(type, delay);
-                    } else {
-                        // Remove cursor when done
-                        setTimeout(() => {
-                            if (cursor.parentNode) {
-                                cursor.remove();
-                            }
-                        }, 800);
-                    }
-                };
-                
-                // Start typing when quote is in view
-                const quoteObserver = new IntersectionObserver((entries) => {
-                    if (entries[0].isIntersecting) {
-                        setTimeout(type, 400);
-                        quoteObserver.disconnect();
-                    }
-                }, { threshold: 0.6 });
-                
-                quoteObserver.observe(quote);
-            });
+        const nav = document.querySelector('nav');
+        let scrollUpdatePending = false;
+        function updateNavShadow() {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+            scrollUpdatePending = false;
         }
-        
-        // Initialize after page load
-        window.addEventListener('load', () => {
-            setTimeout(initTypewriterQuotes, 1600);
-        });
+        window.addEventListener('scroll', () => {
+            if (!scrollUpdatePending) {
+                scrollUpdatePending = true;
+                requestAnimationFrame(updateNavShadow);
+            }
+        }, { passive: true });
 
         // ===== INITIALIZE ON LOAD =====
         window.addEventListener('DOMContentLoaded', () => {
-            // Set initial page background
-            const activePage = document.querySelector('.page.active');
-            if (activePage) {
-                document.body.style.background = getComputedStyle(activePage).backgroundColor;
+            document.querySelectorAll('.character-full-avatar, .quality-icon').forEach(icon => {
+                icon.setAttribute('aria-hidden', 'true');
+            });
+
+            const initialTarget = decodeURIComponent(location.hash.slice(1)) || 'home';
+            if (!navigateToTarget(initialTarget, { updateHistory: false, focus: false })) {
+                activatePage('home');
+                history.replaceState(null, '', '#home');
             }
+            updateNavShadow();
         });
 
         // ===== KEYBOARD NAVIGATION FOR MAIN CONTENT =====
@@ -2480,7 +2301,7 @@
                 const pages = ['home', 'author', 'context', 'characters', 'setting', 'tone', 'pov', 'plot', 'citations'];
                 const index = parseInt(e.key) - 1;
                 if (pages[index]) {
-                    navigateTo(pages[index]);
+                    navigateToTarget(pages[index]);
                 }
             }
         });
