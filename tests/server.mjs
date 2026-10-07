@@ -7,6 +7,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const port = Number(process.env.PORT || 4173);
 const types = {
   '.html': 'text/html; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8',
   '.jpg': 'image/jpeg',
   '.json': 'application/json; charset=utf-8',
   '.md': 'text/markdown; charset=utf-8',

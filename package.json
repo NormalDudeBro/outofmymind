@@ -1,10 +1,11 @@
 {
-  "name": "outofmymind-literary-journal",
+  "name": "ap-world-history-notes",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Static educational literary journal for Out of My Mind by Sharon M. Draper",
+  "description": "Offline-ready static AP World History notes for Units 1 and 2",
   "scripts": {
+    "build": "node scripts/build.mjs",
     "validate": "html-validate index.html && node tests/static-checks.mjs",
     "test:e2e": "playwright test",
     "test": "npm run validate && npm run test:e2e"

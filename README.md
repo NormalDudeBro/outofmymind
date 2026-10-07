@@ -1,99 +1,48 @@
-# Out of My Mind Literary Journal
+# AP World History Notes
 
-A static educational resource about *Out of My Mind* by Sharon M. Draper. The site covers the author, context, characters, setting, tone, point of view, plot, and cited sources.
+Static study notes for Unit 1 (The Global Tapestry) and Unit 2 (Networks of Exchange), c. 1200-1450. Fourteen ordered topics contain two independent 24-line pages each. All 672 lines are present in the HTML, without JavaScript, fetching, external fonts, or runtime dependencies. Native unit/topic anchors work offline, including `file://`.
 
-## Live Site
+## Build and Import
 
-The GitHub Pages custom domain is [www.joltlined.com](https://www.joltlined.com/).
-
-## Technology
-
-- Static HTML and CSS
-- Vanilla browser JavaScript
-- Google Fonts for typography
-- GitHub Pages deployment from this repository
-- Playwright, Axe, and html-validate for development checks
-
-There is no application server, database, authentication system, or production build step.
-
-## Local Development
-
-Requirements:
-
-- Node.js 20 or later
-- npm
-
-Install the development tools:
+The generator needs Node.js 20 or later; the existing pinned validation tools need Node.js 22.16 or later (Node 24 is recommended). Use npm. All dependency and package versions are unchanged.
 
 ```sh
-npm install
+npm ci
 npx playwright install chromium
-```
-
-Run all validation and browser tests:
-
-```sh
+npm run build
 npm test
 ```
 
-Run checks separately:
+The checked-in Node generator imports original and marked `.txt` files byte-for-byte. It validates all fourteen topics before replacing the site; it does not generate, rewrite, or recolor notes. Initial import or reimport after independent source review:
 
 ```sh
-npm run validate
-npm run test:e2e
+node scripts/build.mjs --unit1 "C:/Users/Kenny/Desktop/Prompts/AP-World-History-Unit-1" --unit2 "C:/Users/Kenny/Desktop/Prompts/AP-World-History-Unit-2" --preview "C:/Users/Kenny/Desktop/Prompts/AP-World-History-Units-1-2/preview.html"
 ```
 
-The Playwright configuration starts a local HTTP server automatically. To preview manually, run:
+Rebuild without Desktop sources using `npm run build`. Export a standalone local preview from the checked-in notes using:
 
 ```sh
-node tests/server.mjs
+node scripts/build.mjs --preview "C:/Users/Kenny/Desktop/Prompts/AP-World-History-Units-1-2/preview.html"
 ```
 
-Then open `http://127.0.0.1:4173/`.
+Preview export copies `notes/unit-1` and `notes/unit-2` beside the exported HTML. Each topic provides two kinds of native links: `Download` original/colored links embed the exact text bytes as base64 `text/plain` data URLs for one-click downloads with JavaScript disabled over both HTTP and `file://`; `Open original file` and `Open colored file` links use relative paths to `notes/unit-N/file.txt` and `notes/unit-N/Colored/file.txt`. Chromium opens these relative local text links instead of forcing a download. Only the fourteen named originals and their `Colored` counterparts are imported. Source previews, validators, and metadata are not imported. Original and colored files remain in `notes/unit-1/`, `notes/unit-2/`, and each unit's `Colored/` directory. Colored downloads contain `(pen)` and the approved highlight markers. All HTML text is escaped before rendering.
 
-## Navigation and Citations
+## Presentation
 
-Each journal section is represented by a URL fragment such as `#characters` or `#plot`. Direct links, refresh, Back, and Forward are expected to preserve the active section.
+The neutral paper and Georgia typography follow the approved Unit 2 preview. All eleven approved ink hex values are preserved, topic headings are light blue, and complete marked section titles have uniform colors in both headings and Overview listings. On small screens pages stack; all topics remain visible. Printing uses A4 portrait with one note sheet per physical page (28 pages), repeating topic titles on each sheet. Browser print headers/footers should be off and background graphics on for the closest match.
 
-Citation IDs must remain unique. An in-text citation activates its Works Cited entry, and the entry's badge returns to the most recently followed occurrence. `npm run validate` rejects duplicate IDs and missing fragment targets.
+## Verification
 
-## Accessibility
+`npm run validate` runs html-validate and static/content checks. `npm run test:e2e` runs Chromium checks at desktop/mobile sizes, native navigation and history, keyboard entry, exact line order, all downloads, offline/no-JavaScript operation, accessibility, and physical PDF page count. `npm test` runs both. Set `PREVIEW_PATH` to an exported HTML path to include it in the offline browser/download checks. Download clicks are paced to stay below Chromium's ten-per-second limit. The PDF is inspected in memory and not written to the repo.
 
-The site includes:
+Content validation enforces 14 topics, 28 pages, 48 lines/topic, 24 lines/page, a 65-character maximum, exact stripped equality (CRLF normalized only), valid markers, pencil prefixes and punctuation, immediate resets, no more than two highlights per line, complete uniform non-LB section title colors, and matching Overview/header rendering. Generated HTML must match a fresh in-memory build exactly. Structural/color tests do not independently certify historical accuracy or semantic word-family ownership; independent content review remains necessary.
 
-- Keyboard-accessible fragment navigation
-- Managed focus when sections or citations change
-- High-contrast, readable-font, and reduced-motion controls
-- Persisted preferences with a safe fallback when browser storage is unavailable
-- Native `prefers-reduced-motion` support
-- A no-JavaScript fallback that exposes the complete document
-- Automated Axe checks for the Home page
+## Accessibility Limitation
 
-When changing colors or interaction behavior, run the full test suite and verify keyboard behavior at both desktop and mobile sizes.
+Semantic landmarks/headings, native keyboard-accessible links, a skip link, visible focus, and a complete no-JavaScript document are provided. The approved pastel palette intentionally remains unchanged: several highlight colors and light-blue topic headings fail WCAG text contrast requirements. This is a documented limitation, not a full WCAG compliance claim. Axe still runs its contrast rule; tests permit only `color-contrast` violations on the approved ink and topic-title elements and reject every other violation. Original pencil-only text downloads are available for every topic. Manual assistive-technology and visual review remains advisable.
 
-## Content and Asset Maintenance
+## Hosting
 
-Local image references are checked by filename only. Every content image must have meaningful alternative text and use lazy loading. Keep documentation for the source, permission, and attribution of each asset outside or alongside the repository as appropriate.
+GitHub Pages continues to serve the checked-in `index.html` and relative notes at `www.joltlined.com`. `CNAME` and the existing `Quality` workflow are preserved; CI installs the existing tools and runs `npm test`. No Desktop paths or generation step are required at deployment. Existing Pages configuration is not changed by this work. Keep the current Pages publishing source and enable Enforce HTTPS in repository settings when DNS/certificate provisioning is complete.
 
-`cover.jpg` is currently retained but unused. Confirm whether it is needed before deleting or displaying it.
-
-Google Fonts is the only production third-party request. If the site needs stricter privacy or offline support, self-host the required font files and their licenses before removing the Google Fonts stylesheet.
-
-## Deployment
-
-GitHub Pages serves the repository through the hostname in `CNAME`.
-
-After DNS is configured and the certificate is available, enable **Enforce HTTPS** in the repository's Pages settings. Repository files cannot enable this setting or add arbitrary HTTP response headers. Verify deployment with:
-
-```sh
-curl -I http://www.joltlined.com/
-curl -I https://www.joltlined.com/
-```
-
-The HTTP request should permanently redirect to the HTTPS URL.
-
-The `Quality` GitHub Actions workflow validates HTML, fragments, asset references, navigation, preferences, responsive behavior, no-JavaScript behavior, and accessibility on pushes and pull requests.
-
-## Licensing
-
-No reuse license is currently declared. Add a license only after confirming the intended terms for the source, written content, and media assets.
+Legacy journal images remain checked in but are unused and never requested. No reuse license is declared; confirm intended terms before adding one.
