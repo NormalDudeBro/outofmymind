@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { escapeHTML, loadNotes, palette, renderLine, renderSite, root, validateSheet } from '../scripts/build.mjs';
+import { escapeHTML, loadLangNotes, loadNotes, palette, renderLine, renderSite, root, validateSheet } from '../scripts/build.mjs';
 
 const data = loadNotes();
 const html = readFileSync(resolve(root, 'index.html'), 'utf8');
@@ -14,6 +14,7 @@ const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
 assert.equal(new Set(ids).size, ids.length, 'unique IDs');
 const links = [...html.matchAll(/\shref="([^"]+)"/g)].map(match => match[1]);
 links.forEach(link => {
+  if (['index.html', 'ap-lang.html'].includes(link)) return assert.ok(existsSync(resolve(root, link)));
   if (link.startsWith('#')) return assert.ok(ids.includes(link.slice(1)), `fragment ${link}`);
   if (link.startsWith('notes/')) return assert.match(link, /^notes\/unit-[12]\/(Colored\/)?[12]\.[1-7]-[a-z-]+\.txt$/);
   assert.match(link, /^data:text\/plain;charset=utf-8;base64,[A-Za-z0-9+/]+=*$/);
@@ -40,3 +41,13 @@ assert.throws(() => validateSheet(first.original, first.colored.replace('(pen)',
 assert.throws(() => validateSheet(first.original + '\n', first.colored, 'bad'), /equality/);
 assert.throws(() => validateSheet(first.original, first.colored.replace(/\((g|li|p|hp|r|pu)\)/, '(lb)'), 'bad'), /title|matching/);
 console.log('PASS: 14 topics, 28 pages, 48 lines/topic, 24 lines/page, max 65 characters, stripped equality, marker/punctuation/reset rules, max two colors, full uniform titles, Overview equality, safe HTML, 28 embedded downloads, 28 relative file anchors with exact bytes, fragments, exact reproducibility, CNAME.');
+const lang = loadLangNotes();
+const langHTML = readFileSync(resolve(root, 'ap-lang.html'), 'utf8');
+assert.equal(langHTML, renderSite([], lang), 'AP Lang reproducible build');
+assert.equal(lang.sections.length, 12);
+assert.equal(lang.sections.flatMap(section => section.lines).length, 120);
+assert.equal((langHTML.match(/class="note"/g) ?? []).length, 120);
+assert.equal((langHTML.match(/<article /g) ?? []).length, 4);
+assert.match(langHTML, /href="ap-lang.html" aria-current="page"/);
+assert.doesNotMatch(langHTML, /<(script|link|iframe|img|object|embed)\b|\son\w+\s*=|@import|url\s*\(/i);
+console.log('PASS: AP Lang, 12 sections, 120 lines, four 32-line sheets, max 65 characters, reproducible and offline-ready.');

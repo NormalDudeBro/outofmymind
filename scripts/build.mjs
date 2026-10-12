@@ -95,14 +95,30 @@ export function renderLine(line) {
   return spans(line).map(part => part.color === 'pen' ? escapeHTML(part.text) : `<span class="ink ${part.color}">${escapeHTML(part.text)}</span>`).join('');
 }
 
-export function renderSite(data) {
+export function loadLangNotes() {
+  const colors = { BLUE: 'blue', PURPLE: 'purple', GREEN: 'green', RED: 'red', BLACK: 'black', ORANGE: 'orange', TEAL: 'teal' };
+  const source = readFileSync(resolve(root, 'notes', 'ap-lang.txt'), 'utf8');
+  const sections = lines(source).reduce((sections, text) => {
+    assert.ok(text.length <= 65 && text.trim() === text && text.length, 'AP Lang: nonempty lines, max 65 characters');
+    const heading = text.match(/^(BLUE|PURPLE|GREEN|RED|BLACK|ORANGE|TEAL): /);
+    if (heading) sections.push({ color: colors[heading[1]], lines: [] });
+    assert.ok(sections.length, 'AP Lang: first line must identify a color');
+    sections.at(-1).lines.push(text);
+    return sections;
+  }, []);
+  return { source, sections };
+}
+
+export function renderSite(data, lang) {
+  const title = lang ? 'AP Lang notes' : 'AP World History Notes';
+  const langLines = lang?.sections.flatMap(section => section.lines.map(text => ({ text, color: section.color }))) ?? [];
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="AP World History Units 1 and 2: fourteen topics, twenty-eight printable note pages, and original and colored text downloads.">
-  <title>AP World History Notes</title>
+  <meta name="description" content="${lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1 and 2: fourteen topics, twenty-eight printable note pages, and original and colored text downloads.'}">
+  <title>${title}</title>
   <style>
     :root { color-scheme: light; ${Object.entries(palette).map(([token, hex]) => `--${token}: ${hex};`).join(' ')} font-family: Georgia, "Times New Roman", serif; color: #393833; background: #eeede9; }
     * { box-sizing: border-box; }
@@ -115,6 +131,13 @@ export function renderSite(data) {
     .skip { position: absolute; top: 0; left: 12px; transform: translateY(-120%); background: #fffefb; padding: 8px; }
     .skip:focus { transform: none; }
     nav { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 18px 0; }
+    .subjects { border-bottom: 1px solid #dcd9d1; padding-bottom: 12px; }
+    .subjects a { padding: 8px 12px; border-radius: 4px; font: 14px/1.5 system-ui, sans-serif; }
+    .subjects a[aria-current="page"] { background: #173f88; color: white; text-decoration: none; }
+    .lang-blue { color: #173f88; } .lang-purple { color: #7830aa; }
+    .lang-green { color: #126c2e; } .lang-red { color: #bd2025; }
+    .lang-black { color: #252525; } .lang-orange { color: #a34400; }
+    .lang-teal { color: #086969; }
     .contents { columns: 2; padding-left: 24px; font-size: 14px; line-height: 1.8; }
     .contents li { break-inside: avoid; }
     .legend { display: flex; flex-wrap: wrap; gap: 7px 15px; font: 12px/1.5 system-ui, sans-serif; }
@@ -154,6 +177,9 @@ export function renderSite(data) {
       .line { grid-template-columns: 22px minmax(0, 1fr); gap: 8px; height: 8.8mm; min-height: 0; }
       .number { padding-top: 0.6mm; }
       .note { font-size: 12px; line-height: 3.8mm; padding: 0.6mm 0; }
+      .lang .line { height: 7mm; }
+      .lang .note { font-size: 11px; line-height: 3.1mm; padding: 0.4mm 0; }
+      .lang article:last-child { break-after: auto; }
       * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
     }
   </style>
@@ -161,14 +187,22 @@ export function renderSite(data) {
 <body>
   <a class="skip" href="#notes">Skip to notes</a>
   <header>
-    <h1>AP World History Notes</h1>
-    <p>Units 1 &amp; 2 · c. 1200–1450 · 14 topics · 28 note pages</p>
+    <nav class="subjects" aria-label="Subjects"><a href="index.html"${lang ? '' : ' aria-current="page"'}>AP World History notes</a><a href="ap-lang.html"${lang ? ' aria-current="page"' : ''}>AP Lang notes</a></nav>
+    <h1>${title}</h1>
+    ${lang ? `<p>Rhetorical analysis · ${lang.sections.length} color-coded sections · ${langLines.length} lines · 32 lines per printed sheet</p>
+    <p>Examples are paraphrases, not direct quotations. Each note line is at most 65 characters.</p>
+    <p class="downloads"><a href="data:text/plain;charset=utf-8;base64,${Buffer.from(lang.source).toString('base64')}" download="ap-lang.txt">Download AP Lang notes</a> · <a href="notes/ap-lang.txt">Open original file</a></p>
+    <p>Use your browser's Print command for colored, numbered sheets. Color names remain in the notes for black-and-white copying.</p>` : `<p>Units 1 &amp; 2 · c. 1200–1450 · 14 topics · 28 note pages</p>
     <nav aria-label="Units"><a href="#unit-1">Unit 1: The Global Tapestry</a><a href="#unit-2">Unit 2: Networks of Exchange</a></nav>
     <ol class="contents">${data.flatMap(unit => unit.topics.map(topic => `<li><a href="#topic-${escapeHTML(topic.file.replaceAll('.', '-'))}">${escapeHTML(topic.file.slice(0, 3))} ${escapeHTML(topic.title)}</a></li>`)).join('')}</ol>
     <div class="legend" role="group" aria-label="Token color legend">${Object.keys(palette).map(token => `<span><i class="swatch ${token}" aria-hidden="true"></i>${token} ${({ g: 'green', li: 'lime', pu: 'purple', br: 'brown', y: 'yellow', r: 'red', db: 'dark blue', p: 'pink', lb: 'light blue', hp: 'hot pink', pen: 'pencil' })[token]}</span>`).join('')}</div>
-    <p>All notes are visible below. Use your browser’s Print command for one sheet per page. Colored text downloads contain the original color markers.</p>
+    <p>All notes are visible below. Use your browser’s Print command for one sheet per page. Colored text downloads contain the original color markers.</p>`}
   </header>
-  <main id="notes">${data.map((unit, index) => `
+  <main id="notes"${lang ? ' class="lang"' : ''}>${lang ? `<div class="pages">${Array.from({ length: Math.ceil(langLines.length / 32) }, (_, page) => `<article aria-label="AP Lang page ${page + 1}">
+    <h2 class="page-title">AP Lang rhetorical analysis</h2>
+    <p class="caption">Page ${page + 1} · Lines ${page * 32 + 1}–${Math.min(page * 32 + 32, langLines.length)}</p>
+    <div class="sheet">${langLines.slice(page * 32, page * 32 + 32).map((line, index) => `<div class="line"><span class="number" aria-hidden="true">${page * 32 + index + 1}</span><span class="note"><span class="lang-${line.color}">${escapeHTML(line.text)}</span></span></div>`).join('\n')}</div>
+  </article>`).join('\n')}</div>` : data.map((unit, index) => `
     <section class="unit" id="unit-${index + 1}" aria-labelledby="unit-${index + 1}-title">
       <h2 class="unit-title" id="unit-${index + 1}-title">Unit ${index + 1}: ${escapeHTML(unit.name)}</h2>
       ${unit.topics.map(topic => `<section class="topic" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}" aria-labelledby="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">
@@ -182,7 +216,7 @@ export function renderSite(data) {
       </section>`).join('\n')}
     </section>`).join('\n')}
   </main>
-  <footer><p>The approved pastel ink palette is preserved. Some ink colors do not meet WCAG text contrast requirements; original pencil-only text files are available for every topic.</p><a href="#notes">Back to notes</a></footer>
+  <footer>${lang ? '' : '<p>The approved pastel ink palette is preserved. Some ink colors do not meet WCAG text contrast requirements; original pencil-only text files are available for every topic.</p>'}<a href="#notes">Back to notes</a></footer>
 </body>
 </html>
 `;
@@ -193,6 +227,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   const paths = units.map((_, index) => resolve(values[`unit${index + 1}`] ?? resolve(root, 'notes', `unit-${index + 1}`)));
   // Validate every source before importing anything or replacing the current site.
   const data = loadNotes(paths);
+  const lang = loadLangNotes();
   const html = renderSite(data);
   const destinations = [resolve(root, 'index.html'), ...(values.preview ? [resolve(values.preview)] : [])];
   destinations.forEach(destination => {
@@ -208,6 +243,11 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
       });
     }));
     writeFileSync(destination, html);
+    if (destination !== resolve(target, 'index.html')) writeFileSync(resolve(target, 'index.html'), html);
+    writeFileSync(resolve(target, 'ap-lang.html'), renderSite([], lang));
+    if (target !== root) {
+      copyFileSync(resolve(root, 'notes', 'ap-lang.txt'), resolve(target, 'notes', 'ap-lang.txt'));
+    }
     console.log(`Built ${destination}: 14 topics, 28 pages, 672 note lines; native downloads embedded and text files copied alongside.`);
   });
 }

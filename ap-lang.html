@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.">
+  <title>AP Lang notes</title>
+  <style>
+    :root { color-scheme: light; --g: #168438; --li: #79c900; --pu: #883ac2; --br: #92552f; --y: #ebc600; --r: #df3034; --db: #173f88; --p: #ed8eb4; --lb: #59b8e7; --hp: #ec228c; --pen: #62615e; font-family: Georgia, "Times New Roman", serif; color: #393833; background: #eeede9; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 28px clamp(12px, 3vw, 48px) 40px; }
+    header, main, footer { max-width: 1500px; margin: auto; }
+    header { margin-bottom: 26px; }
+    h1 { margin: 0 0 14px; font-size: 26px; font-weight: normal; }
+    a { color: #173f88; text-underline-offset: 3px; }
+    a:focus-visible { outline: 2px solid #173f88; outline-offset: 4px; }
+    .skip { position: absolute; top: 0; left: 12px; transform: translateY(-120%); background: #fffefb; padding: 8px; }
+    .skip:focus { transform: none; }
+    nav { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 18px 0; }
+    .subjects { border-bottom: 1px solid #dcd9d1; padding-bottom: 12px; }
+    .subjects a { padding: 8px 12px; border-radius: 4px; font: 14px/1.5 system-ui, sans-serif; }
+    .subjects a[aria-current="page"] { background: #173f88; color: white; text-decoration: none; }
+    .lang-blue { color: #173f88; } .lang-purple { color: #7830aa; }
+    .lang-green { color: #126c2e; } .lang-red { color: #bd2025; }
+    .lang-black { color: #252525; } .lang-orange { color: #a34400; }
+    .lang-teal { color: #086969; }
+    .contents { columns: 2; padding-left: 24px; font-size: 14px; line-height: 1.8; }
+    .contents li { break-inside: avoid; }
+    .legend { display: flex; flex-wrap: wrap; gap: 7px 15px; font: 12px/1.5 system-ui, sans-serif; }
+    .legend span { display: inline-flex; align-items: center; gap: 5px; }
+    .swatch { width: 9px; height: 9px; border-radius: 50%; }
+    .unit-title { font-size: 24px; font-weight: normal; border-top: 1px solid #dcd9d1; padding-top: 22px; }
+    .topic { margin-bottom: 28px; scroll-margin-top: 12px; }
+    .pages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 22px; align-items: start; }
+    article { min-width: 0; }
+    .topic-title, .page-title { color: var(--lb); font-size: 22px; line-height: 1.25; font-weight: normal; margin: 0 0 7px; }
+    .page-title { display: none; }
+    .caption, .downloads { margin: 0 0 12px; font: 11px/1.5 system-ui, sans-serif; color: #62615e; }
+    .sheet { background: #fffefb; border: 1px solid #dcd9d1; padding: 18px 18px 18px 14px; box-shadow: 0 2px 5px #00000008; }
+    .line { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; min-height: 37px; }
+    .number { padding-top: 7px; color: #62615e; font: 9px/1.5 system-ui, sans-serif; text-align: right; user-select: none; }
+    .note { white-space: pre-wrap; overflow-wrap: anywhere; color: var(--pen); border-bottom: 1px solid #efede7; padding: 5px 0; font-size: 14px; line-height: 26px; }
+    .ink.g { color: var(--g); } .swatch.g { background: var(--g); }
+    .ink.li { color: var(--li); } .swatch.li { background: var(--li); }
+    .ink.pu { color: var(--pu); } .swatch.pu { background: var(--pu); }
+    .ink.br { color: var(--br); } .swatch.br { background: var(--br); }
+    .ink.y { color: var(--y); } .swatch.y { background: var(--y); }
+    .ink.r { color: var(--r); } .swatch.r { background: var(--r); }
+    .ink.db { color: var(--db); } .swatch.db { background: var(--db); }
+    .ink.p { color: var(--p); } .swatch.p { background: var(--p); }
+    .ink.lb { color: var(--lb); } .swatch.lb { background: var(--lb); }
+    .ink.hp { color: var(--hp); } .swatch.hp { background: var(--hp); }
+    .ink.pen { color: var(--pen); } .swatch.pen { background: var(--pen); }
+    @media (max-width: 960px) { .pages { grid-template-columns: minmax(0, 1fr); } }
+    @media (max-width: 480px) {
+      body { padding: 18px 10px 28px; } .contents { columns: 1; }
+      .sheet { padding: 12px 10px 12px 5px; }
+      .line { grid-template-columns: 17px minmax(0, 1fr); gap: 6px; }
+      .note { font-size: 13px; line-height: 23px; }
+      .topic-title { font-size: 21px; }
+    }
+    @page { size: A4 portrait; margin: 12mm; }
+    @media print {
+      body { padding: 0; background: white; }
+      header, footer, .skip, .unit-title, .topic-title, .downloads { display: none; }
+      main, .pages { display: block; }
+      .topic { margin: 0; }
+      article { break-after: page; break-inside: avoid; }
+      .unit:last-child .topic:last-child article:last-child { break-after: auto; }
+      .page-title { display: block; font-size: 20px; }
+      .caption { margin-bottom: 3mm; }
+      .sheet { box-shadow: none; padding: 4mm; }
+      .line { grid-template-columns: 22px minmax(0, 1fr); gap: 8px; height: 8.8mm; min-height: 0; }
+      .number { padding-top: 0.6mm; }
+      .note { font-size: 12px; line-height: 3.8mm; padding: 0.6mm 0; }
+      .lang .line { height: 7mm; }
+      .lang .note { font-size: 11px; line-height: 3.1mm; padding: 0.4mm 0; }
+      .lang article:last-child { break-after: auto; }
+      * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#notes">Skip to notes</a>
+  <header>
+    <nav class="subjects" aria-label="Subjects"><a href="index.html">AP World History notes</a><a href="ap-lang.html" aria-current="page">AP Lang notes</a></nav>
+    <h1>AP Lang notes</h1>
+    <p>Rhetorical analysis · 12 color-coded sections · 120 lines · 32 lines per printed sheet</p>
+    <p>Examples are paraphrases, not direct quotations. Each note line is at most 65 characters.</p>
+    <p class="downloads"><a href="data:text/plain;charset=utf-8;base64,QkxVRTogMS4gREVTQ1JJQkUgLSBXSEFUIElTIFRIRSBDSE9JQ0U/CkV4cGxhaW4gaG93IHRoZSBxdW90ZWQgZXZpZGVuY2UgcHJlc2VudHMgaXRzIGluZm9ybWF0aW9uLgpEbyBub3Qgc2ltcGx5IHJlcGVhdCB3aGF0IHRoZSBxdW90YXRpb24gc2F5cy4KSWRlbnRpZnkgd2hhdCBtYWtlcyBpdCBsb2dpY2FsLCBjcmVkaWJsZSwgb3IgZW1vdGlvbmFsLgpMb2dvczogd2hhdCByZWxhdGlvbnNoaXAgc3VwcG9ydHMgdGhlIGF1dGhvcnMnIGNvbmNsdXNpb24/CkV0aG9zOiB3aGF0IGdpdmVzIHJlYWRlcnMgYSByZWFzb24gdG8gdHJ1c3QgdGhlaXIganVkZ21lbnQ/ClBhdGhvczogd2hhdCBzcGVjaWZpYyBmZWVsaW5nIG9yIHZhbHVlIGRvZXMgaXQgZW5nYWdlPwpOb3RpY2UgaG93IGRldGFpbHMgYXJlIHNlbGVjdGVkLCBjb21wYXJlZCwgb3IgZW1waGFzaXplZC4KQ2hvb3NlIHRoZSBmZWF0dXJlIHlvdSBjYW4gZXhwbGFpbiBtb3N0IHByZWNpc2VseS4KRXhhbXBsZTogdGhlIGF1dGhvcnMgc3VwcG9ydCB0aGVpciBwcm9wb3NhbCB3aXRoIHJlcG9ydGVkCnJlc3VsdHMgZnJvbSBjb3VudHJpZXMgdGhhdCBoYXZlIGFkb3B0ZWQgbGFiZWxpbmcgcG9saWNpZXMuClRoaXMgZ3JvdW5kcyB0aGUgcHJvcG9zYWwgaW4gcHJlY2VkZW50LCBub3QganVzdCBwcmVkaWN0aW9uLgpQVVJQTEU6IDIuIEZVTkNUSU9OIC0gV0hZIFVTRSBJVCBIRVJFPwpJZGVudGlmeSB0aGUgam9iIHRoaXMgY2hvaWNlIHBlcmZvcm1zIHdpdGhpbiB0aGUgYXJndW1lbnQuClRoaW5rIG9mIGZ1bmN0aW9uIGFzIHRoZSBhdXRob3JzJyBhcmd1bWVudGF0aXZlIHRhc2suCkFyZSB0aGV5IGVzdGFibGlzaGluZyBuZWVkLCBmZWFzaWJpbGl0eSwgb3IgcmVzcG9uc2liaWxpdHk/CkFyZSB0aGV5IGFuc3dlcmluZyBhbiBvYmplY3Rpb24gb3IgbGltaXRpbmcgdGhlaXIgY2xhaW0/CkV4cGxhaW4gd2h5IHRoYXQgdGFzayBtYXR0ZXJzIGluIHRoaXMgcmhldG9yaWNhbCBzaXR1YXRpb24uCkEgcG9saWN5IHByb3Bvc2FsIG11c3QgYWRkcmVzcyBkb3VidHMgYWJvdXQgcHJhY3RpY2FsIHVzZS4KU2hvd2luZyBhIHByb2JsZW0gZXhpc3RzIGRvZXMgbm90IHNob3cgYSBzb2x1dGlvbiB3aWxsIHdvcmsuCkFzazogd2hhdCBnYXAgd291bGQgcmVtYWluIHdpdGhvdXQgdGhpcyBldmlkZW5jZT8KRXhhbXBsZTogdGhlIGludGVybmF0aW9uYWwgcmVzdWx0cyBoZWxwIGFuc3dlciB3aGV0aGVyCmxhYmVsaW5nIGNhbiBhZmZlY3QgYmVoYXZpb3IsIGFkZHJlc3NpbmcgYSBwcmFjdGljYWwgZG91YnQKdGhhdCBjb3VsZCBvdGhlcndpc2Ugd2Vha2VuIHRoZSBjYXNlIGZvciBhZG9wdGluZyBpdC4KR1JFRU46IDMuIEVGRkVDVCAtIFdIQVQgVEhJTktJTkcgQ0FOIENIQU5HRT8KVGhpbmsgb2YgZWZmZWN0IGFzIHRoZSBhdWRpZW5jZSdzIHBvc3NpYmxlIG1lbnRhbCBzaGlmdC4KTmFtZSBhIHJlbGV2YW50IHN0YXJ0aW5nIGJlbGllZiwgY29uY2Vybiwgb3IgdW5jZXJ0YWludHkuCkluZmVyIGl0IGZyb20gdGhlIHRleHQsIG5vdCBzdGVyZW90eXBlcyBhYm91dCB0aGUgYXVkaWVuY2UuCkV4cGxhaW4gdGhlIG5ldyBpbnRlcnByZXRhdGlvbiB0aGUgY2hvaWNlIG1ha2VzIGF2YWlsYWJsZS4KVGhlbiBjb25uZWN0IHRoYXQgc2hpZnQgdG8gYSBzcGVjaWZpYyBxdW90ZWQgZGV0YWlsLgpEbyBub3QgY2xhaW0gdGhlIGF1ZGllbmNlIGF1dG9tYXRpY2FsbHkgYWdyZWVzLgpFeGFtcGxlOiBhIHNrZXB0aWNhbCByZWFkZXIgbWF5IHNlZSBsYWJlbGluZyBhcyB1bnRlc3RlZC4KVGhlIHJlZmVyZW5jZSB0byBpbXBsZW1lbnRhdGlvbiBlbHNld2hlcmUgb2ZmZXJzIHByZWNlZGVudC4KVGhhdCBkZXRhaWwgZ2l2ZXMgdGhlIHJlYWRlciBhIHJlYXNvbiB0byB2aWV3IHRoZSBwcm9wb3NhbAphcyBsZXNzIHNwZWN1bGF0aXZlLCBiZWNhdXNlIGl0IGhhcyBtb3ZlZCBiZXlvbmQgdGhlb3J5LgpUaGUgY29ubmVjdGlvbiBpcyBkZXRhaWwgLT4gaW5mZXJlbmNlIC0+IHBvc3NpYmxlIHNoaWZ0LgpSRUQ6IDQuIEpVU1RJRlkgLSBXSFkgRE9FUyBUSEFUIFNISUZUIE1BVFRFUj8KQ29ubmVjdCB0aGUgYXVkaWVuY2Ugc2hpZnQgdG8gdGhlIGF1dGhvcnMnIG92ZXJhbGwgcHVycG9zZS4KTmFtZSB0aGUgYmFycmllciB0byBhZ3JlZW1lbnQgdGhhdCB0aGUgY2hvaWNlIGFkZHJlc3Nlcy4KRXhwbGFpbiBob3cgcmVkdWNpbmcgdGhhdCBiYXJyaWVyIGFkdmFuY2VzIHRoZSBsYXJnZXIgY2xhaW0uCkRvIG5vdCBzdG9wIGF0ICJ0aGlzIHN0cmVuZ3RoZW5zIHRoZSBhdXRob3JzJyBhcmd1bWVudC4iClNwZWNpZnkgd2hhdCByZWFkZXJzIGFyZSBiZXR0ZXIgcG9zaXRpb25lZCB0byBhY2NlcHQuCkV4YW1wbGU6IHNlZWluZyBsYWJlbGluZyBhcyB3b3JrYWJsZSByZW1vdmVzIG9uZSByZWFzb24KdG8gZGlzbWlzcyBpdCwgbWFraW5nIFUuUy4gYWRvcHRpb24gZWFzaWVyIHRvIGNvbnNpZGVyLgpUaGlzIGFkdmFuY2VzIHRoZSBhdXRob3JzJyBjYXNlIGZvciByZXF1aXJpbmcgd2FybmluZ3MuCkRvIG5vdCBjbGFpbSBwcmVjZWRlbnQgZ3VhcmFudGVlcyBpZGVudGljYWwgVS5TLiByZXN1bHRzLgpGdWxsIGNoYWluOiBwcmVjZWRlbnQgLT4gYW5zd2VycyBmZWFzaWJpbGl0eSBkb3VidHMgLT4KbGVzcyB1bmNlcnRhaW50eSAtPiBncmVhdGVyIG9wZW5uZXNzIHRvIHRoZSBwb2xpY3kuCkJMQUNLOiBDT05ORUNUIFRIRSBTVEVQUyBJTiBQUk9TRQpUaGUgZm91ciBzdGVwcyBuZWVkIG5vdCBiZWNvbWUgZm91ciBzZXBhcmF0ZSBzZW50ZW5jZXMuCkxldCBlYWNoIGV4cGxhbmF0aW9uIGNyZWF0ZSBhIHJlYXNvbiBmb3IgdGhlIG5leHQuCkV4YW1wbGU6IEJ5IGNpdGluZyBvdXRjb21lcyBmcm9tIGNvdW50cmllcyB3aXRoIGxhYmVsaW5nCnBvbGljaWVzLCB0aGUgYXV0aG9ycyBncm91bmQgdGhlaXIgcHJvcG9zYWwgaW4gcHJlY2VkZW50LgpUaGlzIGFkZHJlc3NlcyB3aGV0aGVyIHJlZm9ybSBjYW4gYWZmZWN0IGNvbnN1bXB0aW9uLApnaXZpbmcgc2tlcHRpY2FsIHJlYWRlcnMgYSByZWFzb24gdG8gc2VlIGl0IGFzIHdvcmthYmxlCnJhdGhlciB0aGFuIHB1cmVseSB0aGVvcmV0aWNhbC4gUmVkdWNpbmcgdGhhdCB1bmNlcnRhaW50eQpoZWxwcyB0aGUgYXV0aG9ycyBwcmVzZW50IFUuUy4gYWRvcHRpb24gYXMgd29ydGggcHVyc3VpbmcuCk5vdGljZTogZWFjaCBzZW50ZW5jZSBkZXZlbG9wcyByYXRoZXIgdGhhbiByZXBlYXRzLgpPUkFOR0U6IENIRUNLIFRIRSBDT05ORUNUSU9OIEJFRk9SRSBNT1ZJTkcgT04KVW5kZXJsaW5lIHRoZSBkZXRhaWwgeW91ciBleHBsYW5hdGlvbiBhY3R1YWxseSBkZXBlbmRzIG9uLgpJZiB5b3UgY2Fubm90IGxvY2F0ZSBpdCwgeW91ciBjbGFpbSBtYXkgZXhjZWVkIHRoZSBldmlkZW5jZS4KQ2lyY2xlIHZhZ3VlIHdvcmRzOiBlZmZlY3RpdmUsIHBvd2VyZnVsLCBjcmVkaWJsZSwgZW1vdGlvbmFsLgpSZXBsYWNlIHRoZW0gd2l0aCB0aGUgc3BlY2lmaWMganVkZ21lbnQgYmVpbmcgZW5jb3VyYWdlZC4KQ2hlY2sgdGhhdCBmdW5jdGlvbiBuYW1lcyBhIHRhc2ssIG5vdCBhbiBhdWRpZW5jZSByZWFjdGlvbi4KQ2hlY2sgdGhhdCBlZmZlY3QgZXhwbGFpbnMgYSByZWFjdGlvbiwgbm90IGp1c3QgdGhlIHRhc2suCkNoZWNrIHRoYXQganVzdGlmeSBuYW1lcyB0aGUgbGFyZ2VyIGNsYWltIHRoaXMgc2VydmVzLgpLZWVwIHF1YWxpZmljYXRpb25zIHN1Y2ggYXMgIm1heSIgd2hlcmUgZWZmZWN0cyBhcmUgdW5jZXJ0YWluLgpTdG9wIHdoZW4gdGhlIGNoYWluIGlzIGNvbXBsZXRlOyBsZW5ndGggaXMgbm90IGRlcHRoLgpCTFVFOiBGSU5EIFRIRSBNRU5UQUwgU0hJRlQKQXNrIHdoYXQgdGhlIGNob2ljZSBtYWtlcyByZWFkZXJzIHNlZSBkaWZmZXJlbnRseS4KTm90OiAiVGhpcyBtYWtlcyB0aGUgYXJndW1lbnQgY29udmluY2luZy4iCkluc3RlYWQ6IGV4cGxhaW4gd2h5IGFncmVlbWVudCBub3cgc2VlbXMgcmVhc29uYWJsZS4KV2hhdCBhc3N1bXB0aW9uIGRvZXMgdGhlIGNob2ljZSBjaGFsbGVuZ2Ugb3IgcmVpbmZvcmNlPwpXaGF0IGRvdWJ0IGRvZXMgaXQgYW5zd2VyPyBXaGF0IGNvbmNlcm4gZG9lcyBpdCBhZGRyZXNzPwpDb25uZWN0IHRoYXQgY2hhbmdlIGluIHRoaW5raW5nIHRvIHRoZSBhdXRob3JzJyBwdXJwb3NlLgpEZXNjcmliZSBpbnZpdGVkIHJlc3BvbnNlcywgbm90IGd1YXJhbnRlZWQgcmVhY3Rpb25zLgpQVVJQTEU6IEVYUExBSU4gVEhFIEZSQU1JTkcKSG93IHRoZSBwcm9ibGVtIGlzIGRlZmluZWQgc2hhcGVzIHRoZSBwcm9wb3NlZCBzb2x1dGlvbi4KQ29uZnVzaW5nIGxhYmVscyDihpIgY29uc3VtZXJzIGxhY2sgdXNhYmxlIGluZm9ybWF0aW9uLgpUaGF0IHNoaWZ0cyBhdHRlbnRpb24gZnJvbSB3aWxscG93ZXIgdG8gZm9vZCBwYWNrYWdpbmcuCkNsZWFyIHdhcm5pbmdzIHRoZW4gc2VlbSBoZWxwZnVsLCBub3QgbWVyZWx5IHJlc3RyaWN0aXZlLgpBc2s6IHdoYXQgYmVjb21lcyByZWFzb25hYmxlIHVuZGVyIHRoaXMgaW50ZXJwcmV0YXRpb24/CkV4YW1pbmUgd2hvbSB0aGUgd29yZGluZyBhc3NpZ25zIHJlc3BvbnNpYmlsaXR5IHRvLgpFeHBsYWluIHRoZSBpbXBsaWNhdGlvbnMgb2Ygd29yZHMsIG5vdCBqdXN0IHRoZWlyIHRvbmUuCkdSRUVOOiBFWFBMQUlOIFdIQVQgRVZJREVOQ0UgUFJPVkVTCkRvIG5vdCBzdG9wIGF0ICJzdGF0aXN0aWNzIHByb3ZpZGUgbG9nb3MuIgpOYW1lIHRoZSBzcGVjaWZpYyB1bmNlcnRhaW50eSB0aGUgZXZpZGVuY2UgYWRkcmVzc2VzLgpIZWFsdGggZGF0YSDihpIgZXN0YWJsaXNoZXMgd2h5IHRoZSBwcm9ibGVtIG1hdHRlcnMuCkZvcmVpZ24gZXhhbXBsZXMg4oaSIHNob3cgcmVmb3JtIGlzIG5vdCBwdXJlbHkgaHlwb3RoZXRpY2FsLgpFY29ub21pYyBkYXRhIOKGkiBhZGRyZXNzZXMgZmVhcnMgYWJvdXQgdGhlIGNvc3Qgb2YgcmVmb3JtLgpBc2sgd2hhdCB3b3VsZCByZW1haW4gdW5wcm92ZW4gd2l0aG91dCB0aGlzIGV2aWRlbmNlLgpFeHBsYWluIHdoeSB0aGF0IG1pc3NpbmcgcHJvb2Ygd291bGQgbGltaXQgYWdyZWVtZW50LgpEaXN0aW5ndWlzaCBvYnNlcnZlZCByZXN1bHRzIGZyb20gcHJlZGljdGVkIGJlbmVmaXRzLgpPUkFOR0U6IENPTk5FQ1QgVE8gQVVESUVOQ0UgUkVTSVNUQU5DRQpSZWFkZXJzIGNhbiBmYXZvciBoZWFsdGggd2hpbGUgcmVzaXN0aW5nIHJlZ3VsYXRpb24uCklkZW50aWZ5IHRoZSB2YWx1ZSBvciBjb25jZXJuIGJlaGluZCB0aGVpciBoZXNpdGF0aW9uLgpJbmZvcm1hdGlvbiByYXRoZXIgdGhhbiBiYW5zIOKGkiBwcmVzZXJ2ZXMgY29uc3VtZXIgY2hvaWNlLgpDb3N0IHJlYnV0dGFscyDihpIgbWFrZSByZWZvcm0gc2VlbSBmaW5hbmNpYWxseSByZXNwb25zaWJsZS4KQXNrIHdoaWNoIHJlYXNvbiBmb3IgcmVqZWN0aW5nIHRoZSBwcm9wb3NhbCBpcyBhZGRyZXNzZWQuCkRvZXMgdGhlIHJlc3BvbnNlIGRpc3Byb3ZlLCByZWR1Y2UsIG9yIGJ5cGFzcyB0aGUgY29uY2Vybj8KRXhwbGFpbiB0aGF0IG1vdmUgaW5zdGVhZCBvZiBtZXJlbHkgY2FsbGluZyBpdCByZWJ1dHRhbC4KQXZvaWQgYXNzaWduaW5nIGV2ZXJ5IHJlYWRlciB0aGUgc2FtZSBiZWxpZWZzLgpSRUQ6IEFOQUxZWkUgTElNSVRTIEFORCBURU5TSU9OUwpBIGxpbWl0ZWQgY2xhaW0gY2FuIGJlIGVhc2llciB0byBhY2NlcHQgdGhhbiBhIGJyb2FkIG9uZS4KIk9uZSBzdGVwIiBmcmFtaW5nIGF2b2lkcyBwcm9taXNpbmcgYSBjb21wbGV0ZSBzb2x1dGlvbi4KUmVhZGVycyBjYW4gc3VwcG9ydCBpbXByb3ZlbWVudCB3aXRob3V0IGV4cGVjdGluZyBhIGN1cmUuCkEgZGlzdGluY3Rpb24gY2FuIHByZXZlbnQgYSBkYW1hZ2luZyBtaXN1bmRlcnN0YW5kaW5nLgpQcm9jZXNzZWQgdmVyc3VzIHVsdHJhcHJvY2Vzc2VkIGF2b2lkcyBibGFua2V0IHJlamVjdGlvbi4KQXNrIHdoYXQgb3ZlcnN0YXRlbWVudCBvciBvYmplY3Rpb24gdGhpcyBwcmV2ZW50cy4KRXhwbGFpbiBob3cgdGhlIHF1YWxpZmljYXRpb24gcHJvdGVjdHMgdGhlIG1haW4gYXJndW1lbnQuCkRvIG5vdCBzdG9wIGF0ICJ0aGUgYXV0aG9ycyBzZWVtIHJlYXNvbmFibGUuIgpURUFMOiBDT05ORUNUIENIT0lDRVMgVE8gRUFDSCBPVEhFUgpFeHBsYWluIHdoeSBhIG1vdmUgb2NjdXJzIGF0IHRoaXMgcG9pbnQgaW4gdGhlIGFyZ3VtZW50LgpGYW1pbGlhciBzaG9wcGluZyBwcm9ibGVtcyBlc3RhYmxpc2ggYSByZWNvZ25pemFibGUgbmVlZC4KUmVzZWFyY2ggZ2l2ZXMgdGhhdCBuZWVkIGEgYmFzaXMgYmV5b25kIHBlcnNvbmFsIGZlZWxpbmcuCkV2aWRlbmNlIG9mIHN1Y2Nlc3MgbW92ZXMgZnJvbSBuZWVkIHRvd2FyZCBmZWFzaWJpbGl0eS4KT2JqZWN0aW9ucyB0aGVuIGFkZHJlc3MgcmVhc29ucyB0byByZXNpc3QgdGhhdCBzb2x1dGlvbi4KUXVhbGlmaWNhdGlvbnMga2VlcCB0aGUgcHJvcG9zZWQgYmVuZWZpdHMgcHJvcG9ydGlvbmF0ZS4KQXNrIHdoYXQgYW4gZWFybGllciBtb3ZlIHByZXBhcmVzIHJlYWRlcnMgdG8gYWNjZXB0LgpFeHBsYWluIGNvb3BlcmF0aW9uLCBub3QganVzdCBhIGxpc3Qgb2Ygc2VwYXJhdGUgZGV2aWNlcy4K" download="ap-lang.txt">Download AP Lang notes</a> · <a href="notes/ap-lang.txt">Open original file</a></p>
+    <p>Use your browser's Print command for colored, numbered sheets. Color names remain in the notes for black-and-white copying.</p>
+  </header>
+  <main id="notes" class="lang"><div class="pages"><article aria-label="AP Lang page 1">
+    <h2 class="page-title">AP Lang rhetorical analysis</h2>
+    <p class="caption">Page 1 · Lines 1–32</p>
+    <div class="sheet"><div class="line"><span class="number" aria-hidden="true">1</span><span class="note"><span class="lang-blue">BLUE: 1. DESCRIBE - WHAT IS THE CHOICE?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">2</span><span class="note"><span class="lang-blue">Explain how the quoted evidence presents its information.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">3</span><span class="note"><span class="lang-blue">Do not simply repeat what the quotation says.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">4</span><span class="note"><span class="lang-blue">Identify what makes it logical, credible, or emotional.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">5</span><span class="note"><span class="lang-blue">Logos: what relationship supports the authors&#39; conclusion?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">6</span><span class="note"><span class="lang-blue">Ethos: what gives readers a reason to trust their judgment?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">7</span><span class="note"><span class="lang-blue">Pathos: what specific feeling or value does it engage?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">8</span><span class="note"><span class="lang-blue">Notice how details are selected, compared, or emphasized.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">9</span><span class="note"><span class="lang-blue">Choose the feature you can explain most precisely.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">10</span><span class="note"><span class="lang-blue">Example: the authors support their proposal with reported</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">11</span><span class="note"><span class="lang-blue">results from countries that have adopted labeling policies.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">12</span><span class="note"><span class="lang-blue">This grounds the proposal in precedent, not just prediction.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">13</span><span class="note"><span class="lang-purple">PURPLE: 2. FUNCTION - WHY USE IT HERE?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">14</span><span class="note"><span class="lang-purple">Identify the job this choice performs within the argument.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">15</span><span class="note"><span class="lang-purple">Think of function as the authors&#39; argumentative task.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">16</span><span class="note"><span class="lang-purple">Are they establishing need, feasibility, or responsibility?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">17</span><span class="note"><span class="lang-purple">Are they answering an objection or limiting their claim?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">18</span><span class="note"><span class="lang-purple">Explain why that task matters in this rhetorical situation.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">19</span><span class="note"><span class="lang-purple">A policy proposal must address doubts about practical use.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">20</span><span class="note"><span class="lang-purple">Showing a problem exists does not show a solution will work.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">21</span><span class="note"><span class="lang-purple">Ask: what gap would remain without this evidence?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">22</span><span class="note"><span class="lang-purple">Example: the international results help answer whether</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">23</span><span class="note"><span class="lang-purple">labeling can affect behavior, addressing a practical doubt</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">24</span><span class="note"><span class="lang-purple">that could otherwise weaken the case for adopting it.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">25</span><span class="note"><span class="lang-green">GREEN: 3. EFFECT - WHAT THINKING CAN CHANGE?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">26</span><span class="note"><span class="lang-green">Think of effect as the audience&#39;s possible mental shift.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">27</span><span class="note"><span class="lang-green">Name a relevant starting belief, concern, or uncertainty.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">28</span><span class="note"><span class="lang-green">Infer it from the text, not stereotypes about the audience.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">29</span><span class="note"><span class="lang-green">Explain the new interpretation the choice makes available.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">30</span><span class="note"><span class="lang-green">Then connect that shift to a specific quoted detail.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">31</span><span class="note"><span class="lang-green">Do not claim the audience automatically agrees.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">32</span><span class="note"><span class="lang-green">Example: a skeptical reader may see labeling as untested.</span></span></div></div>
+  </article>
+<article aria-label="AP Lang page 2">
+    <h2 class="page-title">AP Lang rhetorical analysis</h2>
+    <p class="caption">Page 2 · Lines 33–64</p>
+    <div class="sheet"><div class="line"><span class="number" aria-hidden="true">33</span><span class="note"><span class="lang-green">The reference to implementation elsewhere offers precedent.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">34</span><span class="note"><span class="lang-green">That detail gives the reader a reason to view the proposal</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">35</span><span class="note"><span class="lang-green">as less speculative, because it has moved beyond theory.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">36</span><span class="note"><span class="lang-green">The connection is detail -&gt; inference -&gt; possible shift.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">37</span><span class="note"><span class="lang-red">RED: 4. JUSTIFY - WHY DOES THAT SHIFT MATTER?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">38</span><span class="note"><span class="lang-red">Connect the audience shift to the authors&#39; overall purpose.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">39</span><span class="note"><span class="lang-red">Name the barrier to agreement that the choice addresses.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">40</span><span class="note"><span class="lang-red">Explain how reducing that barrier advances the larger claim.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">41</span><span class="note"><span class="lang-red">Do not stop at &quot;this strengthens the authors&#39; argument.&quot;</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">42</span><span class="note"><span class="lang-red">Specify what readers are better positioned to accept.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">43</span><span class="note"><span class="lang-red">Example: seeing labeling as workable removes one reason</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">44</span><span class="note"><span class="lang-red">to dismiss it, making U.S. adoption easier to consider.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">45</span><span class="note"><span class="lang-red">This advances the authors&#39; case for requiring warnings.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">46</span><span class="note"><span class="lang-red">Do not claim precedent guarantees identical U.S. results.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">47</span><span class="note"><span class="lang-red">Full chain: precedent -&gt; answers feasibility doubts -&gt;</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">48</span><span class="note"><span class="lang-red">less uncertainty -&gt; greater openness to the policy.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">49</span><span class="note"><span class="lang-black">BLACK: CONNECT THE STEPS IN PROSE</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">50</span><span class="note"><span class="lang-black">The four steps need not become four separate sentences.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">51</span><span class="note"><span class="lang-black">Let each explanation create a reason for the next.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">52</span><span class="note"><span class="lang-black">Example: By citing outcomes from countries with labeling</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">53</span><span class="note"><span class="lang-black">policies, the authors ground their proposal in precedent.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">54</span><span class="note"><span class="lang-black">This addresses whether reform can affect consumption,</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">55</span><span class="note"><span class="lang-black">giving skeptical readers a reason to see it as workable</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">56</span><span class="note"><span class="lang-black">rather than purely theoretical. Reducing that uncertainty</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">57</span><span class="note"><span class="lang-black">helps the authors present U.S. adoption as worth pursuing.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">58</span><span class="note"><span class="lang-black">Notice: each sentence develops rather than repeats.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">59</span><span class="note"><span class="lang-orange">ORANGE: CHECK THE CONNECTION BEFORE MOVING ON</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">60</span><span class="note"><span class="lang-orange">Underline the detail your explanation actually depends on.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">61</span><span class="note"><span class="lang-orange">If you cannot locate it, your claim may exceed the evidence.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">62</span><span class="note"><span class="lang-orange">Circle vague words: effective, powerful, credible, emotional.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">63</span><span class="note"><span class="lang-orange">Replace them with the specific judgment being encouraged.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">64</span><span class="note"><span class="lang-orange">Check that function names a task, not an audience reaction.</span></span></div></div>
+  </article>
+<article aria-label="AP Lang page 3">
+    <h2 class="page-title">AP Lang rhetorical analysis</h2>
+    <p class="caption">Page 3 · Lines 65–96</p>
+    <div class="sheet"><div class="line"><span class="number" aria-hidden="true">65</span><span class="note"><span class="lang-orange">Check that effect explains a reaction, not just the task.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">66</span><span class="note"><span class="lang-orange">Check that justify names the larger claim this serves.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">67</span><span class="note"><span class="lang-orange">Keep qualifications such as &quot;may&quot; where effects are uncertain.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">68</span><span class="note"><span class="lang-orange">Stop when the chain is complete; length is not depth.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">69</span><span class="note"><span class="lang-blue">BLUE: FIND THE MENTAL SHIFT</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">70</span><span class="note"><span class="lang-blue">Ask what the choice makes readers see differently.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">71</span><span class="note"><span class="lang-blue">Not: &quot;This makes the argument convincing.&quot;</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">72</span><span class="note"><span class="lang-blue">Instead: explain why agreement now seems reasonable.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">73</span><span class="note"><span class="lang-blue">What assumption does the choice challenge or reinforce?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">74</span><span class="note"><span class="lang-blue">What doubt does it answer? What concern does it address?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">75</span><span class="note"><span class="lang-blue">Connect that change in thinking to the authors&#39; purpose.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">76</span><span class="note"><span class="lang-blue">Describe invited responses, not guaranteed reactions.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">77</span><span class="note"><span class="lang-purple">PURPLE: EXPLAIN THE FRAMING</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">78</span><span class="note"><span class="lang-purple">How the problem is defined shapes the proposed solution.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">79</span><span class="note"><span class="lang-purple">Confusing labels → consumers lack usable information.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">80</span><span class="note"><span class="lang-purple">That shifts attention from willpower to food packaging.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">81</span><span class="note"><span class="lang-purple">Clear warnings then seem helpful, not merely restrictive.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">82</span><span class="note"><span class="lang-purple">Ask: what becomes reasonable under this interpretation?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">83</span><span class="note"><span class="lang-purple">Examine whom the wording assigns responsibility to.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">84</span><span class="note"><span class="lang-purple">Explain the implications of words, not just their tone.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">85</span><span class="note"><span class="lang-green">GREEN: EXPLAIN WHAT EVIDENCE PROVES</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">86</span><span class="note"><span class="lang-green">Do not stop at &quot;statistics provide logos.&quot;</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">87</span><span class="note"><span class="lang-green">Name the specific uncertainty the evidence addresses.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">88</span><span class="note"><span class="lang-green">Health data → establishes why the problem matters.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">89</span><span class="note"><span class="lang-green">Foreign examples → show reform is not purely hypothetical.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">90</span><span class="note"><span class="lang-green">Economic data → addresses fears about the cost of reform.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">91</span><span class="note"><span class="lang-green">Ask what would remain unproven without this evidence.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">92</span><span class="note"><span class="lang-green">Explain why that missing proof would limit agreement.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">93</span><span class="note"><span class="lang-green">Distinguish observed results from predicted benefits.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">94</span><span class="note"><span class="lang-orange">ORANGE: CONNECT TO AUDIENCE RESISTANCE</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">95</span><span class="note"><span class="lang-orange">Readers can favor health while resisting regulation.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">96</span><span class="note"><span class="lang-orange">Identify the value or concern behind their hesitation.</span></span></div></div>
+  </article>
+<article aria-label="AP Lang page 4">
+    <h2 class="page-title">AP Lang rhetorical analysis</h2>
+    <p class="caption">Page 4 · Lines 97–120</p>
+    <div class="sheet"><div class="line"><span class="number" aria-hidden="true">97</span><span class="note"><span class="lang-orange">Information rather than bans → preserves consumer choice.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">98</span><span class="note"><span class="lang-orange">Cost rebuttals → make reform seem financially responsible.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">99</span><span class="note"><span class="lang-orange">Ask which reason for rejecting the proposal is addressed.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">100</span><span class="note"><span class="lang-orange">Does the response disprove, reduce, or bypass the concern?</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">101</span><span class="note"><span class="lang-orange">Explain that move instead of merely calling it rebuttal.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">102</span><span class="note"><span class="lang-orange">Avoid assigning every reader the same beliefs.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">103</span><span class="note"><span class="lang-red">RED: ANALYZE LIMITS AND TENSIONS</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">104</span><span class="note"><span class="lang-red">A limited claim can be easier to accept than a broad one.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">105</span><span class="note"><span class="lang-red">&quot;One step&quot; framing avoids promising a complete solution.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">106</span><span class="note"><span class="lang-red">Readers can support improvement without expecting a cure.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">107</span><span class="note"><span class="lang-red">A distinction can prevent a damaging misunderstanding.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">108</span><span class="note"><span class="lang-red">Processed versus ultraprocessed avoids blanket rejection.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">109</span><span class="note"><span class="lang-red">Ask what overstatement or objection this prevents.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">110</span><span class="note"><span class="lang-red">Explain how the qualification protects the main argument.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">111</span><span class="note"><span class="lang-red">Do not stop at &quot;the authors seem reasonable.&quot;</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">112</span><span class="note"><span class="lang-teal">TEAL: CONNECT CHOICES TO EACH OTHER</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">113</span><span class="note"><span class="lang-teal">Explain why a move occurs at this point in the argument.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">114</span><span class="note"><span class="lang-teal">Familiar shopping problems establish a recognizable need.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">115</span><span class="note"><span class="lang-teal">Research gives that need a basis beyond personal feeling.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">116</span><span class="note"><span class="lang-teal">Evidence of success moves from need toward feasibility.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">117</span><span class="note"><span class="lang-teal">Objections then address reasons to resist that solution.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">118</span><span class="note"><span class="lang-teal">Qualifications keep the proposed benefits proportionate.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">119</span><span class="note"><span class="lang-teal">Ask what an earlier move prepares readers to accept.</span></span></div>
+<div class="line"><span class="number" aria-hidden="true">120</span><span class="note"><span class="lang-teal">Explain cooperation, not just a list of separate devices.</span></span></div></div>
+  </article></div>
+  </main>
+  <footer><a href="#notes">Back to notes</a></footer>
+</body>
+</html>

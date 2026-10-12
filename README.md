@@ -2,6 +2,8 @@
 
 Static study notes for Unit 1 (The Global Tapestry) and Unit 2 (Networks of Exchange), c. 1200-1450. Fourteen ordered topics contain two independent 24-line pages each. All 672 lines are present in the HTML, without JavaScript, fetching, external fonts, or runtime dependencies. Native unit/topic anchors work offline, including `file://`.
 
+The subject navigation also opens **AP Lang notes** at `ap-lang.html`. It includes 120 supplied rhetorical-analysis note lines in 12 color-coded sections: Describe, Function, Effect, Justify, connecting the steps in prose, checking connections, and six additional connection-building sections. Notes are preserved in `notes/ap-lang.txt`, with a 65-character line limit, a plain-text download, and four printable sheets of up to 32 lines each. Examples are paraphrases, not direct quotations. AP Lang uses higher-contrast blue, purple, green, red, black, orange, and teal inks, with color names retained for black-and-white copying.
+
 ## Build and Import
 
 The generator needs Node.js 20 or later; the existing pinned validation tools need Node.js 22.16 or later (Node 24 is recommended). Use npm. All dependency and package versions are unchanged.
@@ -19,7 +21,7 @@ The checked-in Node generator imports original and marked `.txt` files byte-for-
 node scripts/build.mjs --unit1 "C:/Users/Kenny/Desktop/Prompts/AP-World-History-Unit-1" --unit2 "C:/Users/Kenny/Desktop/Prompts/AP-World-History-Unit-2" --preview "C:/Users/Kenny/Desktop/Prompts/AP-World-History-Units-1-2/preview.html"
 ```
 
-Rebuild without Desktop sources using `npm run build`. Export a standalone local preview from the checked-in notes using:
+Rebuild without Desktop sources using `npm run build`. The build also regenerates `ap-lang.html`. Preview exports include both subject pages and the AP Lang source file so subject navigation and downloads work offline. Export a standalone local preview from the checked-in notes using:
 
 ```sh
 node scripts/build.mjs --preview "C:/Users/Kenny/Desktop/Prompts/AP-World-History-Units-1-2/preview.html"
