@@ -96,23 +96,40 @@ export function renderLine(line) {
 }
 
 export function loadLangNotes() {
-  const colors = { BLUE: 'blue', PURPLE: 'purple', GREEN: 'green', RED: 'red', BLACK: 'black', ORANGE: 'orange', TEAL: 'teal' };
   const source = readFileSync(resolve(root, 'notes', 'ap-lang.txt'), 'utf8');
-  const sections = lines(source).reduce((sections, text) => {
-    assert.ok(text.length <= 65 && text.trim() === text && text.length, 'AP Lang: nonempty lines, max 65 characters');
-    const heading = text.match(/^(BLUE|PURPLE|GREEN|RED|BLACK|ORANGE|TEAL): /);
-    if (heading) sections.push({ color: colors[heading[1]], lines: [] });
-    assert.ok(sections.length, 'AP Lang: first line must identify a color');
+  const colored = readFileSync(resolve(root, 'notes', 'Colored', 'ap-lang.txt'), 'utf8');
+  assert.equal(normalize(colored).replace(marker, ''), normalize(source), 'AP Lang: exact stripped equality');
+  const marked = lines(colored);
+  const sections = lines(source).reduce((sections, text, index) => {
+    assert.ok(text.length <= 65 && text.trim() === text && /^(o |-> )\S/.test(text), 'AP Lang: prefixes, trimmed lines, max 65 characters');
+    assert.ok(marked[index].startsWith('(pen)'), 'AP Lang: initial pencil');
+    const parts = spans(marked[index]);
+    const colors = parts.flatMap(part => Array(part.text.length).fill(part.color));
+    assert.ok(new Set(parts.filter(part => part.color !== 'pen').map(part => part.color)).size <= 2, 'AP Lang: at most two highlight colors');
+    parts.forEach((part, n) => {
+      if (part.color === 'pen') return;
+      assert.match(part.text, /^[A-Za-z](?:[A-Za-z ]*[A-Za-z])?$/, 'AP Lang: colored words only, neutral punctuation');
+      assert.equal(parts[n + 1]?.color, 'pen', 'AP Lang: immediate pencil reset');
+    });
+    const prefix = text.startsWith('o ') ? 2 : 3;
+    assert.ok(colors.slice(0, prefix).every(color => color === 'pen'), 'AP Lang: neutral prefixes');
+    if (text.startsWith('o ')) {
+      const color = parts.find(part => part.color !== 'pen')?.color;
+      assert.ok(color && color !== 'lb', 'AP Lang: one reserved non-LB title ink');
+      assert.ok([...text.slice(2)].every((char, n) => /[A-Za-z]/.test(char) ? colors[n + 2] === color : char === ' ' || colors[n + 2] === 'pen'), 'AP Lang: full uniform title');
+      sections.push({ color, lines: [] });
+    }
+    assert.ok(sections.length, 'AP Lang: first line must be a section heading');
     sections.at(-1).lines.push(text);
     return sections;
   }, []);
   assert.ok(sections.flatMap(section => section.lines).length % 48 === 0, 'AP Lang: complete 48-line pages');
-  return { source, sections };
+  return { source, colored, sections };
 }
 
 export function renderSite(data, lang) {
   const title = lang ? 'AP Lang Unit 1: Rhetorical Analysis' : 'AP World History Notes';
-  const langLines = lang?.sections.flatMap(section => section.lines.map((text, index) => ({ text, color: section.color, heading: index === 0 }))) ?? [];
+  const langLines = lang ? lines(lang.colored) : [];
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,12 +152,6 @@ export function renderSite(data, lang) {
     .subjects { border-bottom: 1px solid #dcd9d1; padding-bottom: 12px; }
     .subjects a { padding: 8px 12px; border-radius: 4px; font: 14px/1.5 system-ui, sans-serif; }
     .subjects a[aria-current="page"] { background: #173f88; color: white; text-decoration: none; }
-    .lang-blue { color: #173f88; } .lang-purple { color: #7830aa; }
-    .lang-green { color: #126c2e; } .lang-red { color: #bd2025; }
-    .lang-black { color: #252525; } .lang-orange { color: #a34400; }
-    .lang-teal { color: #086969; }
-    .lang .section-heading { font-weight: bold; }
-    .lang .page-title { color: #173f88; }
     .contents { columns: 2; padding-left: 24px; font-size: 14px; line-height: 1.8; }
     .contents li { break-inside: avoid; }
     .legend { display: flex; flex-wrap: wrap; gap: 7px 15px; font: 12px/1.5 system-ui, sans-serif; }
@@ -195,17 +206,17 @@ export function renderSite(data, lang) {
     ${lang ? `<p>Unit 1 · Building commentary connections · ${lang.sections.length} color-coded sections · 48 lines per page</p>
     <p>Describe the choice, explain its function, trace a possible audience effect, and justify its contribution to the author's purpose.</p>
     <p>Food-labeling examples are paraphrases or clearly marked hypothetical examples, not direct quotations or guaranteed audience responses. Each note line is at most 65 characters.</p>
-    <p class="downloads"><a href="data:text/plain;charset=utf-8;base64,${Buffer.from(lang.source).toString('base64')}" download="ap-lang.txt">Download AP Lang notes</a> · <a href="notes/ap-lang.txt">Open original file</a></p>
-    <p>Use your browser's Print command for colored, numbered sheets. Color names remain in the notes for black-and-white copying.</p>` : `<p>Units 1 &amp; 2 · c. 1200–1450 · 14 topics · 28 note pages</p>
+    <p class="downloads"><a href="data:text/plain;charset=utf-8;base64,${Buffer.from(lang.source).toString('base64')}" download="ap-lang.txt">Download AP Lang original</a> · <a href="data:text/plain;charset=utf-8;base64,${Buffer.from(lang.colored).toString('base64')}" download="ap-lang-colored.txt">Download AP Lang colored</a> · <a href="notes/ap-lang.txt">Open original file</a> · <a href="notes/Colored/ap-lang.txt">Open colored file</a></p>
+    <p>Use your browser's Print command for colored, numbered sheets. The shared World History inks highlight key words; body text and punctuation stay pencil.</p>` : `<p>Units 1 &amp; 2 · c. 1200–1450 · 14 topics · 28 note pages</p>
     <nav aria-label="Units"><a href="#unit-1">Unit 1: The Global Tapestry</a><a href="#unit-2">Unit 2: Networks of Exchange</a></nav>
     <ol class="contents">${data.flatMap(unit => unit.topics.map(topic => `<li><a href="#topic-${escapeHTML(topic.file.replaceAll('.', '-'))}">${escapeHTML(topic.file.slice(0, 3))} ${escapeHTML(topic.title)}</a></li>`)).join('')}</ol>
-    <div class="legend" role="group" aria-label="Token color legend">${Object.keys(palette).map(token => `<span><i class="swatch ${token}" aria-hidden="true"></i>${token} ${({ g: 'green', li: 'lime', pu: 'purple', br: 'brown', y: 'yellow', r: 'red', db: 'dark blue', p: 'pink', lb: 'light blue', hp: 'hot pink', pen: 'pencil' })[token]}</span>`).join('')}</div>
     <p>All notes are visible below. Use your browser’s Print command for one sheet per page. Colored text downloads contain the original color markers.</p>`}
+    <div class="legend" role="group" aria-label="Token color legend">${Object.keys(palette).map(token => `<span><i class="swatch ${token}" aria-hidden="true"></i>${token} ${({ g: 'green', li: 'lime', pu: 'purple', br: 'brown', y: 'yellow', r: 'red', db: 'dark blue', p: 'pink', lb: 'light blue', hp: 'hot pink', pen: 'pencil' })[token]}</span>`).join('')}</div>
   </header>
-  <main id="notes"${lang ? ' class="lang"' : ''}>${lang ? `<div class="pages">${Array.from({ length: langLines.length / 48 }, (_, page) => `<article aria-label="AP Lang page ${page + 1}">
-    <h2 class="page-title">AP Lang Unit 1: Rhetorical Analysis</h2>
+  <main id="notes"${lang ? ' class="lang"' : ''}>${lang ? `<h2 class="topic-title">${title}</h2><div class="pages">${Array.from({ length: langLines.length / 48 }, (_, page) => `<article aria-label="AP Lang page ${page + 1}">
+    <h3 class="page-title">AP Lang Unit 1: Rhetorical Analysis</h3>
     <p class="caption">Page ${page + 1} · ${page === 0 ? 'Building commentary' : 'Deepening analysis'} · Lines ${page * 48 + 1}–${page * 48 + 48}</p>
-    <div class="sheet">${langLines.slice(page * 48, page * 48 + 48).map((line, index) => `<div class="line"><span class="number" aria-hidden="true">${page * 48 + index + 1}</span><span class="note"><span class="lang-${line.color}${line.heading ? ' section-heading' : ''}">${escapeHTML(line.text)}</span></span></div>`).join('\n')}</div>
+    <div class="sheet">${langLines.slice(page * 48, page * 48 + 48).map((line, index) => `<div class="line"><span class="number" aria-hidden="true">${page * 48 + index + 1}</span><span class="note">${renderLine(line)}</span></div>`).join('\n')}</div>
   </article>`).join('\n')}</div>` : data.map((unit, index) => `
     <section class="unit" id="unit-${index + 1}" aria-labelledby="unit-${index + 1}-title">
       <h2 class="unit-title" id="unit-${index + 1}-title">Unit ${index + 1}: ${escapeHTML(unit.name)}</h2>
@@ -220,7 +231,7 @@ export function renderSite(data, lang) {
       </section>`).join('\n')}
     </section>`).join('\n')}
   </main>
-  <footer>${lang ? '' : '<p>The approved pastel ink palette is preserved. Some ink colors do not meet WCAG text contrast requirements; original pencil-only text files are available for every topic.</p>'}<a href="#notes">Back to notes</a></footer>
+  <footer><p>The approved pastel ink palette is preserved. Some ink colors do not meet WCAG text contrast requirements; original pencil-only text files are available for every topic.</p><a href="#notes">Back to notes</a></footer>
 </body>
 </html>
 `;
@@ -251,6 +262,8 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     writeFileSync(resolve(target, 'ap-lang.html'), renderSite([], lang));
     if (target !== root) {
       copyFileSync(resolve(root, 'notes', 'ap-lang.txt'), resolve(target, 'notes', 'ap-lang.txt'));
+      mkdirSync(resolve(target, 'notes', 'Colored'), { recursive: true });
+      copyFileSync(resolve(root, 'notes', 'Colored', 'ap-lang.txt'), resolve(target, 'notes', 'Colored', 'ap-lang.txt'));
     }
     console.log(`Built ${destination}: 14 topics, 28 pages, 672 note lines; native downloads embedded and text files copied alongside.`);
   });

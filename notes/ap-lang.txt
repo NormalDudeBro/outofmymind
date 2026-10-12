@@ -1,96 +1,96 @@
-TEAL: Rhetorical Situation
-Identify the specific audience the text addresses.
-Infer its concerns from context, not stereotypes.
-What beliefs, concerns, or shared values does it engage?
-Name the occasion or problem prompting this argument.
-State the change in judgment or action the author seeks.
-Connect each choice to a need created by that situation.
-Health-minded readers may still resist new regulation.
-BLUE: Describe the Appeal
-Explain how the quoted detail presents its claim.
-Name the choice, then show how it works in these words.
-Logos: identify the comparison or inference offered.
-Ethos: identify the basis for trusting this judgment.
-Pathos: identify the feeling or value the detail engages.
-A choice can combine appeals; explain their interaction.
-Do not substitute a device label for close analysis.
-PURPLE: Function - Author's Task
-Function names the choice's job within the argument.
-Ask why the author needs this move at this point.
-Does it establish need, show feasibility, or answer a doubt?
-Explain the gap this choice fills, not just its topic.
-Evidence of harm establishes need, not a remedy's success.
-A cost rebuttal can make a proposal seem less burdensome.
-Tie that task to an audience need in this situation.
-GREEN: Effect - Audience's Shift
-Effect names a plausible change in audience thinking.
-Start with a belief, value, feeling, or uncertainty.
-Link one quoted detail to an inference readers could draw.
-Explain why that inference might alter the starting view.
-Trace: starting view -> detail -> inference -> shift.
-Concrete risks may make a distant issue feel urgent.
-Describe an invited response, not a guaranteed reaction.
-RED: Justify - Purpose Connection
-Explain why this particular shift serves the purpose.
-Name the uncertainty, resistance, or motivation it addresses.
-Show what readers can now more readily consider or accept.
-Greater urgency may turn shared concern toward action.
-That motivation supports a call for public-health reform.
-Replace "strengthens the argument" with the actual link.
-Ask: why does this shift matter for the desired response?
-BLACK: Worked Connection
-Hypothetical example, not a quotation from the article:
-By comparing purchases before and after a warning policy,
-a writer uses logical comparison to address doubts about
-whether labels influence choices. A reported decline in
-unhealthy purchases may suggest benefits to skeptics.
-This shift makes adopting warnings easier to consider,
-supporting the writer's effort to gain backing for reform.
-PURPLE: Framing and Diction
-Identify what the wording makes central or peripheral.
-Explain connotations through a specific word in the quote.
-Ask whom the wording assigns agency or responsibility to.
-Paraphrase: confusing packaging frames an information gap.
-That framing makes clearer warnings a relevant response.
-Readers may see help with choices, not just restriction.
-Show why that interpretation favors the proposed policy.
-GREEN: Evidence and Reasoning
-Ask what doubt the author uses this evidence to address.
-Explain how its scale, comparison, or source answers it.
-A percentage shows proportion; a total makes scale tangible.
-Moving between them can make a small change seem important.
-Separate observed outcomes from projected benefits.
-Do not attribute combined policy effects to labels alone.
-Analyze the inference invited, not just the data supplied.
-BLUE: Credibility and Emotion
-Expertise builds trust only when relevant to the claim.
-Explain why the cited source can judge this issue.
-Transparency about limits can signal measured judgment.
-Emotion needs a detail, not merely an emotional topic.
-Show how a concrete risk engages a value such as health.
-A concrete risk can make policy feel personally relevant.
-Explain how trust or concern supports the next judgment.
-ORANGE: Objections and Qualifications
-Identify the concern behind an objection: cost or freedom?
-Ask whether the response refutes, reduces, or bypasses it.
-Paraphrase: warnings inform choices rather than ban foods.
-This distinction may ease fears of lost consumer freedom.
-A limited claim asks readers to accept less, not nothing.
-Modest benefits may seem credible without promising a cure.
-Explain which objection the narrower claim avoids.
-TEAL: Relationships and Sequence
-Ask what an earlier choice prepares readers to accept.
-Evidence of harm can make a remedy seem worth examining.
-Precedent then addresses whether that remedy is workable.
-A rebuttal can reduce resistance left by that evidence.
-A qualification can keep the proposed benefit proportionate.
-Explain the logical bridge, not just the order of devices.
-Show how choices cooperate or create a revealing tension.
-BLACK: Revision Checklist
-Can I point to the quoted detail behind my analysis?
-Does describe explain the appeal as it appears here?
-Does function name the author's task in this situation?
-Does effect link a starting view to a detail-based shift?
-Does justify show why that shift advances the purpose?
-Is the audience shift grounded in the text and situation?
-Cut repeated claims; keep the reasons connecting each step.
+o Rhetorical Situation
+-> Identify the specific audience the text addresses.
+-> Infer its concerns from context, not stereotypes.
+-> What beliefs, concerns, or shared values does it engage?
+-> Name the occasion or problem prompting this argument.
+-> State the change in judgment or action the author seeks.
+-> Connect each choice to a need created by that situation.
+-> Health-minded readers may still resist new regulation.
+o Describe the Appeal
+-> Explain how the quoted detail presents its claim.
+-> Name the choice, then show how it works in these words.
+-> Logos: identify the comparison or inference offered.
+-> Ethos: identify the basis for trusting this judgment.
+-> Pathos: identify the feeling or value the detail engages.
+-> A choice can combine appeals; explain their interaction.
+-> Do not substitute a device label for close analysis.
+o Function - Author's Task
+-> Function names the choice's job within the argument.
+-> Ask why the author needs this move at this point.
+-> Does it establish need, show feasibility, or answer a doubt?
+-> Explain the gap this choice fills, not just its topic.
+-> Evidence of harm establishes need, not a remedy's success.
+-> A cost rebuttal can make a proposal seem less burdensome.
+-> Tie that task to an audience need in this situation.
+o Effect - Audience's Shift
+-> Effect names a plausible change in audience thinking.
+-> Start with a belief, value, feeling, or uncertainty.
+-> Link one quoted detail to an inference readers could draw.
+-> Explain why that inference might alter the starting view.
+-> Trace: starting view -> detail -> inference -> shift.
+-> Concrete risks may make a distant issue feel urgent.
+-> Describe an invited response, not a guaranteed reaction.
+o Justify - Purpose Connection
+-> Explain why this particular shift serves the purpose.
+-> Name the uncertainty, resistance, or motivation it addresses.
+-> Show what readers can now more readily consider or accept.
+-> Greater urgency may turn shared concern toward action.
+-> That motivation supports a call for public-health reform.
+-> Replace "strengthens the argument" with the actual link.
+-> Ask: why does this shift matter for the desired response?
+o Worked Connection
+-> Hypothetical example, not a quotation from the article:
+-> By comparing purchases before and after a warning policy,
+-> a writer uses logical comparison to address doubts about
+-> whether labels influence choices. A reported decline in
+-> unhealthy purchases may suggest benefits to skeptics.
+-> This shift makes adopting warnings easier to consider,
+-> supporting the writer's effort to gain backing for reform.
+o Framing and Diction
+-> Identify what the wording makes central or peripheral.
+-> Explain connotations through a specific word in the quote.
+-> Ask whom the wording assigns agency or responsibility to.
+-> Paraphrase: confusing packaging frames an information gap.
+-> That framing makes clearer warnings a relevant response.
+-> Readers may see help with choices, not just restriction.
+-> Show why that interpretation favors the proposed policy.
+o Evidence and Reasoning
+-> Ask what doubt the author uses this evidence to address.
+-> Explain how its scale, comparison, or source answers it.
+-> A percentage shows proportion; a total makes scale tangible.
+-> Moving between them can make a small change seem important.
+-> Separate observed outcomes from projected benefits.
+-> Do not attribute combined policy effects to labels alone.
+-> Analyze the inference invited, not just the data supplied.
+o Credibility and Emotion
+-> Expertise builds trust only when relevant to the claim.
+-> Explain why the cited source can judge this issue.
+-> Transparency about limits can signal measured judgment.
+-> Emotion needs a detail, not merely an emotional topic.
+-> Show how a concrete risk engages a value such as health.
+-> A concrete risk can make policy feel personally relevant.
+-> Explain how trust or concern supports the next judgment.
+o Objections and Qualifications
+-> Identify the concern behind an objection: cost or freedom?
+-> Ask whether the response refutes, reduces, or bypasses it.
+-> Paraphrase: warnings inform choices rather than ban foods.
+-> This distinction may ease fears of lost consumer freedom.
+-> A limited claim asks readers to accept less, not nothing.
+-> Modest benefits may seem credible without promising a cure.
+-> Explain which objection the narrower claim avoids.
+o Relationships and Sequence
+-> Ask what an earlier choice prepares readers to accept.
+-> Evidence of harm can make a remedy seem worth examining.
+-> Precedent then addresses whether that remedy is workable.
+-> A rebuttal can reduce resistance left by that evidence.
+-> A qualification can keep the proposed benefit proportionate.
+-> Explain the logical bridge, not just the order of devices.
+-> Show how choices cooperate or create a revealing tension.
+o Revision Checklist
+-> Can I point to the quoted detail behind my analysis?
+-> Does describe explain the appeal as it appears here?
+-> Does function name the author's task in this situation?
+-> Does effect link a starting view to a detail-based shift?
+-> Does justify show why that shift advances the purpose?
+-> Is the audience shift grounded in the text and situation?
+-> Cut repeated claims; keep the reasons connecting each step.

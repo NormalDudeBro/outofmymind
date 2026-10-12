@@ -1,0 +1,96 @@
+(pen)o (g)Rhetorical Situation(pen)
+(pen)-> Identify the specific (g)audience(pen) the text addresses.
+(pen)-> Infer its concerns from (g)context(pen), not stereotypes.
+(pen)-> What beliefs, concerns, or (g)shared values(pen) does it engage?
+(pen)-> Name the (g)occasion or problem(pen) prompting this argument.
+(pen)-> State the change in judgment or (r)action(pen) the (p)author(pen) seeks.
+(pen)-> Connect each (li)choice(pen) to a need created by that situation.
+(pen)-> Health-minded (g)readers(pen) may still resist new regulation.
+(pen)o (li)Describe the Appeal(pen)
+(pen)-> Explain how the quoted (li)detail(pen) presents its claim.
+(pen)-> Name the (li)choice(pen), then show how it works in these words.
+(pen)-> Logos: identify the (db)comparison(pen) or (hp)inference(pen) offered.
+(pen)-> Ethos: identify the basis for (hp)trusting this judgment(pen).
+(pen)-> Pathos: identify the (hp)feeling or value(pen) the (li)detail(pen) engages.
+(pen)-> A choice can combine (li)appeals(pen); explain their interaction.
+(pen)-> Do not substitute a device label for close analysis.
+(pen)o (p)Function(pen) - (p)Author(pen)'(p)s Task(pen)
+(pen)-> (p)Function(pen) names the (li)choice(pen)'s job within the argument.
+(pen)-> Ask why the (p)author(pen) needs this move at this point.
+(pen)-> Does it establish need, show feasibility, or answer a (y)doubt(pen)?
+(pen)-> Explain the gap this (li)choice(pen) fills, not just its topic.
+(pen)-> (db)Evidence of harm(pen) establishes need, not a remedy's success.
+(pen)-> A (y)cost rebuttal(pen) can make a proposal seem less burdensome.
+(pen)-> Tie that (p)task(pen) to an (g)audience need(pen) in this situation.
+(pen)o (hp)Effect(pen) - (hp)Audience(pen)'(hp)s Shift(pen)
+(pen)-> (hp)Effect(pen) names a plausible change in (g)audience thinking(pen).
+(pen)-> Start with a belief, value, feeling, or uncertainty.
+(pen)-> Link one quoted (li)detail(pen) to an (hp)inference(pen) readers could draw.
+(pen)-> Explain why that (hp)inference(pen) might alter the starting view.
+(pen)-> Trace: starting view -> detail -> (hp)inference(pen) -> (hp)shift(pen).
+(pen)-> (hp)Concrete risks(pen) may make a distant issue feel urgent.
+(pen)-> Describe an (hp)invited response(pen), not a guaranteed reaction.
+(pen)o (r)Justify(pen) - (r)Purpose Connection(pen)
+(pen)-> Explain why this particular (hp)shift(pen) serves the (r)purpose(pen).
+(pen)-> Name the uncertainty, resistance, or motivation it addresses.
+(pen)-> Show what (g)readers(pen) can now more readily consider or accept.
+(pen)-> Greater urgency may turn shared concern toward (r)action(pen).
+(pen)-> That motivation supports a call for public-health reform.
+(pen)-> Replace "strengthens the argument" with the (r)actual link(pen).
+(pen)-> Ask: why does this (hp)shift(pen) matter for the (r)desired response(pen)?
+(pen)o (pu)Worked Connection(pen)
+(pen)-> Hypothetical example, not a quotation from the article:
+(pen)-> By (db)comparing purchases(pen) before and after a warning policy,
+(pen)-> a writer uses logical (db)comparison(pen) to address (y)doubts(pen) about
+(pen)-> whether labels influence (li)choices(pen). A reported decline in
+(pen)-> unhealthy purchases may suggest (db)benefits(pen) to skeptics.
+(pen)-> This (hp)shift(pen) makes adopting warnings easier to consider,
+(pen)-> supporting the writer's effort to gain (r)backing for reform(pen).
+(pen)o (br)Framing and Diction(pen)
+(pen)-> Identify what the (br)wording(pen) makes central or peripheral.
+(pen)-> Explain (br)connotations(pen) through a specific word in the quote.
+(pen)-> Ask whom the (br)wording(pen) assigns agency or responsibility to.
+(pen)-> Paraphrase: confusing packaging frames an (br)information gap(pen).
+(pen)-> That (br)framing(pen) makes clearer warnings a relevant response.
+(pen)-> (g)Readers(pen) may see help with (li)choices(pen), not just restriction.
+(pen)-> Show why that interpretation favors the proposed policy.
+(pen)o (db)Evidence and Reasoning(pen)
+(pen)-> Ask what (y)doubt(pen) the author uses this (db)evidence(pen) to address.
+(pen)-> Explain how its scale, (db)comparison(pen), or source answers it.
+(pen)-> A percentage shows (db)proportion(pen); a total makes (db)scale(pen) tangible.
+(pen)-> Moving between them can make a small change seem important.
+(pen)-> Separate (db)observed outcomes(pen) from projected benefits.
+(pen)-> Do not attribute combined policy effects to labels alone.
+(pen)-> Analyze the (hp)inference(pen) invited, not just the (db)data(pen) supplied.
+(pen)o (hp)Credibility and Emotion(pen)
+(pen)-> (hp)Expertise builds trust(pen) only when relevant to the claim.
+(pen)-> Explain why the (db)cited source(pen) can judge this issue.
+(pen)-> (hp)Transparency about limits(pen) can signal measured judgment.
+(pen)-> (hp)Emotion(pen) needs a (li)detail(pen), not merely an emotional topic.
+(pen)-> Show how a (hp)concrete risk(pen) engages a value such as health.
+(pen)-> A concrete risk can make policy feel (hp)personally relevant(pen).
+(pen)-> Explain how (hp)trust or concern(pen) supports the next judgment.
+(pen)o (y)Objections and Qualifications(pen)
+(pen)-> Identify the concern behind an (y)objection(pen): cost or freedom?
+(pen)-> Ask whether the response (y)refutes(pen), reduces, or bypasses it.
+(pen)-> Paraphrase: warnings inform (li)choices(pen) rather than ban foods.
+(pen)-> This distinction may ease (hp)fears(pen) of lost consumer freedom.
+(pen)-> A (y)limited claim(pen) asks (g)readers(pen) to accept less, not nothing.
+(pen)-> Modest benefits may seem credible without promising a cure.
+(pen)-> Explain which (y)objection(pen) the narrower claim avoids.
+(pen)o (g)Relationships and Sequence(pen)
+(pen)-> Ask what an earlier (li)choice(pen) prepares (g)readers(pen) to accept.
+(pen)-> (db)Evidence of harm(pen) can make a remedy seem worth examining.
+(pen)-> (g)Precedent(pen) then addresses whether that remedy is workable.
+(pen)-> A rebuttal can reduce resistance left by that (db)evidence(pen).
+(pen)-> A (y)qualification(pen) can keep the proposed benefit proportionate.
+(pen)-> Explain the (g)logical bridge(pen), not just the order of devices.
+(pen)-> Show how (li)choices(pen) cooperate or create a revealing tension.
+(pen)o (pu)Revision Checklist(pen)
+(pen)-> Can I point to the quoted (li)detail(pen) behind my analysis?
+(pen)-> Does describe explain the (li)appeal(pen) as it appears here?
+(pen)-> Does (p)function(pen) name the author's (p)task(pen) in this situation?
+(pen)-> Does (hp)effect(pen) link a starting view to a detail-based (hp)shift(pen)?
+(pen)-> Does (r)justify(pen) show why that shift advances the (r)purpose(pen)?
+(pen)-> Is the (g)audience(pen) (hp)shift(pen) grounded in the text and situation?
+(pen)-> Cut repeated claims; keep the (pu)reasons connecting(pen) each step.
