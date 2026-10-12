@@ -106,12 +106,13 @@ export function loadLangNotes() {
     sections.at(-1).lines.push(text);
     return sections;
   }, []);
+  assert.ok(sections.flatMap(section => section.lines).length % 48 === 0, 'AP Lang: complete 48-line pages');
   return { source, sections };
 }
 
 export function renderSite(data, lang) {
-  const title = lang ? 'AP Lang notes' : 'AP World History Notes';
-  const langLines = lang?.sections.flatMap(section => section.lines.map(text => ({ text, color: section.color }))) ?? [];
+  const title = lang ? 'AP Lang Unit 1: Rhetorical Analysis' : 'AP World History Notes';
+  const langLines = lang?.sections.flatMap(section => section.lines.map((text, index) => ({ text, color: section.color, heading: index === 0 }))) ?? [];
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,6 +139,8 @@ export function renderSite(data, lang) {
     .lang-green { color: #126c2e; } .lang-red { color: #bd2025; }
     .lang-black { color: #252525; } .lang-orange { color: #a34400; }
     .lang-teal { color: #086969; }
+    .lang .section-heading { font-weight: bold; }
+    .lang .page-title { color: #173f88; }
     .contents { columns: 2; padding-left: 24px; font-size: 14px; line-height: 1.8; }
     .contents li { break-inside: avoid; }
     .legend { display: flex; flex-wrap: wrap; gap: 7px 15px; font: 12px/1.5 system-ui, sans-serif; }
@@ -177,8 +180,8 @@ export function renderSite(data, lang) {
       .line { grid-template-columns: 22px minmax(0, 1fr); gap: 8px; height: 8.8mm; min-height: 0; }
       .number { padding-top: 0.6mm; }
       .note { font-size: 12px; line-height: 3.8mm; padding: 0.6mm 0; }
-      .lang .line { height: 7mm; }
-      .lang .note { font-size: 11px; line-height: 3.1mm; padding: 0.4mm 0; }
+      .lang .line { height: 4.7mm; }
+      .lang .note { font-size: 11px; line-height: 3.5mm; padding: 0.4mm 0; }
       .lang article:last-child { break-after: auto; }
       * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
     }
@@ -189,8 +192,9 @@ export function renderSite(data, lang) {
   <header>
     <nav class="subjects" aria-label="Subjects"><a href="index.html"${lang ? '' : ' aria-current="page"'}>AP World History notes</a><a href="ap-lang.html"${lang ? ' aria-current="page"' : ''}>AP Lang notes</a></nav>
     <h1>${title}</h1>
-    ${lang ? `<p>Rhetorical analysis · ${lang.sections.length} color-coded sections · ${langLines.length} lines · 32 lines per printed sheet</p>
-    <p>Examples are paraphrases, not direct quotations. Each note line is at most 65 characters.</p>
+    ${lang ? `<p>Unit 1 · Building commentary connections · ${lang.sections.length} color-coded sections · 48 lines per page</p>
+    <p>Describe the choice, explain its function, trace a possible audience effect, and justify its contribution to the author's purpose.</p>
+    <p>Food-labeling examples are paraphrases or clearly marked hypothetical examples, not direct quotations or guaranteed audience responses. Each note line is at most 65 characters.</p>
     <p class="downloads"><a href="data:text/plain;charset=utf-8;base64,${Buffer.from(lang.source).toString('base64')}" download="ap-lang.txt">Download AP Lang notes</a> · <a href="notes/ap-lang.txt">Open original file</a></p>
     <p>Use your browser's Print command for colored, numbered sheets. Color names remain in the notes for black-and-white copying.</p>` : `<p>Units 1 &amp; 2 · c. 1200–1450 · 14 topics · 28 note pages</p>
     <nav aria-label="Units"><a href="#unit-1">Unit 1: The Global Tapestry</a><a href="#unit-2">Unit 2: Networks of Exchange</a></nav>
@@ -198,10 +202,10 @@ export function renderSite(data, lang) {
     <div class="legend" role="group" aria-label="Token color legend">${Object.keys(palette).map(token => `<span><i class="swatch ${token}" aria-hidden="true"></i>${token} ${({ g: 'green', li: 'lime', pu: 'purple', br: 'brown', y: 'yellow', r: 'red', db: 'dark blue', p: 'pink', lb: 'light blue', hp: 'hot pink', pen: 'pencil' })[token]}</span>`).join('')}</div>
     <p>All notes are visible below. Use your browser’s Print command for one sheet per page. Colored text downloads contain the original color markers.</p>`}
   </header>
-  <main id="notes"${lang ? ' class="lang"' : ''}>${lang ? `<div class="pages">${Array.from({ length: Math.ceil(langLines.length / 32) }, (_, page) => `<article aria-label="AP Lang page ${page + 1}">
-    <h2 class="page-title">AP Lang rhetorical analysis</h2>
-    <p class="caption">Page ${page + 1} · Lines ${page * 32 + 1}–${Math.min(page * 32 + 32, langLines.length)}</p>
-    <div class="sheet">${langLines.slice(page * 32, page * 32 + 32).map((line, index) => `<div class="line"><span class="number" aria-hidden="true">${page * 32 + index + 1}</span><span class="note"><span class="lang-${line.color}">${escapeHTML(line.text)}</span></span></div>`).join('\n')}</div>
+  <main id="notes"${lang ? ' class="lang"' : ''}>${lang ? `<div class="pages">${Array.from({ length: langLines.length / 48 }, (_, page) => `<article aria-label="AP Lang page ${page + 1}">
+    <h2 class="page-title">AP Lang Unit 1: Rhetorical Analysis</h2>
+    <p class="caption">Page ${page + 1} · ${page === 0 ? 'Building commentary' : 'Deepening analysis'} · Lines ${page * 48 + 1}–${page * 48 + 48}</p>
+    <div class="sheet">${langLines.slice(page * 48, page * 48 + 48).map((line, index) => `<div class="line"><span class="number" aria-hidden="true">${page * 48 + index + 1}</span><span class="note"><span class="lang-${line.color}${line.heading ? ' section-heading' : ''}">${escapeHTML(line.text)}</span></span></div>`).join('\n')}</div>
   </article>`).join('\n')}</div>` : data.map((unit, index) => `
     <section class="unit" id="unit-${index + 1}" aria-labelledby="unit-${index + 1}-title">
       <h2 class="unit-title" id="unit-${index + 1}-title">Unit ${index + 1}: ${escapeHTML(unit.name)}</h2>

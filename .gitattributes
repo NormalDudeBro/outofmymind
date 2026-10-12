@@ -4,5 +4,5 @@
 *.md text eol=lf
 *.mjs text eol=lf
 *.yml text eol=lf
-notes/ap-lang.txt text eol=lf
+*.txt text eol=lf
 *.jpg binary
