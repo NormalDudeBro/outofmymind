@@ -3,6 +3,7 @@ import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
+import { renderHome } from './home.mjs';
 
 export const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const palette = { g: '#168438', li: '#79c900', pu: '#883ac2', br: '#92552f', y: '#ebc600', r: '#df3034', db: '#173f88', p: '#ed8eb4', lb: '#59b8e7', hp: '#ec228c', pen: '#62615e' };
@@ -216,7 +217,7 @@ export function renderSite(data, lang, algebra) {
 <body>
   <a class="skip" href="#notes">Skip to notes</a>
   <header>
-    <nav class="subjects" aria-label="Subjects"><a href="index.html"${study.length ? '' : ' aria-current="page"'}>AP World History notes</a><a href="ap-lang.html"${lang ? ' aria-current="page"' : ''}>AP Lang notes</a><a href="algebra-2.html"${algebra ? ' aria-current="page"' : ''}>Algebra 2 notes</a></nav>
+    <nav class="subjects" aria-label="Subjects"><a href="index.html">Home</a><a href="ap-lang.html"${lang ? ' aria-current="page"' : ''}>AP Lang Notes</a><a href="ap-world.html"${study.length ? '' : ' aria-current="page"'}>AP World History Notes</a><a href="algebra-2.html"${algebra ? ' aria-current="page"' : ''}>Algebra 2 Notes</a><a href="out-of-my-mind.html">Out Of My Mind Analysis</a></nav>
     <h1>${title}</h1>
     ${algebra ? `<p>Module 1B · Relations and Functions · 8 lessons · 16 pages · 24 lines per page</p>
     <p>Packet-guided rules, worked examples, and checks. Unreadable source graphs are not reconstructed; added examples are labeled.</p>
@@ -278,11 +279,14 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
         copyFileSync(source, output);
       });
     }));
-    writeFileSync(destination, html);
-    if (destination !== resolve(target, 'index.html')) writeFileSync(resolve(target, 'index.html'), html);
+    if (destination !== resolve(target, 'index.html')) writeFileSync(destination, html);
+    writeFileSync(resolve(target, 'index.html'), renderHome());
+    writeFileSync(resolve(target, 'ap-world.html'), html);
     writeFileSync(resolve(target, 'ap-lang.html'), renderSite([], lang));
     writeFileSync(resolve(target, 'algebra-2.html'), renderSite([], undefined, algebra));
     if (target !== root) {
+      copyFileSync(resolve(root, 'out-of-my-mind.html'), resolve(target, 'out-of-my-mind.html'));
+      ['cover', 'author', 'class', 'talker', 'inclusiveness', 'school', 'home', 'excluded', 'perspective', 'voice', 'meditalker'].forEach(image => copyFileSync(resolve(root, `${image}.jpg`), resolve(target, `${image}.jpg`)));
       copyFileSync(resolve(root, 'notes', 'ap-lang.txt'), resolve(target, 'notes', 'ap-lang.txt'));
       mkdirSync(resolve(target, 'notes', 'Colored'), { recursive: true });
       copyFileSync(resolve(root, 'notes', 'Colored', 'ap-lang.txt'), resolve(target, 'notes', 'Colored', 'ap-lang.txt'));
@@ -291,6 +295,6 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
         copyFileSync(resolve(root, 'notes', 'algebra-2', folder, `${lesson.file}.txt`), resolve(target, 'notes', 'algebra-2', folder, `${lesson.file}.txt`));
       }));
     }
-    console.log(`Built ${destination}: 14 topics, 28 pages, 672 note lines; native downloads embedded and text files copied alongside.`);
+    console.log(`Built ${target}: Home, World History (28 pages), AP Lang (4 pages), Algebra 2 (16 pages), and restored literary analysis; offline downloads and previews preserved.`);
   });
 }

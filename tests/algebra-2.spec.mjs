@@ -52,7 +52,7 @@ for (const width of [375, 1280]) {
   test(`Algebra ordered 24-line pages, shared palette and native contents at ${width}px in LTR/RTL`, async ({ page }) => {
     await page.setViewportSize({ width, height: 812 });
     const presentations = [];
-    for (const url of ['/', '/ap-lang.html', '/algebra-2.html']) {
+    for (const url of ['/ap-world.html', '/ap-lang.html', '/algebra-2.html']) {
       await page.goto(url);
       presentations.push(await page.evaluate(tokens => {
         const rules = sheet => [...sheet.cssRules].flatMap(rule => {
@@ -72,8 +72,9 @@ for (const width of [375, 1280]) {
     expect(presentations[2]).toEqual(presentations[0]);
     await expect(page).toHaveTitle(title);
     await expect(page.getByRole('heading', { name: title, exact: true, level: 1 })).toBeVisible();
-    await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('Algebra 2 notes');
-    expect(await page.locator('.subjects a').allTextContents()).toEqual(['AP World History notes', 'AP Lang notes', 'Algebra 2 notes']);
+    await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('Algebra 2 Notes');
+    expect(await page.locator('.subjects a').allTextContents()).toEqual(['Home', 'AP Lang Notes', 'AP World History Notes', 'Algebra 2 Notes', 'Out Of My Mind Analysis']);
+    expect(await page.locator('.subjects a').evaluateAll(links => links.map(link => link.getAttribute('href')))).toEqual(['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html']);
     const notes = loadAlgebraNotes();
     await expect(page.locator('section.topic')).toHaveCount(8);
     await expect(page.locator('article')).toHaveCount(16);
@@ -118,19 +119,36 @@ for (const width of [375, 1280]) {
   });
 }
 
-test('Algebra is the third keyboard subject tab from AP Lang in LTR/RTL', async ({ page }) => {
+test('World, Algebra and Analysis follow AP Lang in keyboard order in LTR/RTL', async ({ page }) => {
   for (const direction of ['ltr', 'rtl']) {
     await page.goto('/ap-lang.html');
     await page.evaluate(direction => document.documentElement.dir = direction, direction);
-    await page.getByRole('link', { name: 'AP Lang notes', exact: true }).focus();
+    await page.getByRole('link', { name: 'AP Lang Notes', exact: true }).focus();
     await page.keyboard.press('Tab');
-    await expect(page.getByRole('link', { name: 'Algebra 2 notes', exact: true })).toBeFocused();
+    await expect(page.getByRole('link', { name: 'AP World History Notes', exact: true })).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(page.getByRole('link', { name: 'Algebra 2 Notes', exact: true })).toBeFocused();
     await page.keyboard.press('Enter');
     await expect(page).toHaveURL(/\/algebra-2.html$/);
     await page.evaluate(direction => document.documentElement.dir = direction, direction);
-    await page.getByRole('link', { name: 'Algebra 2 notes', exact: true }).focus();
+    await page.getByRole('link', { name: 'Algebra 2 Notes', exact: true }).focus();
+    await page.keyboard.press('Tab');
+    await expect(page.getByRole('link', { name: 'Out Of My Mind Analysis', exact: true })).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(page).toHaveURL(/\/out-of-my-mind.html$/);
+    await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('Out Of My Mind Analysis');
+    await page.evaluate(direction => document.documentElement.dir = direction, direction);
+    await page.getByRole('link', { name: 'Out Of My Mind Analysis', exact: true }).focus();
     await page.keyboard.press('Shift+Tab');
-    await expect(page.getByRole('link', { name: 'AP Lang notes', exact: true })).toBeFocused();
+    await expect(page.getByRole('link', { name: 'Algebra 2 Notes', exact: true })).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(page).toHaveURL(/\/algebra-2.html$/);
+    await page.evaluate(direction => document.documentElement.dir = direction, direction);
+    await page.getByRole('link', { name: 'Algebra 2 Notes', exact: true }).focus();
+    await page.keyboard.press('Shift+Tab');
+    await expect(page.getByRole('link', { name: 'AP World History Notes', exact: true })).toBeFocused();
+    await page.keyboard.press('Shift+Tab');
+    await expect(page.getByRole('link', { name: 'AP Lang Notes', exact: true })).toBeFocused();
     await page.keyboard.press('Enter');
     await expect(page).toHaveURL(/\/ap-lang.html$/);
   }
@@ -217,7 +235,7 @@ test('Algebra accessibility permits only existing ink/title contrast exceptions'
 test('Algebra prints sixteen physical A4 pages with visible titles and 24 World-density lines each', async ({ page }) => {
   await page.setViewportSize({ width: Math.floor((210 - 24) * 96 / 25.4), height: 1123 });
   await page.emulateMedia({ media: 'print' });
-  await page.goto('/');
+  await page.goto('/ap-world.html');
   const world = await page.locator('.note').first().evaluate(note => ({ fontSize: getComputedStyle(note).fontSize, lineHeight: getComputedStyle(note).lineHeight, rowHeight: note.closest('.line').getBoundingClientRect().height }));
   expect(world.rowHeight).toBeCloseTo(8.8 * 96 / 25.4, 1);
   await page.goto('/algebra-2.html');

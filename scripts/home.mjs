@@ -1,0 +1,125 @@
+export function renderHome() {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An academic collection of AP English Language, AP World History, and Algebra 2 notes, alongside a literary analysis of Sharon M. Draper's Out of My Mind.">
+  <title>Joltlined | Notes &amp; Literary Analysis</title>
+  <style>
+    :root { color-scheme: light; --paper: #f6f3eb; --ink: #213749; --muted: #586467; --rule: #d5cfc2; --accent: #83523b; font-family: Georgia, "Times New Roman", serif; color: var(--ink); background: var(--paper); }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: inherit; text-underline-offset: 5px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+    .skip { position: absolute; inset-block-start: 8px; inset-inline-start: 16px; z-index: 2; padding: 12px 18px; background: var(--ink); color: var(--paper); transform: translateY(-160%); }
+    .skip:focus { transform: none; }
+    .wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(20px, 5vw, 72px); }
+    .masthead { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-block: 34px 22px; border-block-end: 2px solid var(--ink); }
+    .wordmark { font-size: 30px; letter-spacing: -1px; margin: 0; }
+    .masthead-note, .eyebrow, .entry-meta, .section-label, .footer-note { font-family: system-ui, sans-serif; }
+    .masthead-note { margin: 0; color: var(--muted); font-size: 12px; letter-spacing: 0.06em; }
+    .subjects { display: flex; flex-wrap: wrap; gap: 6px 23px; padding-block: 14px; border-block-end: 1px solid var(--rule); }
+    .subjects a { min-block-size: 36px; padding-block: 10px; font: 12px/1.3 system-ui, sans-serif; text-decoration: none; }
+    .subjects a:hover { text-decoration: underline; }
+    .subjects [aria-current="page"] { color: var(--accent); text-decoration: underline; font-weight: 600; }
+    main { padding-block: 55px 56px; }
+    main:focus { outline: none; }
+    .introduction { display: grid; grid-template-columns: 1.3fr 0.7fr; align-items: end; gap: 48px; padding-block-end: 46px; }
+    .eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 18px; color: var(--accent); }
+    h1 { max-width: 13ch; margin: 0; font-size: clamp(42px, 5.7vw, 72px); font-weight: normal; line-height: 1.05; letter-spacing: -2px; }
+    .introduction-copy { margin: 0 0 5px; color: var(--muted); font-size: 18px; line-height: 1.75; max-width: 31ch; }
+    .collection-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 44px; }
+    .section-label { margin: 0; padding-block: 12px; border-block-start: 1px solid var(--ink); font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; }
+    .note-entry { display: grid; grid-template-columns: 34px minmax(0, 1fr) 22px; align-items: start; gap: 13px; padding-block: 25px; padding-inline: 0 6px; border-block-end: 1px solid var(--rule); text-decoration: none; }
+    .entry-number { color: var(--accent); font-size: 13px; padding-block-start: 5px; font-style: italic; }
+    .entry-title { margin: 0 0 8px; font-size: clamp(22px, 2.1vw, 27px); font-weight: normal; line-height: 1.2; }
+    .entry-description { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; max-width: 46ch; }
+    .entry-meta { display: block; color: var(--accent); font-size: 10px; letter-spacing: 0.06em; margin-block-start: 13px; }
+    .arrow { display: block; padding-block-start: 5px; font-size: 20px; }
+    [dir="rtl"] .arrow { transform: scaleX(-1); }
+    .note-entry:hover .entry-title, .reading-link:hover .reading-title { text-decoration: underline; text-decoration-thickness: 1px; }
+    .reading-link { display: block; text-decoration: none; margin-block-start: 12px; background: #e8ebe5; padding: 24px; border: 1px solid #d3dad2; }
+    .book-image { display: block; width: 140px; height: auto; margin-inline: auto; margin-block: 3px 26px; box-shadow: 6px 8px 0 #d5dbd2, 0 3px 9px #21374925; }
+    .reading-meta { margin: 0 0 8px; color: var(--accent); font: 10px/1.5 system-ui, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; }
+    .reading-title { margin: 0 0 12px; font-size: 28px; font-weight: normal; line-height: 1.15; }
+    .reading-description { color: var(--muted); margin: 0; font-size: 14px; line-height: 1.65; }
+    .reading-action { display: flex; align-items: center; justify-content: space-between; margin-block-start: 24px; padding-block-start: 14px; border-block-start: 1px solid #bcc7bd; font: 12px/1.5 system-ui, sans-serif; }
+    .reading-action .arrow { padding: 0; }
+    footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 20px 28px; border-block-start: 1px solid var(--rule); }
+    footer p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .footer-note { font-size: 10px; letter-spacing: 0.03em; }
+    @media (max-width: 760px) {
+      .masthead { padding-block-start: 24px; }
+      .masthead-note { max-width: 15ch; text-align: end; line-height: 1.5; }
+      .subjects { gap: 3px 17px; }
+      main { padding-block: 36px 38px; }
+      .introduction { grid-template-columns: 1fr; gap: 22px; padding-block-end: 30px; }
+      h1 { max-width: 15ch; letter-spacing: -1.2px; }
+      .introduction-copy { max-width: 40ch; font-size: 16px; }
+      .collection-grid { grid-template-columns: 1fr; gap: 32px; }
+      .reading-link { padding: 26px; }
+      .book-image { width: 155px; }
+      .note-entry { padding-block: 22px; }
+      .entry-title { font-size: 25px; }
+    }
+    @media print {
+      .skip, .subjects { display: none; }
+      .wrap { padding-inline: 0; }
+      main { padding-block: 25px; }
+      .introduction { padding-block-end: 25px; }
+      h1 { font-size: 42px; }
+      .reading-link, .note-entry { break-inside: avoid; }
+      .book-image { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#collection">Skip to the collection</a>
+  <div class="wrap">
+    <header>
+      <div class="masthead"><p class="wordmark">Joltlined</p><p class="masthead-note">Notes &amp; literary analysis</p></div>
+      <nav class="subjects" aria-label="Subjects"><a href="index.html" aria-current="page">Home</a><a href="ap-lang.html">AP Lang Notes</a><a href="ap-world.html">AP World History Notes</a><a href="algebra-2.html">Algebra 2 Notes</a><a href="out-of-my-mind.html">Out Of My Mind Analysis</a></nav>
+    </header>
+    <main id="collection" tabindex="-1">
+      <div class="introduction">
+        <div><p class="eyebrow">The academic collection</p><h1>A collection for curious minds.</h1></div>
+        <p class="introduction-copy">Course notes, worked examples, and close reading. An orderly place to study a subject, follow an argument, or return to a story.</p>
+      </div>
+      <div class="collection-grid">
+        <section aria-labelledby="course-heading">
+          <h2 class="section-label" id="course-heading">I. Course notes</h2>
+          <a class="note-entry" href="ap-lang.html" aria-labelledby="lang-title">
+            <span class="entry-number" aria-hidden="true">01</span>
+            <div><h3 class="entry-title" id="lang-title">AP Lang Notes</h3><p class="entry-description">Build the connections between a writer's choices, an audience's response, and an argument's purpose.</p><span class="entry-meta">UNIT 1 &middot; RHETORICAL ANALYSIS &middot; 4 PAGES</span></div>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="note-entry" href="ap-world.html" aria-labelledby="world-title">
+            <span class="entry-number" aria-hidden="true">02</span>
+            <div><h3 class="entry-title" id="world-title">AP World History Notes</h3><p class="entry-description">Trace the societies, ideas, and exchange networks that connected the world from c. 1200 to 1450.</p><span class="entry-meta">UNITS 1 &amp; 2 &middot; 14 TOPICS &middot; 28 PAGES</span></div>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="note-entry" href="algebra-2.html" aria-labelledby="algebra-title">
+            <span class="entry-number" aria-hidden="true">03</span>
+            <div><h3 class="entry-title" id="algebra-title">Algebra 2 Notes</h3><p class="entry-description">Work through relations, functions, and transformations with clear rules and checked examples.</p><span class="entry-meta">UNIT 1B &middot; 8 LESSONS &middot; 16 PAGES</span></div>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </section>
+        <section aria-labelledby="reading-heading">
+          <h2 class="section-label" id="reading-heading">II. Literary analysis</h2>
+          <a class="reading-link" href="out-of-my-mind.html" aria-labelledby="reading-title">
+            <img class="book-image" src="cover.jpg" width="706" height="1000" alt="Cover of Out of My Mind by Sharon M. Draper, showing a goldfish leaping out of its bowl.">
+            <p class="reading-meta">Sharon M. Draper &middot; A literary journal</p>
+            <h3 class="reading-title" id="reading-title">Out Of My Mind Analysis</h3>
+            <p class="reading-description">Explore Melody's story through character, context, perspective, and the question of what it means to be heard.</p>
+            <div class="reading-action"><span>Read the analysis</span><span class="arrow" aria-hidden="true">&rarr;</span></div>
+          </a>
+        </section>
+      </div>
+    </main>
+    <footer><p>Joltlined &middot; A study collection</p><p class="footer-note">Course notes: 24 lines per page, with original and colored downloads.</p></footer>
+  </div>
+</body>
+</html>
+`;
+}

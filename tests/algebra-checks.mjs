@@ -49,13 +49,15 @@ assert.doesNotMatch(html, /<(script|link|iframe|img|object|embed)\b|\son\w+\s*=|
 const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
 assert.equal(new Set(ids).size, ids.length, 'unique IDs');
 [...html.matchAll(/href="#([^"]+)"/g)].forEach(match => assert.ok(ids.includes(match[1]), `fragment ${match[1]}`));
-for (const page of ['index.html', 'ap-lang.html', 'algebra-2.html']) {
+const pages = ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html'];
+for (const page of pages) {
   const pageHTML = readFileSync(resolve(root, page), 'utf8');
-  const navigation = pageHTML.match(/<nav class="subjects"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
+  const navigation = pageHTML.match(/<nav\b[^>]*\bclass="[^"]*\bsubjects\b[^"]*"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
   assert.ok(navigation, 'subject navigation exists');
-  assert.deepEqual([...navigation.matchAll(/href="([^"]+)"/g)].map(match => match[1]), ['index.html', 'ap-lang.html', 'algebra-2.html']);
-  assert.match(navigation, /href="algebra-2.html"[^>]*>Algebra 2 notes<\/a>/);
-  assert.deepEqual([...navigation.matchAll(/href="([^"]+)" aria-current="page"/g)].map(match => match[1]), [page], 'only current subject is active');
+  const anchors = [...navigation.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)];
+  assert.deepEqual(anchors.map(match => match[1].match(/\bhref="([^"]+)"/)?.[1]), pages, 'all five navigation targets in DOM order');
+  assert.deepEqual(anchors.map(match => match[2].trim()), ['Home', 'AP Lang Notes', 'AP World History Notes', 'Algebra 2 Notes', 'Out Of My Mind Analysis'], 'exact capitalized navigation labels');
+  assert.deepEqual(anchors.filter(match => /\baria-current="page"/.test(match[1])).map(match => match[1].match(/\bhref="([^"]+)"/)?.[1]), [page], 'only current page is active');
 }
 const downloads = [...html.matchAll(/href="data:text\/plain;charset=utf-8;base64,([A-Za-z0-9+/]+=*)" download="([^"]+)"/g)];
 const sources = [...html.matchAll(/href="(notes\/[^\"]+)"/g)].map(match => match[1]);

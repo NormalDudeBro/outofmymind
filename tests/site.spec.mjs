@@ -6,7 +6,7 @@ import { pathToFileURL } from 'node:url';
 import { loadNotes, palette, root } from '../scripts/build.mjs';
 
 test('native unit navigation, fragments, history and keyboard', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/ap-world.html');
   await page.keyboard.press('Tab');
   await expect(page.locator('.skip')).toBeFocused();
   await page.keyboard.press('Enter');
@@ -29,10 +29,10 @@ for (const width of [375, 1280]) {
     const requests = [];
     page.on('request', request => requests.push(request.url()));
     await page.setViewportSize({ width, height: 812 });
-    await page.goto('/');
+    await page.goto('/ap-world.html');
     await expect(page.locator('article')).toHaveCount(28);
     await expect(page.locator('.note')).toHaveCount(672);
-    expect(requests).toEqual(['http://127.0.0.1:4173/']);
+    expect(requests).toEqual(['http://127.0.0.1:4173/ap-world.html']);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     await expect(page.locator('.topic-title').first()).toHaveCSS('color', 'rgb(89, 184, 231)');
     for (const [token, hex] of Object.entries(palette)) {
@@ -71,7 +71,7 @@ test('no JavaScript over HTTP and file:// exposes everything and local downloads
   test.setTimeout(90_000);
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
-  for (const url of ['http://127.0.0.1:4173/', pathToFileURL(resolve(root, 'index.html')).href, ...(process.env.PREVIEW_PATH ? [pathToFileURL(resolve(process.env.PREVIEW_PATH)).href] : [])]) {
+  for (const url of ['http://127.0.0.1:4173/ap-world.html', pathToFileURL(resolve(root, 'ap-world.html')).href, ...(process.env.PREVIEW_PATH ? [pathToFileURL(resolve(process.env.PREVIEW_PATH)).href] : [])]) {
     await page.goto(url);
     await expect(page.locator('.topic')).toHaveCount(14);
     await expect(page.locator('article')).toHaveCount(28);
@@ -116,7 +116,7 @@ test('no JavaScript over HTTP and file:// exposes everything and local downloads
 });
 
 test('accessibility: only the documented approved-palette contrast exception', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/ap-world.html');
   const results = await new AxeBuilder({ page }).analyze();
   // Do not disable contrast scanning: assert exactly this known limitation and
   // restrict every affected element to the approved colored note presentation.
@@ -129,7 +129,7 @@ test('accessibility: only the documented approved-palette contrast exception', a
 });
 
 test('print produces exactly 28 physical A4 pages', async ({ page }) => {
-  for (const url of ['/', ...(process.env.PREVIEW_PATH ? [pathToFileURL(resolve(process.env.PREVIEW_PATH)).href] : [])]) {
+  for (const url of ['/ap-world.html', ...(process.env.PREVIEW_PATH ? [pathToFileURL(resolve(process.env.PREVIEW_PATH)).href] : [])]) {
     await page.goto(url);
     await page.emulateMedia({ media: 'print' });
     await expect(page.locator('header')).toBeHidden();

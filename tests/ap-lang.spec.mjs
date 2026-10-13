@@ -8,12 +8,12 @@ import { loadLangNotes, palette, root } from '../scripts/build.mjs';
 for (const width of [375, 1280]) {
   test(`AP Lang navigation and four ordered 24-line pages at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 812 });
-    await page.goto('/');
+    await page.goto('/ap-world.html');
     const historyTokens = await page.evaluate(tokens => Object.fromEntries(tokens.map(token => [token, getComputedStyle(document.documentElement).getPropertyValue(`--${token}`).trim()])), Object.keys(palette));
     const historyPencil = await page.locator('.note').first().evaluate(note => ({ color: getComputedStyle(note).color, weight: getComputedStyle(note).fontWeight }));
-    await page.getByRole('link', { name: 'AP Lang notes', exact: true }).click();
+    await page.getByRole('link', { name: 'AP Lang Notes', exact: true }).click();
     await expect(page).toHaveURL(/\/ap-lang.html$/);
-    await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('AP Lang notes');
+    await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('AP Lang Notes');
     await expect(page.getByRole('heading', { name: 'AP Lang Unit 1: Rhetorical Analysis', exact: true, level: 1 })).toBeVisible();
     await expect(page).toHaveTitle('AP Lang Unit 1: Rhetorical Analysis');
     const notes = loadLangNotes();
@@ -44,25 +44,39 @@ for (const width of [375, 1280]) {
     await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
     expect(await page.locator('.note').allTextContents()).toEqual(notes.sections.flatMap(section => section.lines));
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    await page.getByRole('link', { name: 'AP World History notes', exact: true }).click();
-    await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('AP World History notes');
+    await page.getByRole('link', { name: 'AP World History Notes', exact: true }).click();
+    await expect(page).toHaveURL(/\/ap-world.html$/);
+    await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('AP World History Notes');
     await expect(page.locator('article')).toHaveCount(28);
   });
 }
 
 test('subject navigation works with Tab and Enter in both directions', async ({ page }) => {
-  await page.goto('/');
-  await page.getByRole('link', { name: 'AP World History notes', exact: true }).focus();
+  await page.goto('/ap-world.html');
+  await page.getByRole('link', { name: 'Home', exact: true }).focus();
   await page.keyboard.press('Tab');
-  await expect(page.getByRole('link', { name: 'AP Lang notes', exact: true })).toBeFocused();
+  await expect(page.getByRole('link', { name: 'AP Lang Notes', exact: true })).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/\/ap-lang.html$/);
-  await page.getByRole('link', { name: 'AP Lang notes', exact: true }).focus();
+  await page.getByRole('link', { name: 'AP Lang Notes', exact: true }).focus();
+  await page.keyboard.press('Tab');
+  await expect(page.getByRole('link', { name: 'AP World History Notes', exact: true })).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/\/ap-world.html$/);
+  await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('AP World History Notes');
+  await page.getByRole('link', { name: 'AP World History Notes', exact: true }).focus();
   await page.keyboard.press('Shift+Tab');
-  await expect(page.getByRole('link', { name: 'AP World History notes', exact: true })).toBeFocused();
+  await expect(page.getByRole('link', { name: 'AP Lang Notes', exact: true })).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/\/ap-lang.html$/);
+  await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('AP Lang Notes');
+  await page.getByRole('link', { name: 'AP Lang Notes', exact: true }).focus();
+  await page.keyboard.press('Shift+Tab');
+  await expect(page.getByRole('link', { name: 'Home', exact: true })).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/\/index.html$/);
-  await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('AP World History notes');
+  await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('Home');
+  await expect(page.locator('.note')).toHaveCount(0);
 });
 
 test('both AP Lang downloads work with Tab and Enter in LTR and RTL', async ({ page }) => {
@@ -127,14 +141,15 @@ test('AP Lang exposes four 24-line pages offline without JavaScript and download
         expect(await response.body()).toEqual(bytes);
       }
     }
-    await page.getByRole('link', { name: 'AP World History notes', exact: true }).click();
+    await page.getByRole('link', { name: 'AP World History Notes', exact: true }).click();
+    await expect(page).toHaveURL(/\/ap-world.html$/);
     await expect(page.locator('.note')).toHaveCount(672);
   }
   await context.close();
 });
 
 test('AP Lang permits only approved-palette contrast exceptions and prints four physical PDF pages with 24 World History rows each', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/ap-world.html');
   await page.emulateMedia({ media: 'print' });
   const historyPrint = await page.locator('.note').first().evaluate(note => {
     const style = getComputedStyle(note);

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<!-- Restored from 18635e4accd4c2147541acc5e5bc2b063e04ed05:index.html. -->
+<html lang="en" dir="ltr" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
+    <title>Out of My Mind | A Literary Journal</title>
+    <style>
+        /* Original journal palette and styling, using installed fonts for offline reading. */
+        :root {
+            --paper: #fffef9;
+            --paper-texture: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4c5a9' fill-opacity='0.03'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'/%3E%3C/g%3E%3C/svg%3E");
+            --ink: #2a2620; --ink-light: #5a544a;
+            --accent-warm: #76502a; --accent-cool: #42675f;
+            --accent-soft: #765445; --accent-muted: #655d52;
+            --home-bg: #f8f5f0; --author-bg: #f0f4f3; --context-bg: #f5f0eb;
+            --characters-bg: #f3f0f5; --setting-bg: #eef2f1; --tone-bg: #f7f3ed;
+            --pov-bg: #f5f1ec; --plot-bg: #f0f4f3; --citations-bg: #f8f5f0;
+            --focus-ring: 0 0 0 3px var(--accent-warm), 0 0 0 6px rgba(118, 80, 42, 0.25);
+            --body-font: 'Trebuchet MS', Arial, sans-serif;
+            --heading-font: 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+            --journal-font: 'Segoe Print', 'Bradley Hand', Georgia, serif;
+        }
+        body.high-contrast {
+            --paper: #fff; --ink: #000; --ink-light: #000; --accent-warm: #0000c7;
+            --accent-cool: #005a00; --accent-soft: #7a1f00; --accent-muted: #333;
+            background: #fff !important;
+        }
+        body.high-contrast .content-card, body.high-contrast .works-cited, body.high-contrast .character-full {
+            background: #fff !important; color: #000 !important; box-shadow: 0 0 0 2px #000 !important;
+        }
+        body.dyslexia-friendly { --body-font: 'Comic Sans MS', 'Arial Rounded MT Bold', Arial, sans-serif; --heading-font: var(--body-font); --journal-font: var(--body-font); }
+        body.dyslexia-friendly h1, body.dyslexia-friendly h2, body.dyslexia-friendly h3, body.dyslexia-friendly .quote { letter-spacing: 0.05em !important; line-height: 1.6 !important; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--body-font); background: var(--paper); background-image: var(--paper-texture);
+            color: var(--ink); min-height: 100vh; line-height: 1.75; font-size: 1.05rem;
+            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+        }
+        html { scroll-behavior: smooth; }
+        html:has(body.reduce-motion), body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after {
+            scroll-behavior: auto !important; animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important; transition-duration: 0.01ms !important;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+        }
+        .bg-elements { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; pointer-events: none; opacity: 0.4; }
+        .bg-element { position: absolute; opacity: 0.06; font-size: 1.5rem; transform: rotate(var(--rotation, 0deg)); animation: gentleDrift 40s linear infinite; }
+        .bg-element:nth-child(1) { top: 10%; left: 5%; --rotation: -8deg; animation-delay: 0s; }
+        .bg-element:nth-child(2) { top: 25%; right: 8%; --rotation: 12deg; animation-delay: 8s; font-size: 2rem; }
+        .bg-element:nth-child(3) { bottom: 15%; left: 12%; --rotation: -5deg; animation-delay: 16s; }
+        .bg-element:nth-child(4) { bottom: 30%; right: 15%; --rotation: 18deg; animation-delay: 24s; font-size: 1.8rem; }
+        .bg-element:nth-child(5) { top: 45%; left: 20%; --rotation: -15deg; animation-delay: 32s; }
+        @keyframes gentleDrift {
+            0%, 100% { transform: translate(0, 0) rotate(var(--rotation, 0deg)); }
+            25% { transform: translate(5px, -8px) rotate(calc(var(--rotation, 0deg) + 3deg)); }
+            50% { transform: translate(-3px, 5px) rotate(calc(var(--rotation, 0deg) - 2deg)); }
+            75% { transform: translate(8px, 3px) rotate(calc(var(--rotation, 0deg) + 1deg)); }
+        }
+        nav {
+            background: rgba(255, 254, 249, 0.96); backdrop-filter: blur(4px); border-bottom: 1px dashed var(--accent-muted);
+            padding: 0.6rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; padding: 0.3rem 1rem; gap: 0.4rem; max-width: 1200px; margin: 0 auto; }
+        nav a {
+            text-decoration: none; color: var(--ink); font-weight: 400; padding: 0.5rem 1rem; border-radius: 18px;
+            transition: all 0.25s ease; display: block; font-size: 0.9rem; position: relative;
+            font-family: var(--journal-font); letter-spacing: 0.3px;
+        }
+        nav a::after {
+            content: ''; position: absolute; bottom: 4px; left: 50%; width: 0; height: 1px;
+            background: var(--accent-warm); transition: width 0.3s ease; transform: translateX(-50%); border-radius: 1px;
+        }
+        nav a:hover::after, nav a.active::after, nav a[aria-current]::after { width: 70%; }
+        nav a:hover, nav a.active, nav a[aria-current] { background: rgba(118, 80, 42, 0.1); color: var(--accent-warm); transform: translateY(-1px); }
+        nav a:focus-visible, .cta-button:focus-visible, .cite-ref:focus-visible, .citation a:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+        .site-nav { position: relative; z-index: 1000; padding-block: 0.75rem; padding-inline: 1rem; }
+        .site-nav ul { padding-block: 0.3rem; padding-inline: 0; }
+        .site-nav a { font-family: var(--body-font); min-block-size: 44px; padding-block: 0.6rem; padding-inline: 1rem; }
+        #main-nav { position: sticky; inset-block-start: 0; z-index: 1000; }
+        #main-nav.scrolled { box-shadow: 0 3px 15px rgba(0,0,0,0.08); }
+        .accessibility-controls {
+            position: fixed; bottom: 18px; inset-inline-end: 18px; display: flex; gap: 0.4rem; z-index: 2000;
+            background: rgba(255, 254, 249, 0.98); padding: 0.4rem; border-radius: 40px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08); border: 1px dashed var(--accent-muted);
+        }
+        .no-js .accessibility-controls { display: none; }
+        .a11y-btn {
+            width: 44px; height: 44px; border-radius: 50%; background: var(--paper); border: 1px solid var(--accent-muted);
+            color: var(--ink); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s ease; font-family: var(--journal-font); box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .a11y-btn:hover, .a11y-btn:focus-visible { transform: scale(1.08); box-shadow: var(--focus-ring); outline: none; border-color: var(--accent-warm); }
+        .a11y-btn.active { background: var(--accent-warm); color: white; border-color: var(--accent-warm); box-shadow: 0 3px 10px rgba(184,149,106,0.3); }
+        .a11y-btn:disabled { cursor: not-allowed; opacity: 0.75; }
+        .container { max-width: 980px; margin: 0 auto; padding: 40px 28px 50px; position: relative; }
+        .container::before {
+            content: ''; position: absolute; left: 40px; top: 0; bottom: 0; width: 1px;
+            background: repeating-linear-gradient(to bottom, transparent, transparent 27px, rgba(184,149,106,0.2) 28px, rgba(184,149,106,0.2) 29px);
+            pointer-events: none; opacity: 0.6; z-index: -1;
+        }
+        .page { animation: softReveal 0.7s ease-out; scroll-margin-top: var(--section-offset, 100px); }
+        .js .page { display: none; }
+        .js .page.active { display: block; }
+        @keyframes softReveal { from { transform: translateY(12px); } to { transform: translateY(0); } }
+        #home.active { background: var(--home-bg); }
+        #author.active { background: var(--author-bg); }
+        #context.active { background: var(--context-bg); }
+        #characters.active { background: var(--characters-bg); }
+        #setting.active { background: var(--setting-bg); }
+        #tone.active { background: var(--tone-bg); }
+        #pov.active { background: var(--pov-bg); }
+        #plot.active { background: var(--plot-bg); }
+        #citations.active { background: var(--citations-bg); }
+        .hero {
+            text-align: center; color: var(--ink); padding: 4rem 2rem 3.5rem; position: relative; margin-bottom: 2.5rem;
+            border-radius: 4px; background: rgba(255,255,255,0.7); border: 1px dashed var(--accent-muted); box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .hero::before { content: ''; position: absolute; top: -1px; left: -1px; right: -1px; bottom: -1px; border: 1px solid rgba(184,149,106,0.15); border-radius: 5px; pointer-events: none; }
+        .hero-content { position: relative; z-index: 2; max-width: 750px; margin: 0 auto; }
+        .hero h1 { font-family: var(--heading-font); font-size: 3.8rem; margin-bottom: 0.8rem; letter-spacing: -0.01em; line-height: 1.15; color: var(--ink); position: relative; display: inline-block; }
+        .hero h1::after { content: ''; position: absolute; bottom: -8px; left: 10%; right: 10%; height: 2px; background: var(--accent-warm); border-radius: 2px; transform: rotate(-1deg); opacity: 0.85; }
+        .hero .author { font-family: var(--journal-font); font-size: 1.9rem; margin-bottom: 2.2rem; color: var(--accent-cool); font-style: italic; letter-spacing: 0.02em; opacity: 0.9; }
+        .hero p { font-size: 1.25rem; max-width: 680px; margin: 0 auto 2.2rem; line-height: 1.85; color: var(--ink-light); font-weight: 300; }
+        .book-cover {
+            width: 260px; height: 390px; background: linear-gradient(145deg,#fffef9,#f8f5f0); margin: 2rem auto; border-radius: 3px 18px 18px 3px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12), inset 0 0 25px rgba(0,0,0,0.03); display: flex; align-items: center; justify-content: center;
+            font-family: var(--heading-font); font-size: 2rem; color: var(--ink); position: relative; border: 1px solid rgba(0,0,0,0.08);
+            transform: rotate(-1.5deg); transition: transform 0.4s ease;
+        }
+        .book-cover:hover { transform: rotate(0deg) translateY(-3px); }
+        .book-cover::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 18px; background: linear-gradient(90deg,rgba(0,0,0,0.08),transparent); border-right: 1px solid rgba(0,0,0,0.06); }
+        .book-cover::after { content: ''; position: absolute; right: -12px; top: 15px; bottom: 15px; width: 25px; background: rgba(255,255,255,0.4); transform: skewY(-3deg); opacity: 0.7; border-radius: 0 6px 6px 0; }
+        .book-cover-content { text-align: center; padding: 2rem 1.5rem; position: relative; z-index: 2; }
+        .book-cover-content .title { font-size: 2.1rem; font-weight: 600; margin-bottom: 1.2rem; line-height: 1.25; }
+        .book-cover-content .subtitle { font-size: 1rem; font-style: italic; opacity: 0.75; margin-bottom: 1.8rem; font-family: var(--journal-font); }
+        .book-cover-content .author-name { font-family: var(--journal-font); font-size: 1.4rem; letter-spacing: 0.03em; color: var(--accent-cool); }
+        .cta-button {
+            display: inline-block; padding: 0.95rem 2.6rem; background: white; color: var(--accent-warm); text-decoration: none; border-radius: 30px;
+            font-weight: 500; margin-top: 1.8rem; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(0,0,0,0.08), 0 0 0 2px var(--accent-warm);
+            position: relative; overflow: hidden; font-family: var(--body-font); letter-spacing: 0.3px; border: 1px solid rgba(184,149,106,0.3);
+        }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.12), 0 0 0 2px var(--accent-warm), 0 0 15px rgba(184,149,106,0.2); color: var(--accent-warm); }
+        .cta-button:active { transform: translateY(0); }
+        .content-card {
+            background: rgba(255,255,255,0.85); border-radius: 3px; padding: 2.8rem; margin: 2.2rem 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06), 0 0 0 1px rgba(184,149,106,0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; border: 1px solid rgba(0,0,0,0.04);
+        }
+        .content-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.09), 0 0 0 1px rgba(184,149,106,0.25); }
+        .content-card::before { content: ''; position: absolute; top: 12px; right: 12px; width: 20px; height: 20px; border-top: 2px solid var(--accent-warm); border-right: 2px solid var(--accent-warm); border-radius: 0 3px 0 0; opacity: 0.6; }
+        .content-card h2 { font-family: var(--heading-font); font-size: 2.4rem; color: var(--ink); margin-bottom: 1.8rem; padding-bottom: 0.9rem; border-bottom: 1px dashed var(--accent-muted); display: inline-block; position: relative; }
+        .content-card h2::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 50px; height: 1px; background: var(--accent-warm); }
+        .content-card h3 { font-family: var(--heading-font); font-size: 1.75rem; color: var(--accent-cool); margin: 1.8rem 0 1rem; position: relative; padding-inline-start: 1.3rem; }
+        .content-card h3::before { content: '•'; position: absolute; inset-inline-start: 0; top: 50%; transform: translateY(-50%); color: var(--accent-warm); font-size: 1.8rem; font-weight: 300; }
+        .content-card p, .content-card li { font-size: 1.1rem; line-height: 1.85; color: var(--ink-light); margin-bottom: 1.1rem; font-weight: 300; }
+        .content-card ul { margin-inline-start: 2.2rem; margin-bottom: 1.8rem; padding-inline-start: 0.8rem; border-inline-start: 1px dashed rgba(154,143,127,0.3); }
+        .content-card li { margin-bottom: 0.7rem; position: relative; padding-inline-start: 1rem; }
+        .content-card li::before { content: '◦'; position: absolute; inset-inline-start: -1rem; color: var(--accent-warm); font-weight: normal; font-size: 1.3rem; top: -2px; }
+        .image-container {
+            width: 100%; height: 360px; background: linear-gradient(135deg,#fffef9 0%,#f8f5f0 100%); border-radius: 3px; margin: 2.2rem 0;
+            display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04); border: 2px solid white; transition: all 0.3s ease;
+        }
+        .image-container:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.12), 0 0 0 2px var(--accent-warm); }
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,300px),1fr)); gap: 2.2rem; margin: 2.5rem 0; }
+        .image-grid .image-container { height: 300px; }
+        .image-container.has-image { background: none; }
+        .image-container.has-image img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit; transition: transform 0.4s ease; filter: sepia(0.05) contrast(1.02); }
+        .image-container.has-image:hover img { transform: scale(1.02); }
+        .qualities-intro {
+            background: linear-gradient(135deg,rgba(184,149,106,0.08),rgba(107,142,132,0.08)); border-left: 3px solid var(--accent-warm);
+            padding: 1.6rem; margin: 2.2rem 0 2.8rem; border-radius: 0 12px 12px 0; font-size: 1.05rem; color: var(--ink-light);
+            position: relative; overflow: hidden; border: 1px solid rgba(184,149,106,0.15);
+        }
+        .qualities-intro strong { color: var(--accent-warm); font-weight: 500; }
+        .qualities-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,250px),1fr)); gap: 1.8rem; margin: 2.2rem 0; }
+        .quality-card {
+            background: white; border-radius: 3px; padding: 1.9rem; box-shadow: 0 5px 20px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+            transition: all 0.3s ease; border: 1px solid transparent; position: relative; overflow: hidden; display: flex; flex-direction: column;
+        }
+        .quality-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--quality-color); opacity: 0.85; border-radius: 3px 3px 0 0; }
+        .quality-card:hover { transform: translateY(-5px); border-color: var(--quality-color); box-shadow: 0 8px 25px rgba(0,0,0,0.09), 0 0 0 2px var(--quality-color); z-index: 4; }
+        .quality-icon { font-size: 2.4rem; margin-bottom: 1rem; display: block; text-align: center; transform: rotate(-2deg); transition: transform 0.3s ease; }
+        .quality-card:hover .quality-icon { transform: rotate(0deg) scale(1.08); }
+        .quality-title { font-family: var(--heading-font); font-size: 1.45rem; font-weight: 500; color: var(--ink); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.5rem; position: relative; padding-bottom: 0.7rem; }
+        .quality-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 35px; height: 1px; background: var(--quality-color); border-radius: 1px; }
+        .quality-desc { font-size: 1rem; color: var(--ink-light); line-height: 1.75; margin: 0; flex-grow: 1; }
+        .quality-mental { --quality-color: var(--accent-cool); }
+        .quality-moral { --quality-color: var(--accent-soft); }
+        .quality-physical { --quality-color: var(--accent-warm); }
+        .quality-social { --quality-color: var(--accent-muted); }
+        .character-full {
+            background: linear-gradient(135deg,rgba(255,255,255,0.94) 0%,rgba(248,244,233,0.94) 100%); border-radius: 3px; padding: 2.6rem;
+            margin: 2.8rem 0; box-shadow: 0 8px 28px rgba(0,0,0,0.08), 0 0 0 1px rgba(184,149,106,0.18);
+            transition: all 0.3s ease; border: 1px solid transparent; position: relative; overflow: hidden;
+        }
+        .character-full::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg,var(--accent-warm),var(--accent-cool),var(--accent-soft),var(--accent-muted)); opacity: 0.9; border-radius: 3px 3px 0 0; }
+        .character-full:hover { transform: translateY(-6px); border-color: var(--accent-warm); box-shadow: 0 12px 35px rgba(0,0,0,0.11), 0 0 0 2px var(--accent-warm); }
+        .character-full-header { display: flex; align-items: center; gap: 1.3rem; margin-bottom: 1.8rem; padding-bottom: 1.6rem; border-bottom: 1px dashed rgba(0,0,0,0.08); }
+        .character-full-avatar {
+            width: 72px; height: 72px; background: linear-gradient(135deg,var(--accent-warm),var(--accent-soft)); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 2.1rem; color: white; flex-shrink: 0;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.12), 0 0 0 3px white; transform: rotate(1.5deg); transition: transform 0.3s ease;
+        }
+        .character-full:hover .character-full-avatar { transform: rotate(0deg) scale(1.06); }
+        .character-full-name h3 { font-family: var(--heading-font); font-size: 1.8rem; color: var(--ink); margin: 0 0 0.35rem 0; line-height: 1.25; }
+        .character-full-role { font-family: var(--journal-font); font-size: 1rem; color: var(--accent-cool); font-weight: 400; letter-spacing: 0.02em; }
+        .character-full-summary { font-size: 1.1rem; color: var(--ink-light); line-height: 1.85; margin: 0 0 2.2rem 0; font-weight: 300; position: relative; padding-inline-start: 1.3rem; }
+        .character-full-summary::before { content: '"'; position: absolute; inset-inline-start: 0; top: -6px; font-family: var(--heading-font); font-size: 3rem; color: var(--accent-warm); opacity: 0.25; line-height: 1; }
+        @media (max-width: 620px) {
+            .character-full-header { flex-direction: column; text-align: center; }
+            .quality-title::after { display: none; }
+            .qualities-grid { grid-template-columns: 1fr; }
+        }
+        .quote {
+            font-family: var(--heading-font); font-size: 1.65rem; font-style: italic; color: var(--accent-soft); border-left: 4px solid var(--accent-warm);
+            padding: 1.6rem 2.2rem; margin: 2.6rem 0; line-height: 1.75; position: relative; background: rgba(255,255,255,0.65);
+            border-radius: 0 12px 12px 0; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid rgba(184,149,106,0.15);
+        }
+        .quote::before, .quote::after { content: '"'; font-family: var(--heading-font); font-size: 3.2rem; position: absolute; color: var(--accent-warm); opacity: 0.18; line-height: 1; font-weight: 300; }
+        .quote::before { top: -16px; left: 8px; }
+        .quote::after { bottom: -32px; right: 12px; transform: rotate(180deg); }
+        .works-cited {
+            background: rgba(255,255,255,0.92); border-radius: 3px; padding: 3rem; margin: 2.2rem 0;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.07), 0 0 0 1px rgba(184,149,106,0.18); position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.04);
+        }
+        .works-cited::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg,var(--accent-warm),var(--accent-cool),var(--accent-soft),var(--accent-muted)); opacity: 0.9; border-radius: 3px 3px 0 0; }
+        .works-cited h2 { font-family: var(--heading-font); font-size: 2.4rem; color: var(--ink); margin-bottom: 2.2rem; text-align: center; position: relative; padding-bottom: 1.3rem; }
+        .works-cited h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 2px; background: var(--accent-warm); border-radius: 2px; }
+        .citation { position: relative; padding-inline-start: 3.6rem; text-indent: 0; margin-bottom: 1.6rem; line-height: 1.85; font-size: 1rem; color: var(--ink-light); border-inline-start: 1px dashed rgba(154,143,127,0.35); padding-block: 0.25rem; transition: all 0.25s ease; scroll-margin-top: var(--section-offset,100px); }
+        .citation:hover { background: rgba(184,149,106,0.06); border-inline-start-color: var(--accent-warm); border-radius: 0 6px 6px 0; }
+        .cite-badge {
+            position: absolute; inset-inline-start: -7px; top: 0.35rem; display: inline-flex; align-items: center; justify-content: center;
+            width: 28px; height: 28px; background: linear-gradient(135deg,var(--accent-warm),var(--accent-soft)); color: white;
+            font-family: var(--journal-font); font-size: 1rem; font-weight: 500; border-radius: 50%; text-decoration: none; transition: all 0.25s ease;
+            cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.15), 0 0 0 2px white; z-index: 2; border: 1px solid white; transform: rotate(-2deg);
+        }
+        .cite-badge:hover { transform: rotate(0deg) translateY(-2px) scale(1.08); box-shadow: 0 5px 16px rgba(0,0,0,0.2), 0 0 0 2px white, 0 0 12px rgba(184,149,106,0.4); z-index: 10; }
+        .cite-badge:active { transform: rotate(0deg) translateY(-1px) scale(1.04); }
+        .citation-legend { font-family: var(--journal-font); font-size: 0.98rem; color: var(--accent-cool); font-style: italic; margin-bottom: 2.2rem; padding-bottom: 1.3rem; border-bottom: 1px dashed rgba(154,143,127,0.4); text-align: center; letter-spacing: 0.02em; opacity: 0.9; }
+        .citation-source-link { color: var(--accent-cool); overflow-wrap: anywhere; }
+        .highlight-box {
+            background: linear-gradient(135deg,rgba(184,149,106,0.12) 0%,rgba(107,142,132,0.12) 100%); border-left: 4px solid var(--accent-warm);
+            padding: 1.8rem; margin: 2.2rem 0; border-radius: 0 16px 16px 0; position: relative; overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07); border: 1px solid rgba(184,149,106,0.18);
+        }
+        .highlight-box::before { content: '✎'; position: absolute; top: 8px; right: 12px; font-family: var(--journal-font); font-size: 1.8rem; color: var(--accent-warm); opacity: 0.3; transform: rotate(8deg); }
+        .highlight-box strong { color: var(--accent-warm); font-weight: 500; position: relative; z-index: 2; }
+        .highlight-box p { position: relative; z-index: 2; margin-bottom: 0; }
+        .cite-ref {
+            font-family: var(--journal-font); font-size: 0.9em; vertical-align: super; color: var(--accent-soft); text-decoration: none;
+            font-weight: 500; cursor: pointer; transition: all 0.25s ease; margin-inline-start: 2px; padding: 1px 6px; border-radius: 4px;
+            white-space: nowrap; position: relative; line-height: 1; display: inline-block; background: rgba(201,169,150,0.12);
+            border: 1px solid rgba(201,169,150,0.35); letter-spacing: 0.2px; scroll-margin-top: var(--section-offset,100px);
+        }
+        .cite-ref:hover, .cite-ref:focus-visible { color: white; background: var(--accent-soft); transform: scale(1.08); box-shadow: var(--focus-ring); z-index: 10; }
+        .citation:target, .cite-ref:target { animation: softPulse 1.8s ease; }
+        @keyframes softPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(184,149,106,0); }
+            25% { box-shadow: 0 0 0 3px rgba(184,149,106,0.45), 0 0 15px rgba(184,149,106,0.25); }
+            75% { box-shadow: 0 0 0 3px rgba(184,149,106,0); }
+        }
+        footer { text-align: center; color: var(--ink); padding: 3.5rem 2rem 6rem; margin-top: 4.5rem; background: rgba(248,245,240,0.85); border-radius: 3px; position: relative; overflow: hidden; box-shadow: 0 -6px 25px rgba(0,0,0,0.06); border: 1px dashed var(--accent-muted); border-top: 3px solid var(--accent-warm); }
+        footer p { font-size: 1.05rem; opacity: 0.92; margin-bottom: 0.4rem; font-weight: 300; position: relative; z-index: 2; }
+        footer p:last-child { font-family: var(--journal-font); font-size: 1.35rem; opacity: 0.88; letter-spacing: 0.03em; color: var(--accent-muted); }
+        .skip-link { position: absolute; top: -100px; inset-inline-start: 0; background: var(--accent-warm); color: white; padding: 0.75rem 1.8rem; z-index: 3000; transition: top 0.3s; font-weight: 500; border-radius: 0 0 6px 6px; box-shadow: 0 3px 10px rgba(0,0,0,0.15); font-family: var(--body-font); font-size: 0.95rem; }
+        .skip-link:focus { top: 0; outline: none; box-shadow: var(--focus-ring); }
+        .last-updated { text-align: center; font-family: var(--journal-font); font-size: 0.95rem; color: var(--accent-muted); margin: 2.5rem 0 1.5rem; opacity: 0.8; position: relative; padding-top: 1.2rem; }
+        .last-updated::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 40px; height: 1px; background: var(--accent-muted); opacity: 0.4; }
+        .image-container.author-photo { height: auto; aspect-ratio: 2000 / 1541; max-height: 650px; margin-bottom: 2rem; padding: 12px 12px 25px; background: white; box-shadow: 0 8px 25px rgba(0,0,0,0.12), 0 0 0 1px rgba(118,80,42,0.2); transform: rotate(-1.2deg); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .image-container.author-photo::after { content: 'Sharon M. Draper'; display: block; position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); width: 90%; color: var(--accent-muted); font-family: var(--journal-font); font-size: 1.1rem; text-align: center; pointer-events: none; }
+        .image-container.author-photo:hover { transform: rotate(0deg) translateY(-4px); box-shadow: 0 12px 35px rgba(0,0,0,0.18), 0 0 0 2px var(--accent-warm); }
+        .image-container.author-photo img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 2; border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.9rem; }
+            .hero .author { font-size: 1.55rem; }
+            .content-card { padding: 2.3rem 1.8rem; }
+            .content-card h2 { font-size: 2.1rem; }
+            #main-nav a { font-size: 0.85rem; padding: 0.45rem 0.85rem; white-space: nowrap; }
+            #main-nav ul { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: thin; }
+            .site-nav ul { justify-content: flex-start; flex-wrap: wrap; }
+            .book-cover { width: 230px; height: 345px; transform: rotate(-1deg); }
+            .accessibility-controls { bottom: 14px; inset-inline-end: 14px; }
+            .container::before { left: 28px; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 30px 20px 35px; }
+            .hero { padding: 3rem 1.3rem 2.6rem; border-radius: 3px; }
+            .hero h1 { font-size: 2.4rem; }
+            .book-cover { width: 210px; height: 315px; }
+            .content-card, .works-cited, .character-full { padding: 2rem 1.6rem; margin: 1.8rem 0; }
+            .qualities-grid, .image-grid { grid-template-columns: 1fr; }
+            .container::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <nav class="site-nav subjects" aria-label="Site navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="ap-lang.html">AP Lang Notes</a></li>
+            <li><a href="ap-world.html">AP World History Notes</a></li>
+            <li><a href="algebra-2.html">Algebra 2 Notes</a></li>
+            <li><a href="out-of-my-mind.html" aria-current="page">Out Of My Mind Analysis</a></li>
+        </ul>
+    </nav>
+    <div class="bg-elements" aria-hidden="true">
+        <div class="bg-element">✦</div><div class="bg-element">✧</div><div class="bg-element">✦</div><div class="bg-element">✧</div><div class="bg-element">✦</div>
+    </div>
+    <aside class="accessibility-controls" aria-label="Accessibility options">
+        <button type="button" class="a11y-btn" id="contrastToggle" aria-label="Toggle high contrast mode" aria-pressed="false" title="High contrast">◐</button>
+        <button type="button" class="a11y-btn" id="dyslexiaToggle" aria-label="Toggle readable font" aria-pressed="false" title="Readable font">Aa</button>
+        <button type="button" class="a11y-btn" id="reduceMotionToggle" aria-label="Toggle reduced motion" aria-pressed="false" title="Reduce motion">≋</button>
+    </aside>
+    <nav id="main-nav" aria-label="Analysis sections">
+        <ul>
+            <li><a href="#home" class="nav-link active" data-page="home" aria-current="location">Home</a></li>
+            <li><a href="#author" class="nav-link" data-page="author">Author</a></li>
+            <li><a href="#context" class="nav-link" data-page="context">Context</a></li>
+            <li><a href="#characters" class="nav-link" data-page="characters">Characters</a></li>
+            <li><a href="#setting" class="nav-link" data-page="setting">Setting</a></li>
+            <li><a href="#tone" class="nav-link" data-page="tone">Tone</a></li>
+            <li><a href="#pov" class="nav-link" data-page="pov">Point of View</a></li>
+            <li><a href="#plot" class="nav-link" data-page="plot">Plot</a></li>
+            <li><a href="#citations" class="nav-link" data-page="citations">Works Cited</a></li>
+        </ul>
+    </nav>
+    <main class="container" id="main-content" tabindex="-1">
+        <div id="home" class="page active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Out of My Mind</h1>
+                    <p class="author">by Sharon M. Draper</p>
+                    <div class="book-cover">
+                        <div class="book-cover-content">
+                            <div class="title">Out of My Mind</div>
+                            <div class="subtitle">A Novel</div>
+                            <div class="author-name">Sharon M. Draper</div>
+                        </div>
+                    </div>
+                    <p><em>Out of My Mind</em> by Sharon M. Draper is a powerful story exploring themes of courage, hope, and the unbreakable human spirit. This book follows Melody Brooks, an eleven-year-old girl with cerebral palsy who has a sharp memory and a sharper mind, as she navigates a world not built for her in a fight to be heard.</p>
+                    <a href="#context" class="cta-button nav-link" data-page="context">Explore the Story</a>
+                </div>
+            </div>
+            <div class="content-card">
+                <h2>About This Book</h2>
+                <p><em>Out of My Mind</em> is a groundbreaking novel that encourages its readers to look beyond first impressions and recognize the humanity and brilliance contained in every person.</p>
+                <div class="highlight-box">
+                    <strong>Published:</strong> March 9, 2010 by Atheneum Books for Young Readers<br>
+                    <strong>Awards:</strong> New York Times Bestseller, Multiple Coretta Scott King Award considerations<br>
+                    <strong>Recommended for:</strong> Ages 10-13, Grades 5-8<a href="#cite-5" class="cite-ref" id="ref-5-1" data-tooltip="Scholastic. 'Out of My Mind.' Scholastic Book Clubs. Accessed 18 May 2026.">[1]</a>
+                </div>
+                <p>This remarkable story was on the New York Times bestseller list for over three years and has impacted millions of readers with its brutally honest depiction of disability, inclusion, and the universal desire to be understood.</p>
+            </div>
+        </div>
+        <div id="author" class="page">
+            <div class="content-card">
+                <h2>Author Information</h2>
+                <div class="image-container author-photo">
+                    <img src="author.jpg" alt="Sharon M. Draper - Author Photo" loading="lazy" decoding="async">
+                </div>
+                <h3>Sharon M. Draper</h3>
+                <p>Sharon Mills Draper is an award-winning author, educator, speaker, poet, and National Teacher of the Year. Her career spans over three decades in education and literature.</p>
+                <div class="highlight-box">
+                    <strong>National Teacher of the Year</strong> - Recognized for excellence in education<br>
+                    <strong>Five-time Coretta Scott King Award Winner</strong> - Including awards for <em>Copper Sun</em> and <em>Forged by Fire</em><br>
+                    <strong>New York Times Bestselling Author</strong> - Over thirty novels published<br>
+                    <strong>Milken Educator Award Recipient</strong> (1997)
+                </div>
+                <h3>Educational Background</h3>
+                <p>Draper taught high school English for over twenty-five years before becoming a full-time author. She has degrees from Howard University School of Education and has received the Dean's Award from both Howard University and Pepperdine University.<a href="#cite-2" class="cite-ref" id="ref-2-1" data-tooltip="'Biography.' Sharon M. Draper, 2021.">[2]</a></p>
+                <h3>Literary Achievements</h3>
+                <ul>
+                    <li>Recipient of the Margaret Edwards Award for lifetime literary achievement</li>
+                    <li>YWCA Career Woman of Achievement</li>
+                    <li>Her novels focus on young adult experiences, particularly African-American youth</li>
+                    <li>Known for the Hazelwood High trilogy and the Out of My Mind series<a href="#cite-2" class="cite-ref" id="ref-2-2" data-tooltip="'Biography.' Sharon M. Draper, 2021.">[2]</a></li>
+                </ul>
+                <div class="quote">
+                    "What's right isn't always popular, and whats popular isn't always right."<a href="#cite-4" class="cite-ref" id="ref-4-1" data-tooltip="Goodreads. 'Sharon M. Draper Quotes.' Accessed 18 May 2026.">[3]</a>
+                </div>
+                <p>Draper's work consistently addresses important social issues including disability rights, education equity, and the power of perseverance. Her novel <em>Out of My Mind</em> was adapted into a Disney+ film in 2024, bringing Melody's story to an even wider audience.</p>
+            </div>
+        </div>
+        <div id="context" class="page">
+            <div class="content-card">
+                <h2>Contextual Information</h2>
+                <div class="image-grid">
+                    <div class="image-container has-image"><img src="class.jpg" alt="Special Education Classroom 2000s" loading="lazy" decoding="async"></div>
+                    <div class="image-container has-image"><img src="talker.jpg" alt="Communication Device" loading="lazy" decoding="async"></div>
+                </div>
+                <h3>Historical and Social Context</h3>
+                <p><em>Out of My Mind</em> was published in 2010, a time of growth and change regarding societal views of disability, yet still a time of prejudice and second glances. The novel itself takes place during the awkward middle-ground of this century's view of disability, and both the educational and societal landscapes are reflective of that.<a href="#cite-1" class="cite-ref" id="ref-1-1" data-tooltip="Audible. 'Out of My Mind by Sharon M. Draper.' Audible Blog, 2026.">[4]</a></p>
+                <h3>Educational Context</h3>
+                <p>The story challenges several critical "norms" in special education:</p>
+                <ul>
+                    <li><strong>Inclusion vs. Segregation:</strong> The debate over whether students with disabilities should be educated in separate classrooms or included in general education</li>
+                    <li><strong>Assumptions about Intelligence:</strong> How physical disabilities are often mistakenly equated with cognitive limitations</li>
+                    <li><strong>Assistive Technology:</strong> The emergence of communication devices that give voice to non-verbal individuals</li>
+                    <li><strong>Implicit Bias of Disability:</strong> How average people treat and react to, even subconsciously, those with disabilities.</li>
+                </ul>
+                <h3>Cultural Significance</h3>
+                <p>Draper's novel came at a time when representation of disability in literature was few and far between. The book:</p>
+                <ul>
+                    <li>Challenges stereotypes about cerebral palsy and disability intelligence</li>
+                    <li>Encourages seeing the person beyond the disability</li>
+                    <li>Highlights the importance of access to communication</li>
+                    <li>Addresses bullying and social exclusion</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Impact:</strong> The novel has been used in schools all over the nation to promote empathy, understanding, and discussions about inclusion and accessibility.
+                </div>
+                <h3>Relevance</h3>
+                <p>The themes remain relevant today as schools and society fight towards true inclusion and as assistive technology continues to evolve, giving more people like Melody their own Medi-Talker.</p>
+            </div>
+        </div>
+        <div id="characters" class="page">
+            <div class="content-card">
+                <h2>Characters</h2>
+                <div class="qualities-intro">
+                    <strong>Character Traits:</strong> Each character is categorized by four traits. <strong>Mental</strong> (cognition, memory, intellect), <strong>Moral</strong> (values, ethics, integrity), <strong>Physical</strong> (body, abilities, limitations), and <strong>Social</strong> (relationships, interactions, community).
+                </div>
+                <div class="image-container has-image"><img src="inclusiveness.jpg" alt="Diverse students collaborating in an inclusive classroom" loading="lazy" decoding="async"></div>
+                <div class="character-full">
+                    <div class="character-full-header">
+                        <div class="character-full-avatar" aria-hidden="true">🌟</div>
+                        <div class="character-full-name"><h3>Melody Brooks</h3><span class="character-full-role">Protagonist • Age 11</span></div>
+                    </div>
+                    <p class="character-full-summary">An eleven-year-old girl with cerebral palsy, she cannot speak or walk but has an excellent memory and a brilliant mind. She fights every day to prove her intelligence and her place in a world unaccepting.</p>
+                    <div class="qualities-grid">
+                        <div class="quality-card quality-mental">
+                            <span class="quality-icon" aria-hidden="true">🧠</span><h4 class="quality-title">Mental</h4>
+                            <p class="quality-desc">She has a photographic memory, processes information extremely fast while being deeply <mark>analytical</mark> with the ability to comprehend language, music, and patterns with amazing clarity.</p>
+                        </div>
+                        <div class="quality-card quality-physical">
+                            <span class="quality-icon" aria-hidden="true">🏋🏻</span><h4 class="quality-title">Physical</h4>
+                            <p class="quality-desc"><mark>Vulnerable</mark> because of her physical condition, Melody relies on others for basic care despite being so mentally capable.</p>
+                        </div>
+                        <div class="quality-card quality-moral">
+                            <span class="quality-icon" aria-hidden="true">⚖️</span><h4 class="quality-title">Moral</h4>
+                            <p class="quality-desc">Because of her own situation, she is very <mark>empathetic</mark> towards others and fights for fairness.</p>
+                        </div>
+                        <div class="quality-card quality-social">
+                            <span class="quality-icon" aria-hidden="true">🤝</span><h4 class="quality-title">Social</h4>
+                            <p class="quality-desc">Melody seeks real connection and struggles with <mark>isolation</mark> whilst facing betrayal and true friendship.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="character-full">
+                    <div class="character-full-header">
+                        <div class="character-full-avatar" aria-hidden="true">👵</div>
+                        <div class="character-full-name"><h3>Mrs. Violet Valencia (Mrs. V)</h3><span class="character-full-role">Neighbor &amp; Advocate • Former Special Ed Teacher</span></div>
+                    </div>
+                    <p class="character-full-summary">A neighbor and an advocate, she is a former special education teacher who sees beyond Melody's appearance and into her vast ability.</p>
+                    <div class="qualities-grid">
+                        <div class="quality-card quality-mental">
+                            <span class="quality-icon" aria-hidden="true">🧠</span><h4 class="quality-title">Mental</h4>
+                            <p class="quality-desc">With the development of the initial talking board and the Medi-Talker, Mrs V. is exceptionally <mark>ingenious</mark> in creating brilliant solutions.</p>
+                        </div>
+                        <div class="quality-card quality-physical">
+                            <span class="quality-icon" aria-hidden="true">🏋🏻</span><h4 class="quality-title">Physical</h4>
+                            <p class="quality-desc">Always eager to help, she is very <mark>energetic.</mark></p>
+                        </div>
+                        <div class="quality-card quality-moral">
+                            <span class="quality-icon" aria-hidden="true">⚖️</span><h4 class="quality-title">Moral</h4>
+                            <p class="quality-desc">One of the few people who understand Melody, she is uniquely <mark>empathetic</mark> to the invisible internal struggle that Melody battles every day.</p>
+                        </div>
+                        <div class="quality-card quality-social">
+                            <span class="quality-icon" aria-hidden="true">🤝</span><h4 class="quality-title">Social</h4>
+                            <p class="quality-desc">Being patient, understanding, and calm, Mrs. V radiates a <mark>cordial</mark> presence, acting as a positive role model and inspiration for Melody.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="character-full">
+                    <div class="character-full-header">
+                        <div class="character-full-avatar" aria-hidden="true">👧</div>
+                        <div class="character-full-name"><h3>Rose Spencer</h3><span class="character-full-role">Classmate • Popular Student</span></div>
+                    </div>
+                    <p class="character-full-summary">A popular girl in Melody's class, she is Melody's first real friend and connection, but later reveals the effects of betrayal and fake friendship.</p>
+                    <div class="qualities-grid">
+                        <div class="quality-card quality-mental">
+                            <span class="quality-icon" aria-hidden="true">🧠</span><h4 class="quality-title">Mental</h4>
+                            <p class="quality-desc"><mark>Calculating</mark> and very socially aware, Rose grasps social dynamics well but often lets principles slip for convenience.</p>
+                        </div>
+                        <div class="quality-card quality-physical">
+                            <span class="quality-icon" aria-hidden="true">🏋🏻</span><h4 class="quality-title">Physical</h4>
+                            <p class="quality-desc"><mark>Privileged</mark> from being unburdened, Rose has a hard time fully understanding Melody's condition.</p>
+                        </div>
+                        <div class="quality-card quality-moral">
+                            <span class="quality-icon" aria-hidden="true">⚖️</span><h4 class="quality-title">Moral</h4>
+                            <p class="quality-desc"><mark>Inconsistent</mark> in her morals, Rose will show kindness and love at times but crumble relationships under pressure.</p>
+                        </div>
+                        <div class="quality-card quality-social">
+                            <span class="quality-icon" aria-hidden="true">🤝</span><h4 class="quality-title">Social</h4>
+                            <p class="quality-desc"><mark>Conformative</mark> to peer pressure, Rose will distance from Melody when seen as uncool.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="character-full">
+                    <div class="character-full-header">
+                        <div class="character-full-avatar" aria-hidden="true">💙</div>
+                        <div class="character-full-name"><h3>Diane Brooks</h3><span class="character-full-role">Mother • Primary Caregiver</span></div>
+                    </div>
+                    <p class="character-full-summary">As Melody's mother, Diane is Melody's rock and support; one of the few people who truly understand her.</p>
+                    <div class="qualities-grid">
+                        <div class="quality-card quality-mental">
+                            <span class="quality-icon" aria-hidden="true">🧠</span><h4 class="quality-title">Mental</h4>
+                            <p class="quality-desc">Similar to Mrs. V, Diane is exceptionally <mark>creative</mark> in creating solutions for Melody, as she has been by her side from day one.</p>
+                        </div>
+                        <div class="quality-card quality-physical">
+                            <span class="quality-icon" aria-hidden="true">🏋🏻</span><h4 class="quality-title">Physical</h4>
+                            <p class="quality-desc">Always taking care of Melody's needs and getting her in and out of wherever she goes, Diane is <mark>strong.</mark></p>
+                        </div>
+                        <div class="quality-card quality-moral">
+                            <span class="quality-icon" aria-hidden="true">⚖️</span><h4 class="quality-title">Moral</h4>
+                            <p class="quality-desc">Melody is never alone with her mother always being fiercely <mark>defensive</mark> for her daughter's dignity and encouraging her independence.</p>
+                        </div>
+                        <div class="quality-card quality-social">
+                            <span class="quality-icon" aria-hidden="true">🤝</span><h4 class="quality-title">Social</h4>
+                            <p class="quality-desc">Always speaking up and never settling,<mark> Diane</mark> is an advocate for Melody.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="quote">"Maybe I'm not so different from everyone else after all."<a href="#cite-3" class="cite-ref" id="ref-3-1" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></div>
+            </div>
+        </div>
+        <div id="setting" class="page">
+            <div class="content-card">
+                <h2>Setting</h2>
+                <div class="image-grid">
+                    <div class="image-container has-image"><img src="school.jpg" alt="2000s elementary school" loading="lazy" decoding="async"></div>
+                    <div class="image-container has-image"><img src="home.jpg" alt="Suburban Home" loading="lazy" decoding="async"></div>
+                </div>
+                <h3>Geographic Location</h3>
+                <p>The novel takes place in <strong>Ohio</strong>, in a modern-day American suburban community. While the specific city is not known, the setting shows a typical American town with both inclusive and segregated education and facilities.<a href="#cite-7" class="cite-ref" id="ref-7-1" data-tooltip="SparkNotes. 'Out of My Mind: Plot Overview.' Accessed 27 May 2026.">[5]</a></p>
+                <h3>Time Period</h3>
+                <p>The story is set in the <strong>early 2000s</strong> (approximately 2002), when Melody is eleven years old and in fifth grade. This period is significant because:</p>
+                <ul>
+                    <li>Assistive technology in communication was growing but was still relatively new</li>
+                    <li>Inclusive schooling was more common but not yet universal</li>
+                    <li>Society's understanding of disability was advancing but was still limited by stereotypes</li>
+                </ul>
+                <h3>Primary Settings</h3>
+                <h3>1. Spaulding Street Elementary School</h3>
+                <p>This is the educational setting where Melody spends her school days. The school features:</p>
+                <ul>
+                    <li><strong>Room H-5:</strong> This is the special education classroom where Melody spends her initial years, and is filled with students with various disabilities</li>
+                    <li><strong>Inclusion Classrooms:</strong> Where Melody is eventually brought along for some classes</li>
+                </ul>
+                <h3>2. Melody's Home</h3>
+                <p>Her home is a warm, loving environment where Melody feels safe and supported. The home has:</p>
+                <ul>
+                    <li>Her bedroom, filled with books (her love)</li>
+                    <li>A living room and a kitchen where Melody interacts with her family</li>
+                    <li>The safety of a place where she can be herself without judgment</li>
+                </ul>
+                <h3>3. Mrs. V's House</h3>
+                <p>The home of Melody's neighbor and secondary care-giver. She receives education and tremendous support here.</p>
+                <div class="highlight-box">
+                    <strong>Symbolism:</strong> The contrast of Melody's vast and expansive inner world and the limiting spaces she physically occupies nudges towards a central theme: that intelligence and worth cannot be judged by appearance or physical ability.
+                </div>
+                <h3>Atmospheric Details</h3>
+                <p>Draper uses strong imagery to create vivid scenarios, particularly focusing on:</p>
+                <ul>
+                    <li>Conversation that Melody hears but cannot respond to</li>
+                    <li>The frustration of physical limitations in inaccessible buildings</li>
+                    <li>The safety of inclusive spaces versus the uncertainty of exclusion</li>
+                </ul>
+            </div>
+        </div>
+        <div id="tone" class="page">
+            <div class="content-card">
+                <h2>Tone</h2>
+                <div class="highlight-box"><strong>Main Attitude:</strong> <em>Alienation,</em> the bridge between Melody's inner mind and how the world sees her.</div>
+                <p>The leading tone of <em>Out of My Mind</em> is one of <strong>alienation</strong>. In the beginning, Draper creates a strong feeling of isolation. Melody is mentally present, being sharp, observant, and brilliant, yet treated as incapable because of her physical disability. This divide between reality and stereotypes develops the novel's heavy emotional weight.</p>
+                <div class="quote">"There was the team, and there was me, and we were in the same room. But we weren't quite a team."<a href="#cite-6" class="cite-ref" id="ref-6-1" data-tooltip="SparkNotes. 'Out of My Mind: Famous Quotes Explained.' Accessed 27 May 2026.">[6]</a></div>
+                <h3>How It Began</h3>
+                <ul>
+                    <li><strong>In the school:</strong> Teachers talked <em>about</em> Melody, not <em>to</em> her, and lessons in H-5 are simplified despite her photographic memory and sharp mind.</li>
+                    <li><strong>In social spaces:</strong> Peers ignore her being there or act kind without any connection</li>
+                    <li><strong>In narrative voice:</strong> Melody's internal monologue contrasts starkly with her external silence</li>
+                </ul>
+                <div class="image-container has-image"><img src="excluded.jpg" alt="Visual metaphor for alienation: empty classroom, Melody observing from the edge" loading="lazy" decoding="async"></div>
+                <h3>How This Affects The Book</h3>
+                <p>This tone is more than fluff or texture: it has meaning. Because readers can <em>feel</em> Melody's alienation, we're challenged to examine our own thoughts on ability, intelligence, and value. The novel makes a clear point: <em>Who gets to be seen? Who gets to be heard?</em></p>
+                <div class="highlight-box"><strong>The Tracks Diverge:</strong> After Melody got the Medi-Talker and the ability to communicate, alienation didn't vanish completely, but existed parallel to Melody's life. As the tone developed, it developed defiance, resilience, and finally hard-won hope. The entire time, the feeling of being misunderstood lingered, and the story remained honest and strong.</div>
+            </div>
+        </div>
+        <div id="pov" class="page">
+            <div class="content-card">
+                <h2>Point of View</h2>
+                <div class="image-container has-image"><img src="perspective.jpg" alt="Inside Melody's Mind - First Person Perspective" loading="lazy" decoding="async"></div>
+                <p><em>Out of My Mind</em> is told by <strong>Melody Brooks</strong> herself, in the <strong>first-person</strong> point of view and the <strong>past tense</strong>. This narrative choice is crucial to the novel: it places readers directly inside Melody's consciousness, overriding the assumptions others make about her from the outside.</p>
+                <h3>What It Reveals</h3>
+                <p>Because it is told in Melody's own voice, we are granted unfiltered access to all dimensions of her reality:</p>
+                <ul>
+                    <li><strong>Her Thoughts:</strong> Her monologue is sharp, observant, and witty, and most importantly, it is loud, standing in contrast to her silence on the outside.</li>
+                    <li><strong>Her Abilities:</strong> Her photographic memory, rapid comprehension, and analytical mind: all capabilities always overlooked by teachers and peers.</li>
+                    <li><strong>Her Frustrations:</strong> The anger of being underestimated, the anger of being ignored, and the alienation when the world judges her by her body rather than her brain.</li>
+                </ul>
+                <div class="quote">"I have never spoken one single word. I am almost eleven years old."<a href="#cite-3" class="cite-ref" id="ref-3-2" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></div>
+                <div class="highlight-box"><strong>How This Affects The Story:</strong> The first-person point of view depicts Melody as a person rather than an object of pity. As readers direct access to her mind, Draper ensures that we do not confuse her physical limitations with her intellectual ability. The narrative becomes the voice she doesn't have.</div>
+                <p>Because it is written in the past tense, Melody reflects on both raw childhood emotion and past mistakes. This allows the story to explore vulnerability and insight while preserving her voice's authenticity.</p>
+            </div>
+        </div>
+        <div id="plot" class="page">
+            <div class="content-card">
+                <h2>Plot</h2>
+                <div class="image-grid">
+                    <div class="image-container has-image"><img src="voice.jpg" alt="Melody's Journey - Finding Her Voice" loading="lazy" decoding="async"></div>
+                    <div class="image-container has-image"><img src="meditalker.jpg" alt="The Medi-Talker Communication Device" loading="lazy" decoding="async"></div>
+                </div>
+                <h3>Exposition</h3>
+                <p>The novel opens by immediately establishing the biggest antagonist throughout the book: eleven-year-old Melody Brooks is physically unable to speak or move freely (p. 11). While her parents take care of her daily physical care, the narrative shows her true nature: mentally sharp, observant, and extremely competent. Her body traps her, but she is smart.<a href="#cite-3" class="cite-ref" id="ref-3-3" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
+                <h3>Rising Action</h3>
+                <p>Melody's journey is driven by her experience with the medical (p. 18) and educational (p. 27) systems, both of which assume her disability is immediately intellectual incapacity. As her inability to communicate becomes a central source of tension, she meets Mrs. V, a neighbor and former teacher who sees her Melody for who she is. A major turning point occurs when Melody receives the Medi-Talker (p. 138), granting her the ability to finally communicate. Suddenly, those around her begin to perceive her as an actual person (p. 143). Because of her smarts, she auditions for the academic Whiz Kids team and earns a spot, defying the beliefs of others (p. 190), and secures a place on the trip to Washington, D.C.<a href="#cite-3" class="cite-ref" id="ref-3-4" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
+                <h3>Climax</h3>
+                <p>The narrative reaches a climax with two conflicts: the Whiz Kids and Penny. The Whiz Kids team leaves for Washington, D.C. without Melody after a silent, collective agreement not to call her: a deliberate betrayal led, surprisingly, by Rose (p. 291). This soul-shattering experience is compounded by Penny's near-death experience (p. 276), which takes away Melody's feelings of safety and forces her to face vulnerability.<a href="#cite-3" class="cite-ref" id="ref-3-5" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
+                <h3>Falling Action</h3>
+                <p>After the Whiz Kids team gets back, Rose and the team offer apologies out of social guilt more than genuine sincerity. Melody is left to navigate the dissolution of her trust, fighting with tarnished self-worth after struggling so hard to be seen, only to be discarded by the very people who claimed to support her.<a href="#cite-3" class="cite-ref" id="ref-3-6" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
+                <h3>Resolution</h3>
+                <p>Penny lives with no major injury, and peace is brought to the Brooks household (for once). More significantly, Melody comes to a profound internal conclusion: despite the inability of the world to understand and see her, she knows to her core that she is human. The novel concludes with a strong declaration of self-peace and freedom.<a href="#cite-3" class="cite-ref" id="ref-3-7" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
+                <div class="highlight-box"><strong>Central Conflict:</strong> The plot is driven by the contrast between Melody's internal ability and society's external interpretation. Every stage of her journey, from learning trust to ultimately being shattered, asks strong questions about who defines human worth?</div>
+            </div>
+        </div>
+        <div id="citations" class="page">
+            <div class="works-cited">
+                <h2>Works Cited</h2>
+                <p class="citation-legend">Badge numbers match the in-text citations. Each badge returns to the most recently followed reference.</p>
+                <div class="citation" id="cite-1">
+                    <a href="#ref-1-1" class="cite-badge" aria-label="Back to in-text citation 4" title="Back to in-text citation [4]">4</a>
+                    Audible. "Out of My Mind by Sharon M. Draper." <em>Audible Blog</em>, 2026, <a class="citation-source-link" href="https://www.audible.com/blog/summary-out-of-my-mind-by-sharon-m-draper">audible.com/blog/summary-out-of-my-mind-by-sharon-m-draper</a>. Accessed 19 May 2026.
+                </div>
+                <div class="citation" id="cite-2">
+                    <a href="#ref-2-1" class="cite-badge" aria-label="Back to in-text citation 2" title="Back to in-text citation [2]">2</a>
+                    "Biography." <em>Sharon M. Draper</em>, 2021, <a class="citation-source-link" href="https://www.sharondraper.com/biography">sharondraper.com/biography</a>.
+                </div>
+                <div class="citation" id="cite-3">
+                    <a href="#ref-3-1" class="cite-badge" aria-label="Back to in-text citation 7" title="Back to in-text citation [7]">7</a>
+                    Draper, Sharon M. <em>Out of My Mind</em>. Simon &amp; Schuster, 9 Mar. 2010.
+                </div>
+                <div class="citation" id="cite-4">
+                    <a href="#ref-4-1" class="cite-badge" aria-label="Back to in-text citation 3" title="Back to in-text citation [3]">3</a>
+                    Goodreads. "Sharon M. Draper Quotes (Author of Out of My Mind)." <em>Goodreads</em>, <a class="citation-source-link" href="https://www.goodreads.com/author/quotes/51942.Sharon_M_Draper">goodreads.com/author/quotes/51942.Sharon_M_Draper</a>. Accessed 18 May 2026.
+                </div>
+                <div class="citation" id="cite-5">
+                    <a href="#ref-5-1" class="cite-badge" aria-label="Back to in-text citation 1" title="Back to in-text citation [1]">1</a>
+                    Scholastic. "Out of My Mind." <em>Scholastic Book Clubs</em>, <a class="citation-source-link" href="https://clubs.scholastic.com/out-of-my-mind/9781416971719-rco-us.html">clubs.scholastic.com/out-of-my-mind/9781416971719-rco-us.html</a>. Accessed 18 May 2026.
+                </div>
+                <div class="citation" id="cite-6">
+                    <a href="#ref-6-1" class="cite-badge" aria-label="Back to in-text citation 6" title="Back to in-text citation [6]">6</a>
+                    SparkNotes. "Out of My Mind: Famous Quotes Explained." <em>SparkNotes</em>, <a class="citation-source-link" href="https://www.sparknotes.com/lit/out-of-my-mind/quotes/">sparknotes.com/lit/out-of-my-mind/quotes/</a>. Accessed 27 May 2026.
+                </div>
+                <div class="citation" id="cite-7">
+                    <a href="#ref-7-1" class="cite-badge" aria-label="Back to in-text citation 5" title="Back to in-text citation [5]">5</a>
+                    ---. "Out of My Mind: Plot Overview." <em>SparkNotes</em>, <a class="citation-source-link" href="https://www.sparknotes.com/lit/out-of-my-mind/summary/">sparknotes.com/lit/out-of-my-mind/summary/</a>. Accessed 27 May 2026.
+                </div>
+            </div>
+        </div>
+        <div class="last-updated">Last updated: August 2026 ✦ Thank you for reading Melody's story</div>
+    </main>
+    <footer>
+        <p>2026 Educational Resource | Out of My Mind by Sharon M. Draper</p>
+        <p>A Literary Journal ✦ Handcrafted with care ✦</p>
+    </footer>
+    <script>
+        const contrastToggle = document.getElementById('contrastToggle');
+        const dyslexiaToggle = document.getElementById('dyslexiaToggle');
+        const reduceMotionToggle = document.getElementById('reduceMotionToggle');
+        function readPreference(key) {
+            try {
+                const value = localStorage.getItem(key);
+                return value === null ? null : value === 'true';
+            } catch { return null; }
+        }
+        function writePreference(key, value) {
+            try { localStorage.setItem(key, String(value)); }
+            catch { /* Preferences still work for this visit when storage is unavailable. */ }
+        }
+        function setToggleState(button, className, enabled) {
+            document.body.classList.toggle(className, enabled);
+            button.classList.toggle('active', enabled);
+            button.setAttribute('aria-pressed', String(enabled));
+        }
+        const reducedMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+        setToggleState(contrastToggle, 'high-contrast', readPreference('highContrast') === true);
+        setToggleState(dyslexiaToggle, 'dyslexia-friendly', readPreference('dyslexiaFriendly') === true);
+        function syncReducedMotion() {
+            const enabledBySystem = reducedMotionPreference.matches;
+            const enabled = enabledBySystem || readPreference('reduceMotion') === true;
+            setToggleState(reduceMotionToggle, 'reduce-motion', enabled);
+            reduceMotionToggle.disabled = enabledBySystem;
+            reduceMotionToggle.title = enabledBySystem ? 'Reduced motion enabled by system settings' : 'Reduce motion';
+        }
+        syncReducedMotion();
+        reducedMotionPreference.addEventListener('change', syncReducedMotion);
+        contrastToggle.addEventListener('click', () => {
+            const enabled = !document.body.classList.contains('high-contrast');
+            setToggleState(contrastToggle, 'high-contrast', enabled);
+            writePreference('highContrast', enabled);
+        });
+        dyslexiaToggle.addEventListener('click', () => {
+            const enabled = !document.body.classList.contains('dyslexia-friendly');
+            setToggleState(dyslexiaToggle, 'dyslexia-friendly', enabled);
+            writePreference('dyslexiaFriendly', enabled);
+        });
+        reduceMotionToggle.addEventListener('click', () => {
+            const enabled = !document.body.classList.contains('reduce-motion');
+            setToggleState(reduceMotionToggle, 'reduce-motion', enabled);
+            writePreference('reduceMotion', enabled);
+        });
+        const pageIds = new Set(['home', 'author', 'context', 'characters', 'setting', 'tone', 'pov', 'plot', 'citations']);
+        const lastReferenceByCitation = new Map();
+        function scrollBehavior() { return document.body.classList.contains('reduce-motion') ? 'auto' : 'smooth'; }
+        function activatePage(pageId) {
+            const targetPage = document.getElementById(pageId);
+            if (!targetPage || !targetPage.classList.contains('page')) return null;
+            document.querySelectorAll('.page').forEach(page => page.classList.toggle('active', page === targetPage));
+            document.querySelectorAll('#main-nav .nav-link[data-page]').forEach(link => {
+                const active = link.dataset.page === pageId;
+                link.classList.toggle('active', active);
+                if (active) link.setAttribute('aria-current', 'location');
+                if (!active) link.removeAttribute('aria-current');
+            });
+            document.body.style.backgroundColor = getComputedStyle(targetPage).backgroundColor;
+            return targetPage;
+        }
+        function focusAndScroll(target, targetPage) {
+            const isPage = target === targetPage;
+            const focusTarget = isPage ? targetPage.querySelector('h1, h2') : target;
+            requestAnimationFrame(() => {
+                target.scrollIntoView({ behavior: scrollBehavior(), block: isPage ? 'start' : 'center' });
+                if (focusTarget) {
+                    focusTarget.setAttribute('tabindex', '-1');
+                    focusTarget.focus({ preventScroll: true });
+                }
+            });
+        }
+        function navigateToTarget(targetId, { updateHistory = true, focus = true } = {}) {
+            const target = document.getElementById(targetId);
+            if (!target) return false;
+            const targetPage = target.classList.contains('page') ? target : target.closest('.page');
+            if (!targetPage || !pageIds.has(targetPage.id)) return false;
+            activatePage(targetPage.id);
+            if (updateHistory && location.hash !== `#${targetId}`) history.pushState(null, '', `#${targetId}`);
+            if (focus) focusAndScroll(target, targetPage);
+            return true;
+        }
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', event => {
+                if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+                event.preventDefault();
+                navigateToTarget(link.getAttribute('href').slice(1));
+            });
+        });
+        document.querySelectorAll('.cite-ref').forEach(link => {
+            const tooltip = link.dataset.tooltip;
+            if (tooltip) {
+                link.setAttribute('aria-label', `Citation ${link.textContent.trim()}: ${tooltip}`);
+                link.setAttribute('title', tooltip);
+            }
+            link.addEventListener('click', event => {
+                if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+                event.preventDefault();
+                const citationId = link.getAttribute('href').slice(1);
+                lastReferenceByCitation.set(citationId, link.id);
+                navigateToTarget(citationId);
+            });
+        });
+        document.querySelectorAll('.cite-badge').forEach(link => {
+            link.addEventListener('click', event => {
+                if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+                event.preventDefault();
+                const citationId = link.closest('.citation')?.id;
+                navigateToTarget(lastReferenceByCitation.get(citationId) || link.getAttribute('href').slice(1));
+            });
+        });
+        // Malformed percent escapes must not break progressive enhancement or history navigation.
+        function hashTarget() {
+            try { return decodeURIComponent(location.hash.slice(1)) || 'home'; }
+            catch { return 'home'; }
+        }
+        function followHash() {
+            if (!navigateToTarget(hashTarget(), { updateHistory: false })) navigateToTarget('home', { updateHistory: false });
+        }
+        window.addEventListener('hashchange', followHash);
+        window.addEventListener('popstate', followHash);
+        const nav = document.getElementById('main-nav');
+        let scrollUpdatePending = false;
+        function updateNavShadow() {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+            scrollUpdatePending = false;
+        }
+        window.addEventListener('scroll', () => {
+            if (!scrollUpdatePending) {
+                scrollUpdatePending = true;
+                requestAnimationFrame(updateNavShadow);
+            }
+        }, { passive: true });
+        // Only hide inactive sections after their navigation is ready.
+        if (!navigateToTarget(hashTarget(), { updateHistory: false, focus: false })) activatePage('home');
+        document.documentElement.classList.replace('no-js', 'js');
+        const resizeObserver = new ResizeObserver(() => {
+            document.documentElement.style.setProperty('--section-offset', `${nav.offsetHeight + 20}px`);
+        });
+        resizeObserver.observe(nav);
+        updateNavShadow();
+        document.addEventListener('keydown', event => {
+            if (event.altKey && !event.ctrlKey && !event.metaKey && event.key >= '1' && event.key <= '9') {
+                event.preventDefault();
+                navigateToTarget([...pageIds][Number(event.key) - 1]);
+            }
+        });
+    </script>
+</body>
+</html>
