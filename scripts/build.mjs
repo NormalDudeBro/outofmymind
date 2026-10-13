@@ -215,7 +215,7 @@ export function renderSite(data, lang, algebra) {
   <div class="wrap">
   <header>
     <div class="masthead"><p class="wordmark">Joltlined</p><p class="masthead-note">Notes &amp; literary analysis</p></div>
-    <nav class="subjects" aria-label="Subjects"><a href="index.html">Home</a><a href="ap-lang.html"${lang ? ' aria-current="page"' : ''}>AP Lang Notes</a><a href="ap-world.html"${study.length ? '' : ' aria-current="page"'}>AP World History Notes</a><a href="algebra-2.html"${algebra ? ' aria-current="page"' : ''}>Algebra 2 Notes</a><a href="out-of-my-mind.html">Out Of My Mind Analysis</a></nav>
+    <nav class="subjects" aria-label="Subjects"><a href="index.html">Home</a><a href="ap-lang.html"${lang ? ' aria-current="page"' : ''}>AP Lang Notes</a><a href="ap-world.html"${study.length ? '' : ' aria-current="page"'}>AP World History Notes</a><a href="algebra-2.html"${algebra ? ' aria-current="page"' : ''}>Algebra 2 Notes</a><a href="out-of-my-mind.html">Out Of My Mind Analysis</a><a href="of-mice-and-men.html">Of Mice And Men Analysis</a></nav>
     <div class="notes-intro">
     <p class="eyebrow">${algebra ? 'Algebra 2 / Unit 1B' : lang ? 'AP English Language / Unit 1' : 'AP World History / Units 1 &amp; 2'}</p>
     <h1>${title}</h1>
@@ -290,6 +290,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
       mkdirSync(resolve(target, 'styles'), { recursive: true });
       copyFileSync(resolve(root, 'styles', 'site.css'), resolve(target, 'styles', 'site.css'));
       copyFileSync(resolve(root, 'out-of-my-mind.html'), resolve(target, 'out-of-my-mind.html'));
+      copyFileSync(resolve(root, 'of-mice-and-men.html'), resolve(target, 'of-mice-and-men.html'));
       ['cover', 'author', 'class', 'talker', 'inclusiveness', 'school', 'home', 'excluded', 'perspective', 'voice', 'meditalker'].forEach(image => copyFileSync(resolve(root, `${image}.jpg`), resolve(target, `${image}.jpg`)));
       copyFileSync(resolve(root, 'notes', 'ap-lang.txt'), resolve(target, 'notes', 'ap-lang.txt'));
       mkdirSync(resolve(target, 'notes', 'Colored'), { recursive: true });
@@ -299,6 +300,6 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
         copyFileSync(resolve(root, 'notes', 'algebra-2', folder, `${lesson.file}.txt`), resolve(target, 'notes', 'algebra-2', folder, `${lesson.file}.txt`));
       }));
     }
-    console.log(`Built ${target}: Home, World History (28 pages), AP Lang (4 pages), Algebra 2 (16 pages), and restored literary analysis; offline downloads and previews preserved.`);
+    console.log(`Built ${target}: Home, World History (28 pages), AP Lang (4 pages), Algebra 2 (16 pages), restored Out of My Mind analysis, and the Of Mice and Men companion; offline downloads and previews preserved.`);
   });
 }

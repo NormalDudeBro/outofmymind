@@ -4,7 +4,7 @@ export function renderHome() {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An academic collection of AP English Language, AP World History, and Algebra 2 notes, alongside a literary analysis of Sharon M. Draper's Out of My Mind.">
+  <meta name="description" content="An academic collection of AP English Language, AP World History, and Algebra 2 notes, alongside literary analyses of Sharon M. Draper's Out of My Mind and John Steinbeck's Of Mice and Men.">
   <title>Joltlined | Notes &amp; Literary Analysis</title>
   <link rel="stylesheet" href="styles/site.css">
   <style>
@@ -56,7 +56,7 @@ export function renderHome() {
   <div class="wrap">
     <header>
       <div class="masthead"><p class="wordmark">Joltlined</p><p class="masthead-note">Notes &amp; literary analysis</p></div>
-      <nav class="subjects" aria-label="Subjects"><a href="index.html" aria-current="page">Home</a><a href="ap-lang.html">AP Lang Notes</a><a href="ap-world.html">AP World History Notes</a><a href="algebra-2.html">Algebra 2 Notes</a><a href="out-of-my-mind.html">Out Of My Mind Analysis</a></nav>
+      <nav class="subjects" aria-label="Subjects"><a href="index.html" aria-current="page">Home</a><a href="ap-lang.html">AP Lang Notes</a><a href="ap-world.html">AP World History Notes</a><a href="algebra-2.html">Algebra 2 Notes</a><a href="out-of-my-mind.html">Out Of My Mind Analysis</a><a href="of-mice-and-men.html">Of Mice And Men Analysis</a></nav>
     </header>
     <main id="collection" tabindex="-1">
       <div class="introduction">
@@ -89,6 +89,12 @@ export function renderHome() {
             <p class="reading-meta">Sharon M. Draper &middot; A literary journal</p>
             <h3 class="reading-title" id="reading-title">Out Of My Mind Analysis</h3>
             <p class="reading-description">Explore Melody's story through character, context, perspective, and the question of what it means to be heard.</p>
+            <div class="reading-action"><span>Read the analysis</span><span class="arrow" aria-hidden="true">&rarr;</span></div>
+          </a>
+          <a class="reading-link" href="of-mice-and-men.html" aria-labelledby="mice-title">
+            <p class="reading-meta">John Steinbeck &middot; An active reading companion</p>
+            <h3 class="reading-title" id="mice-title">Of Mice And Men Analysis</h3>
+            <p class="reading-description">Follow George and Lennie through author, context, characters, setting, narration, attitude, theme, and every field of the Active Reading Pamphlet.</p>
             <div class="reading-action"><span>Read the analysis</span><span class="arrow" aria-hidden="true">&rarr;</span></div>
           </a>
         </section>

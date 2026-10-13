@@ -15,7 +15,7 @@ assert.equal(new Set(ids).size, ids.length, 'unique IDs');
 const links = [...html.matchAll(/\shref="([^"]+)"/g)].map(match => match[1]);
 links.forEach(link => {
   if (link === 'styles/site.css') return assert.ok(existsSync(resolve(root, link)), 'local stylesheet exists');
-  if (['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html'].includes(link)) return assert.ok(existsSync(resolve(root, link)));
+  if (['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html', 'of-mice-and-men.html'].includes(link)) return assert.ok(existsSync(resolve(root, link)));
   if (link.startsWith('#')) return assert.ok(ids.includes(link.slice(1)), `fragment ${link}`);
   if (link.startsWith('notes/')) return assert.match(link, /^notes\/unit-[12]\/(Colored\/)?[12]\.[1-7]-[a-z-]+\.txt$/);
   assert.match(link, /^data:text\/plain;charset=utf-8;base64,[A-Za-z0-9+/]+=*$/);

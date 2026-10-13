@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url';
 import { renderHome } from '../scripts/home.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const pages = ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html'];
-const labels = ['Home', 'AP Lang Notes', 'AP World History Notes', 'Algebra 2 Notes', 'Out Of My Mind Analysis'];
+const pages = ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html', 'of-mice-and-men.html'];
+const labels = ['Home', 'AP Lang Notes', 'AP World History Notes', 'Algebra 2 Notes', 'Out Of My Mind Analysis', 'Of Mice And Men Analysis'];
 const home = readFileSync(resolve(root, 'index.html'), 'utf8');
 const stylesheet = readFileSync(resolve(root, 'styles/site.css'), 'utf8');
 assert.doesNotMatch(stylesheet, /@import|url\(\s*['"]?(?:[a-z][a-z\d+.-]*:|\/)/i, 'shared styles need no remote resources');
@@ -37,7 +37,7 @@ for (const page of pages) {
   const nav = [...html.matchAll(/<nav\b([^>]*)>([\s\S]*?)<\/nav>/g)].find(match => /\bclass="[^"]*\bsubjects\b/.test(match[1]))?.[2];
   assert.ok(nav, `${page}: shared subject navigation`);
   const links = [...nav.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)];
-  assert.deepEqual(links.map(match => match[1].match(/\bhref="([^"]+)"/)?.[1]), pages, `${page}: five relative navigation paths`);
+  assert.deepEqual(links.map(match => match[1].match(/\bhref="([^"]+)"/)?.[1]), pages, `${page}: six relative navigation paths`);
   assert.deepEqual(links.map(match => match[2].replace(/<[^>]*>/g, '').trim()), labels, `${page}: accessible navigation labels`);
   assert.deepEqual(links.filter(match => /\baria-current="page"/.test(match[1])).map(match => match[1].match(/\bhref="([^"]+)"/)?.[1]), [page], `${page}: only own page is current`);
 
@@ -73,4 +73,4 @@ for (const page of pages) {
   }
 }
 
-console.log('PASS: reproducible Home, four collection destinations, five-page shared stylesheet and relative navigation/current state, unique IDs, valid fragments, local assets, no Home JavaScript or remote fonts.');
+console.log('PASS: reproducible Home, five collection destinations, six-page shared stylesheet and relative navigation/current state, unique IDs, valid fragments, local assets, no Home JavaScript or remote fonts.');

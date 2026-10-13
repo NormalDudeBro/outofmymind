@@ -68,18 +68,18 @@ for (const width of [375, 1280]) {
 }
 
 for (const width of [375, 1280]) {
-  test(`all five pages share Home academic chrome at ${width}px`, async ({ page }) => {
+  test(`all six pages share Home academic chrome at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 812 });
     const presentations = [];
-    for (const path of ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html']) {
+    for (const path of ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html', 'of-mice-and-men.html']) {
       await page.goto(`/${path}`);
       await expect(page.locator('link')).toHaveCount(1);
       await expect(page.locator('link')).toHaveAttribute('rel', 'stylesheet');
       await expect(page.locator('link')).toHaveAttribute('href', 'styles/site.css');
       await expect(page.locator('.masthead .wordmark')).toHaveText('Joltlined');
       await expect(page.locator('.masthead-note')).toHaveText('Notes & literary analysis');
-      expect(await page.locator('.subjects a').allTextContents()).toEqual(['Home', 'AP Lang Notes', 'AP World History Notes', 'Algebra 2 Notes', 'Out Of My Mind Analysis']);
-      expect(await page.locator('.subjects a').evaluateAll(links => links.map(link => link.getAttribute('href')))).toEqual(['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html']);
+      expect(await page.locator('.subjects a').allTextContents()).toEqual(['Home', 'AP Lang Notes', 'AP World History Notes', 'Algebra 2 Notes', 'Out Of My Mind Analysis', 'Of Mice And Men Analysis']);
+      expect(await page.locator('.subjects a').evaluateAll(links => links.map(link => link.getAttribute('href')))).toEqual(['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html', 'of-mice-and-men.html']);
       presentations.push(await page.evaluate(() => {
         const style = selector => {
           const value = getComputedStyle(document.querySelector(selector));

@@ -9,7 +9,8 @@ const subjects = [
   { path: 'ap-lang.html', label: 'AP Lang Notes', heading: 'AP Lang Unit 1: Rhetorical Analysis' },
   { path: 'ap-world.html', label: 'AP World History Notes', heading: 'AP World History Notes' },
   { path: 'algebra-2.html', label: 'Algebra 2 Notes', heading: 'Algebra 2 Unit 1B: Relations and Functions' },
-  { path: 'out-of-my-mind.html', label: 'Out Of My Mind Analysis', heading: 'Out of My Mind' }
+  { path: 'out-of-my-mind.html', label: 'Out Of My Mind Analysis', heading: 'Out of My Mind' },
+  { path: 'of-mice-and-men.html', label: 'Of Mice And Men Analysis', heading: 'Of Mice and Men' }
 ];
 
 for (const width of [375, 1280]) {
@@ -81,7 +82,7 @@ for (const width of [375, 1280]) {
       }
     }
     await page.keyboard.press('Enter');
-    await expect(page.getByRole('heading', { name: 'Out of My Mind', level: 1, exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: subjects.at(-1).heading, level: 1, exact: true })).toBeVisible();
     await page.locator('.subjects').getByRole('link', { name: 'Home', exact: true }).focus();
     await page.keyboard.press('Enter');
     await expect(page.locator('main h1')).toHaveText(subjects[0].heading);
@@ -117,7 +118,7 @@ for (const width of [375, 1280]) {
   });
 }
 
-test('Home and all four destinations work over HTTP and file:// without JavaScript', async ({ browser }) => {
+test('Home and all five destinations work over HTTP and file:// without JavaScript', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   for (const url of [

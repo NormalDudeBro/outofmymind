@@ -4,7 +4,8 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const pages = ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html'];
+const pages = ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html', 'of-mice-and-men.html'];
+const sectionsPerPage = { 'out-of-my-mind.html': 9, 'of-mice-and-men.html': 12 };
 
 // Compare the shared shell, not the intentionally different content headings or note inks.
 async function shell(page) {
@@ -42,7 +43,7 @@ async function shell(page) {
 }
 
 for (const width of [375, 1280]) {
-  test(`all five pages share Home's academic shell at ${width}px`, async ({ page }) => {
+  test(`all six pages share Home's academic shell at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 812 });
     const failures = [];
     const requests = [];
@@ -75,9 +76,9 @@ for (const width of [375, 1280]) {
       expect(await shell(page), `${path}: same computed shell as Home`).toEqual(home);
       for (const direction of ['ltr', 'rtl']) {
         await page.evaluate(direction => document.documentElement.dir = direction, direction);
-        if (path === 'out-of-my-mind.html') {
+        if (sectionsPerPage[path]) {
           const sections = await page.locator('#main-nav a').evaluateAll(links => links.map(link => link.getAttribute('href')));
-          expect(sections).toHaveLength(9);
+          expect(sections).toHaveLength(sectionsPerPage[path]);
           for (const href of sections) {
             await page.locator(`#main-nav a[href="${href}"]`).click();
             await expect(page.locator(`.page${href}`)).toBeVisible();

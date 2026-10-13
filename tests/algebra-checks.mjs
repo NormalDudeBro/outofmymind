@@ -51,15 +51,15 @@ assert.doesNotMatch(readFileSync(resolve(root, 'styles/site.css'), 'utf8'), /@im
 const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
 assert.equal(new Set(ids).size, ids.length, 'unique IDs');
 [...html.matchAll(/href="#([^"]+)"/g)].forEach(match => assert.ok(ids.includes(match[1]), `fragment ${match[1]}`));
-const pages = ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html'];
+const pages = ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html', 'of-mice-and-men.html'];
 for (const page of pages) {
   const pageHTML = readFileSync(resolve(root, page), 'utf8');
   assert.deepEqual(pageHTML.match(/<link\b[^>]*>/gi) ?? [], ['<link rel="stylesheet" href="styles/site.css">'], `${page}: exactly one shared local stylesheet`);
   const navigation = pageHTML.match(/<nav\b[^>]*\bclass="[^"]*\bsubjects\b[^"]*"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
   assert.ok(navigation, 'subject navigation exists');
   const anchors = [...navigation.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)];
-  assert.deepEqual(anchors.map(match => match[1].match(/\bhref="([^"]+)"/)?.[1]), pages, 'all five navigation targets in DOM order');
-  assert.deepEqual(anchors.map(match => match[2].trim()), ['Home', 'AP Lang Notes', 'AP World History Notes', 'Algebra 2 Notes', 'Out Of My Mind Analysis'], 'exact capitalized navigation labels');
+  assert.deepEqual(anchors.map(match => match[1].match(/\bhref="([^"]+)"/)?.[1]), pages, 'all six navigation targets in DOM order');
+  assert.deepEqual(anchors.map(match => match[2].trim()), ['Home', 'AP Lang Notes', 'AP World History Notes', 'Algebra 2 Notes', 'Out Of My Mind Analysis', 'Of Mice And Men Analysis'], 'exact capitalized navigation labels');
   assert.deepEqual(anchors.filter(match => /\baria-current="page"/.test(match[1])).map(match => match[1].match(/\bhref="([^"]+)"/)?.[1]), [page], 'only current page is active');
 }
 const downloads = [...html.matchAll(/href="data:text\/plain;charset=utf-8;base64,([A-Za-z0-9+/]+=*)" download="([^"]+)"/g)];
