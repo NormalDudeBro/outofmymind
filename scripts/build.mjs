@@ -140,7 +140,7 @@ function loadMarkedNotes(folder, file) {
     sections.at(-1).lines.push(text);
     return sections;
   }, []);
-  assert.ok(sections.flatMap(section => section.lines).length % 48 === 0, `${file}: complete 48-line pages`);
+  assert.ok(sections.flatMap(section => section.lines).length % 24 === 0, `${file}: complete 24-line pages`);
   return { source, colored, sections };
 }
 
@@ -152,7 +152,7 @@ export function renderSite(data, lang, algebra) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="${algebra ? 'Algebra 2 Unit 1B: eight color-coded 48-line lessons on linear graphs, inequalities, piecewise and step functions, absolute value, parent functions, and transformations.' : lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1 and 2: fourteen topics, twenty-eight printable note pages, and original and colored text downloads.'}">
+  <meta name="description" content="${algebra ? 'Algebra 2 Unit 1B: eight lessons across sixteen color-coded 24-line pages on linear graphs, inequalities, piecewise and step functions, absolute value, parent functions, and transformations.' : lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1 and 2: fourteen topics, twenty-eight printable note pages, and original and colored text downloads.'}">
   <title>${title}</title>
   <style>
     :root { color-scheme: light; ${Object.entries(palette).map(([token, hex]) => `--${token}: ${hex};`).join(' ')} font-family: Georgia, "Times New Roman", serif; color: #393833; background: #eeede9; }
@@ -208,8 +208,6 @@ export function renderSite(data, lang, algebra) {
       .line { grid-template-columns: 22px minmax(0, 1fr); gap: 8px; height: 8.8mm; min-height: 0; }
       .number { padding-top: 0.6mm; }
       .note { font-size: 12px; line-height: 3.8mm; padding: 0.6mm 0; }
-      .study .line { height: 4.7mm; }
-      .study .note { font-size: 11px; line-height: 3.5mm; padding: 0.4mm 0; }
       .study .topic:last-child article:last-child { break-after: auto; }
       * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
     }
@@ -220,10 +218,10 @@ export function renderSite(data, lang, algebra) {
   <header>
     <nav class="subjects" aria-label="Subjects"><a href="index.html"${study.length ? '' : ' aria-current="page"'}>AP World History notes</a><a href="ap-lang.html"${lang ? ' aria-current="page"' : ''}>AP Lang notes</a><a href="algebra-2.html"${algebra ? ' aria-current="page"' : ''}>Algebra 2 notes</a></nav>
     <h1>${title}</h1>
-    ${algebra ? `<p>Module 1B · Relations and Functions · 8 lessons · 8 pages · 48 lines per page</p>
+    ${algebra ? `<p>Module 1B · Relations and Functions · 8 lessons · 16 pages · 24 lines per page</p>
     <p>Packet-guided rules, worked examples, and checks. Unreadable source graphs are not reconstructed; added examples are labeled.</p>
     <p>Notation: R means real numbers; inf means infinity; ^ denotes a power; floor(x) is the greatest integer at most x. Math symbols remain pencil.</p>
-    <ol class="contents">${algebra.map(lesson => `<li><a href="#topic-${escapeHTML(lesson.file.replaceAll('.', '-'))}">${escapeHTML(lesson.label)} ${escapeHTML(lesson.title)}</a></li>`).join('')}</ol>` : lang ? `<p>Unit 1 · Building commentary connections · ${lang.sections.length} color-coded sections · 48 lines per page</p>
+    <ol class="contents">${algebra.map(lesson => `<li><a href="#topic-${escapeHTML(lesson.file.replaceAll('.', '-'))}">${escapeHTML(lesson.label)} ${escapeHTML(lesson.title)}</a></li>`).join('')}</ol>` : lang ? `<p>Unit 1 · Building commentary connections · ${lang.sections.length} color-coded sections · 4 pages · 24 lines per page</p>
     <p>Describe the choice, explain its function, trace a possible audience effect, and justify its contribution to the author's purpose.</p>
     <p>Food-labeling examples are paraphrases or clearly marked hypothetical examples, not direct quotations or guaranteed audience responses. Each note line is at most 65 characters.</p>
     <p class="downloads"><a href="data:text/plain;charset=utf-8;base64,${Buffer.from(lang.source).toString('base64')}" download="ap-lang.txt">Download AP Lang original</a> · <a href="data:text/plain;charset=utf-8;base64,${Buffer.from(lang.colored).toString('base64')}" download="ap-lang-colored.txt">Download AP Lang colored</a> · <a href="notes/ap-lang.txt">Open original file</a> · <a href="notes/Colored/ap-lang.txt">Open colored file</a></p>
@@ -233,13 +231,13 @@ export function renderSite(data, lang, algebra) {
     <p>All notes are visible below. Use your browser’s Print command for one sheet per page. Colored text downloads contain the original color markers.</p>`}
     <div class="legend" role="group" aria-label="Token color legend">${Object.keys(palette).map(token => `<span><i class="swatch ${token}" aria-hidden="true"></i>${token} ${({ g: 'green', li: 'lime', pu: 'purple', br: 'brown', y: 'yellow', r: 'red', db: 'dark blue', p: 'pink', lb: 'light blue', hp: 'hot pink', pen: 'pencil' })[token]}</span>`).join('')}</div>
   </header>
-  <main id="notes"${study.length ? ' class="study"' : ''}>${study.length ? `${algebra ? '<div class="pages">' : ''}${study.map(topic => `<section class="topic" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}" aria-labelledby="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">
+  <main id="notes"${study.length ? ' class="study"' : ''}>${study.length ? study.map(topic => `<section class="topic" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}" aria-labelledby="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">
     <h2 class="topic-title" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">${algebra ? `${escapeHTML(topic.label)} ` : ''}${escapeHTML(topic.title)}</h2>
-    ${algebra ? `<p class="downloads"><a href="data:text/plain;charset=utf-8;base64,${Buffer.from(topic.source).toString('base64')}" download="${escapeHTML(topic.file)}.txt">Download ${escapeHTML(topic.label)} original</a> · <a href="data:text/plain;charset=utf-8;base64,${Buffer.from(topic.colored).toString('base64')}" download="${escapeHTML(topic.file)}-colored.txt">Download ${escapeHTML(topic.label)} colored</a> · <a href="notes/algebra-2/${escapeHTML(topic.file)}.txt">Open original file</a> · <a href="notes/algebra-2/Colored/${escapeHTML(topic.file)}.txt">Open colored file</a></p>` : ''}<div${algebra ? '' : ' class="pages"'}>${Array.from({ length: lines(topic.colored).length / 48 }, (_, page) => `<article aria-label="${escapeHTML(topic.label)} page ${page + 1}">
+    ${algebra ? `<p class="downloads"><a href="data:text/plain;charset=utf-8;base64,${Buffer.from(topic.source).toString('base64')}" download="${escapeHTML(topic.file)}.txt">Download ${escapeHTML(topic.label)} original</a> · <a href="data:text/plain;charset=utf-8;base64,${Buffer.from(topic.colored).toString('base64')}" download="${escapeHTML(topic.file)}-colored.txt">Download ${escapeHTML(topic.label)} colored</a> · <a href="notes/algebra-2/${escapeHTML(topic.file)}.txt">Open original file</a> · <a href="notes/algebra-2/Colored/${escapeHTML(topic.file)}.txt">Open colored file</a></p>` : ''}<div class="pages">${Array.from({ length: lines(topic.colored).length / 24 }, (_, page) => `<article aria-label="${escapeHTML(topic.label)} page ${page + 1}">
     <h3 class="page-title">${algebra ? `${escapeHTML(topic.label)} ` : ''}${escapeHTML(topic.title)}</h3>
-    <p class="caption">${algebra ? '48 lines' : `Page ${page + 1} · ${page === 0 ? 'Building commentary' : 'Deepening analysis'} · Lines ${page * 48 + 1}–${page * 48 + 48}`}</p>
-    <div class="sheet">${lines(topic.colored).slice(page * 48, page * 48 + 48).map((line, index) => `<div class="line"><span class="number" aria-hidden="true">${page * 48 + index + 1}</span><span class="note">${renderLine(line)}</span></div>`).join('\n')}</div>
-  </article>`).join('\n')}</div></section>`).join('\n')}${algebra ? '</div>' : ''}` : data.map((unit, index) => `
+    <p class="caption">Page ${page + 1}${algebra ? '' : ` · ${page < 2 ? 'Building commentary' : 'Deepening analysis'}`} · Lines ${page * 24 + 1}–${page * 24 + 24}</p>
+    <div class="sheet">${lines(topic.colored).slice(page * 24, page * 24 + 24).map((line, index) => `<div class="line"><span class="number" aria-hidden="true">${page * 24 + index + 1}</span><span class="note">${renderLine(line)}</span></div>`).join('\n')}</div>
+  </article>`).join('\n')}</div></section>`).join('\n') : data.map((unit, index) => `
     <section class="unit" id="unit-${index + 1}" aria-labelledby="unit-${index + 1}-title">
       <h2 class="unit-title" id="unit-${index + 1}-title">Unit ${index + 1}: ${escapeHTML(unit.name)}</h2>
       ${unit.topics.map(topic => `<section class="topic" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}" aria-labelledby="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">

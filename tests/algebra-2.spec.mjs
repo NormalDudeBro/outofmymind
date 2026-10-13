@@ -49,7 +49,7 @@ test('Algebra sources and all 384 HTML renderings use the shared marker renderer
 });
 
 for (const width of [375, 1280]) {
-  test(`Algebra ordered lessons, shared palette and native contents at ${width}px in LTR/RTL`, async ({ page }) => {
+  test(`Algebra ordered 24-line pages, shared palette and native contents at ${width}px in LTR/RTL`, async ({ page }) => {
     await page.setViewportSize({ width, height: 812 });
     const presentations = [];
     for (const url of ['/', '/ap-lang.html', '/algebra-2.html']) {
@@ -76,7 +76,7 @@ for (const width of [375, 1280]) {
     expect(await page.locator('.subjects a').allTextContents()).toEqual(['AP World History notes', 'AP Lang notes', 'Algebra 2 notes']);
     const notes = loadAlgebraNotes();
     await expect(page.locator('section.topic')).toHaveCount(8);
-    await expect(page.locator('article')).toHaveCount(8);
+    await expect(page.locator('article')).toHaveCount(16);
     await expect(page.locator('.note')).toHaveCount(384);
     expect(await page.locator('.note').allTextContents()).toEqual(notes.flatMap(note => lines(note.source)));
     expect(await page.locator('.contents a').allTextContents()).toEqual(notes.map(note => `${note.label} ${note.title}`));
@@ -87,14 +87,20 @@ for (const width of [375, 1280]) {
     for (const [index, note] of notes.entries()) {
       const group = page.locator('section.topic').nth(index);
       await expect(group).toHaveAttribute('id', `topic-${note.file.replaceAll('.', '-')}`);
-      await expect(group.locator('article')).toHaveCount(1);
+      await expect(group.locator('article')).toHaveCount(2);
       await expect(group.locator('.line')).toHaveCount(48);
       await expect(group.locator('.note')).toHaveCount(48);
       expect(await group.locator('.note').allTextContents()).toEqual(lines(note.source));
       await expect(group.locator('.topic-title')).toHaveText(`${note.label} ${note.title}`);
       await expect(group.locator('.topic-title')).toBeVisible();
       await expect(group.locator('.topic-title')).toHaveCSS('color', colors.lb);
-      await expect(group.locator('.page-title')).toHaveText(`${note.label} ${note.title}`);
+      await expect(group.locator('.page-title')).toHaveText(Array(2).fill(`${note.label} ${note.title}`));
+      for (const part of [0, 1]) {
+        const article = group.locator('article').nth(part);
+        await expect(article.locator('.line')).toHaveCount(24);
+        await expect(article.locator('.note')).toHaveCount(24);
+        expect(await article.locator('.note').allTextContents()).toEqual(lines(note.source).slice(part * 24, part * 24 + 24));
+      }
     }
     for (const direction of ['ltr', 'rtl']) {
       await page.evaluate(direction => document.documentElement.dir = direction, direction);
@@ -155,22 +161,23 @@ test('all Algebra embedded downloads and relative HTTP files contain exact sourc
   }
 });
 
-test('offline file with JavaScript disabled exposes all Algebra notes and real downloads', async ({ browser }) => {
+test('offline file with JavaScript disabled exposes sixteen 24-line Algebra pages and real downloads', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   const url = pathToFileURL(resolve(root, 'algebra-2.html')).href;
   await page.goto(url);
   await expect(page.getByRole('heading', { name: title, exact: true, level: 1 })).toBeVisible();
   const notes = loadAlgebraNotes();
-  await expect(page.locator('article')).toHaveCount(8);
+  await expect(page.locator('article')).toHaveCount(16);
   await expect(page.locator('.note')).toHaveCount(384);
   expect(await page.locator('.note').allTextContents()).toEqual(notes.flatMap(note => lines(note.source)));
   for (const href of await page.locator('a[href]').evaluateAll(links => links.map(link => link.getAttribute('href')).filter(href => !href.startsWith('#') && !href.startsWith('data:')))) {
     expect(readFileSync(new URL(href, url)).length, `offline relative target ${href} exists and is nonempty`).toBeGreaterThan(0);
   }
-  for (const article of await page.locator('article').all()) {
+  for (const [index, article] of (await page.locator('article').all()).entries()) {
     await expect(article).toBeVisible();
-    await expect(article.locator('.note')).toHaveCount(48);
+    await expect(article.locator('.note')).toHaveCount(24);
+    expect(await article.locator('.note').allTextContents()).toEqual(lines(notes[Math.floor(index / 2)].source).slice((index % 2) * 24, (index % 2) * 24 + 24));
   }
   for (const [index, note] of notes.entries()) {
     const group = page.locator('section.topic').nth(index);
@@ -207,20 +214,26 @@ test('Algebra accessibility permits only existing ink/title contrast exceptions'
   }
 });
 
-test('Algebra prints eight physical A4 pages with visible titles and 48 fitting lines each', async ({ page }) => {
-  await page.goto('/algebra-2.html');
+test('Algebra prints sixteen physical A4 pages with visible titles and 24 World-density lines each', async ({ page }) => {
   await page.setViewportSize({ width: Math.floor((210 - 24) * 96 / 25.4), height: 1123 });
   await page.emulateMedia({ media: 'print' });
+  await page.goto('/');
+  const world = await page.locator('.note').first().evaluate(note => ({ fontSize: getComputedStyle(note).fontSize, lineHeight: getComputedStyle(note).lineHeight, rowHeight: note.closest('.line').getBoundingClientRect().height }));
+  expect(world.rowHeight).toBeCloseTo(8.8 * 96 / 25.4, 1);
+  await page.goto('/algebra-2.html');
   await expect(page.locator('header')).toBeHidden();
-  await expect(page.locator('.page-title')).toHaveCount(8);
+  await expect(page.locator('article')).toHaveCount(16);
+  await expect(page.locator('.page-title')).toHaveCount(16);
+  expect(await page.locator('.note').evaluateAll(notes => notes.map(note => ({ fontSize: getComputedStyle(note).fontSize, lineHeight: getComputedStyle(note).lineHeight, rowHeight: note.closest('.line').getBoundingClientRect().height })))).toEqual(Array(384).fill(world));
   for (const article of await page.locator('article').all()) {
     await expect(article.locator('.page-title')).toBeVisible();
     await expect(article.locator('.page-title')).toHaveCSS('color', 'rgb(89, 184, 231)');
-    await expect(article.locator('.line')).toHaveCount(48);
+    await expect(article.locator('.line')).toHaveCount(24);
+    await expect(article.locator('.note')).toHaveCount(24);
   }
   expect(await page.locator('.note').evaluateAll(notes => notes.filter(note => note.getBoundingClientRect().height > note.closest('.line').getBoundingClientRect().height + 1).map(note => note.textContent)), 'printed notes fit line heights within 1px').toEqual([]);
   expect(await page.locator('.line').evaluateAll(lines => lines.filter(line => line.getBoundingClientRect().bottom > line.closest('.sheet').getBoundingClientRect().bottom + 1).map(line => line.textContent)), 'printed lines stay inside sheets within 1px').toEqual([]);
-  expect(await page.locator('article').evaluateAll(articles => articles.filter(article => article.getBoundingClientRect().height > (297 - 24) * 96 / 25.4 + 1).map(article => article.textContent)), 'each complete lesson fits the printable A4 height').toEqual([]);
+  expect(await page.locator('article').evaluateAll(articles => articles.filter(article => article.getBoundingClientRect().height > (297 - 24) * 96 / 25.4 + 1).map(article => article.textContent)), 'each 24-line article fits the printable A4 height').toEqual([]);
   const pdf = await page.pdf({ preferCSSPageSize: true, printBackground: true });
-  expect((pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) ?? []).length).toBe(8);
+  expect((pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) ?? []).length).toBe(16);
 });

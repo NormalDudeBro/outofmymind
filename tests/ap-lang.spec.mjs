@@ -6,7 +6,7 @@ import { pathToFileURL } from 'node:url';
 import { loadLangNotes, palette, root } from '../scripts/build.mjs';
 
 for (const width of [375, 1280]) {
-  test(`AP Lang navigation and complete colored notes at ${width}px`, async ({ page }) => {
+  test(`AP Lang navigation and four ordered 24-line pages at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 812 });
     await page.goto('/');
     const historyTokens = await page.evaluate(tokens => Object.fromEntries(tokens.map(token => [token, getComputedStyle(document.documentElement).getPropertyValue(`--${token}`).trim()])), Object.keys(palette));
@@ -19,10 +19,10 @@ for (const width of [375, 1280]) {
     const notes = loadLangNotes();
     await expect(page.locator('.note')).toHaveCount(96);
     expect(await page.locator('.note').allTextContents()).toEqual(notes.sections.flatMap(section => section.lines));
-    await expect(page.locator('article')).toHaveCount(2);
-    for (const index of [0, 1]) {
-      await expect(page.locator('article').nth(index).locator('.note')).toHaveCount(48);
-      expect(await page.locator('article').nth(index).locator('.note').allTextContents()).toEqual(notes.sections.slice(index * 6, index * 6 + 6).flatMap(section => section.lines));
+    await expect(page.locator('article')).toHaveCount(4);
+    for (const index of [0, 1, 2, 3]) {
+      await expect(page.locator('article').nth(index).locator('.note')).toHaveCount(24);
+      expect(await page.locator('article').nth(index).locator('.note').allTextContents()).toEqual(notes.sections.flatMap(section => section.lines).slice(index * 24, (index + 1) * 24));
     }
     expect(historyTokens).toEqual(palette);
     expect(await page.evaluate(tokens => Object.fromEntries(tokens.map(token => [token, getComputedStyle(document.documentElement).getPropertyValue(`--${token}`).trim()])), Object.keys(palette))).toEqual(historyTokens);
@@ -89,16 +89,19 @@ test('both AP Lang downloads work with Tab and Enter in LTR and RTL', async ({ p
   }
 });
 
-test('AP Lang works offline without JavaScript and downloads exact notes', async ({ browser }) => {
+test('AP Lang exposes four 24-line pages offline without JavaScript and downloads exact notes', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   for (const url of ['http://127.0.0.1:4173/ap-lang.html', pathToFileURL(resolve(root, 'ap-lang.html')).href]) {
     await page.goto(url);
     await expect(page.getByRole('heading', { name: 'AP Lang Unit 1: Rhetorical Analysis', exact: true, level: 1 })).toBeVisible();
     await expect(page.locator('.note')).toHaveCount(96);
-    await expect(page.locator('article')).toHaveCount(2);
-    for (const index of [0, 1]) await expect(page.locator('article').nth(index).locator('.note')).toHaveCount(48);
     const notes = loadLangNotes();
+    await expect(page.locator('article')).toHaveCount(4);
+    for (const index of [0, 1, 2, 3]) {
+      await expect(page.locator('article').nth(index).locator('.note')).toHaveCount(24);
+      expect(await page.locator('article').nth(index).locator('.note').allTextContents()).toEqual(notes.sections.flatMap(section => section.lines).slice(index * 24, (index + 1) * 24));
+    }
     expect(await page.locator('.note').allTextContents()).toEqual(notes.sections.flatMap(section => section.lines));
     await expect(page.locator('a[download]')).toHaveCount(2);
     await expect(page.locator('a[href^="notes/"]')).toHaveCount(2);
@@ -130,7 +133,19 @@ test('AP Lang works offline without JavaScript and downloads exact notes', async
   await context.close();
 });
 
-test('AP Lang permits only approved-palette contrast exceptions and prints two physical PDF pages', async ({ page }) => {
+test('AP Lang permits only approved-palette contrast exceptions and prints four physical PDF pages with 24 World History rows each', async ({ page }) => {
+  await page.goto('/');
+  await page.emulateMedia({ media: 'print' });
+  const historyPrint = await page.locator('.note').first().evaluate(note => {
+    const style = getComputedStyle(note);
+    return { rowHeight: getComputedStyle(note.closest('.line')).height, fontSize: style.fontSize, lineHeight: style.lineHeight, paddingTop: style.paddingTop, paddingBottom: style.paddingBottom };
+  });
+  expect(parseFloat(historyPrint.rowHeight)).toBeCloseTo(8.8 * 96 / 25.4, 1);
+  expect(historyPrint.fontSize).toBe('12px');
+  expect(parseFloat(historyPrint.lineHeight)).toBeCloseTo(3.8 * 96 / 25.4, 1);
+  expect(parseFloat(historyPrint.paddingTop)).toBeCloseTo(0.6 * 96 / 25.4, 1);
+  expect(parseFloat(historyPrint.paddingBottom)).toBeCloseTo(0.6 * 96 / 25.4, 1);
+  await page.emulateMedia({ media: 'screen' });
   await page.goto('/ap-lang.html');
   const results = await new AxeBuilder({ page }).analyze();
   // Keep contrast scanning enabled and confine its exception to shared ink/title presentation.
@@ -143,11 +158,17 @@ test('AP Lang permits only approved-palette contrast exceptions and prints two p
   // Match A4's printable width with the renderer's 12mm page margins.
   await page.setViewportSize({ width: Math.floor((210 - 24) * 96 / 25.4), height: 1123 });
   await page.emulateMedia({ media: 'print' });
+  await expect(page.locator('article')).toHaveCount(4);
+  for (const article of await page.locator('article').all()) await expect(article.locator('.line')).toHaveCount(24);
+  expect(await page.locator('.note').evaluateAll(notes => notes.map(note => {
+    const style = getComputedStyle(note);
+    return { rowHeight: getComputedStyle(note.closest('.line')).height, fontSize: style.fontSize, lineHeight: style.lineHeight, paddingTop: style.paddingTop, paddingBottom: style.paddingBottom };
+  }))).toEqual(Array(96).fill(historyPrint));
   await expect(page.locator('header')).toBeHidden();
   await expect(page.locator('.page-title').first()).toBeVisible();
   expect(await page.locator('.page-title').evaluateAll(titles => titles.every(title => getComputedStyle(title).color === 'rgb(89, 184, 231)'))).toBe(true);
   expect(await page.locator('.note').evaluateAll(notes => notes.filter(note => note.getBoundingClientRect().height > note.closest('.line').getBoundingClientRect().height + 1).map(note => note.textContent)), 'printed notes fit their line heights within 1px').toEqual([]);
   expect(await page.locator('.line').evaluateAll(lines => lines.filter(line => line.getBoundingClientRect().bottom > line.closest('.sheet').getBoundingClientRect().bottom + 1).map(line => line.textContent)), 'printed lines stay within their sheet bottoms within 1px').toEqual([]);
   const pdf = await page.pdf({ preferCSSPageSize: true, printBackground: true });
-  expect((pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) ?? []).length).toBe(2);
+  expect((pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) ?? []).length).toBe(4);
 });

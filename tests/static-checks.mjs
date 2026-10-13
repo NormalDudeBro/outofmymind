@@ -98,8 +98,11 @@ Object.entries(palette).forEach(([token, hex]) => {
 assert.doesNotMatch(langHTML, /\.lang-[a-z]+|class="[^"]*\blang-[a-z]+|section-heading|\.lang\s+\.(?:ink|note|topic-title|page-title)\s*\{[^}]*\b(?:color|font-weight)\s*:/, 'no legacy coloring or bold section overrides');
 assert.match(langHTML, /class="topic-title"[^>]*>AP Lang Unit 1: Rhetorical Analysis<\//, 'visible topic title');
 const langArticles = [...langHTML.matchAll(/<article\b[^>]*>([\s\S]*?)<\/article>/g)];
-assert.equal(langArticles.length, 2);
-langArticles.forEach(article => assert.equal((article[1].match(/class="note"/g) ?? []).length, 48, '48 notes per article'));
+assert.equal(langArticles.length, 4);
+langArticles.forEach((article, index) => {
+  assert.equal((article[1].match(/class="note"/g) ?? []).length, 24, '24 notes per article');
+  assert.deepEqual([...article[1].matchAll(/<span class="note">([\s\S]*?)<\/span><\/div>/g)].map(match => match[1]), langColoredLines.slice(index * 24, (index + 1) * 24).map(renderLine), 'ordered 24-line page slices');
+});
 assert.match(langHTML, /<title>AP Lang Unit 1: Rhetorical Analysis<\/title>/);
 assert.match(langHTML, /<h1>AP Lang Unit 1: Rhetorical Analysis<\/h1>/);
 const langDownloads = [...langHTML.matchAll(/href="data:text\/plain;charset=utf-8;base64,([A-Za-z0-9+/]+=*)" download="([^"]+)"/g)];
@@ -112,4 +115,4 @@ for (const [index, file] of ['ap-lang.txt', 'ap-lang-colored.txt'].entries()) {
 assert.deepEqual([...langHTML.matchAll(/href="(notes\/[^"]+)"/g)].map(match => match[1]), ['notes/ap-lang.txt', 'notes/Colored/ap-lang.txt'], 'both relative source links');
 assert.match(langHTML, /href="ap-lang.html" aria-current="page"/);
 assert.doesNotMatch(langHTML, /<(script|link|iframe|img|object|embed)\b|\son\w+\s*=|@import|url\s*\(/i);
-console.log('PASS: AP Lang Unit 1, 12 eight-line sections, 96 ASCII lines, two 48-line pages, max 65 characters, shared palette and renderLine, pencil defaults and keyword highlights, marker/punctuation/reset rules, exact stripped equality, two exact downloads and relative sources, reproducible and offline-ready.');
+console.log('PASS: AP Lang Unit 1, 12 eight-line sections, 96 ASCII lines, four 24-line pages, max 65 characters, shared palette and renderLine, pencil defaults and keyword highlights, marker/punctuation/reset rules, exact stripped equality, two exact downloads and relative sources, reproducible and offline-ready.');

@@ -13,8 +13,8 @@ assert.match(html, /<title>Algebra 2 Unit 1B: Relations and Functions<\/title>/)
 assert.match(html, /<h1>Algebra 2 Unit 1B: Relations and Functions<\/h1>/);
 assert.equal((html.match(/class="note"/g) ?? []).length, 384);
 const articles = [...html.matchAll(/<article\b[^>]*>([\s\S]*?)<\/article>/g)];
-assert.equal(articles.length, 8, 'one article per lesson');
-articles.forEach(article => assert.equal((article[1].match(/class="note"/g) ?? []).length, 48));
+assert.equal(articles.length, 16, 'two articles per lesson');
+articles.forEach(article => assert.equal((article[1].match(/class="note"/g) ?? []).length, 24));
 
 algebra.forEach(lesson => {
   assert.equal(typeof lesson.title, 'string');
@@ -93,4 +93,4 @@ const mapping = dilation.match(/\((2),(4)\) becomes \((-?\d+(?:\.\d+)?),(4)\)/);
 assert.ok(coefficient && mapping, 'horizontal dilation worked coefficient and point are present');
 assert.equal(Number(mapping[3]), Number(mapping[1]) / Number(coefficient[1]), 'horizontal mapping divides input by b');
 assert.equal(Number(mapping[4]), Number(mapping[2]), 'horizontal-only dilation preserves output');
-console.log('PASS: Algebra 2, eight lessons/pages, six eight-line sections each, 384 ASCII notes, max 65 characters, exact sources and stripped equality, shared renderLine/palette, subject navigation, 16 exact downloads and relative paths, reproducible HTML, selected cost/floor/dilation calculations.');
+console.log('PASS: Algebra 2, eight lessons with 48 source lines each, 16 pages with 24 notes each, six eight-line sections per lesson, 384 ASCII notes, max 65 characters, exact sources and stripped equality, shared renderLine/palette, subject navigation, 16 exact downloads and relative paths, reproducible HTML, selected cost/floor/dilation calculations.');
