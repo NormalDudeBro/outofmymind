@@ -14,6 +14,7 @@ const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
 assert.equal(new Set(ids).size, ids.length, 'unique IDs');
 const links = [...html.matchAll(/\shref="([^"]+)"/g)].map(match => match[1]);
 links.forEach(link => {
+  if (link === 'styles/site.css') return assert.ok(existsSync(resolve(root, link)), 'local stylesheet exists');
   if (['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html'].includes(link)) return assert.ok(existsSync(resolve(root, link)));
   if (link.startsWith('#')) return assert.ok(ids.includes(link.slice(1)), `fragment ${link}`);
   if (link.startsWith('notes/')) return assert.match(link, /^notes\/unit-[12]\/(Colored\/)?[12]\.[1-7]-[a-z-]+\.txt$/);
@@ -31,7 +32,9 @@ data.flatMap((unit, index) => unit.topics.flatMap(topic => ['', 'Colored'].map(f
   assert.deepEqual(readFileSync(resolve(root, files[index])), file.bytes);
   assert.deepEqual(Buffer.from(downloads[index].split(',')[1], 'base64'), file.bytes);
 });
-assert.doesNotMatch(html, /<(script|link|iframe|img|object|embed)\b|\son\w+\s*=|@import|url\s*\(/i, 'no executable or remote resources');
+assert.deepEqual(html.match(/<link\b[^>]*>/gi) ?? [], ['<link rel="stylesheet" href="styles/site.css">'], 'exactly one local stylesheet link');
+assert.doesNotMatch(html, /<(script|iframe|img|object|embed)\b|\son\w+\s*=|@import|url\s*\(/i, 'no executable or remote resources');
+assert.doesNotMatch(readFileSync(resolve(root, 'styles/site.css'), 'utf8'), /@import|url\s*\(/i, 'shared stylesheet has no remote or additional resources');
 assert.deepEqual(palette, { g: '#168438', li: '#79c900', pu: '#883ac2', br: '#92552f', y: '#ebc600', r: '#df3034', db: '#173f88', p: '#ed8eb4', lb: '#59b8e7', hp: '#ec228c', pen: '#62615e' });
 Object.entries(palette).forEach(([token, hex]) => assert.ok(html.includes(`--${token}: ${hex};`)));
 assert.equal(escapeHTML('<script>"&\'</script>'), '&lt;script&gt;&quot;&amp;&#39;&lt;/script&gt;');
@@ -114,5 +117,6 @@ for (const [index, file] of ['ap-lang.txt', 'ap-lang-colored.txt'].entries()) {
 }
 assert.deepEqual([...langHTML.matchAll(/href="(notes\/[^"]+)"/g)].map(match => match[1]), ['notes/ap-lang.txt', 'notes/Colored/ap-lang.txt'], 'both relative source links');
 assert.match(langHTML, /href="ap-lang.html" aria-current="page"/);
-assert.doesNotMatch(langHTML, /<(script|link|iframe|img|object|embed)\b|\son\w+\s*=|@import|url\s*\(/i);
+assert.deepEqual(langHTML.match(/<link\b[^>]*>/gi) ?? [], ['<link rel="stylesheet" href="styles/site.css">'], 'exactly one local stylesheet link');
+assert.doesNotMatch(langHTML, /<(script|iframe|img|object|embed)\b|\son\w+\s*=|@import|url\s*\(/i);
 console.log('PASS: AP Lang Unit 1, 12 eight-line sections, 96 ASCII lines, four 24-line pages, max 65 characters, shared palette and renderLine, pencil defaults and keyword highlights, marker/punctuation/reset rules, exact stripped equality, two exact downloads and relative sources, reproducible and offline-ready.');

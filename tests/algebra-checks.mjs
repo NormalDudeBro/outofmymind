@@ -45,13 +45,16 @@ Object.entries(palette).forEach(([token, hex]) => {
   assert.ok(html.includes(`.ink.${token} { color: var(--${token}); }`), 'shared ink rule');
 });
 assert.doesNotMatch(html, /\.algebra\s+\.(?:ink|note|topic-title|page-title)\s*\{[^}]*\b(?:color|font-weight)\s*:/, 'no Algebra color or bold overrides');
-assert.doesNotMatch(html, /<(script|link|iframe|img|object|embed)\b|\son\w+\s*=|@import|url\s*\(/i, 'offline-ready, no executable or remote resources');
+assert.deepEqual(html.match(/<link\b[^>]*>/gi) ?? [], ['<link rel="stylesheet" href="styles/site.css">'], 'exactly one local stylesheet link');
+assert.doesNotMatch(html, /<(script|iframe|img|object|embed)\b|\son\w+\s*=|@import|url\s*\(/i, 'offline-ready, no executable or remote resources');
+assert.doesNotMatch(readFileSync(resolve(root, 'styles/site.css'), 'utf8'), /@import|url\s*\(/i, 'shared stylesheet has no remote or additional resources');
 const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
 assert.equal(new Set(ids).size, ids.length, 'unique IDs');
 [...html.matchAll(/href="#([^"]+)"/g)].forEach(match => assert.ok(ids.includes(match[1]), `fragment ${match[1]}`));
 const pages = ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html'];
 for (const page of pages) {
   const pageHTML = readFileSync(resolve(root, page), 'utf8');
+  assert.deepEqual(pageHTML.match(/<link\b[^>]*>/gi) ?? [], ['<link rel="stylesheet" href="styles/site.css">'], `${page}: exactly one shared local stylesheet`);
   const navigation = pageHTML.match(/<nav\b[^>]*\bclass="[^"]*\bsubjects\b[^"]*"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
   assert.ok(navigation, 'subject navigation exists');
   const anchors = [...navigation.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)];

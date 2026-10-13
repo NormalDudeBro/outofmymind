@@ -17,7 +17,8 @@ test('Algebra sources and all 384 HTML renderings use the shared marker renderer
   expect(notes[0].title).toBe('Graphing Linear Functions and Inequalities');
   const html = readFileSync(resolve(root, 'algebra-2.html'), 'utf8');
   expect([...html.matchAll(/<span class="note">([\s\S]*?)<\/span><\/div>/g)].map(match => match[1])).toEqual(notes.flatMap(note => lines(note.colored).map(renderLine)));
-  expect(html).not.toMatch(/<(script|link|iframe|img|object|embed)\b|\son\w+\s*=|@import|url\s*\(/i);
+  expect(html.match(/<link\b[^>]*>/gi) ?? []).toEqual(['<link rel="stylesheet" href="styles/site.css">']);
+  expect(html).not.toMatch(/<(script|iframe|img|object|embed)\b|\son\w+\s*=|@import|url\s*\(/i);
   for (const note of notes) {
     expect(note.title.trim()).not.toBe('');
     expect(Buffer.from(note.source)).toEqual(readFileSync(resolve(root, 'notes/algebra-2', `${note.file}.txt`)));
@@ -61,6 +62,7 @@ for (const width of [375, 1280]) {
           return ['color', 'font-weight'].flatMap(property => rule.style.getPropertyValue(property) ? [[rule.selectorText, property, rule.style.getPropertyValue(property)]] : []);
         });
         return {
+          stylesheets: [...document.styleSheets].map(sheet => sheet.href ? new URL(sheet.href).pathname : null),
           tokens: Object.fromEntries(tokens.map(token => [token, getComputedStyle(document.documentElement).getPropertyValue(`--${token}`).trim()])),
           rules: [...document.styleSheets].flatMap(rules),
           pencil: { color: getComputedStyle(document.querySelector('.note')).color, weight: getComputedStyle(document.querySelector('.note')).fontWeight }
@@ -68,8 +70,11 @@ for (const width of [375, 1280]) {
       }, Object.keys(palette)));
     }
     expect(presentations[0].tokens).toEqual(palette);
+    expect(presentations[0].stylesheets.filter(href => href !== null)).toEqual(['/styles/site.css']);
+    expect(presentations[0].pencil.weight).toBe('400');
     expect(presentations[1]).toEqual(presentations[0]);
     expect(presentations[2]).toEqual(presentations[0]);
+    if (width === 1280) await expect(page.locator('.note').first()).toHaveCSS('font-size', '14px');
     await expect(page).toHaveTitle(title);
     await expect(page.getByRole('heading', { name: title, exact: true, level: 1 })).toBeVisible();
     await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('Algebra 2 Notes');
@@ -184,6 +189,11 @@ test('offline file with JavaScript disabled exposes sixteen 24-line Algebra page
   const page = await context.newPage();
   const url = pathToFileURL(resolve(root, 'algebra-2.html')).href;
   await page.goto(url);
+  await expect(page.locator('link')).toHaveCount(1);
+  await expect(page.locator('link')).toHaveAttribute('rel', 'stylesheet');
+  await expect(page.locator('link')).toHaveAttribute('href', 'styles/site.css');
+  expect(readFileSync(new URL('styles/site.css', url)).length).toBeGreaterThan(0);
+  await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(246, 243, 235)');
   await expect(page.getByRole('heading', { name: title, exact: true, level: 1 })).toBeVisible();
   const notes = loadAlgebraNotes();
   await expect(page.locator('article')).toHaveCount(16);
@@ -240,6 +250,8 @@ test('Algebra prints sixteen physical A4 pages with visible titles and 24 World-
   expect(world.rowHeight).toBeCloseTo(8.8 * 96 / 25.4, 1);
   await page.goto('/algebra-2.html');
   await expect(page.locator('header')).toBeHidden();
+  await expect(page.locator('.wrap')).toHaveCSS('padding-inline-start', '0px');
+  await expect(page.locator('.wrap')).toHaveCSS('padding-inline-end', '0px');
   await expect(page.locator('article')).toHaveCount(16);
   await expect(page.locator('.page-title')).toHaveCount(16);
   expect(await page.locator('.note').evaluateAll(notes => notes.map(note => ({ fontSize: getComputedStyle(note).fontSize, lineHeight: getComputedStyle(note).lineHeight, rowHeight: note.closest('.line').getBoundingClientRect().height })))).toEqual(Array(384).fill(world));

@@ -8,6 +8,11 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const pages = ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html'];
 const labels = ['Home', 'AP Lang Notes', 'AP World History Notes', 'Algebra 2 Notes', 'Out Of My Mind Analysis'];
 const home = readFileSync(resolve(root, 'index.html'), 'utf8');
+const stylesheet = readFileSync(resolve(root, 'styles/site.css'), 'utf8');
+assert.doesNotMatch(stylesheet, /@import|url\(\s*['"]?(?:[a-z][a-z\d+.-]*:|\/)/i, 'shared styles need no remote resources');
+for (const [name, color] of Object.entries({ paper: '#f6f3eb', ink: '#213749', muted: '#586467', rule: '#d5cfc2', accent: '#83523b' })) {
+  assert.match(stylesheet, new RegExp(`--${name}\\s*:\\s*${color}\\b`, 'i'), `shared ${name} color`);
+}
 assert.equal(home, renderHome(), 'Home exactly matches renderHome()');
 assert.match(home, /<title>Joltlined \| Notes &amp; Literary Analysis<\/title>/);
 assert.match(home, /<main\b[^>]*\bid="collection"/);
@@ -21,6 +26,12 @@ assert.deepEqual(mainLinks.filter(href => pages.slice(1).includes(href)).sort(),
 
 for (const page of pages) {
   const html = readFileSync(resolve(root, page), 'utf8');
+  const styles = [...html.matchAll(/<link\b[^>]*>/gi)].filter(match => /\brel="stylesheet"/i.test(match[0]));
+  assert.equal(styles.length, 1, `${page}: exactly one shared stylesheet`);
+  assert.match(styles[0][0], /\bhref="styles\/site\.css"/, `${page}: exact shared stylesheet path`);
+  for (const block of html.matchAll(/:root\s*\{([^}]+)\}/g)) {
+    assert.doesNotMatch(block[1], /--(?:paper|ink|muted|rule|accent)\s*:/, `${page}: base palette belongs only to shared styles`);
+  }
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
   assert.equal(new Set(ids).size, ids.length, `${page}: unique IDs`);
   const nav = [...html.matchAll(/<nav\b([^>]*)>([\s\S]*?)<\/nav>/g)].find(match => /\bclass="[^"]*\bsubjects\b/.test(match[1]))?.[2];
@@ -62,4 +73,4 @@ for (const page of pages) {
   }
 }
 
-console.log('PASS: reproducible Home, four collection destinations, five-page relative navigation/current state, unique IDs, valid fragments, local assets, no Home JavaScript or remote fonts.');
+console.log('PASS: reproducible Home, four collection destinations, five-page shared stylesheet and relative navigation/current state, unique IDs, valid fragments, local assets, no Home JavaScript or remote fonts.');

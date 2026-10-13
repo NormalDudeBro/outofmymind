@@ -155,41 +155,36 @@ export function renderSite(data, lang, algebra) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="${algebra ? 'Algebra 2 Unit 1B: eight lessons across sixteen color-coded 24-line pages on linear graphs, inequalities, piecewise and step functions, absolute value, parent functions, and transformations.' : lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1 and 2: fourteen topics, twenty-eight printable note pages, and original and colored text downloads.'}">
   <title>${title}</title>
+  <link rel="stylesheet" href="styles/site.css">
   <style>
-    :root { color-scheme: light; ${Object.entries(palette).map(([token, hex]) => `--${token}: ${hex};`).join(' ')} font-family: Georgia, "Times New Roman", serif; color: #393833; background: #eeede9; }
-    * { box-sizing: border-box; }
-    body { margin: 0; padding: 28px clamp(12px, 3vw, 48px) 40px; }
-    header, main, footer { max-width: 1500px; margin: auto; }
-    header { margin-bottom: 26px; }
-    h1 { margin: 0 0 14px; font-size: 26px; font-weight: normal; }
-    a { color: #173f88; text-underline-offset: 3px; }
-    a:focus-visible { outline: 2px solid #173f88; outline-offset: 4px; }
-    .skip { position: absolute; top: 0; left: 12px; transform: translateY(-120%); background: #fffefb; padding: 8px; }
-    .skip:focus { transform: none; }
-    nav { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 18px 0; }
-    .subjects { border-bottom: 1px solid #dcd9d1; padding-bottom: 12px; }
-    .subjects a { padding: 8px 12px; border-radius: 4px; font: 14px/1.5 system-ui, sans-serif; }
-    .subjects a[aria-current="page"] { background: #173f88; color: white; text-decoration: none; }
-    .contents { columns: 2; padding-left: 24px; font-size: 14px; line-height: 1.8; }
+    :root { ${Object.entries(palette).map(([token, hex]) => `--${token}: ${hex};`).join(' ')} }
+    .notes-intro { padding-block: 44px 30px; }
+    .notes-intro h1 { max-width: 26ch; margin: 0 0 18px; font-size: clamp(34px, 4.5vw, 54px); font-weight: normal; line-height: 1.12; letter-spacing: -1px; }
+    .notes-intro > p:not(.eyebrow) { max-width: 85ch; color: var(--muted); font-size: 15px; line-height: 1.75; }
+    .notes-intro h1 + p { font: 12px/1.7 system-ui, sans-serif; letter-spacing: 0.04em; }
+    .notes-intro nav { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-block: 24px 16px; font: 12px/1.7 system-ui, sans-serif; }
+    #notes { padding-block: 6px 40px; }
+    #notes:focus { outline: none; }
+    .contents { columns: 2; padding-inline-start: 24px; margin-block: 22px; font-size: 14px; line-height: 1.8; }
     .contents li { break-inside: avoid; }
     .legend { display: flex; flex-wrap: wrap; gap: 7px 15px; font: 12px/1.5 system-ui, sans-serif; }
     .legend span { display: inline-flex; align-items: center; gap: 5px; }
     .swatch { width: 9px; height: 9px; border-radius: 50%; }
-    .unit-title { font-size: 24px; font-weight: normal; border-top: 1px solid #dcd9d1; padding-top: 22px; }
+    .unit-title { font-size: 30px; font-weight: normal; border-block-start: 1px solid var(--ink); padding-block-start: 22px; }
     .topic { margin-bottom: 28px; scroll-margin-top: 12px; }
     .pages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 22px; align-items: start; }
     article { min-width: 0; }
     .topic-title, .page-title { color: var(--lb); font-size: 22px; line-height: 1.25; font-weight: normal; margin: 0 0 7px; }
     .page-title { display: none; }
-    .caption, .downloads { margin: 0 0 12px; font: 11px/1.5 system-ui, sans-serif; color: #62615e; }
-    .sheet { background: #fffefb; border: 1px solid #dcd9d1; padding: 18px 18px 18px 14px; box-shadow: 0 2px 5px #00000008; }
+    .caption, .downloads { margin: 0 0 12px; font: 11px/1.5 system-ui, sans-serif; color: var(--muted); }
+    .sheet { background: #fffefb; border: 1px solid var(--rule); padding: 18px 18px 18px 14px; }
     .line { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; min-height: 37px; }
-    .number { padding-top: 7px; color: #62615e; font: 9px/1.5 system-ui, sans-serif; text-align: right; user-select: none; }
+    .number { padding-block-start: 7px; color: var(--muted); font: 9px/1.5 system-ui, sans-serif; text-align: end; user-select: none; }
     .note { white-space: pre-wrap; overflow-wrap: anywhere; color: var(--pen); border-bottom: 1px solid #efede7; padding: 5px 0; font-size: 14px; line-height: 26px; }
     ${Object.keys(palette).map(token => `.ink.${token} { color: var(--${token}); } .swatch.${token} { background: var(--${token}); }`).join('\n    ')}
     @media (max-width: 960px) { .pages { grid-template-columns: minmax(0, 1fr); } }
     @media (max-width: 480px) {
-      body { padding: 18px 10px 28px; } .contents { columns: 1; }
+      .notes-intro { padding-block: 32px 24px; } .contents { columns: 1; }
       .sheet { padding: 12px 10px 12px 5px; }
       .line { grid-template-columns: 17px minmax(0, 1fr); gap: 6px; }
       .note { font-size: 13px; line-height: 23px; }
@@ -198,6 +193,7 @@ export function renderSite(data, lang, algebra) {
     @page { size: A4 portrait; margin: 12mm; }
     @media print {
       body { padding: 0; background: white; }
+      #notes { padding: 0; }
       header, footer, .skip, .unit-title, .topic-title, .downloads { display: none; }
       main, .pages { display: block; }
       .topic { margin: 0; }
@@ -216,8 +212,12 @@ export function renderSite(data, lang, algebra) {
 </head>
 <body>
   <a class="skip" href="#notes">Skip to notes</a>
+  <div class="wrap">
   <header>
+    <div class="masthead"><p class="wordmark">Joltlined</p><p class="masthead-note">Notes &amp; literary analysis</p></div>
     <nav class="subjects" aria-label="Subjects"><a href="index.html">Home</a><a href="ap-lang.html"${lang ? ' aria-current="page"' : ''}>AP Lang Notes</a><a href="ap-world.html"${study.length ? '' : ' aria-current="page"'}>AP World History Notes</a><a href="algebra-2.html"${algebra ? ' aria-current="page"' : ''}>Algebra 2 Notes</a><a href="out-of-my-mind.html">Out Of My Mind Analysis</a></nav>
+    <div class="notes-intro">
+    <p class="eyebrow">${algebra ? 'Algebra 2 / Unit 1B' : lang ? 'AP English Language / Unit 1' : 'AP World History / Units 1 &amp; 2'}</p>
     <h1>${title}</h1>
     ${algebra ? `<p>Module 1B · Relations and Functions · 8 lessons · 16 pages · 24 lines per page</p>
     <p>Packet-guided rules, worked examples, and checks. Unreadable source graphs are not reconstructed; added examples are labeled.</p>
@@ -231,8 +231,9 @@ export function renderSite(data, lang, algebra) {
     <ol class="contents">${data.flatMap(unit => unit.topics.map(topic => `<li><a href="#topic-${escapeHTML(topic.file.replaceAll('.', '-'))}">${escapeHTML(topic.file.slice(0, 3))} ${escapeHTML(topic.title)}</a></li>`)).join('')}</ol>
     <p>All notes are visible below. Use your browser’s Print command for one sheet per page. Colored text downloads contain the original color markers.</p>`}
     <div class="legend" role="group" aria-label="Token color legend">${Object.keys(palette).map(token => `<span><i class="swatch ${token}" aria-hidden="true"></i>${token} ${({ g: 'green', li: 'lime', pu: 'purple', br: 'brown', y: 'yellow', r: 'red', db: 'dark blue', p: 'pink', lb: 'light blue', hp: 'hot pink', pen: 'pencil' })[token]}</span>`).join('')}</div>
+    </div>
   </header>
-  <main id="notes"${study.length ? ' class="study"' : ''}>${study.length ? study.map(topic => `<section class="topic" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}" aria-labelledby="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">
+  <main id="notes" tabindex="-1"${study.length ? ' class="study"' : ''}>${study.length ? study.map(topic => `<section class="topic" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}" aria-labelledby="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">
     <h2 class="topic-title" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">${algebra ? `${escapeHTML(topic.label)} ` : ''}${escapeHTML(topic.title)}</h2>
     ${algebra ? `<p class="downloads"><a href="data:text/plain;charset=utf-8;base64,${Buffer.from(topic.source).toString('base64')}" download="${escapeHTML(topic.file)}.txt">Download ${escapeHTML(topic.label)} original</a> · <a href="data:text/plain;charset=utf-8;base64,${Buffer.from(topic.colored).toString('base64')}" download="${escapeHTML(topic.file)}-colored.txt">Download ${escapeHTML(topic.label)} colored</a> · <a href="notes/algebra-2/${escapeHTML(topic.file)}.txt">Open original file</a> · <a href="notes/algebra-2/Colored/${escapeHTML(topic.file)}.txt">Open colored file</a></p>` : ''}<div class="pages">${Array.from({ length: lines(topic.colored).length / 24 }, (_, page) => `<article aria-label="${escapeHTML(topic.label)} page ${page + 1}">
     <h3 class="page-title">${algebra ? `${escapeHTML(topic.label)} ` : ''}${escapeHTML(topic.title)}</h3>
@@ -253,6 +254,7 @@ export function renderSite(data, lang, algebra) {
     </section>`).join('\n')}
   </main>
   <footer><p>The approved pastel ink palette is preserved. Some ink colors do not meet WCAG text contrast requirements; original pencil-only text files are available for every topic.</p><a href="#notes">Back to notes</a></footer>
+  </div>
 </body>
 </html>
 `;
@@ -285,6 +287,8 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     writeFileSync(resolve(target, 'ap-lang.html'), renderSite([], lang));
     writeFileSync(resolve(target, 'algebra-2.html'), renderSite([], undefined, algebra));
     if (target !== root) {
+      mkdirSync(resolve(target, 'styles'), { recursive: true });
+      copyFileSync(resolve(root, 'styles', 'site.css'), resolve(target, 'styles', 'site.css'));
       copyFileSync(resolve(root, 'out-of-my-mind.html'), resolve(target, 'out-of-my-mind.html'));
       ['cover', 'author', 'class', 'talker', 'inclusiveness', 'school', 'home', 'excluded', 'perspective', 'voice', 'meditalker'].forEach(image => copyFileSync(resolve(root, `${image}.jpg`), resolve(target, `${image}.jpg`)));
       copyFileSync(resolve(root, 'notes', 'ap-lang.txt'), resolve(target, 'notes', 'ap-lang.txt'));

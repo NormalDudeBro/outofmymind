@@ -13,6 +13,9 @@ for (const width of [375, 1280]) {
     const historyPencil = await page.locator('.note').first().evaluate(note => ({ color: getComputedStyle(note).color, weight: getComputedStyle(note).fontWeight }));
     await page.getByRole('link', { name: 'AP Lang Notes', exact: true }).click();
     await expect(page).toHaveURL(/\/ap-lang.html$/);
+    await expect(page.locator('link')).toHaveCount(1);
+    await expect(page.locator('link')).toHaveAttribute('rel', 'stylesheet');
+    await expect(page.locator('link')).toHaveAttribute('href', 'styles/site.css');
     await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('AP Lang Notes');
     await expect(page.getByRole('heading', { name: 'AP Lang Unit 1: Rhetorical Analysis', exact: true, level: 1 })).toBeVisible();
     await expect(page).toHaveTitle('AP Lang Unit 1: Rhetorical Analysis');
@@ -180,6 +183,8 @@ test('AP Lang permits only approved-palette contrast exceptions and prints four 
     return { rowHeight: getComputedStyle(note.closest('.line')).height, fontSize: style.fontSize, lineHeight: style.lineHeight, paddingTop: style.paddingTop, paddingBottom: style.paddingBottom };
   }))).toEqual(Array(96).fill(historyPrint));
   await expect(page.locator('header')).toBeHidden();
+  await expect(page.locator('.wrap')).toHaveCSS('padding-inline-start', '0px');
+  await expect(page.locator('.wrap')).toHaveCSS('padding-inline-end', '0px');
   await expect(page.locator('.page-title').first()).toBeVisible();
   expect(await page.locator('.page-title').evaluateAll(titles => titles.every(title => getComputedStyle(title).color === 'rgb(89, 184, 231)'))).toBe(true);
   expect(await page.locator('.note').evaluateAll(notes => notes.filter(note => note.getBoundingClientRect().height > note.closest('.line').getBoundingClientRect().height + 1).map(note => note.textContent)), 'printed notes fit their line heights within 1px').toEqual([]);

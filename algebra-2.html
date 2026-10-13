@@ -5,36 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Algebra 2 Unit 1B: eight lessons across sixteen color-coded 24-line pages on linear graphs, inequalities, piecewise and step functions, absolute value, parent functions, and transformations.">
   <title>Algebra 2 Unit 1B: Relations and Functions</title>
+  <link rel="stylesheet" href="styles/site.css">
   <style>
-    :root { color-scheme: light; --g: #168438; --li: #79c900; --pu: #883ac2; --br: #92552f; --y: #ebc600; --r: #df3034; --db: #173f88; --p: #ed8eb4; --lb: #59b8e7; --hp: #ec228c; --pen: #62615e; font-family: Georgia, "Times New Roman", serif; color: #393833; background: #eeede9; }
-    * { box-sizing: border-box; }
-    body { margin: 0; padding: 28px clamp(12px, 3vw, 48px) 40px; }
-    header, main, footer { max-width: 1500px; margin: auto; }
-    header { margin-bottom: 26px; }
-    h1 { margin: 0 0 14px; font-size: 26px; font-weight: normal; }
-    a { color: #173f88; text-underline-offset: 3px; }
-    a:focus-visible { outline: 2px solid #173f88; outline-offset: 4px; }
-    .skip { position: absolute; top: 0; left: 12px; transform: translateY(-120%); background: #fffefb; padding: 8px; }
-    .skip:focus { transform: none; }
-    nav { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 18px 0; }
-    .subjects { border-bottom: 1px solid #dcd9d1; padding-bottom: 12px; }
-    .subjects a { padding: 8px 12px; border-radius: 4px; font: 14px/1.5 system-ui, sans-serif; }
-    .subjects a[aria-current="page"] { background: #173f88; color: white; text-decoration: none; }
-    .contents { columns: 2; padding-left: 24px; font-size: 14px; line-height: 1.8; }
+    :root { --g: #168438; --li: #79c900; --pu: #883ac2; --br: #92552f; --y: #ebc600; --r: #df3034; --db: #173f88; --p: #ed8eb4; --lb: #59b8e7; --hp: #ec228c; --pen: #62615e; }
+    .notes-intro { padding-block: 44px 30px; }
+    .notes-intro h1 { max-width: 26ch; margin: 0 0 18px; font-size: clamp(34px, 4.5vw, 54px); font-weight: normal; line-height: 1.12; letter-spacing: -1px; }
+    .notes-intro > p:not(.eyebrow) { max-width: 85ch; color: var(--muted); font-size: 15px; line-height: 1.75; }
+    .notes-intro h1 + p { font: 12px/1.7 system-ui, sans-serif; letter-spacing: 0.04em; }
+    .notes-intro nav { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-block: 24px 16px; font: 12px/1.7 system-ui, sans-serif; }
+    #notes { padding-block: 6px 40px; }
+    #notes:focus { outline: none; }
+    .contents { columns: 2; padding-inline-start: 24px; margin-block: 22px; font-size: 14px; line-height: 1.8; }
     .contents li { break-inside: avoid; }
     .legend { display: flex; flex-wrap: wrap; gap: 7px 15px; font: 12px/1.5 system-ui, sans-serif; }
     .legend span { display: inline-flex; align-items: center; gap: 5px; }
     .swatch { width: 9px; height: 9px; border-radius: 50%; }
-    .unit-title { font-size: 24px; font-weight: normal; border-top: 1px solid #dcd9d1; padding-top: 22px; }
+    .unit-title { font-size: 30px; font-weight: normal; border-block-start: 1px solid var(--ink); padding-block-start: 22px; }
     .topic { margin-bottom: 28px; scroll-margin-top: 12px; }
     .pages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 22px; align-items: start; }
     article { min-width: 0; }
     .topic-title, .page-title { color: var(--lb); font-size: 22px; line-height: 1.25; font-weight: normal; margin: 0 0 7px; }
     .page-title { display: none; }
-    .caption, .downloads { margin: 0 0 12px; font: 11px/1.5 system-ui, sans-serif; color: #62615e; }
-    .sheet { background: #fffefb; border: 1px solid #dcd9d1; padding: 18px 18px 18px 14px; box-shadow: 0 2px 5px #00000008; }
+    .caption, .downloads { margin: 0 0 12px; font: 11px/1.5 system-ui, sans-serif; color: var(--muted); }
+    .sheet { background: #fffefb; border: 1px solid var(--rule); padding: 18px 18px 18px 14px; }
     .line { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; min-height: 37px; }
-    .number { padding-top: 7px; color: #62615e; font: 9px/1.5 system-ui, sans-serif; text-align: right; user-select: none; }
+    .number { padding-block-start: 7px; color: var(--muted); font: 9px/1.5 system-ui, sans-serif; text-align: end; user-select: none; }
     .note { white-space: pre-wrap; overflow-wrap: anywhere; color: var(--pen); border-bottom: 1px solid #efede7; padding: 5px 0; font-size: 14px; line-height: 26px; }
     .ink.g { color: var(--g); } .swatch.g { background: var(--g); }
     .ink.li { color: var(--li); } .swatch.li { background: var(--li); }
@@ -49,7 +44,7 @@
     .ink.pen { color: var(--pen); } .swatch.pen { background: var(--pen); }
     @media (max-width: 960px) { .pages { grid-template-columns: minmax(0, 1fr); } }
     @media (max-width: 480px) {
-      body { padding: 18px 10px 28px; } .contents { columns: 1; }
+      .notes-intro { padding-block: 32px 24px; } .contents { columns: 1; }
       .sheet { padding: 12px 10px 12px 5px; }
       .line { grid-template-columns: 17px minmax(0, 1fr); gap: 6px; }
       .note { font-size: 13px; line-height: 23px; }
@@ -58,6 +53,7 @@
     @page { size: A4 portrait; margin: 12mm; }
     @media print {
       body { padding: 0; background: white; }
+      #notes { padding: 0; }
       header, footer, .skip, .unit-title, .topic-title, .downloads { display: none; }
       main, .pages { display: block; }
       .topic { margin: 0; }
@@ -76,16 +72,21 @@
 </head>
 <body>
   <a class="skip" href="#notes">Skip to notes</a>
+  <div class="wrap">
   <header>
+    <div class="masthead"><p class="wordmark">Joltlined</p><p class="masthead-note">Notes &amp; literary analysis</p></div>
     <nav class="subjects" aria-label="Subjects"><a href="index.html">Home</a><a href="ap-lang.html">AP Lang Notes</a><a href="ap-world.html">AP World History Notes</a><a href="algebra-2.html" aria-current="page">Algebra 2 Notes</a><a href="out-of-my-mind.html">Out Of My Mind Analysis</a></nav>
+    <div class="notes-intro">
+    <p class="eyebrow">Algebra 2 / Unit 1B</p>
     <h1>Algebra 2 Unit 1B: Relations and Functions</h1>
     <p>Module 1B · Relations and Functions · 8 lessons · 16 pages · 24 lines per page</p>
     <p>Packet-guided rules, worked examples, and checks. Unreadable source graphs are not reconstructed; added examples are labeled.</p>
     <p>Notation: R means real numbers; inf means infinity; ^ denotes a power; floor(x) is the greatest integer at most x. Math symbols remain pencil.</p>
     <ol class="contents"><li><a href="#topic-1-5-linear">1.5 Graphing Linear Functions and Inequalities</a></li><li><a href="#topic-1-6-1-piecewise">1.6.1 Piecewise Functions</a></li><li><a href="#topic-1-6-2-step">1.6.2 Step Functions</a></li><li><a href="#topic-1-6-3-absolute-value">1.6.3 Absolute Value Functions</a></li><li><a href="#topic-1-7-1-parents">1.7.1 Parent Functions</a></li><li><a href="#topic-1-7-2-translations">1.7.2 Translations of Functions</a></li><li><a href="#topic-1-7-3-dilations">1.7.3 Dilations and Reflections</a></li><li><a href="#topic-1-7-3-combined">1.7.3 Combined Transformations</a></li></ol>
     <div class="legend" role="group" aria-label="Token color legend"><span><i class="swatch g" aria-hidden="true"></i>g green</span><span><i class="swatch li" aria-hidden="true"></i>li lime</span><span><i class="swatch pu" aria-hidden="true"></i>pu purple</span><span><i class="swatch br" aria-hidden="true"></i>br brown</span><span><i class="swatch y" aria-hidden="true"></i>y yellow</span><span><i class="swatch r" aria-hidden="true"></i>r red</span><span><i class="swatch db" aria-hidden="true"></i>db dark blue</span><span><i class="swatch p" aria-hidden="true"></i>p pink</span><span><i class="swatch lb" aria-hidden="true"></i>lb light blue</span><span><i class="swatch hp" aria-hidden="true"></i>hp hot pink</span><span><i class="swatch pen" aria-hidden="true"></i>pen pencil</span></div>
+    </div>
   </header>
-  <main id="notes" class="study"><section class="topic" id="topic-1-5-linear" aria-labelledby="topic-1-5-linear-title">
+  <main id="notes" tabindex="-1" class="study"><section class="topic" id="topic-1-5-linear" aria-labelledby="topic-1-5-linear-title">
     <h2 class="topic-title" id="topic-1-5-linear-title">1.5 Graphing Linear Functions and Inequalities</h2>
     <p class="downloads"><a href="data:text/plain;charset=utf-8;base64,byBMaW5lYXIgVGFibGVzCi0+IFNvbHZlIGZvciB5IGJlZm9yZSBidWlsZGluZyBhIHRhYmxlLgotPiB4ICsgM3kgLSA2ID0gMCBnaXZlcyAzeSA9IC14ICsgNi4KLT4gRGl2aWRlIGJ5IDM6IHkgPSAteC8zICsgMi4KLT4geCB2YWx1ZXM6IC02LCAtMywgMCwgMywgNi4KLT4geSB2YWx1ZXM6IDQsIDMsIDIsIDEsIDAsIHJlc3BlY3RpdmVseS4KLT4gUGxvdCB0aGUgb3JkZXJlZCBwYWlyczsgY29ubmVjdCB3aXRoIGEgc3RyYWlnaHQgbGluZS4KLT4gQ2hlY2s6IDZ4ICsgMnkgPSAxMCBnaXZlcyB5ID0gLTN4ICsgNS4KbyBJbnRlcmNlcHRzIGFuZCBTbG9wZQotPiBGb3IgM3ggLSAyeSA9IC0xMiwgc2V0IHkgPSAwIHRvIGZpbmQgeC4KLT4gM3ggPSAtMTIgZ2l2ZXMgdGhlIHgtaW50ZXJjZXB0ICgtNCwgMCkuCi0+IFNldCB4ID0gMDogLTJ5ID0gLTEyIGdpdmVzICgwLCA2KS4KLT4gRHJhdyB0aGUgbGluZSB0aHJvdWdoIHRoZXNlIHR3byBpbnRlcmNlcHRzLgotPiBJbiB5ID0gKDMvMil4IC0gNCwgc2xvcGUgaXMgMy8yLgotPiBTdGFydCBhdCAoMCwgLTQpOyBtb3ZlIHJpZ2h0IDIgYW5kIHVwIDMuCi0+IFNsb3BlIG1lYW5zIGNoYW5nZSBpbiB5IGRpdmlkZWQgYnkgY2hhbmdlIGluIHguCm8gSW5lcXVhbGl0eSBCb3VuZGFyaWVzCi0+IFJlcGxhY2UgdGhlIGluZXF1YWxpdHkgc2lnbiB3aXRoID0gZm9yIHRoZSBib3VuZGFyeS4KLT4gVXNlIGEgc29saWQgbGluZSBmb3IgPD0gb3IgPj07IGVxdWFsaXR5IGlzIGluY2x1ZGVkLgotPiBVc2UgYSBkYXNoZWQgbGluZSBmb3IgPCBvciA+OyBlcXVhbGl0eSBpcyBleGNsdWRlZC4KLT4gRm9yIHkgPCBteCArIGIsIHNoYWRlIGJlbG93IHRoZSBib3VuZGFyeS4KLT4gRm9yIHkgPiBteCArIGIsIHNoYWRlIGFib3ZlIHRoZSBib3VuZGFyeS4KLT4gRGl2aWRpbmcgYnkgYSBuZWdhdGl2ZSByZXZlcnNlcyB0aGUgaW5lcXVhbGl0eSBzaWduLgotPiBUaGUgc2FtZSByZXZlcnNhbCBhcHBsaWVzIHdoZW4gbXVsdGlwbHlpbmcgYnkgYSBuZWdhdGl2ZS4KbyBSZWFycmFuZ2UgYW5kIFRlc3QKLT4gMTIgLSA0eSA+IHggZ2l2ZXMgLTR5ID4geCAtIDEyLgotPiBEaXZpZGUgYnkgLTQ6IHkgPCAteC80ICsgMzsgZGFzaGVkLCBzaGFkZSBiZWxvdy4KLT4gOSArIDN5IDw9IDh4IGdpdmVzIHkgPD0gKDgvMyl4IC0gMy4KLT4gVXNlIGEgc29saWQgYm91bmRhcnkgYW5kIHNoYWRlIGJlbG93IGl0LgotPiBBdCAoMywgNSksIDkgKyAzKDUpID0gMjQgYW5kIDgoMykgPSAyNC4KLT4gRXF1YWxpdHkgaG9sZHMsIHNvICgzLCA1KSBpcyBpbmNsdWRlZCBvbiB0aGUgYm91bmRhcnkuCi0+IFRlc3QgYSBwb2ludCBvZmYgdGhlIGxpbmUgdG8gY29uZmlybSB0aGUgc2hhZGVkIHNpZGUuCm8gV2VpZ2h0ZWQgR3JhZGUgQ29uc3RyYWludHMKLT4gTGV0IHggPSB0ZXN0IGdyYWRlIGFuZCB5ID0gaG9tZXdvcmsgZ3JhZGUuCi0+IFdpdGggMCA8PSB4LCB5IDw9IDEwMCwgdGFyZ2V0OiAwLjd4ICsgMC4zeSA+PSA5MC4KLT4gTXVsdGlwbHkgYnkgMTA6IDd4ICsgM3kgPj0gOTAwLgotPiBTb2x2ZTogeSA+PSAzMDAgLSAoNy8zKXguCi0+IElmIHkgPSAxMDAsIHRoZW4geCA+PSA2MDAvNywgYWJvdXQgODUuNzEuCi0+IElmIHggPSAxMDAsIHRoZW4geSA+PSAyMDAvMywgYWJvdXQgNjYuNjcuCi0+IFNoYWRlIGFib3ZlIHRoZSBzb2xpZCBsaW5lIHdpdGhpbiB0aGUgZ3JhZGUgc3F1YXJlLgpvIFJlZ2lvbnMgYW5kIEZ1bmN0aW9ucwotPiBBIHN5c3RlbSdzIHNvbHV0aW9uIHNhdGlzZmllcyBldmVyeSBpbmVxdWFsaXR5LgotPiBLZWVwIG9ubHkgdGhlIG92ZXJsYXAgb2YgYWxsIGFsbG93ZWQgcmVnaW9ucy4KLT4gVGhlIGdyYWRlIHJlZ2lvbiBpbmNsdWRlcyAoMTAwLCAxMDApLCBub3QgKDAsIDApLgotPiBJdHMgY29ybmVycyBhcmUgKDYwMC83LCAxMDApLCAoMTAwLCAxMDApLCAoMTAwLCAyMDAvMykuCi0+IEEgZnVuY3Rpb24gYXNzaWducyBleGFjdGx5IG9uZSBvdXRwdXQgdG8gZWFjaCBpbnB1dC4KLT4gQW4gaW5lcXVhbGl0eSByZWdpb24gZ2VuZXJhbGx5IGFsbG93cyBtYW55IHkgdmFsdWVzIHBlciB4LgotPiBEbyBub3QgdHJlYXQgYSBzaGFkZWQgcmVnaW9uIGFzIGEgZnVuY3Rpb24gZ3JhcGguCg==" download="1.5-linear.txt">Download 1.5 original</a> · <a href="data:text/plain;charset=utf-8;base64,KHBlbilvIChnKUxpbmVhciBUYWJsZXMocGVuKQoocGVuKS0+IFNvbHZlIGZvciB5IGJlZm9yZSBidWlsZGluZyBhIChnKXRhYmxlKHBlbikuCihwZW4pLT4geCArIDN5IC0gNiA9IDAgZ2l2ZXMgM3kgPSAteCArIDYuCihwZW4pLT4gRGl2aWRlIGJ5IDM6IHkgPSAteC8zICsgMi4KKHBlbiktPiB4IHZhbHVlczogLTYsIC0zLCAwLCAzLCA2LgoocGVuKS0+IHkgdmFsdWVzOiA0LCAzLCAyLCAxLCAwLCByZXNwZWN0aXZlbHkuCihwZW4pLT4gUGxvdCB0aGUgb3JkZXJlZCBwYWlyczsgY29ubmVjdCB3aXRoIGEgc3RyYWlnaHQgbGluZS4KKHBlbiktPiAoZylDaGVjayhwZW4pOiA2eCArIDJ5ID0gMTAgZ2l2ZXMgeSA9IC0zeCArIDUuCihwZW4pbyAocHUpSW50ZXJjZXB0cyBhbmQgU2xvcGUocGVuKQoocGVuKS0+IEZvciAzeCAtIDJ5ID0gLTEyLCBzZXQgeSA9IDAgdG8gZmluZCB4LgoocGVuKS0+IDN4ID0gLTEyIGdpdmVzIHRoZSB4LWludGVyY2VwdCAoLTQsIDApLgoocGVuKS0+IFNldCB4ID0gMDogLTJ5ID0gLTEyIGdpdmVzICgwLCA2KS4KKHBlbiktPiBEcmF3IHRoZSBsaW5lIHRocm91Z2ggdGhlc2UgdHdvIChwdSlpbnRlcmNlcHRzKHBlbikuCihwZW4pLT4gSW4geSA9ICgzLzIpeCAtIDQsIChwdSlzbG9wZShwZW4pIGlzIDMvMi4KKHBlbiktPiBTdGFydCBhdCAoMCwgLTQpOyBtb3ZlIHJpZ2h0IDIgYW5kIHVwIDMuCihwZW4pLT4gU2xvcGUgbWVhbnMgY2hhbmdlIGluIHkgZGl2aWRlZCBieSBjaGFuZ2UgaW4geC4KKHBlbilvIChicilJbmVxdWFsaXR5IEJvdW5kYXJpZXMocGVuKQoocGVuKS0+IFJlcGxhY2UgdGhlIGluZXF1YWxpdHkgc2lnbiB3aXRoID0gZm9yIHRoZSBib3VuZGFyeS4KKHBlbiktPiBVc2UgYSAoYnIpc29saWQocGVuKSBsaW5lIGZvciA8PSBvciA+PTsgZXF1YWxpdHkgaXMgaW5jbHVkZWQuCihwZW4pLT4gVXNlIGEgKGJyKWRhc2hlZChwZW4pIGxpbmUgZm9yIDwgb3IgPjsgZXF1YWxpdHkgaXMgZXhjbHVkZWQuCihwZW4pLT4gRm9yIHkgPCBteCArIGIsIHNoYWRlIGJlbG93IHRoZSBib3VuZGFyeS4KKHBlbiktPiBGb3IgeSA+IG14ICsgYiwgc2hhZGUgYWJvdmUgdGhlIGJvdW5kYXJ5LgoocGVuKS0+IERpdmlkaW5nIGJ5IGEgbmVnYXRpdmUgcmV2ZXJzZXMgdGhlIGluZXF1YWxpdHkgc2lnbi4KKHBlbiktPiBUaGUgc2FtZSByZXZlcnNhbCBhcHBsaWVzIHdoZW4gbXVsdGlwbHlpbmcgYnkgYSBuZWdhdGl2ZS4KKHBlbilvIChyKVJlYXJyYW5nZSBhbmQgVGVzdChwZW4pCihwZW4pLT4gMTIgLSA0eSA+IHggZ2l2ZXMgLTR5ID4geCAtIDEyLgoocGVuKS0+IERpdmlkZSBieSAtNDogeSA8IC14LzQgKyAzOyBkYXNoZWQsIHNoYWRlIGJlbG93LgoocGVuKS0+IDkgKyAzeSA8PSA4eCBnaXZlcyB5IDw9ICg4LzMpeCAtIDMuCihwZW4pLT4gVXNlIGEgc29saWQgYm91bmRhcnkgYW5kIHNoYWRlIGJlbG93IGl0LgoocGVuKS0+IEF0ICgzLCA1KSwgOSArIDMoNSkgPSAyNCBhbmQgOCgzKSA9IDI0LgoocGVuKS0+IChyKUVxdWFsaXR5KHBlbikgaG9sZHMsIHNvICgzLCA1KSBpcyBpbmNsdWRlZCBvbiB0aGUgYm91bmRhcnkuCihwZW4pLT4gKHIpVGVzdChwZW4pIGEgcG9pbnQgb2ZmIHRoZSBsaW5lIHRvIGNvbmZpcm0gdGhlIHNoYWRlZCBzaWRlLgoocGVuKW8gKGRiKVdlaWdodGVkIEdyYWRlIENvbnN0cmFpbnRzKHBlbikKKHBlbiktPiBMZXQgeCA9IHRlc3QgZ3JhZGUgYW5kIHkgPSBob21ld29yayBncmFkZS4KKHBlbiktPiBXaXRoIDAgPD0geCwgeSA8PSAxMDAsIChkYil0YXJnZXQocGVuKTogMC43eCArIDAuM3kgPj0gOTAuCihwZW4pLT4gTXVsdGlwbHkgYnkgMTA6IDd4ICsgM3kgPj0gOTAwLgoocGVuKS0+IFNvbHZlOiB5ID49IDMwMCAtICg3LzMpeC4KKHBlbiktPiBJZiB5ID0gMTAwLCB0aGVuIHggPj0gNjAwLzcsIGFib3V0IDg1LjcxLgoocGVuKS0+IElmIHggPSAxMDAsIHRoZW4geSA+PSAyMDAvMywgYWJvdXQgNjYuNjcuCihwZW4pLT4gU2hhZGUgYWJvdmUgdGhlIHNvbGlkIGxpbmUgd2l0aGluIHRoZSAoZGIpZ3JhZGUgc3F1YXJlKHBlbikuCihwZW4pbyAoaHApUmVnaW9ucyBhbmQgRnVuY3Rpb25zKHBlbikKKHBlbiktPiBBIHN5c3RlbSdzIHNvbHV0aW9uIHNhdGlzZmllcyBldmVyeSBpbmVxdWFsaXR5LgoocGVuKS0+IEtlZXAgb25seSB0aGUgKGhwKW92ZXJsYXAocGVuKSBvZiBhbGwgYWxsb3dlZCByZWdpb25zLgoocGVuKS0+IFRoZSBncmFkZSByZWdpb24gaW5jbHVkZXMgKDEwMCwgMTAwKSwgbm90ICgwLCAwKS4KKHBlbiktPiBJdHMgY29ybmVycyBhcmUgKDYwMC83LCAxMDApLCAoMTAwLCAxMDApLCAoMTAwLCAyMDAvMykuCihwZW4pLT4gQSAoaHApZnVuY3Rpb24ocGVuKSBhc3NpZ25zIGV4YWN0bHkgb25lIG91dHB1dCB0byBlYWNoIGlucHV0LgoocGVuKS0+IEFuIGluZXF1YWxpdHkgcmVnaW9uIGdlbmVyYWxseSBhbGxvd3MgbWFueSB5IHZhbHVlcyBwZXIgeC4KKHBlbiktPiBEbyBub3QgdHJlYXQgYSBzaGFkZWQgcmVnaW9uIGFzIGEgZnVuY3Rpb24gZ3JhcGguCg==" download="1.5-linear-colored.txt">Download 1.5 colored</a> · <a href="notes/algebra-2/1.5-linear.txt">Open original file</a> · <a href="notes/algebra-2/Colored/1.5-linear.txt">Open colored file</a></p><div class="pages"><article aria-label="1.5 page 1">
     <h3 class="page-title">1.5 Graphing Linear Functions and Inequalities</h3>
@@ -551,5 +552,6 @@
   </article></div></section>
   </main>
   <footer><p>The approved pastel ink palette is preserved. Some ink colors do not meet WCAG text contrast requirements; original pencil-only text files are available for every topic.</p><a href="#notes">Back to notes</a></footer>
+  </div>
 </body>
 </html>

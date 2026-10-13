@@ -32,7 +32,7 @@ for (const width of [375, 1280]) {
     await page.goto('/ap-world.html');
     await expect(page.locator('article')).toHaveCount(28);
     await expect(page.locator('.note')).toHaveCount(672);
-    expect(requests).toEqual(['http://127.0.0.1:4173/ap-world.html']);
+    expect(requests).toEqual(['http://127.0.0.1:4173/ap-world.html', 'http://127.0.0.1:4173/styles/site.css']);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     await expect(page.locator('.topic-title').first()).toHaveCSS('color', 'rgb(89, 184, 231)');
     for (const [token, hex] of Object.entries(palette)) {
@@ -64,6 +64,38 @@ for (const width of [375, 1280]) {
       expect(await page.locator('.note').allTextContents()).toEqual(topics.flatMap(topic => topic.original.replace(/\r\n/g, '\n').replace(/\n$/, '').split('\n')));
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     }
+  });
+}
+
+for (const width of [375, 1280]) {
+  test(`all five pages share Home academic chrome at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 812 });
+    const presentations = [];
+    for (const path of ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html']) {
+      await page.goto(`/${path}`);
+      await expect(page.locator('link')).toHaveCount(1);
+      await expect(page.locator('link')).toHaveAttribute('rel', 'stylesheet');
+      await expect(page.locator('link')).toHaveAttribute('href', 'styles/site.css');
+      await expect(page.locator('.masthead .wordmark')).toHaveText('Joltlined');
+      await expect(page.locator('.masthead-note')).toHaveText('Notes & literary analysis');
+      expect(await page.locator('.subjects a').allTextContents()).toEqual(['Home', 'AP Lang Notes', 'AP World History Notes', 'Algebra 2 Notes', 'Out Of My Mind Analysis']);
+      expect(await page.locator('.subjects a').evaluateAll(links => links.map(link => link.getAttribute('href')))).toEqual(['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html']);
+      presentations.push(await page.evaluate(() => {
+        const style = selector => {
+          const value = getComputedStyle(document.querySelector(selector));
+          return Object.fromEntries(['fontFamily', 'fontSize', 'fontWeight', 'color', 'backgroundColor', 'paddingInlineStart', 'paddingInlineEnd', 'maxWidth'].map(property => [property, value[property]]));
+        };
+        return Object.fromEntries(['html', 'body', '.masthead', '.wordmark', '.masthead-note', '.subjects', '.subjects a:not([aria-current])', '.subjects [aria-current="page"]', '.wrap'].map(selector => [selector, style(selector)]));
+      }));
+      await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(246, 243, 235)');
+      await expect(page.locator('html')).toHaveCSS('color', 'rgb(33, 55, 73)');
+      await expect(page.locator('html')).toHaveCSS('font-family', 'Georgia, "Times New Roman", serif');
+      await expect(page.locator('html')).toHaveCSS('font-weight', '400');
+      await expect(page.locator('body')).toHaveCSS('font-weight', '400');
+      await expect(page.locator('.wrap')).toHaveCSS('max-width', '1200px');
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    }
+    for (const presentation of presentations.slice(1)) expect(presentation).toEqual(presentations[0]);
   });
 }
 
@@ -133,6 +165,8 @@ test('print produces exactly 28 physical A4 pages', async ({ page }) => {
     await page.goto(url);
     await page.emulateMedia({ media: 'print' });
     await expect(page.locator('header')).toBeHidden();
+    await expect(page.locator('.wrap')).toHaveCSS('padding-inline-start', '0px');
+    await expect(page.locator('.wrap')).toHaveCSS('padding-inline-end', '0px');
     await expect(page.locator('.page-title').first()).toBeVisible();
     const pdf = await page.pdf({ preferCSSPageSize: true, printBackground: true });
     expect((pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) ?? []).length).toBe(28);

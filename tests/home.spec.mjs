@@ -47,6 +47,9 @@ for (const width of [375, 1280]) {
       await page.goForward();
       await expect(page.locator('main h1')).toHaveText(subjects[0].heading);
     }
+    await expect(page.locator('link[rel="stylesheet"]')).toHaveCount(1);
+    await expect(page.locator('link[rel="stylesheet"]')).toHaveAttribute('href', 'styles/site.css');
+    expect(await page.locator('link[rel="stylesheet"]').evaluate(element => element.sheet !== null)).toBe(true);
   });
 
   test(`Home keyboard entry, focus and LTR/RTL layout at ${width}px`, async ({ page }) => {
@@ -151,7 +154,7 @@ test('restored analysis retains historical sections, citation return navigation 
     await page.locator(`#main-nav a[href="#${id}"]`).click();
     await expect(page).toHaveURL(new RegExp(`#${id}$`));
     await expect(page.getByRole('heading', { name: heading, level: 2, exact: true })).toBeVisible();
-    // Chromium includes the journal's CSS-generated bullet in H3 accessible names.
+    // Match the heading text whether or not CSS adds a decorative prefix.
     if (id === 'characters') await expect(page.locator('#characters').getByRole('heading', { name: /\bMelody Brooks$/, level: 3 })).toBeVisible();
     if (id === 'plot') await expect(page.locator('#plot').getByRole('heading', { name: /\bResolution$/, level: 3 })).toBeVisible();
   }
