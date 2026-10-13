@@ -1,0 +1,48 @@
+o Parent Functions
+-> A parent is a basic function used to build a family.
+-> R means all real numbers; inf means infinity.
+-> Domain lists inputs; range lists outputs.
+-> Square brackets include an endpoint; parentheses do not.
+-> A function assigns each input exactly one output.
+-> A vertical line meets a function graph at most once.
+-> Compare shape, intercepts, domain, and range.
+o Constant Parent
+-> f(x) = a gives the same output for every input.
+-> Its graph is the horizontal line y = a.
+-> Domain: R. Range: {a}, a single value.
+-> For x = -2, -1, 0, 1, 2, outputs are a, a, a, a, a.
+-> Example: f(x) = 3 has range {3}.
+-> Its y-intercept is (0,a); if a != 0, it has no zero.
+-> If a = 0, every real input is a zero.
+o Identity Parent
+-> f(x) = x returns the input unchanged.
+-> Its graph is a line through (0,0) with slope 1.
+-> Domain: R. Range: R.
+-> Table inputs: x = -2, -1, 0, 1, 2.
+-> Table outputs: y = -2, -1, 0, 1, 2.
+-> Example: f(-2) = -2 and f(2) = 2.
+-> Both intercepts are (0,0); the function increases.
+o Absolute Value Parent
+-> f(x) = |x| measures distance from zero.
+-> Domain: R. Range: [0,inf).
+-> Table inputs: x = -2, -1, 0, 1, 2.
+-> Table outputs: y = 2, 1, 0, 1, 2.
+-> The V has vertex (0,0) and y-axis symmetry.
+-> For x < 0, |x| = -x; for x >= 0, |x| = x.
+-> The minimum is 0; opposite inputs give equal outputs.
+o Quadratic Parent
+-> f(x) = x^2 squares each input.
+-> Domain: R. Range: [0,inf).
+-> Table inputs: x = -2, -1, 0, 1, 2.
+-> Table outputs: y = 4, 1, 0, 1, 4.
+-> The parabola opens up with vertex (0,0).
+-> It has y-axis symmetry and a minimum of 0.
+-> Unlike |x|, it curves; both have nonnegative outputs.
+o Choosing Models
+-> Constant: temperature held fixed over a time interval.
+-> Linear: wages W(t) = r*t at a fixed hourly rate r.
+-> Identity is the linear parent; wages need scaling.
+-> Quadratic: hypothetical projectile height H(t).
+-> H(t) = -t^2 + 4*t; 0 <= t <= 4; range: [0,4].
+-> Absolute value: |s-c| is distance from reference c.
+-> s is signed position, not total distance traveled.

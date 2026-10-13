@@ -1,0 +1,48 @@
+o Translation Rule
+-> A translation moves a graph without changing its shape.
+-> Write g(x) = f(x-h) + k for parent function f.
+-> h is the horizontal shift; k is the vertical shift.
+-> h > 0 moves right; h < 0 moves left.
+-> k > 0 moves up; k < 0 moves down.
+-> Inside signs look opposite; outside signs act the same.
+-> A parent point (u,v) becomes (u+h,v+k).
+o Reading Shifts
+-> g(x) = (x+2)^2 - 4 uses parent f(x) = x^2.
+-> x+2 = x-(-2), so h = -2 and k = -4.
+-> Shift left 2 and down 4; vertex: (-2,-4).
+-> Parent (1,1) becomes (-1,-3).
+-> g(x) = |x-7| + 1 shifts right 7 and up 1.
+-> Its vertex is (7,1); (1,1) becomes (8,2).
+-> Check: g(8) = |8-7| + 1 = 2.
+o Writing Equations
+-> Begin with the parent, then insert the requested shifts.
+-> Quadratic right 10 and up 4: h = 10, k = 4.
+-> The equation is g(x) = (x-10)^2 + 4.
+-> The vertex moves from (0,0) to (10,4).
+-> Parent (2,4) moves to (12,8).
+-> Check: g(12) = (12-10)^2 + 4 = 8.
+-> Shifts preserve the parabola's width and opening.
+o Quadratic Worked Points
+-> For g(x) = (x+5)^2 - 3, h = -5 and k = -3.
+-> Translate the parent left 5 and down 3.
+-> (0,0) becomes vertex (-5,-3).
+-> (1,1) becomes (-4,-2).
+-> (2,4) becomes (-3,1).
+-> Check: g(-3) = 2^2 - 3 = 1.
+-> Domain: R. Range: [-3,inf); axis: x = -5.
+o Absolute Value Worked Points
+-> For g(x) = |x+8| - 5, h = -8 and k = -5.
+-> Translate left 8 and down 5; vertex: (-8,-5).
+-> Parent (-1,1) becomes (-9,-4).
+-> Parent (1,1) becomes (-7,-4).
+-> Domain: R. Range: [-5,inf).
+-> The axis of symmetry is x = -8.
+-> Check: g(-7) = |-7+8| - 5 = -4.
+o Factoring and Checks
+-> Read h from a fully factored inside expression.
+-> With a scale, use b(x-h), not the raw constant.
+-> Example: 2x-6 = 2(x-3), so h = 3, not 6.
+-> This combines horizontal scaling with a shift.
+-> For pure translations, the inside coefficient is 1.
+-> Shift domain horizontally and range vertically.
+-> Verify a vertex and a second point by substitution.

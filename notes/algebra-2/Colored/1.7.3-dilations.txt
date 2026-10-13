@@ -1,0 +1,48 @@
+(pen)o (g)Vertical Dilations(pen)
+(pen)-> In g(x) = a*f(x), multiply each output by a.
+(pen)-> Use a != 0 for the dilation rules here.
+(pen)-> |a| > 1 (g)stretches vertically(pen) by |a|.
+(pen)-> 0 < |a| < 1 (g)compresses vertically(pen) by |a|.
+(pen)-> a < 0 also reflects across the x-axis.
+(pen)-> A parent point (u,v) becomes (u,a*v).
+(pen)-> x stays fixed; a negative a reverses output signs.
+(pen)o (li)Horizontal Dilations(pen)
+(pen)-> In g(x) = f(b*x), use b != 0.
+(pen)-> The (li)horizontal factor(pen) is 1/|b|, not |b|.
+(pen)-> |b| > 1 compresses horizontally by 1/|b|.
+(pen)-> 0 < |b| < 1 stretches horizontally by 1/|b|.
+(pen)-> b < 0 also reflects across the y-axis.
+(pen)-> A parent point (u,v) becomes (u/b,v).
+(pen)-> Solve b*x = u to locate the new input x = u/b.
+(pen)o (pu)Linear Worked Examples(pen)
+(pen)-> Use (pu)identity(pen) f(x) = x as the parent.
+(pen)-> g(x) = -(2/5)*x has a = -2/5.
+(pen)-> (g)Compress vertically(pen) by 2/5 and reflect across x-axis.
+(pen)-> (5,5) becomes (5,-2); check: -(2/5)*5 = -2.
+(pen)-> g(x) = -3*x has a = -3.
+(pen)-> (g)Stretch vertically(pen) by 3 and reflect across x-axis.
+(pen)-> (1,1) becomes (1,-3); both graphs pass through (0,0).
+(pen)o (br)Even Parent Examples(pen)
+(pen)-> g(x) = (-2.5*x)^2 uses f(x) = x^2, b = -2.5.
+(pen)-> Compress horizontally by 2/5 and reflect across y-axis.
+(pen)-> Since x^2 is (br)even(pen), that reflection is invisible.
+(pen)-> (2,4) becomes (-0.8,4); g(x) = 6.25*x^2.
+(pen)-> g(x) = (2/3)*|-x| reflects across y-axis.
+(pen)-> It also compresses vertically by 2/3.
+(pen)-> Since |-x| = |x|, this reflection is also invisible.
+(pen)o (r)Combining Two Dilations(pen)
+(pen)-> In g(x) = a*f(b*x), use nonzero a and b.
+(pen)-> Map (u,v) to (u/b,a*v); (r)divide input(pen), scale output.
+(pen)-> Reflect x, compress horizontally 1/2, stretch vertically 8.
+(pen)-> For x^2, choose a = -8 and b = 2.
+(pen)-> g(x) = -8*(2*x)^2 = -32*x^2.
+(pen)-> For g(x) = -4*|2*x|, (-2,2) becomes (-1,-8).
+(pen)-> The other parent point (2,2) becomes (1,-8).
+(pen)o (db)Equivalent Descriptions(pen)
+(pen)-> g(x) = (-3*x)^2 = 9*x^2.
+(pen)-> Inside form: compress horizontally 1/3; reflect y-axis.
+(pen)-> Outside form: stretch vertically by 9, with no reflection.
+(pen)-> Both descriptions produce the (db)same graph(pen).
+(pen)-> Even parents satisfy f(-x) = f(x).
+(pen)-> Their y-axis reflections can be invisible.
+(pen)-> Parameter representations need not be unique.

@@ -1,0 +1,48 @@
+o Absolute Value Rule
+-> Absolute value measures distance from zero, never negative.
+-> |x| = x if x >= 0.
+-> |x| = -x if x < 0.
+-> For example, |-5| = -(-5) = 5 and |5| = 5.
+-> The parent graph is a V with vertex (0, 0).
+-> Its domain is all real numbers; its range is y >= 0.
+-> Opposite inputs have equal absolute values.
+o General Graph Form
+-> Write y = a|x - h| + k, with a != 0.
+-> The vertex is (h, k); the symmetry line is x = h.
+-> The domain is all real numbers.
+-> If a > 0, the V opens upward and the range is y >= k.
+-> If a < 0, the V opens downward and the range is y <= k.
+-> The left branch slope is -a; the right branch slope is a.
+-> Larger |a| makes a steeper V; smaller |a| makes it flatter.
+o Upward Worked Example
+-> For y = |x - 1| + 3, a = 1, h = 1, and k = 3.
+-> The vertex is (1, 3); the symmetry line is x = 1.
+-> The minimum output is 3; the range is y >= 3.
+-> At x = 0 or x = 2, y = 4.
+-> At x = -1 or x = 3, y = 5.
+-> For x < 1, y = -(x - 1) + 3 = -x + 4.
+-> For x >= 1, y = x - 1 + 3 = x + 2.
+o Downward Worked Example
+-> For y = -(2/3)|x + 3| + 1, h = -3, not 3.
+-> The vertex is (-3, 1); the symmetry line is x = -3.
+-> Since a = -2/3, the maximum output is 1.
+-> The domain is all real numbers; the range is y <= 1.
+-> The left slope is 2/3; the right slope is -2/3.
+-> At x = -6 or x = 0, y = -(2/3)(3) + 1 = -1.
+-> Plot these symmetric points and draw the two rays.
+o Equation Strategy
+-> Isolate the absolute value before splitting into cases.
+-> For |u| = q with q < 0, there are no real solutions.
+-> For q = 0, solve u = 0; for nonconstant linear u, one root.
+-> For q > 0, solve u = q or u = -q.
+-> If u is linear with nonzero slope, q > 0 gives two roots.
+-> For nonlinear u, the number of roots can differ.
+-> Check roots in the original equation for extraneous roots.
+o Solve and Check
+-> Solve 2|x - 1| + 3 = 11: first get |x - 1| = 4.
+-> x - 1 = 4 or x - 1 = -4 gives x = 5 or x = -3.
+-> Check both: 2(4) + 3 = 11, so both are solutions.
+-> |x + 2| = -3 has no solutions: distance cannot be negative.
+-> |x + 2| = 0 gives x = -2, exactly one solution.
+-> Squaring |x + 2| = -3 would falsely suggest x = 1 or -5.
+-> Both fail the original equation; reject those extra roots.

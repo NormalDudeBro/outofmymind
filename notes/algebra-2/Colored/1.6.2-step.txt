@@ -1,0 +1,48 @@
+(pen)o (g)Step Function Basics(pen)
+(pen)-> A step function is (g)constant(pen) on each input interval.
+(pen)-> Its graph consists of horizontal segments or rays.
+(pen)-> Output changes at boundaries between steps.
+(pen)-> Outputs form a (g)discrete set(pen) in the usual step models.
+(pen)-> Inputs may vary continuously across real intervals.
+(pen)-> A context may instead allow only discrete inputs.
+(pen)-> State the domain from the model, not just the picture.
+(pen)o (pu)Greatest Integer Rule(pen)
+(pen)-> floor(x) is the (pu)greatest integer(pen) less than or equal to x.
+(pen)-> It rounds down toward negative infinity.
+(pen)-> floor(10.7) = 10 because 10 <= 10.7 < 11.
+(pen)-> floor(-6.35) = -7 because -7 <= -6.35 < -6.
+(pen)-> floor(5) = 5; an integer stays unchanged.
+(pen)-> floor(-0.2) = -1, not 0.
+(pen)-> (pu)Truncation(pen) toward zero is not floor for negative nonintegers.
+(pen)o (br)Floor Intervals(pen)
+(pen)-> For an integer k, floor(x) = k when k <= x < k + 1.
+(pen)-> The left endpoint is (br)closed(pen); the right endpoint is open.
+(pen)-> y = 0 on 0 <= x < 1; y = 1 on 1 <= x < 2.
+(pen)-> y = -2 on -2 <= x < -1.
+(pen)-> At x = -1, use the next step: floor(-1) = -1.
+(pen)-> The (br)domain(pen) of floor(x) is all real numbers.
+(pen)-> The range of floor(x) is all integers.
+(pen)o (db)Transformed Floor Rule(pen)
+(pen)-> Let f(x) = floor(2x - 1); let k be an integer.
+(pen)-> f(x) = k exactly when k <= 2x - 1 < k + 1.
+(pen)-> Add 1: k + 1 <= 2x < k + 2.
+(pen)-> Divide by 2: (k + 1)/2 <= x < (k + 2)/2.
+(pen)-> Each step has (db)width(pen) 1/2, closed left and open right.
+(pen)-> The domain is all real numbers; the range is all integers.
+(pen)-> A positive input coefficient preserves (db)endpoint order(pen).
+(pen)o (r)Transformed Examples(pen)
+(pen)-> For k = 0, f(x) = 0 on 1/2 <= x < 1.
+(pen)-> f(0.75) = floor(0.5) = 0.
+(pen)-> At x = 1, f(1) = floor(1) = 1, not 0.
+(pen)-> For k = -1, f(x) = -1 on 0 <= x < 1/2.
+(pen)-> f(0.25) = floor(-0.5) = -1.
+(pen)-> For k = -2, f(x) = -2 on -1/2 <= x < 0.
+(pen)-> f(-0.25) = floor(-1.5) = -2.
+(pen)o (hp)Context and Endpoints(pen)
+(pen)-> Parking fees can stay (g)constant(pen) within each time bracket.
+(pen)-> Read each interval and its included endpoints from the source.
+(pen)-> Open circles exclude points; closed circles include them.
+(pen)-> Two included outputs at one input violate the (hp)function rule(pen).
+(pen)-> Included branches with the same output still give one value.
+(pen)-> Two open endpoints at an input may leave it out of the (hp)domain(pen).
+(pen)-> Check boundary values before using a step model for a charge.

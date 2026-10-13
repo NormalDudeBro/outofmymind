@@ -14,7 +14,7 @@ const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
 assert.equal(new Set(ids).size, ids.length, 'unique IDs');
 const links = [...html.matchAll(/\shref="([^"]+)"/g)].map(match => match[1]);
 links.forEach(link => {
-  if (['index.html', 'ap-lang.html'].includes(link)) return assert.ok(existsSync(resolve(root, link)));
+  if (['index.html', 'ap-lang.html', 'algebra-2.html'].includes(link)) return assert.ok(existsSync(resolve(root, link)));
   if (link.startsWith('#')) return assert.ok(ids.includes(link.slice(1)), `fragment ${link}`);
   if (link.startsWith('notes/')) return assert.match(link, /^notes\/unit-[12]\/(Colored\/)?[12]\.[1-7]-[a-z-]+\.txt$/);
   assert.match(link, /^data:text\/plain;charset=utf-8;base64,[A-Za-z0-9+/]+=*$/);

@@ -1,0 +1,48 @@
+o Linear Tables
+-> Solve for y before building a table.
+-> x + 3y - 6 = 0 gives 3y = -x + 6.
+-> Divide by 3: y = -x/3 + 2.
+-> x values: -6, -3, 0, 3, 6.
+-> y values: 4, 3, 2, 1, 0, respectively.
+-> Plot the ordered pairs; connect with a straight line.
+-> Check: 6x + 2y = 10 gives y = -3x + 5.
+o Intercepts and Slope
+-> For 3x - 2y = -12, set y = 0 to find x.
+-> 3x = -12 gives the x-intercept (-4, 0).
+-> Set x = 0: -2y = -12 gives (0, 6).
+-> Draw the line through these two intercepts.
+-> In y = (3/2)x - 4, slope is 3/2.
+-> Start at (0, -4); move right 2 and up 3.
+-> Slope means change in y divided by change in x.
+o Inequality Boundaries
+-> Replace the inequality sign with = for the boundary.
+-> Use a solid line for <= or >=; equality is included.
+-> Use a dashed line for < or >; equality is excluded.
+-> For y < mx + b, shade below the boundary.
+-> For y > mx + b, shade above the boundary.
+-> Dividing by a negative reverses the inequality sign.
+-> The same reversal applies when multiplying by a negative.
+o Rearrange and Test
+-> 12 - 4y > x gives -4y > x - 12.
+-> Divide by -4: y < -x/4 + 3; dashed, shade below.
+-> 9 + 3y <= 8x gives y <= (8/3)x - 3.
+-> Use a solid boundary and shade below it.
+-> At (3, 5), 9 + 3(5) = 24 and 8(3) = 24.
+-> Equality holds, so (3, 5) is included on the boundary.
+-> Test a point off the line to confirm the shaded side.
+o Weighted Grade Constraints
+-> Let x = test grade and y = homework grade.
+-> With 0 <= x, y <= 100, target: 0.7x + 0.3y >= 90.
+-> Multiply by 10: 7x + 3y >= 900.
+-> Solve: y >= 300 - (7/3)x.
+-> If y = 100, then x >= 600/7, about 85.71.
+-> If x = 100, then y >= 200/3, about 66.67.
+-> Shade above the solid line within the grade square.
+o Regions and Functions
+-> A system's solution satisfies every inequality.
+-> Keep only the overlap of all allowed regions.
+-> The grade region includes (100, 100), not (0, 0).
+-> Its corners are (600/7, 100), (100, 100), (100, 200/3).
+-> A function assigns exactly one output to each input.
+-> An inequality region generally allows many y values per x.
+-> Do not treat a shaded region as a function graph.

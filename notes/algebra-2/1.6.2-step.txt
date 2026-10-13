@@ -1,0 +1,48 @@
+o Step Function Basics
+-> A step function is constant on each input interval.
+-> Its graph consists of horizontal segments or rays.
+-> Output changes at boundaries between steps.
+-> Outputs form a discrete set in the usual step models.
+-> Inputs may vary continuously across real intervals.
+-> A context may instead allow only discrete inputs.
+-> State the domain from the model, not just the picture.
+o Greatest Integer Rule
+-> floor(x) is the greatest integer less than or equal to x.
+-> It rounds down toward negative infinity.
+-> floor(10.7) = 10 because 10 <= 10.7 < 11.
+-> floor(-6.35) = -7 because -7 <= -6.35 < -6.
+-> floor(5) = 5; an integer stays unchanged.
+-> floor(-0.2) = -1, not 0.
+-> Truncation toward zero is not floor for negative nonintegers.
+o Floor Intervals
+-> For an integer k, floor(x) = k when k <= x < k + 1.
+-> The left endpoint is closed; the right endpoint is open.
+-> y = 0 on 0 <= x < 1; y = 1 on 1 <= x < 2.
+-> y = -2 on -2 <= x < -1.
+-> At x = -1, use the next step: floor(-1) = -1.
+-> The domain of floor(x) is all real numbers.
+-> The range of floor(x) is all integers.
+o Transformed Floor Rule
+-> Let f(x) = floor(2x - 1); let k be an integer.
+-> f(x) = k exactly when k <= 2x - 1 < k + 1.
+-> Add 1: k + 1 <= 2x < k + 2.
+-> Divide by 2: (k + 1)/2 <= x < (k + 2)/2.
+-> Each step has width 1/2, closed left and open right.
+-> The domain is all real numbers; the range is all integers.
+-> A positive input coefficient preserves endpoint order.
+o Transformed Examples
+-> For k = 0, f(x) = 0 on 1/2 <= x < 1.
+-> f(0.75) = floor(0.5) = 0.
+-> At x = 1, f(1) = floor(1) = 1, not 0.
+-> For k = -1, f(x) = -1 on 0 <= x < 1/2.
+-> f(0.25) = floor(-0.5) = -1.
+-> For k = -2, f(x) = -2 on -1/2 <= x < 0.
+-> f(-0.25) = floor(-1.5) = -2.
+o Context and Endpoints
+-> Parking fees can stay constant within each time bracket.
+-> Read each interval and its included endpoints from the source.
+-> Open circles exclude points; closed circles include them.
+-> Two included outputs at one input violate the function rule.
+-> Included branches with the same output still give one value.
+-> Two open endpoints at an input may leave it out of the domain.
+-> Check boundary values before using a step model for a charge.

@@ -1,0 +1,48 @@
+(pen)o (g)Absolute Value Rule(pen)
+(pen)-> Absolute value measures (g)distance(pen) from zero, never negative.
+(pen)-> |x| = x if x >= 0.
+(pen)-> |x| = -x if x < 0.
+(pen)-> For example, |-5| = -(-5) = 5 and |5| = 5.
+(pen)-> The parent graph is a V with (g)vertex(pen) (0, 0).
+(pen)-> Its domain is all real numbers; its range is y >= 0.
+(pen)-> Opposite inputs have equal absolute values.
+(pen)o (pu)General Graph Form(pen)
+(pen)-> Write y = a|x - h| + k, with a != 0.
+(pen)-> The vertex is (h, k); the (pu)symmetry line(pen) is x = h.
+(pen)-> The domain is all real numbers.
+(pen)-> If a > 0, the V opens upward and the range is y >= k.
+(pen)-> If a < 0, the V opens downward and the range is y <= k.
+(pen)-> The left branch slope is -a; the right branch slope is a.
+(pen)-> Larger |a| makes a (pu)steeper(pen) V; smaller |a| makes it flatter.
+(pen)o (br)Upward Worked Example(pen)
+(pen)-> For y = |x - 1| + 3, a = 1, h = 1, and k = 3.
+(pen)-> The vertex is (1, 3); the symmetry line is x = 1.
+(pen)-> The (br)minimum(pen) output is 3; the range is y >= 3.
+(pen)-> At x = 0 or x = 2, y = 4.
+(pen)-> At x = -1 or x = 3, y = 5.
+(pen)-> For x < 1, y = -(x - 1) + 3 = -x + 4.
+(pen)-> For x >= 1, y = x - 1 + 3 = x + 2.
+(pen)o (db)Downward Worked Example(pen)
+(pen)-> For y = -(2/3)|x + 3| + 1, h = -3, not 3.
+(pen)-> The vertex is (-3, 1); the symmetry line is x = -3.
+(pen)-> Since a = -2/3, the (db)maximum(pen) output is 1.
+(pen)-> The domain is all real numbers; the range is y <= 1.
+(pen)-> The left slope is 2/3; the right slope is -2/3.
+(pen)-> At x = -6 or x = 0, y = -(2/3)(3) + 1 = -1.
+(pen)-> Plot these (db)symmetric points(pen) and draw the two rays.
+(pen)o (r)Equation Strategy(pen)
+(pen)-> (r)Isolate(pen) the absolute value before splitting into cases.
+(pen)-> For |u| = q with q < 0, there are no real solutions.
+(pen)-> For q = 0, solve u = 0; for nonconstant linear u, one root.
+(pen)-> For q > 0, solve u = q or u = -q.
+(pen)-> If u is linear with nonzero slope, q > 0 gives two roots.
+(pen)-> For nonlinear u, the number of roots can differ.
+(pen)-> Check roots in the original equation for (r)extraneous roots(pen).
+(pen)o (hp)Solve and Check(pen)
+(pen)-> Solve 2|x - 1| + 3 = 11: first get |x - 1| = 4.
+(pen)-> x - 1 = 4 or x - 1 = -4 gives x = 5 or x = -3.
+(pen)-> (hp)Check(pen) both: 2(4) + 3 = 11, so both are solutions.
+(pen)-> |x + 2| = -3 has no solutions: distance cannot be negative.
+(pen)-> |x + 2| = 0 gives x = -2, exactly one solution.
+(pen)-> Squaring |x + 2| = -3 would falsely suggest x = 1 or -5.
+(pen)-> Both fail the original equation; (hp)reject(pen) those extra roots.

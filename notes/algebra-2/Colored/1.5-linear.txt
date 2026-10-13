@@ -1,0 +1,48 @@
+(pen)o (g)Linear Tables(pen)
+(pen)-> Solve for y before building a (g)table(pen).
+(pen)-> x + 3y - 6 = 0 gives 3y = -x + 6.
+(pen)-> Divide by 3: y = -x/3 + 2.
+(pen)-> x values: -6, -3, 0, 3, 6.
+(pen)-> y values: 4, 3, 2, 1, 0, respectively.
+(pen)-> Plot the ordered pairs; connect with a straight line.
+(pen)-> (g)Check(pen): 6x + 2y = 10 gives y = -3x + 5.
+(pen)o (pu)Intercepts and Slope(pen)
+(pen)-> For 3x - 2y = -12, set y = 0 to find x.
+(pen)-> 3x = -12 gives the x-intercept (-4, 0).
+(pen)-> Set x = 0: -2y = -12 gives (0, 6).
+(pen)-> Draw the line through these two (pu)intercepts(pen).
+(pen)-> In y = (3/2)x - 4, (pu)slope(pen) is 3/2.
+(pen)-> Start at (0, -4); move right 2 and up 3.
+(pen)-> Slope means change in y divided by change in x.
+(pen)o (br)Inequality Boundaries(pen)
+(pen)-> Replace the inequality sign with = for the boundary.
+(pen)-> Use a (br)solid(pen) line for <= or >=; equality is included.
+(pen)-> Use a (br)dashed(pen) line for < or >; equality is excluded.
+(pen)-> For y < mx + b, shade below the boundary.
+(pen)-> For y > mx + b, shade above the boundary.
+(pen)-> Dividing by a negative reverses the inequality sign.
+(pen)-> The same reversal applies when multiplying by a negative.
+(pen)o (r)Rearrange and Test(pen)
+(pen)-> 12 - 4y > x gives -4y > x - 12.
+(pen)-> Divide by -4: y < -x/4 + 3; dashed, shade below.
+(pen)-> 9 + 3y <= 8x gives y <= (8/3)x - 3.
+(pen)-> Use a solid boundary and shade below it.
+(pen)-> At (3, 5), 9 + 3(5) = 24 and 8(3) = 24.
+(pen)-> (r)Equality(pen) holds, so (3, 5) is included on the boundary.
+(pen)-> (r)Test(pen) a point off the line to confirm the shaded side.
+(pen)o (db)Weighted Grade Constraints(pen)
+(pen)-> Let x = test grade and y = homework grade.
+(pen)-> With 0 <= x, y <= 100, (db)target(pen): 0.7x + 0.3y >= 90.
+(pen)-> Multiply by 10: 7x + 3y >= 900.
+(pen)-> Solve: y >= 300 - (7/3)x.
+(pen)-> If y = 100, then x >= 600/7, about 85.71.
+(pen)-> If x = 100, then y >= 200/3, about 66.67.
+(pen)-> Shade above the solid line within the (db)grade square(pen).
+(pen)o (hp)Regions and Functions(pen)
+(pen)-> A system's solution satisfies every inequality.
+(pen)-> Keep only the (hp)overlap(pen) of all allowed regions.
+(pen)-> The grade region includes (100, 100), not (0, 0).
+(pen)-> Its corners are (600/7, 100), (100, 100), (100, 200/3).
+(pen)-> A (hp)function(pen) assigns exactly one output to each input.
+(pen)-> An inequality region generally allows many y values per x.
+(pen)-> Do not treat a shaded region as a function graph.

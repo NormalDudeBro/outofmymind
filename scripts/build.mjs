@@ -96,46 +96,63 @@ export function renderLine(line) {
 }
 
 export function loadLangNotes() {
-  const source = readFileSync(resolve(root, 'notes', 'ap-lang.txt'), 'utf8');
-  const colored = readFileSync(resolve(root, 'notes', 'Colored', 'ap-lang.txt'), 'utf8');
-  assert.equal(normalize(colored).replace(marker, ''), normalize(source), 'AP Lang: exact stripped equality');
+  return loadMarkedNotes('', 'ap-lang');
+}
+
+export function loadAlgebraNotes() {
+  return [
+    ['1.5-linear', '1.5', 'Graphing Linear Functions and Inequalities'],
+    ['1.6.1-piecewise', '1.6.1', 'Piecewise Functions'],
+    ['1.6.2-step', '1.6.2', 'Step Functions'],
+    ['1.6.3-absolute-value', '1.6.3', 'Absolute Value Functions'],
+    ['1.7.1-parents', '1.7.1', 'Parent Functions'],
+    ['1.7.2-translations', '1.7.2', 'Translations of Functions'],
+    ['1.7.3-dilations', '1.7.3', 'Dilations and Reflections'],
+    ['1.7.3-combined', '1.7.3', 'Combined Transformations'],
+  ].map(([file, label, title]) => ({ file, label, title, ...loadMarkedNotes('algebra-2', file) }));
+}
+
+function loadMarkedNotes(folder, file) {
+  const source = readFileSync(resolve(root, 'notes', folder, `${file}.txt`), 'utf8');
+  const colored = readFileSync(resolve(root, 'notes', folder, 'Colored', `${file}.txt`), 'utf8');
+  assert.equal(normalize(colored).replace(marker, ''), normalize(source), `${file}: exact stripped equality`);
   const marked = lines(colored);
   const sections = lines(source).reduce((sections, text, index) => {
-    assert.ok(text.length <= 65 && text.trim() === text && /^(o |-> )\S/.test(text), 'AP Lang: prefixes, trimmed lines, max 65 characters');
-    assert.ok(marked[index].startsWith('(pen)'), 'AP Lang: initial pencil');
+    assert.ok(text.length <= 65 && text.trim() === text && /^(o |-> )\S/.test(text), `${file}: prefixes, trimmed lines, max 65 characters`);
+    assert.ok(marked[index].startsWith('(pen)'), `${file}: initial pencil`);
     const parts = spans(marked[index]);
     const colors = parts.flatMap(part => Array(part.text.length).fill(part.color));
-    assert.ok(new Set(parts.filter(part => part.color !== 'pen').map(part => part.color)).size <= 2, 'AP Lang: at most two highlight colors');
+    assert.ok(new Set(parts.filter(part => part.color !== 'pen').map(part => part.color)).size <= 2, `${file}: at most two highlight colors`);
     parts.forEach((part, n) => {
       if (part.color === 'pen') return;
-      assert.match(part.text, /^[A-Za-z](?:[A-Za-z ]*[A-Za-z])?$/, 'AP Lang: colored words only, neutral punctuation');
-      assert.equal(parts[n + 1]?.color, 'pen', 'AP Lang: immediate pencil reset');
+      assert.match(part.text, /^[A-Za-z](?:[A-Za-z ]*[A-Za-z])?$/, `${file}: colored words only, neutral punctuation`);
+      assert.equal(parts[n + 1]?.color, 'pen', `${file}: immediate pencil reset`);
     });
     const prefix = text.startsWith('o ') ? 2 : 3;
-    assert.ok(colors.slice(0, prefix).every(color => color === 'pen'), 'AP Lang: neutral prefixes');
+    assert.ok(colors.slice(0, prefix).every(color => color === 'pen'), `${file}: neutral prefixes`);
     if (text.startsWith('o ')) {
       const color = parts.find(part => part.color !== 'pen')?.color;
-      assert.ok(color && color !== 'lb', 'AP Lang: one reserved non-LB title ink');
-      assert.ok([...text.slice(2)].every((char, n) => /[A-Za-z]/.test(char) ? colors[n + 2] === color : char === ' ' || colors[n + 2] === 'pen'), 'AP Lang: full uniform title');
+      assert.ok(color && color !== 'lb', `${file}: one reserved non-LB title ink`);
+      assert.ok([...text.slice(2)].every((char, n) => /[A-Za-z]/.test(char) ? colors[n + 2] === color : char === ' ' || colors[n + 2] === 'pen'), `${file}: full uniform title`);
       sections.push({ color, lines: [] });
     }
-    assert.ok(sections.length, 'AP Lang: first line must be a section heading');
+    assert.ok(sections.length, `${file}: first line must be a section heading`);
     sections.at(-1).lines.push(text);
     return sections;
   }, []);
-  assert.ok(sections.flatMap(section => section.lines).length % 48 === 0, 'AP Lang: complete 48-line pages');
+  assert.ok(sections.flatMap(section => section.lines).length % 48 === 0, `${file}: complete 48-line pages`);
   return { source, colored, sections };
 }
 
-export function renderSite(data, lang) {
-  const title = lang ? 'AP Lang Unit 1: Rhetorical Analysis' : 'AP World History Notes';
-  const langLines = lang ? lines(lang.colored) : [];
+export function renderSite(data, lang, algebra) {
+  const title = algebra ? 'Algebra 2 Unit 1B: Relations and Functions' : lang ? 'AP Lang Unit 1: Rhetorical Analysis' : 'AP World History Notes';
+  const study = lang ? [{ ...lang, file: 'ap-lang', label: 'AP Lang', title }] : algebra ?? [];
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="${lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1 and 2: fourteen topics, twenty-eight printable note pages, and original and colored text downloads.'}">
+  <meta name="description" content="${algebra ? 'Algebra 2 Unit 1B: eight color-coded 48-line lessons on linear graphs, inequalities, piecewise and step functions, absolute value, parent functions, and transformations.' : lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1 and 2: fourteen topics, twenty-eight printable note pages, and original and colored text downloads.'}">
   <title>${title}</title>
   <style>
     :root { color-scheme: light; ${Object.entries(palette).map(([token, hex]) => `--${token}: ${hex};`).join(' ')} font-family: Georgia, "Times New Roman", serif; color: #393833; background: #eeede9; }
@@ -191,9 +208,9 @@ export function renderSite(data, lang) {
       .line { grid-template-columns: 22px minmax(0, 1fr); gap: 8px; height: 8.8mm; min-height: 0; }
       .number { padding-top: 0.6mm; }
       .note { font-size: 12px; line-height: 3.8mm; padding: 0.6mm 0; }
-      .lang .line { height: 4.7mm; }
-      .lang .note { font-size: 11px; line-height: 3.5mm; padding: 0.4mm 0; }
-      .lang article:last-child { break-after: auto; }
+      .study .line { height: 4.7mm; }
+      .study .note { font-size: 11px; line-height: 3.5mm; padding: 0.4mm 0; }
+      .study .topic:last-child article:last-child { break-after: auto; }
       * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
     }
   </style>
@@ -201,9 +218,12 @@ export function renderSite(data, lang) {
 <body>
   <a class="skip" href="#notes">Skip to notes</a>
   <header>
-    <nav class="subjects" aria-label="Subjects"><a href="index.html"${lang ? '' : ' aria-current="page"'}>AP World History notes</a><a href="ap-lang.html"${lang ? ' aria-current="page"' : ''}>AP Lang notes</a></nav>
+    <nav class="subjects" aria-label="Subjects"><a href="index.html"${study.length ? '' : ' aria-current="page"'}>AP World History notes</a><a href="ap-lang.html"${lang ? ' aria-current="page"' : ''}>AP Lang notes</a><a href="algebra-2.html"${algebra ? ' aria-current="page"' : ''}>Algebra 2 notes</a></nav>
     <h1>${title}</h1>
-    ${lang ? `<p>Unit 1 · Building commentary connections · ${lang.sections.length} color-coded sections · 48 lines per page</p>
+    ${algebra ? `<p>Module 1B · Relations and Functions · 8 lessons · 8 pages · 48 lines per page</p>
+    <p>Packet-guided rules, worked examples, and checks. Unreadable source graphs are not reconstructed; added examples are labeled.</p>
+    <p>Notation: R means real numbers; inf means infinity; ^ denotes a power; floor(x) is the greatest integer at most x. Math symbols remain pencil.</p>
+    <ol class="contents">${algebra.map(lesson => `<li><a href="#topic-${escapeHTML(lesson.file.replaceAll('.', '-'))}">${escapeHTML(lesson.label)} ${escapeHTML(lesson.title)}</a></li>`).join('')}</ol>` : lang ? `<p>Unit 1 · Building commentary connections · ${lang.sections.length} color-coded sections · 48 lines per page</p>
     <p>Describe the choice, explain its function, trace a possible audience effect, and justify its contribution to the author's purpose.</p>
     <p>Food-labeling examples are paraphrases or clearly marked hypothetical examples, not direct quotations or guaranteed audience responses. Each note line is at most 65 characters.</p>
     <p class="downloads"><a href="data:text/plain;charset=utf-8;base64,${Buffer.from(lang.source).toString('base64')}" download="ap-lang.txt">Download AP Lang original</a> · <a href="data:text/plain;charset=utf-8;base64,${Buffer.from(lang.colored).toString('base64')}" download="ap-lang-colored.txt">Download AP Lang colored</a> · <a href="notes/ap-lang.txt">Open original file</a> · <a href="notes/Colored/ap-lang.txt">Open colored file</a></p>
@@ -213,11 +233,13 @@ export function renderSite(data, lang) {
     <p>All notes are visible below. Use your browser’s Print command for one sheet per page. Colored text downloads contain the original color markers.</p>`}
     <div class="legend" role="group" aria-label="Token color legend">${Object.keys(palette).map(token => `<span><i class="swatch ${token}" aria-hidden="true"></i>${token} ${({ g: 'green', li: 'lime', pu: 'purple', br: 'brown', y: 'yellow', r: 'red', db: 'dark blue', p: 'pink', lb: 'light blue', hp: 'hot pink', pen: 'pencil' })[token]}</span>`).join('')}</div>
   </header>
-  <main id="notes"${lang ? ' class="lang"' : ''}>${lang ? `<h2 class="topic-title">${title}</h2><div class="pages">${Array.from({ length: langLines.length / 48 }, (_, page) => `<article aria-label="AP Lang page ${page + 1}">
-    <h3 class="page-title">AP Lang Unit 1: Rhetorical Analysis</h3>
-    <p class="caption">Page ${page + 1} · ${page === 0 ? 'Building commentary' : 'Deepening analysis'} · Lines ${page * 48 + 1}–${page * 48 + 48}</p>
-    <div class="sheet">${langLines.slice(page * 48, page * 48 + 48).map((line, index) => `<div class="line"><span class="number" aria-hidden="true">${page * 48 + index + 1}</span><span class="note">${renderLine(line)}</span></div>`).join('\n')}</div>
-  </article>`).join('\n')}</div>` : data.map((unit, index) => `
+  <main id="notes"${study.length ? ' class="study"' : ''}>${study.length ? `${algebra ? '<div class="pages">' : ''}${study.map(topic => `<section class="topic" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}" aria-labelledby="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">
+    <h2 class="topic-title" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">${algebra ? `${escapeHTML(topic.label)} ` : ''}${escapeHTML(topic.title)}</h2>
+    ${algebra ? `<p class="downloads"><a href="data:text/plain;charset=utf-8;base64,${Buffer.from(topic.source).toString('base64')}" download="${escapeHTML(topic.file)}.txt">Download ${escapeHTML(topic.label)} original</a> · <a href="data:text/plain;charset=utf-8;base64,${Buffer.from(topic.colored).toString('base64')}" download="${escapeHTML(topic.file)}-colored.txt">Download ${escapeHTML(topic.label)} colored</a> · <a href="notes/algebra-2/${escapeHTML(topic.file)}.txt">Open original file</a> · <a href="notes/algebra-2/Colored/${escapeHTML(topic.file)}.txt">Open colored file</a></p>` : ''}<div${algebra ? '' : ' class="pages"'}>${Array.from({ length: lines(topic.colored).length / 48 }, (_, page) => `<article aria-label="${escapeHTML(topic.label)} page ${page + 1}">
+    <h3 class="page-title">${algebra ? `${escapeHTML(topic.label)} ` : ''}${escapeHTML(topic.title)}</h3>
+    <p class="caption">${algebra ? '48 lines' : `Page ${page + 1} · ${page === 0 ? 'Building commentary' : 'Deepening analysis'} · Lines ${page * 48 + 1}–${page * 48 + 48}`}</p>
+    <div class="sheet">${lines(topic.colored).slice(page * 48, page * 48 + 48).map((line, index) => `<div class="line"><span class="number" aria-hidden="true">${page * 48 + index + 1}</span><span class="note">${renderLine(line)}</span></div>`).join('\n')}</div>
+  </article>`).join('\n')}</div></section>`).join('\n')}${algebra ? '</div>' : ''}` : data.map((unit, index) => `
     <section class="unit" id="unit-${index + 1}" aria-labelledby="unit-${index + 1}-title">
       <h2 class="unit-title" id="unit-${index + 1}-title">Unit ${index + 1}: ${escapeHTML(unit.name)}</h2>
       ${unit.topics.map(topic => `<section class="topic" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}" aria-labelledby="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">
@@ -243,6 +265,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   // Validate every source before importing anything or replacing the current site.
   const data = loadNotes(paths);
   const lang = loadLangNotes();
+  const algebra = loadAlgebraNotes();
   const html = renderSite(data);
   const destinations = [resolve(root, 'index.html'), ...(values.preview ? [resolve(values.preview)] : [])];
   destinations.forEach(destination => {
@@ -260,10 +283,15 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     writeFileSync(destination, html);
     if (destination !== resolve(target, 'index.html')) writeFileSync(resolve(target, 'index.html'), html);
     writeFileSync(resolve(target, 'ap-lang.html'), renderSite([], lang));
+    writeFileSync(resolve(target, 'algebra-2.html'), renderSite([], undefined, algebra));
     if (target !== root) {
       copyFileSync(resolve(root, 'notes', 'ap-lang.txt'), resolve(target, 'notes', 'ap-lang.txt'));
       mkdirSync(resolve(target, 'notes', 'Colored'), { recursive: true });
       copyFileSync(resolve(root, 'notes', 'Colored', 'ap-lang.txt'), resolve(target, 'notes', 'Colored', 'ap-lang.txt'));
+      algebra.forEach(lesson => ['', 'Colored'].forEach(folder => {
+        mkdirSync(resolve(target, 'notes', 'algebra-2', folder), { recursive: true });
+        copyFileSync(resolve(root, 'notes', 'algebra-2', folder, `${lesson.file}.txt`), resolve(target, 'notes', 'algebra-2', folder, `${lesson.file}.txt`));
+      }));
     }
     console.log(`Built ${destination}: 14 topics, 28 pages, 672 note lines; native downloads embedded and text files copied alongside.`);
   });

@@ -6,7 +6,7 @@
   "description": "Offline-ready static AP World History notes for Units 1 and 2",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "validate": "html-validate index.html ap-lang.html && node tests/static-checks.mjs",
+    "validate": "html-validate index.html ap-lang.html algebra-2.html && node tests/static-checks.mjs && node tests/algebra-checks.mjs",
     "test:e2e": "playwright test",
     "test": "npm run validate && npm run test:e2e"
   },

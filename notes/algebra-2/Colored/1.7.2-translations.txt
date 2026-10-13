@@ -1,0 +1,48 @@
+(pen)o (g)Translation Rule(pen)
+(pen)-> A (g)translation(pen) moves a graph without changing its shape.
+(pen)-> Write g(x) = f(x-h) + k for parent function f.
+(pen)-> h is the horizontal shift; k is the vertical shift.
+(pen)-> h > 0 moves (li)right(pen); h < 0 moves (li)left(pen).
+(pen)-> k > 0 moves (pu)up(pen); k < 0 moves (pu)down(pen).
+(pen)-> Inside signs look opposite; outside signs act the same.
+(pen)-> A parent point (u,v) becomes (u+h,v+k).
+(pen)o (li)Reading Shifts(pen)
+(pen)-> g(x) = (x+2)^2 - 4 uses parent f(x) = x^2.
+(pen)-> x+2 = x-(-2), so h = -2 and k = -4.
+(pen)-> Shift (li)left(pen) 2 and (pu)down(pen) 4; vertex: (-2,-4).
+(pen)-> Parent (1,1) becomes (-1,-3).
+(pen)-> g(x) = |x-7| + 1 shifts right 7 and up 1.
+(pen)-> Its vertex is (7,1); (1,1) becomes (8,2).
+(pen)-> Check: g(8) = |8-7| + 1 = 2.
+(pen)o (pu)Writing Equations(pen)
+(pen)-> Begin with the parent, then insert the requested shifts.
+(pen)-> Quadratic right 10 and up 4: h = 10, k = 4.
+(pen)-> The equation is g(x) = (x-10)^2 + 4.
+(pen)-> The (pu)vertex(pen) moves from (0,0) to (10,4).
+(pen)-> Parent (2,4) moves to (12,8).
+(pen)-> Check: g(12) = (12-10)^2 + 4 = 8.
+(pen)-> Shifts preserve the parabola's width and opening.
+(pen)o (br)Quadratic Worked Points(pen)
+(pen)-> For g(x) = (x+5)^2 - 3, h = -5 and k = -3.
+(pen)-> Translate the parent (li)left(pen) 5 and (pu)down(pen) 3.
+(pen)-> (0,0) becomes vertex (-5,-3).
+(pen)-> (1,1) becomes (-4,-2).
+(pen)-> (2,4) becomes (-3,1).
+(pen)-> Check: g(-3) = 2^2 - 3 = 1.
+(pen)-> Domain: R. Range: [-3,inf); axis: x = -5.
+(pen)o (r)Absolute Value Worked Points(pen)
+(pen)-> For g(x) = |x+8| - 5, h = -8 and k = -5.
+(pen)-> Translate left 8 and down 5; (r)vertex(pen): (-8,-5).
+(pen)-> Parent (-1,1) becomes (-9,-4).
+(pen)-> Parent (1,1) becomes (-7,-4).
+(pen)-> Domain: R. Range: [-5,inf).
+(pen)-> The axis of symmetry is x = -8.
+(pen)-> Check: g(-7) = |-7+8| - 5 = -4.
+(pen)o (db)Factoring and Checks(pen)
+(pen)-> Read h from a (db)fully factored(pen) inside expression.
+(pen)-> With a scale, use b(x-h), not the raw constant.
+(pen)-> Example: 2x-6 = 2(x-3), so h = 3, not 6.
+(pen)-> This combines horizontal scaling with a shift.
+(pen)-> For pure translations, the inside coefficient is 1.
+(pen)-> Shift (li)domain(pen) horizontally and (pu)range(pen) vertically.
+(pen)-> Verify a vertex and a second point by substitution.

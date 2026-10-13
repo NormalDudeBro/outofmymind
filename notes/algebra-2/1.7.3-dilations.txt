@@ -1,0 +1,48 @@
+o Vertical Dilations
+-> In g(x) = a*f(x), multiply each output by a.
+-> Use a != 0 for the dilation rules here.
+-> |a| > 1 stretches vertically by |a|.
+-> 0 < |a| < 1 compresses vertically by |a|.
+-> a < 0 also reflects across the x-axis.
+-> A parent point (u,v) becomes (u,a*v).
+-> x stays fixed; a negative a reverses output signs.
+o Horizontal Dilations
+-> In g(x) = f(b*x), use b != 0.
+-> The horizontal factor is 1/|b|, not |b|.
+-> |b| > 1 compresses horizontally by 1/|b|.
+-> 0 < |b| < 1 stretches horizontally by 1/|b|.
+-> b < 0 also reflects across the y-axis.
+-> A parent point (u,v) becomes (u/b,v).
+-> Solve b*x = u to locate the new input x = u/b.
+o Linear Worked Examples
+-> Use identity f(x) = x as the parent.
+-> g(x) = -(2/5)*x has a = -2/5.
+-> Compress vertically by 2/5 and reflect across x-axis.
+-> (5,5) becomes (5,-2); check: -(2/5)*5 = -2.
+-> g(x) = -3*x has a = -3.
+-> Stretch vertically by 3 and reflect across x-axis.
+-> (1,1) becomes (1,-3); both graphs pass through (0,0).
+o Even Parent Examples
+-> g(x) = (-2.5*x)^2 uses f(x) = x^2, b = -2.5.
+-> Compress horizontally by 2/5 and reflect across y-axis.
+-> Since x^2 is even, that reflection is invisible.
+-> (2,4) becomes (-0.8,4); g(x) = 6.25*x^2.
+-> g(x) = (2/3)*|-x| reflects across y-axis.
+-> It also compresses vertically by 2/3.
+-> Since |-x| = |x|, this reflection is also invisible.
+o Combining Two Dilations
+-> In g(x) = a*f(b*x), use nonzero a and b.
+-> Map (u,v) to (u/b,a*v); divide input, scale output.
+-> Reflect x, compress horizontally 1/2, stretch vertically 8.
+-> For x^2, choose a = -8 and b = 2.
+-> g(x) = -8*(2*x)^2 = -32*x^2.
+-> For g(x) = -4*|2*x|, (-2,2) becomes (-1,-8).
+-> The other parent point (2,2) becomes (1,-8).
+o Equivalent Descriptions
+-> g(x) = (-3*x)^2 = 9*x^2.
+-> Inside form: compress horizontally 1/3; reflect y-axis.
+-> Outside form: stretch vertically by 9, with no reflection.
+-> Both descriptions produce the same graph.
+-> Even parents satisfy f(-x) = f(x).
+-> Their y-axis reflections can be invisible.
+-> Parameter representations need not be unique.

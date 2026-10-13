@@ -1,0 +1,48 @@
+(pen)o (g)Parent Functions(pen)
+(pen)-> A (g)parent(pen) is a basic function used to build a family.
+(pen)-> R means all real numbers; inf means infinity.
+(pen)-> (li)Domain(pen) lists inputs; (pu)range(pen) lists outputs.
+(pen)-> Square brackets include an endpoint; parentheses do not.
+(pen)-> A function assigns each input exactly one output.
+(pen)-> A vertical line meets a function graph at most once.
+(pen)-> Compare shape, intercepts, domain, and range.
+(pen)o (li)Constant Parent(pen)
+(pen)-> f(x) = a gives the same output for every input.
+(pen)-> Its graph is the (li)horizontal line(pen) y = a.
+(pen)-> Domain: R. Range: {a}, a single value.
+(pen)-> For x = -2, -1, 0, 1, 2, outputs are a, a, a, a, a.
+(pen)-> Example: f(x) = 3 has range {3}.
+(pen)-> Its y-intercept is (0,a); if a != 0, it has no zero.
+(pen)-> If a = 0, every real input is a zero.
+(pen)o (pu)Identity Parent(pen)
+(pen)-> f(x) = x returns the input unchanged.
+(pen)-> Its graph is a line through (0,0) with (pu)slope(pen) 1.
+(pen)-> Domain: R. Range: R.
+(pen)-> Table inputs: x = -2, -1, 0, 1, 2.
+(pen)-> Table outputs: y = -2, -1, 0, 1, 2.
+(pen)-> Example: f(-2) = -2 and f(2) = 2.
+(pen)-> Both intercepts are (0,0); the function increases.
+(pen)o (br)Absolute Value Parent(pen)
+(pen)-> f(x) = |x| measures (br)distance(pen) from zero.
+(pen)-> Domain: R. Range: [0,inf).
+(pen)-> Table inputs: x = -2, -1, 0, 1, 2.
+(pen)-> Table outputs: y = 2, 1, 0, 1, 2.
+(pen)-> The V has (br)vertex(pen) (0,0) and y-axis symmetry.
+(pen)-> For x < 0, |x| = -x; for x >= 0, |x| = x.
+(pen)-> The minimum is 0; opposite inputs give equal outputs.
+(pen)o (r)Quadratic Parent(pen)
+(pen)-> f(x) = x^2 squares each input.
+(pen)-> Domain: R. Range: [0,inf).
+(pen)-> Table inputs: x = -2, -1, 0, 1, 2.
+(pen)-> Table outputs: y = 4, 1, 0, 1, 4.
+(pen)-> The (r)parabola(pen) opens up with vertex (0,0).
+(pen)-> It has y-axis symmetry and a minimum of 0.
+(pen)-> Unlike |x|, it curves; both have nonnegative outputs.
+(pen)o (db)Choosing Models(pen)
+(pen)-> (li)Constant(pen): temperature held fixed over a time interval.
+(pen)-> (pu)Linear(pen): wages W(t) = r*t at a fixed hourly rate r.
+(pen)-> Identity is the linear parent; wages need scaling.
+(pen)-> (r)Quadratic(pen): hypothetical projectile height H(t).
+(pen)-> H(t) = -t^2 + 4*t; 0 <= t <= 4; range: [0,4].
+(pen)-> (br)Absolute value(pen): |s-c| is distance from reference c.
+(pen)-> s is (db)signed position(pen), not total distance traveled.
