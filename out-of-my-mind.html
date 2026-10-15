@@ -6,104 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
-    <title>Out of My Mind | A Literary Journal</title>
+    <title>Out of My Mind | Active Reading Companion</title>
     <link rel="stylesheet" href="styles/site.css">
-    <style>
-        .analysis-site { --body-font: Georgia, "Times New Roman", serif; --heading-font: var(--body-font); background: var(--paper); color: var(--ink); font-family: var(--body-font); }
-        body.high-contrast { --paper: #fff; --ink: #000; --muted: #000; --rule: #000; --accent: #0000c7; }
-        body.dyslexia-friendly { --body-font: Arial, sans-serif; }
-        body.dyslexia-friendly :is(h1, h2, h3, h4, .quote) { letter-spacing: 0.05em; line-height: 1.6; }
-        body.dyslexia-friendly .wordmark { font-family: var(--body-font); }
-        html { scroll-behavior: smooth; }
-        html:has(body.reduce-motion), body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after {
-            scroll-behavior: auto !important; animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important; transition-duration: 0.01ms !important;
-        }
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-        }
-        .analysis-site :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-        .analysis-site main:focus { outline: none; }
-        .section-nav { position: sticky; inset-block-start: 0; z-index: 10; background: var(--paper); border-block-end: 1px solid var(--rule); }
-        .section-nav.scrolled { border-block-end-color: var(--ink); }
-        .section-nav ul { display: flex; flex-wrap: wrap; gap: 4px 22px; list-style: none; margin: 0; padding-block: 10px; padding-inline: 0; }
-        .section-nav a { display: block; padding-block: 10px; min-block-size: 36px; font: 12px/1.4 system-ui, sans-serif; color: var(--muted); text-decoration: none; }
-        .section-nav a:hover, .section-nav a[aria-current="location"] { color: var(--accent); text-decoration: underline; text-underline-offset: 5px; }
-        .section-nav a[aria-current="location"] { font-weight: 600; }
-        .accessibility-controls { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 16px 0; }
-        .no-js .accessibility-controls { display: none; }
-        .a11y-btn { min-block-size: 44px; padding-block: 8px; padding-inline: 12px; background: var(--paper); border: 1px solid var(--rule); color: var(--ink); font: 11px/1.5 system-ui, sans-serif; cursor: pointer; }
-        .a11y-btn:hover { border-color: var(--accent); }
-        .a11y-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-        .a11y-btn:disabled { cursor: not-allowed; }
-        .container { padding-block: 48px 36px; min-inline-size: 0; font-size: 17px; line-height: 1.75; }
-        .page, .citation, .cite-ref { scroll-margin-block-start: var(--section-offset, 100px); }
-        .page { background: var(--paper); }
-        .js .page { display: none; }
-        .js .page.active { display: block; }
-        .hero { padding-block-end: 40px; border-block-end: 1px solid var(--ink); }
-        .hero-content { display: grid; grid-template-columns: minmax(0, 1fr) 200px; column-gap: clamp(24px, 5vw, 64px); align-items: start; }
-        .hero h1 { grid-column: 1; margin: 0; font: normal clamp(42px, 5.7vw, 72px)/1.05 var(--heading-font); letter-spacing: -0.035em; }
-        .hero .author { grid-column: 1; margin-block: 16px 24px; font-size: 21px; font-style: italic; color: var(--accent); }
-        .hero p:not(.author) { grid-column: 1; margin-block: 0 24px; color: var(--muted); font-size: 18px; max-inline-size: 65ch; }
-        .book-cover { grid-column: 2; grid-row: 1 / 5; display: block; inline-size: 200px; max-inline-size: 100%; block-size: auto; border: 1px solid var(--rule); }
-        .cta-button { grid-column: 1; justify-self: start; padding-block: 10px; color: var(--accent); font: 12px/1.5 system-ui, sans-serif; text-underline-offset: 5px; }
-        .content-card, .works-cited { margin-block: 0 32px; padding-block: 32px; }
-        .content-card h2, .works-cited h2 { margin-block: 0 24px; padding-block-end: 18px; border-block-end: 1px solid var(--rule); font: normal clamp(30px, 3.5vw, 42px)/1.2 var(--heading-font); }
-        .content-card h3 { margin-block: 30px 12px; font: normal 25px/1.3 var(--heading-font); }
-        .content-card p, .content-card li { color: var(--muted); margin-block: 0 16px; }
-        .content-card ul { padding-inline-start: 24px; margin-block: 16px 24px; }
-        .content-card li { padding-inline-start: 4px; }
-        .image-container { margin-block: 26px; border: 1px solid var(--rule); }
-        .image-container img { display: block; inline-size: 100%; block-size: auto; }
-        .image-container.has-image { block-size: 340px; }
-        .image-container.has-image img { block-size: 100%; object-fit: cover; }
-        .image-container.author-photo { max-inline-size: 640px; }
-        .image-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-block: 26px; }
-        .image-grid .image-container { margin-block: 0; block-size: 280px; }
-        .qualities-intro, .highlight-box { padding-block: 20px; padding-inline: 24px; margin-block: 26px; border: 1px solid var(--rule); color: var(--muted); }
-        .qualities-intro strong, .highlight-box strong { color: var(--ink); }
-        .highlight-box p { margin-block-end: 0; }
-        .character-full { margin-block: 32px; padding-block: 28px; border-block-start: 1px solid var(--ink); }
-        .character-full-header { padding-block-end: 20px; margin-block-end: 20px; border-block-end: 1px solid var(--rule); }
-        .character-full-name h3 { margin-block: 0 10px; }
-        .character-full-role, .quality-title, .last-updated { font: 10px/1.6 system-ui, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
-        .qualities-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-block: 24px; }
-        .quality-card { padding-block: 20px; padding-inline: 22px; border: 1px solid var(--rule); }
-        .quality-title { margin-block: 0 14px; font-weight: 600; }
-        .content-card .quality-desc { margin-block: 0; font-size: 16px; }
-        mark { background: transparent; color: var(--ink); font-weight: 600; }
-        .quote { font: italic clamp(20px, 2.3vw, 26px)/1.65 var(--heading-font); color: var(--ink); border-inline-start: 2px solid var(--accent); padding-inline: 24px 0; margin-block: 32px; }
-        .citation { position: relative; padding-block: 18px; padding-inline-start: 56px; border-block-end: 1px solid var(--rule); color: var(--muted); overflow-wrap: anywhere; }
-        .cite-badge { position: absolute; inset-inline-start: 0; inset-block-start: 18px; display: inline-flex; align-items: center; justify-content: center; min-inline-size: 36px; min-block-size: 36px; border: 1px solid var(--rule); color: var(--accent); font: 12px/1.4 system-ui, sans-serif; text-decoration: none; }
-        .cite-badge:hover { border-color: var(--accent); text-decoration: underline; }
-        .citation-legend { color: var(--muted); font-size: 15px; margin-block: 0 24px; }
-        .citation-source-link { color: var(--accent); overflow-wrap: anywhere; }
-        .cite-ref { font: 11px/1.5 system-ui, sans-serif; vertical-align: super; color: var(--accent); white-space: nowrap; padding-inline: 3px; margin-inline-start: 2px; text-underline-offset: 3px; }
-        .citation:target, .cite-ref:target { outline: 2px solid var(--accent); outline-offset: 4px; }
-        .last-updated { color: var(--muted); padding-block-start: 20px; border-block-start: 1px solid var(--rule); }
-        @media (max-width: 760px) {
-            .container { padding-block: 32px; }
-            .section-nav ul { flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: thin; padding-inline: 4px; }
-            .section-nav a { white-space: nowrap; }
-            .hero-content { grid-template-columns: minmax(0, 1fr) 140px; column-gap: 24px; }
-            .book-cover { inline-size: 140px; }
-            .hero p:not(.author) { font-size: 16px; }
-            .image-grid { gap: 16px; }
-        }
-        @media (max-width: 540px) {
-            .hero-content, .qualities-grid, .image-grid { grid-template-columns: minmax(0, 1fr); }
-            .book-cover { grid-column: 1; grid-row: auto; margin-block: 0 24px; inline-size: 160px; }
-            .qualities-intro, .highlight-box, .quality-card { padding-inline: 18px; }
-            .image-container.has-image { block-size: 240px; }
-        }
-        @media print {
-            .section-nav, .accessibility-controls { display: none; }
-            .js .page { display: block; }
-            .quote, .quality-card { break-inside: avoid; }
-        }
-    </style>
 </head>
 <body class="analysis-site">
     <a href="#main-content" class="skip skip-link">Skip to content</a>
@@ -123,10 +27,13 @@
             <li><a href="#author" class="nav-link" data-page="author">Author</a></li>
             <li><a href="#context" class="nav-link" data-page="context">Context</a></li>
             <li><a href="#characters" class="nav-link" data-page="characters">Characters</a></li>
-            <li><a href="#setting" class="nav-link" data-page="setting">Setting</a></li>
-            <li><a href="#tone" class="nav-link" data-page="tone">Tone</a></li>
-            <li><a href="#pov" class="nav-link" data-page="pov">Point of View</a></li>
             <li><a href="#plot" class="nav-link" data-page="plot">Plot</a></li>
+            <li><a href="#setting" class="nav-link" data-page="setting">Setting</a></li>
+            <li><a href="#pov" class="nav-link" data-page="pov">Point of View</a></li>
+            <li><a href="#tone" class="nav-link" data-page="tone">Tone</a></li>
+            <li><a href="#vocab" class="nav-link" data-page="vocab">Vocabulary</a></li>
+            <li><a href="#theme" class="nav-link" data-page="theme">Theme</a></li>
+            <li><a href="#questions" class="nav-link" data-page="questions">Questions</a></li>
             <li><a href="#citations" class="nav-link" data-page="citations">Works Cited</a></li>
         </ul>
     </nav>
@@ -137,285 +44,591 @@
                     <h1>Out of My Mind</h1>
                     <p class="author">by Sharon M. Draper</p>
                     <img class="book-cover" src="cover.jpg" alt="Out of My Mind, a novel by Sharon M. Draper" decoding="async">
-                    <p><em>Out of My Mind</em> by Sharon M. Draper is a powerful story exploring themes of courage, hope, and the unbreakable human spirit. This book follows Melody Brooks, an eleven-year-old girl with cerebral palsy who has a sharp memory and a sharper mind, as she navigates a world not built for her in a fight to be heard.</p>
+                    <p><em>Out of My Mind</em> (2010) follows Melody Brooks, an eleven-year-old girl with cerebral palsy who communicates without speech. In her first-person account, Melody describes her thoughts, family, school and efforts to be understood. This page offers scene locators and model readings to accompany the Active Reading Pamphlet.</p>
                     <a href="#context" class="cta-button nav-link" data-page="context">Explore the Story</a>
                 </div>
             </div>
             <div class="content-card">
                 <h2>About This Book</h2>
-                <p><em>Out of My Mind</em> is a groundbreaking novel that encourages its readers to look beyond first impressions and recognize the humanity and brilliance contained in every person.</p>
-                <div class="highlight-box">
-                    <strong>Published:</strong> March 9, 2010 by Atheneum Books for Young Readers<br>
-                    <strong>Awards:</strong> New York Times Bestseller, Multiple Coretta Scott King Award considerations<br>
-                    <strong>Recommended for:</strong> Ages 10-13, Grades 5-8<a href="#cite-5" class="cite-ref" id="ref-5-1" data-tooltip="Scholastic. 'Out of My Mind.' Scholastic Book Clubs. Accessed 18 May 2026.">[1]</a>
+                <div class="qualities-intro">
+                    <strong>Reading order and spoilers:</strong> the Plot, Tone and Questions sections discuss the ending. Read the page in order only if you do not mind spoilers; otherwise start at <a href="#author" class="nav-link" data-page="author">Author</a> and return to the later sections after you finish the book. Places where the ending is discussed are marked <strong>Spoiler</strong>.
                 </div>
-                <p>This remarkable story was on the New York Times bestseller list for over three years and has impacted millions of readers with its brutally honest depiction of disability, inclusion, and the universal desire to be understood.</p>
+                <div class="qualities-intro">
+                    <strong>Reading the examples:</strong> citations identify outside sources; quotations and scene summaries point to the novel; interpretations are readings to support with evidence. Personal reactions are examples, not answers to adopt.
+                </div>
+                <h3>Facts about the book</h3>
+                <div class="highlight-box">
+                    <strong>First published:</strong> 9 March 2010 by Atheneum Books for Young Readers, an imprint of Simon &amp; Schuster<a href="#cite-7" class="cite-ref" id="ref-7-1" data-tooltip="&quot;Out of My Mind.&quot; Simon &amp; Schuster, publisher catalog entry.">[7]</a><br>
+                    <strong>Reading level:</strong> recommended for ages 10&ndash;14 and grades 5&ndash;8<a href="#cite-5" class="cite-ref" id="ref-5-1" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a><br>
+                    <strong>Form:</strong> a contemporary middle-grade novel told in the first person, which is also a frame story &mdash; the book you are reading is the autobiography Melody is assigned to write<a href="#cite-5" class="cite-ref" id="ref-5-2" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a><br>
+                    <strong>Reception:</strong> the publisher's catalog<a href="#cite-7" class="cite-ref" id="ref-7-2" data-tooltip="&quot;Out of My Mind.&quot; Simon &amp; Schuster, publisher catalog entry.">[7]</a> and the author's biography<a href="#cite-4" class="cite-ref" id="ref-4-1" data-tooltip="&quot;Biography.&quot; Sharon M. Draper.">[4]</a> identify it as a <em>New York Times</em> bestseller. Their duration claims differ, so no length of time is asserted here.<br>
+                    <strong>Book awards:</strong> Bank Street College Josette Frank Award (2011); Buckeye Children's and Teen Book Award for Grades 6&ndash;8, Ohio (2011); CCBC Choice (2011); NCTE Notable Children's Book in the Language Arts; Young Hoosier Book Award, Middle Grade (2013)<a href="#cite-5" class="cite-ref" id="ref-5-3" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a><br>
+                    <strong>Adaptation:</strong> a film based on the novel premiered in 2024 and is available on Disney+<a href="#cite-5" class="cite-ref" id="ref-5-4" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a>
+                </div>
+                <div class="highlight-box">
+                    <strong>Page numbers:</strong> the handout asks you to include page numbers. Scene locators are provided here because editions differ; use your copy to find the passage and record its page.<a href="#cite-8" class="cite-ref" id="ref-8-1" data-tooltip="Active Reading Pamphlet course handouts, supplied locally as seven PDF files.">[8]</a>
+                </div>
+                <h3>How to use this page with your Active Reading Pamphlet</h3>
+                <p>The pamphlet has one box per literary element. Every box has a matching section here, and the wording of each direction belongs to a specific class handout, cited by filename and page.<a href="#cite-8" class="cite-ref" id="ref-8-2" data-tooltip="Active Reading Pamphlet course handouts, supplied locally as seven PDF files.">[8]</a></p>
+                <dl class="pamphlet-map">
+                    <dt>Name</dt>
+                    <dd>Write your name.</dd>
+                    <dt>Title</dt>
+                    <dd><em>Out of My Mind</em></dd>
+                    <dt>Author</dt>
+                    <dd>Sharon M. Draper</dd>
+                    <dt>Author Information</dt>
+                    <dd><a href="#author" class="nav-link" data-page="author">Author</a> &mdash; selected facts about Draper's life and work.</dd>
+                    <dt>Contextual Information</dt>
+                    <dd><a href="#context" class="nav-link" data-page="context">Context</a> &mdash; how genre, history and culture show up in the book.</dd>
+                    <dt>Unforgettable Moments</dt>
+                    <dd><a href="#plot" class="nav-link" data-page="plot">Plot</a> &mdash; exposition, rising action, climax, falling action and resolution.</dd>
+                    <dt>Important Characters</dt>
+                    <dd><a href="#characters" class="nav-link" data-page="characters">Characters</a> &mdash; a key scene and four qualities each, ordered mental, moral, physical, social.</dd>
+                    <dt>Close Reading Vocabulary</dt>
+                    <dd><a href="#vocab" class="nav-link" data-page="vocab">Vocabulary</a> &mdash; words from the novel plus the tested resource words, each with a scene locator.</dd>
+                    <dt>Valuable Details: Setting</dt>
+                    <dd><a href="#setting" class="nav-link" data-page="setting">Setting</a> &mdash; the four elements from the handout, with descriptions that show rather than tell.</dd>
+                    <dt>Valuable Details: Narrator</dt>
+                    <dd><a href="#pov" class="nav-link" data-page="pov">Point of View</a> &mdash; the narrator, four bolded narration terms, and evidence for each.</dd>
+                    <dt>Valuable Details: Attitude</dt>
+                    <dd><a href="#tone" class="nav-link" data-page="tone">Tone</a> &mdash; one emotional scene described with an attitude word (the author's side).</dd>
+                    <dt>Emotional Sparks</dt>
+                    <dd><a href="#tone" class="nav-link" data-page="tone">Tone</a> &mdash; three excerpts, mood words, and a sample reaction you should rewrite in your own voice.</dd>
+                    <dt>Theme &amp; Big Ideas</dt>
+                    <dd><a href="#theme" class="nav-link" data-page="theme">Theme</a> &mdash; the big ideas, and a finished theme statement built on the handout's template.</dd>
+                    <dt>Questions</dt>
+                    <dd><a href="#questions" class="nav-link" data-page="questions">Questions</a> &mdash; discussion questions with possible readings.</dd>
+                </dl>
             </div>
         </div>
         <div id="author" class="page">
             <div class="content-card">
                 <h2>Author Information</h2>
                 <div class="image-container author-photo">
-                    <img src="author.jpg" alt="Sharon M. Draper - Author Photo" loading="lazy" decoding="async">
+                    <img src="author.jpg" alt="Sharon M. Draper, author of Out of My Mind" loading="lazy" decoding="async">
                 </div>
-                <h3>Sharon M. Draper</h3>
-                <p>Sharon Mills Draper is an award-winning author, educator, speaker, poet, and National Teacher of the Year. Her career spans over three decades in education and literature.</p>
+                <h3>Sharon Mills Draper</h3>
+                <p>The pamphlet asks for the 5Ws of the author's life. Here they are, each tied to a source you can check.</p>
                 <div class="highlight-box">
-                    <strong>National Teacher of the Year</strong> - Recognized for excellence in education<br>
-                    <strong>Five-time Coretta Scott King Award Winner</strong> - Including awards for <em>Copper Sun</em> and <em>Forged by Fire</em><br>
-                    <strong>New York Times Bestselling Author</strong> - Over thirty novels published<br>
-                    <strong>Milken Educator Award Recipient</strong> (1997)
+                    <strong>Who:</strong> Sharon Mills Draper, born 21 August 1948 in Cleveland, Ohio, is an American writer, educator and poet.<a href="#cite-3" class="cite-ref" id="ref-3-1" data-tooltip="&quot;Sharon M. Draper.&quot; Wikipedia, The Free Encyclopedia.">[3]</a><br>
+                    <strong>What:</strong> an author of books for children and young adults, including <em>Copper Sun</em>, <em>Romiette and Julio</em> and the <em>Out of My Mind</em> series.<a href="#cite-3" class="cite-ref" id="ref-3-author-2" data-tooltip="&quot;Sharon M. Draper.&quot; Wikipedia, The Free Encyclopedia.">[3]</a><br>
+                    <strong>When:</strong> she taught in Cincinnati public schools and was named National Teacher of the Year in 1997.<a href="#cite-3" class="cite-ref" id="ref-3-3" data-tooltip="&quot;Sharon M. Draper.&quot; Wikipedia, The Free Encyclopedia.">[3]</a><br>
+                    <strong>Where:</strong> Draper is associated with Cincinnati, Ohio, where she taught.<a href="#cite-4" class="cite-ref" id="ref-4-2" data-tooltip="&quot;Biography.&quot; Sharon M. Draper.">[4]</a><br>
+                    <strong>Why it matters:</strong> her years as a teacher provide context for a novel about a student whose abilities are repeatedly underestimated.<a href="#cite-2" class="cite-ref" id="ref-2-1" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a>
                 </div>
-                <h3>Educational Background</h3>
-                <p>Draper taught high school English for over twenty-five years before becoming a full-time author. She has degrees from Howard University School of Education and has received the Dean's Award from both Howard University and Pepperdine University.<a href="#cite-2" class="cite-ref" id="ref-2-1" data-tooltip="'Biography.' Sharon M. Draper, 2021.">[2]</a></p>
-                <h3>Literary Achievements</h3>
+                <h3>Education</h3>
+                <p><strong>In the text:</strong> <strong>Source</strong> &mdash; reference works record a bachelor's degree in English from <strong>Pepperdine University</strong> and a <strong>Master of Arts in English from Miami University of Ohio</strong>, earned in 1974.<a href="#cite-3" class="cite-ref" id="ref-3-4" data-tooltip="&quot;Sharon M. Draper.&quot; Wikipedia, The Free Encyclopedia.">[3]</a> Her own biography adds an honorary <strong>Doctor of Laws</strong> from Pepperdine University in 2009.<a href="#cite-4" class="cite-ref" id="ref-4-3" data-tooltip="&quot;Biography.&quot; Sharon M. Draper.">[4]</a></p>
+                <p>Her biography also lists a <strong>Dean's Award from Howard University School of Education</strong>; it is an honor, separate from her degrees.<a href="#cite-4" class="cite-ref" id="ref-4-4" data-tooltip="&quot;Biography.&quot; Sharon M. Draper.">[4]</a></p>
+                <div class="highlight-box">
+                    Use the distinction between a degree and an award when summarizing her education.
+                </div>
+                <h3>Honours</h3>
                 <ul>
-                    <li>Recipient of the Margaret Edwards Award for lifetime literary achievement</li>
-                    <li>YWCA Career Woman of Achievement</li>
-                    <li>Her novels focus on young adult experiences, particularly African-American youth</li>
-                    <li>Known for the Hazelwood High trilogy and the Out of My Mind series<a href="#cite-2" class="cite-ref" id="ref-2-2" data-tooltip="'Biography.' Sharon M. Draper, 2021.">[2]</a></li>
+                    <li>Two Coretta Scott King Awards &mdash; <em>Forged by Fire</em> (1997) and <em>Copper Sun</em> (2007) &mdash; plus two Coretta Scott King Author Honors, <em>The Battle of Jericho</em> (2004) and <em>November Blues</em> (2008), and the inaugural John Steptoe Award for New Talent for <em>Tears of a Tiger</em> (1995).<a href="#cite-3" class="cite-ref" id="ref-3-5" data-tooltip="&quot;Sharon M. Draper.&quot; Wikipedia, The Free Encyclopedia.">[3]</a></li>
+                    <li>Her own biography describes her as a "five-time winner of the Coretta Scott King Literary Awards," a count that includes the two Honors and the Steptoe award.<a href="#cite-4" class="cite-ref" id="ref-4-5" data-tooltip="&quot;Biography.&quot; Sharon M. Draper.">[4]</a></li>
+                    <li>Milken Family Foundation National Educator Award (1997), YWCA Career Woman of Achievement, Dean's Award from Howard University School of Education, Pepperdine University Distinguished Alumnus Award, Marva Collins Education Excellence Award, and the Governor's Educational Leadership Award.<a href="#cite-4" class="cite-ref" id="ref-4-6" data-tooltip="&quot;Biography.&quot; Sharon M. Draper.">[4]</a></li>
+                    <li>The American Library Association's <strong>Margaret A. Edwards Award</strong> for lifetime literary achievement (2015).<a href="#cite-3" class="cite-ref" id="ref-3-6" data-tooltip="&quot;Sharon M. Draper.&quot; Wikipedia, The Free Encyclopedia.">[3]</a></li>
                 </ul>
-                <div class="quote">
-                    "What's right isn't always popular, and whats popular isn't always right."<a href="#cite-4" class="cite-ref" id="ref-4-1" data-tooltip="Goodreads. 'Sharon M. Draper Quotes.' Accessed 18 May 2026.">[3]</a>
+                <h3>How she started writing</h3>
+                <p><strong>In the text:</strong> <strong>Source</strong> &mdash; in 1990, while teaching, a ninth-grade student challenged her to write something. She entered a short story, "One Small Torch," in a contest run by <em>Ebony</em> magazine, won $5,000 and publication, and received a letter of congratulation from <em>Roots</em> author Alex Haley. She has said that letter is what made her decide she could be a writer.<a href="#cite-3" class="cite-ref" id="ref-3-7" data-tooltip="&quot;Sharon M. Draper.&quot; Wikipedia, The Free Encyclopedia.">[3]</a></p>
+                <p>The <em>Out of My Mind</em> books came later: <em>Out of My Mind</em> (2010), <em>Out of My Heart</em> (2021) and <em>Out of My Dreams</em> (2024).<a href="#cite-3" class="cite-ref" id="ref-3-8" data-tooltip="&quot;Sharon M. Draper.&quot; Wikipedia, The Free Encyclopedia.">[3]</a></p>
+                <div class="highlight-box">
+                    For a concise summary, connect Draper's teaching experience with the novel's focus on how others perceive Melody.
                 </div>
-                <p>Draper's work consistently addresses important social issues including disability rights, education equity, and the power of perseverance. Her novel <em>Out of My Mind</em> was adapted into a Disney+ film in 2024, bringing Melody's story to an even wider audience.</p>
             </div>
         </div>
         <div id="context" class="page">
             <div class="content-card">
                 <h2>Contextual Information</h2>
                 <div class="image-grid">
-                    <div class="image-container has-image"><img src="class.jpg" alt="Special Education Classroom 2000s" loading="lazy" decoding="async"></div>
-                    <div class="image-container has-image"><img src="talker.jpg" alt="Communication Device" loading="lazy" decoding="async"></div>
+                    <div class="image-container has-image"><img src="class.jpg" alt="A special education classroom" loading="lazy" decoding="async"></div>
+                    <div class="image-container has-image"><img src="talker.jpg" alt="An assistive communication device" loading="lazy" decoding="async"></div>
                 </div>
-                <h3>Historical and Social Context</h3>
-                <p><em>Out of My Mind</em> was published in 2010, a time of growth and change regarding societal views of disability, yet still a time of prejudice and second glances. The novel itself takes place during the awkward middle-ground of this century's view of disability, and both the educational and societal landscapes are reflective of that.<a href="#cite-1" class="cite-ref" id="ref-1-1" data-tooltip="Audible. 'Out of My Mind by Sharon M. Draper.' Audible Blog, 2026.">[4]</a></p>
-                <h3>Educational Context</h3>
-                <p>The story challenges several critical "norms" in special education:</p>
+                <p>The pamphlet asks how the genre, history or culture of a book's time is reflected in it. These are possible points of connection.</p>
+                <h3>Genre</h3>
+                <p>The novel is contemporary realistic fiction narrated in the first person. Its ending reveals that Melody is writing an autobiography for a class assignment, creating a frame for her account.<a href="#cite-5" class="cite-ref" id="ref-5-6" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a><a href="#cite-2" class="cite-ref" id="ref-2-2" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a></p>
+                <h3>History</h3>
+                <p>Published in 2010, the novel depicts a contemporary school and an assistive communication device that substantially expands what Melody can say.<a href="#cite-6" class="cite-ref" id="ref-6-1" data-tooltip="&quot;Out of My Mind: Full Book Summary.&quot; LitCharts.">[6]</a> The story does not specify a calendar year for its events.</p>
+                <h3>Culture</h3>
                 <ul>
-                    <li><strong>Inclusion vs. Segregation:</strong> The debate over whether students with disabilities should be educated in separate classrooms or included in general education</li>
-                    <li><strong>Assumptions about Intelligence:</strong> How physical disabilities are often mistakenly equated with cognitive limitations</li>
-                    <li><strong>Assistive Technology:</strong> The emergence of communication devices that give voice to non-verbal individuals</li>
-                    <li><strong>Implicit Bias of Disability:</strong> How average people treat and react to, even subconsciously, those with disabilities.</li>
+                    <li><strong>Segregation next to inclusion.</strong> Melody spends her days in room H-5, where the alphabet is the ceiling, before she is allowed into the fifth-grade rooms &mdash; and when she gets there, the work she is handed starts at the same place.<a href="#cite-5" class="cite-ref" id="ref-5-7" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a></li>
+                    <li><strong>Assistive technology and access.</strong> The Medi-Talker lets Melody communicate in a wider range of words; the car scene shows the limits of communication when she cannot use it.</li>
+                    <li><strong>Assumptions about intelligence.</strong> Two classmates, Molly and Claire, bully Melody on the explicit assumption that a body which cannot speak must also be a mind which cannot think.<a href="#cite-5" class="cite-ref" id="ref-5-8" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a> <strong>Interpretation:</strong> the novel treats this assumption, not the bullying, as the injury &mdash; the bullying is what the assumption looks like when it reaches a school corridor.</li>
+                    <li><strong>Who gets believed.</strong> Melody's family advocates for her, while classmates and some school staff underestimate her. These interactions shape her opportunities.</li>
+                    <li><strong>Representation.</strong> The novel was written at a time when main-character stories about disabled children were scarce, and it is widely used in classrooms to prompt exactly the conversation its plot forces.<a href="#cite-5" class="cite-ref" id="ref-5-9" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a></li>
                 </ul>
-                <h3>Cultural Significance</h3>
-                <p>Draper's novel came at a time when representation of disability in literature was few and far between. The book:</p>
-                <ul>
-                    <li>Challenges stereotypes about cerebral palsy and disability intelligence</li>
-                    <li>Encourages seeing the person beyond the disability</li>
-                    <li>Highlights the importance of access to communication</li>
-                    <li>Addresses bullying and social exclusion</li>
-                </ul>
+                <h3>A caution about one word</h3>
+                <p>The novel focuses on Melody's relationships, education and communication, not on presenting her as a tragedy. Distinguish her physical disability from assumptions other characters make about her intelligence.</p>
                 <div class="highlight-box">
-                    <strong>Impact:</strong> The novel has been used in schools all over the nation to promote empathy, understanding, and discussions about inclusion and accessibility.
+                    A possible summary: the first-person novel was published in 2010 and depicts a contemporary school where inclusion and assistive technology coexist with underestimation of Melody's abilities.
                 </div>
-                <h3>Relevance</h3>
-                <p>The themes remain relevant today as schools and society fight towards true inclusion and as assistive technology continues to evolve, giving more people like Melody their own Medi-Talker.</p>
             </div>
         </div>
         <div id="characters" class="page">
             <div class="content-card">
                 <h2>Characters</h2>
                 <div class="qualities-intro">
-                    <strong>Character Traits:</strong> Each character is categorized by four traits. <strong>Mental</strong> (cognition, memory, intellect), <strong>Moral</strong> (values, ethics, integrity), <strong>Physical</strong> (body, abilities, limitations), and <strong>Social</strong> (relationships, interactions, community).
+                    <strong>Four Qualities:</strong> the handout suggests one word from each category: <strong>Mental</strong>, <strong>Moral</strong>, <strong>Physical</strong> and <strong>Social</strong>. Choose words that fit the character and support them with details.<a href="#cite-8" class="cite-ref" id="ref-8-3" data-tooltip="Character Traits.pdf, p. 1, from the Active Reading Pamphlet handouts.">[8]</a>
                 </div>
-                <div class="image-container has-image"><img src="inclusiveness.jpg" alt="Diverse students collaborating in an inclusive classroom" loading="lazy" decoding="async"></div>
+                <div class="qualities-intro">
+                    The word bank is a resource, not a requirement. If its physical descriptors do not fit a character or are unsupported by the text, use another accurate word; the handout allows alternatives.<a href="#cite-8" class="cite-ref" id="ref-8-character-2" data-tooltip="Character Traits.pdf, p. 1, from the Active Reading Pamphlet handouts.">[8]</a>
+                </div>
+                <div class="image-container has-image"><img src="inclusiveness.jpg" alt="Students working together in an inclusive classroom" loading="lazy" decoding="async"></div>
+
                 <div class="character-full">
                     <div class="character-full-header">
-                        <div class="character-full-name"><h3>Melody Brooks</h3><span class="character-full-role">Protagonist • Age 11</span></div>
+                        <div class="character-full-name"><h3>Melody Brooks</h3><span class="character-full-role">Protagonist &bull; Age 11 &bull; Fifth grade</span></div>
                     </div>
-                    <p class="character-full-summary">An eleven-year-old girl with cerebral palsy, she cannot speak or walk but has an excellent memory and a brilliant mind. She fights every day to prove her intelligence and her place in a world unaccepting.</p>
+                    <p class="character-full-summary">Melody has cerebral palsy, uses a wheelchair and cannot speak. She describes an unusually strong memory and a rich inner life, though other people often mistake her limited speech for limited understanding.</p>
                     <div class="qualities-grid">
-                        <div class="quality-card quality-mental">
+                        <div class="quality-card">
                             <h4 class="quality-title">Mental</h4>
-                            <p class="quality-desc">She has a photographic memory, processes information extremely fast while being deeply <mark>analytical</mark> with the ability to comprehend language, music, and patterns with amazing clarity.</p>
+                            <p class="quality-desc"><mark>Analytical</mark>: she sorts, compares and connects. She notices that her class is taught the alphabet over and over, and she can tell the difference between a teacher who has not understood her and a teacher who has decided not to.</p>
                         </div>
-                        <div class="quality-card quality-physical">
-                            <h4 class="quality-title">Physical</h4>
-                            <p class="quality-desc"><mark>Vulnerable</mark> because of her physical condition, Melody relies on others for basic care despite being so mentally capable.</p>
-                        </div>
-                        <div class="quality-card quality-moral">
+                        <div class="quality-card">
                             <h4 class="quality-title">Moral</h4>
-                            <p class="quality-desc">Because of her own situation, she is very <mark>empathetic</mark> towards others and fights for fairness.</p>
+                            <p class="quality-desc"><mark>Honest</mark>: she never pretends to be less than she is, even when pretending would be easier and safer &mdash; and she is honest about her own jealousy of her sister as well as about her anger at being doubted.</p>
                         </div>
-                        <div class="quality-card quality-social">
+                        <div class="quality-card">
+                            <h4 class="quality-title">Physical</h4>
+                            <p class="quality-desc"><mark>Youthful</mark>: she is eleven years old. For physical description, use details from the novel rather than treating disability as a personality trait.</p>
+                        </div>
+                        <div class="quality-card">
                             <h4 class="quality-title">Social</h4>
-                            <p class="quality-desc">Melody seeks real connection and struggles with <mark>isolation</mark> whilst facing betrayal and true friendship.</p>
+                            <p class="quality-desc"><mark>Empowering</mark>: her determination to communicate and participate challenges other people's low expectations.</p>
                         </div>
                     </div>
+                    <p class="key-scene"><strong>Key scene:</strong> in the family car, Melody sees Penny behind the van and tries to alert her mother. <em>Locator: the car scene after the airport; record the page in your edition.</em></p>
                 </div>
+
                 <div class="character-full">
                     <div class="character-full-header">
-                        <div class="character-full-name"><h3>Mrs. Violet Valencia (Mrs. V)</h3><span class="character-full-role">Neighbor &amp; Advocate • Former Special Ed Teacher</span></div>
+                        <div class="character-full-name"><h3>Mrs. Violet Valencia ("Mrs. V")</h3><span class="character-full-role">Neighbour &bull; Retired special education teacher</span></div>
                     </div>
-                    <p class="character-full-summary">A neighbor and an advocate, she is a former special education teacher who sees beyond Melody's appearance and into her vast ability.</p>
+                    <p class="character-full-summary">Melody's next-door neighbour and the first adult to treat what Melody says as meaning. A retired special education teacher, she teaches Melody to roll over and then to crawl, builds her a board to point at, and tells her plainly that she is being wasted.</p>
                     <div class="qualities-grid">
-                        <div class="quality-card quality-mental">
+                        <div class="quality-card">
                             <h4 class="quality-title">Mental</h4>
-                            <p class="quality-desc">With the development of the initial talking board and the Medi-Talker, Mrs V. is exceptionally <mark>ingenious</mark> in creating brilliant solutions.</p>
+                            <p class="quality-desc"><mark>Ingenious</mark>: she solves problems other adults have stopped trying to solve. She lays Melody on a quilt, puts a toy just out of reach, turns on music and waits &mdash; inventing a way to teach rolling that nobody has thought to try.</p>
                         </div>
-                        <div class="quality-card quality-physical">
-                            <h4 class="quality-title">Physical</h4>
-                            <p class="quality-desc">Always eager to help, she is very <mark>energetic.</mark></p>
-                        </div>
-                        <div class="quality-card quality-moral">
+                        <div class="quality-card">
                             <h4 class="quality-title">Moral</h4>
-                            <p class="quality-desc">One of the few people who understand Melody, she is uniquely <mark>empathetic</mark> to the invisible internal struggle that Melody battles every day.</p>
+                            <p class="quality-desc"><mark>Dependable</mark>: she turns up, she stays, and she says the difficult thing out loud. Her method is to state the truth and then wait for the child to reach it.</p>
                         </div>
-                        <div class="quality-card quality-social">
+                        <div class="quality-card">
+                            <h4 class="quality-title">Physical</h4>
+                            <p class="quality-desc"><mark>Energetic</mark>: she kneels on the floor, lifts, repositions and keeps going. The handout's Physical bank is mostly about looks, and Mrs. V is described by what her body does rather than how it looks.</p>
+                        </div>
+                        <div class="quality-card">
                             <h4 class="quality-title">Social</h4>
-                            <p class="quality-desc">Being patient, understanding, and calm, Mrs. V radiates a <mark>cordial</mark> presence, acting as a positive role model and inspiration for Melody.</p>
+                            <p class="quality-desc"><mark>Cordial</mark>: courteous, patient and gracious &mdash; and, more to the point, <mark>Inclusive</mark> in the only sense that matters in this novel: she treats Melody as a person who is present.</p>
                         </div>
                     </div>
+                    <p class="key-scene"><strong>Key scene:</strong> Mrs. V puts Melody on a quilt on the floor, ignores the crying, plays marching-band music, and tells her she can turn herself over. <em>Locator: the early chapters, the first physical progress Melody makes; search your copy for the line about turning over and rolling.</em></p>
                 </div>
+
                 <div class="character-full">
                     <div class="character-full-header">
-                        <div class="character-full-name"><h3>Rose Spencer</h3><span class="character-full-role">Classmate • Popular Student</span></div>
+                        <div class="character-full-name"><h3>Diane Brooks</h3><span class="character-full-role">Mother &bull; Primary caregiver and advocate</span></div>
                     </div>
-                    <p class="character-full-summary">A popular girl in Melody's class, she is Melody's first real friend and connection, but later reveals the effects of betrayal and fake friendship.</p>
+                    <p class="character-full-summary">Melody's mother advocates for her at school and helps her communicate. The car scene shows a painful moment when she misunderstands Melody's urgent attempts to warn her.</p>
                     <div class="qualities-grid">
-                        <div class="quality-card quality-mental">
+                        <div class="quality-card">
                             <h4 class="quality-title">Mental</h4>
-                            <p class="quality-desc"><mark>Calculating</mark> and very socially aware, Rose grasps social dynamics well but often lets principles slip for convenience.</p>
+                            <p class="quality-desc"><mark>Creative</mark>: she treats communication as a problem to be solved rather than a wall. The request for the Medi-Talker, and the years of homemade systems before it, are her work.</p>
                         </div>
-                        <div class="quality-card quality-physical">
-                            <h4 class="quality-title">Physical</h4>
-                            <p class="quality-desc"><mark>Privileged</mark> from being unburdened, Rose has a hard time fully understanding Melody's condition.</p>
-                        </div>
-                        <div class="quality-card quality-moral">
+                        <div class="quality-card">
                             <h4 class="quality-title">Moral</h4>
-                            <p class="quality-desc"><mark>Inconsistent</mark> in her morals, Rose will show kindness and love at times but crumble relationships under pressure.</p>
+                            <p class="quality-desc"><mark>Loyal</mark>: she advocates for Melody and works with her family to support her communication.</p>
                         </div>
-                        <div class="quality-card quality-social">
+                        <div class="quality-card">
+                            <h4 class="quality-title">Physical</h4>
+                            <p class="quality-desc"><mark>Sturdy</mark>: she lifts, carries, turns, feeds and transfers her daughter every single day. Here the physical word describes the work her body does &mdash; not her appearance, and not her worth.</p>
+                        </div>
+                        <div class="quality-card">
                             <h4 class="quality-title">Social</h4>
-                            <p class="quality-desc"><mark>Conformative</mark> to peer pressure, Rose will distance from Melody when seen as uncool.</p>
+                            <p class="quality-desc"><mark>Assertive</mark>: she speaks up in front of teachers and administrators when nobody else will, and she is the reason Melody gets into mainstream classes at all.</p>
                         </div>
                     </div>
+                    <p class="key-scene"><strong>Key scene:</strong> during the storm, Diane mistakes Melody's urgent movements for a tantrum and starts the car; Penny is behind the vehicle. <em>Locator: the car scene; record the page in your edition.</em></p>
                 </div>
+
                 <div class="character-full">
                     <div class="character-full-header">
-                        <div class="character-full-name"><h3>Diane Brooks</h3><span class="character-full-role">Mother • Primary Caregiver</span></div>
+                        <div class="character-full-name"><h3>Rose Spencer</h3><span class="character-full-role">Classmate &bull; Melody's closest friend</span></div>
                     </div>
-                    <p class="character-full-summary">As Melody's mother, Diane is Melody's rock and support; one of the few people who truly understand her.</p>
+                    <p class="character-full-summary">Rose is Melody's classmate and friend. Their relationship is tested when the quiz team travels without Melody after a flight disruption.</p>
                     <div class="qualities-grid">
-                        <div class="quality-card quality-mental">
+                        <div class="quality-card">
                             <h4 class="quality-title">Mental</h4>
-                            <p class="quality-desc">Similar to Mrs. V, Diane is exceptionally <mark>creative</mark> in creating solutions for Melody, as she has been by her side from day one.</p>
+                            <p class="quality-desc"><mark>Astute</mark>: she reads a room quickly and correctly. She understands the quiz team, and she understands that the team will not hold the door open for the girl it left behind.</p>
                         </div>
-                        <div class="quality-card quality-physical">
-                            <h4 class="quality-title">Physical</h4>
-                            <p class="quality-desc">Always taking care of Melody's needs and getting her in and out of wherever she goes, Diane is <mark>strong.</mark></p>
-                        </div>
-                        <div class="quality-card quality-moral">
+                        <div class="quality-card">
                             <h4 class="quality-title">Moral</h4>
-                            <p class="quality-desc">Melody is never alone with her mother always being fiercely <mark>defensive</mark> for her daughter's dignity and encouraging her independence.</p>
+                            <p class="quality-desc"><mark>Inconsiderate</mark>: the team leaves without ensuring Melody knows the plan, hurting their friendship.</p>
                         </div>
-                        <div class="quality-card quality-social">
+                        <div class="quality-card">
+                            <h4 class="quality-title">Physical</h4>
+                            <p class="quality-desc"><mark>Youthful</mark>: Rose is a child of the same school community as Melody; choose a more specific physical descriptor only if your edition supports it.</p>
+                        </div>
+                        <div class="quality-card">
                             <h4 class="quality-title">Social</h4>
-                            <p class="quality-desc">Always speaking up and never settling,<mark> Diane</mark> is an advocate for Melody.</p>
+                            <p class="quality-desc"><mark>Aloof</mark>: when the pressure arrives, she keeps her distance. Distance is the social equivalent of the book's central problem &mdash; being in the room and not being counted in it.</p>
                         </div>
                     </div>
+                    <p class="key-scene"><strong>Key scene:</strong> Rose is part of the team that travels to Washington without Melody and later returns to school after the trip. <em>Locator: the airport and later classroom scenes; record the relevant pages in your edition.</em></p>
                 </div>
-                <div class="quote">"Maybe I'm not so different from everyone else after all."<a href="#cite-3" class="cite-ref" id="ref-3-1" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></div>
-            </div>
-        </div>
-        <div id="setting" class="page">
-            <div class="content-card">
-                <h2>Setting</h2>
-                <div class="image-grid">
-                    <div class="image-container has-image"><img src="school.jpg" alt="2000s elementary school" loading="lazy" decoding="async"></div>
-                    <div class="image-container has-image"><img src="home.jpg" alt="Suburban Home" loading="lazy" decoding="async"></div>
+
+                <div class="character-full">
+                    <div class="character-full-header">
+                        <div class="character-full-name"><h3>Penny Brooks</h3><span class="character-full-role">Younger sister &bull; Age about 9</span></div>
+                    </div>
+                    <p class="character-full-summary">Penny is Melody's younger sister. Melody feels affection and jealousy as she watches Penny reach milestones with ease; the car scene places Penny in danger.</p>
+                    <div class="qualities-grid">
+                        <div class="quality-card">
+                            <h4 class="quality-title">Mental</h4>
+                            <p class="quality-desc"><mark>Precocious</mark>: Melody describes Penny reaching developmental milestones quickly.</p>
+                        </div>
+                        <div class="quality-card">
+                            <h4 class="quality-title">Moral</h4>
+                            <p class="quality-desc"><mark>Kind</mark>: she is affectionate toward Melody, as Melody's recollections suggest.</p>
+                        </div>
+                        <div class="quality-card">
+                            <h4 class="quality-title">Physical</h4>
+                            <p class="quality-desc"><mark>Healthy</mark>: Melody describes Penny as active and quick, like a wind-up toy.</p>
+                        </div>
+                        <div class="quality-card">
+                            <h4 class="quality-title">Social</h4>
+                            <p class="quality-desc"><mark>Friendly</mark>: affectionate with her family, her dog and her sister, and entirely unaware that being the easier baby has made her a symbol in someone else's life.</p>
+                        </div>
+                    </div>
+                    <p class="key-scene"><strong>Key scene:</strong> Melody watches her father film Penny learning each new thing and admits that it "sucks to watch a baby do what you wish you could do." <em>Locator: the chapter introducing Penny, before the climax; search your copy for the line about the wind-up toy.</em></p>
                 </div>
-                <h3>Geographic Location</h3>
-                <p>The novel takes place in <strong>Ohio</strong>, in a modern-day American suburban community. While the specific city is not known, the setting shows a typical American town with both inclusive and segregated education and facilities.<a href="#cite-7" class="cite-ref" id="ref-7-1" data-tooltip="SparkNotes. 'Out of My Mind: Plot Overview.' Accessed 27 May 2026.">[5]</a></p>
-                <h3>Time Period</h3>
-                <p>The story is set in the <strong>early 2000s</strong> (approximately 2002), when Melody is eleven years old and in fifth grade. This period is significant because:</p>
-                <ul>
-                    <li>Assistive technology in communication was growing but was still relatively new</li>
-                    <li>Inclusive schooling was more common but not yet universal</li>
-                    <li>Society's understanding of disability was advancing but was still limited by stereotypes</li>
-                </ul>
-                <h3>Primary Settings</h3>
-                <h3>1. Spaulding Street Elementary School</h3>
-                <p>This is the educational setting where Melody spends her school days. The school features:</p>
-                <ul>
-                    <li><strong>Room H-5:</strong> This is the special education classroom where Melody spends her initial years, and is filled with students with various disabilities</li>
-                    <li><strong>Inclusion Classrooms:</strong> Where Melody is eventually brought along for some classes</li>
-                </ul>
-                <h3>2. Melody's Home</h3>
-                <p>Her home is a warm, loving environment where Melody feels safe and supported. The home has:</p>
-                <ul>
-                    <li>Her bedroom, filled with books (her love)</li>
-                    <li>A living room and a kitchen where Melody interacts with her family</li>
-                    <li>The safety of a place where she can be herself without judgment</li>
-                </ul>
-                <h3>3. Mrs. V's House</h3>
-                <p>The home of Melody's neighbor and secondary care-giver. She receives education and tremendous support here.</p>
-                <div class="highlight-box">
-                    <strong>Symbolism:</strong> The contrast of Melody's vast and expansive inner world and the limiting spaces she physically occupies nudges towards a central theme: that intelligence and worth cannot be judged by appearance or physical ability.
+
+                <div class="character-full">
+                    <div class="character-full-header">
+                        <div class="character-full-name"><h3>Mr. Dimming ("Mr. D")</h3><span class="character-full-role">Teacher &bull; Whiz Kids quiz-team coach</span></div>
+                    </div>
+                    <p class="character-full-summary">Mr. Dimming coaches the Whiz Kids quiz team. He doubts Melody's perfect practice score and is part of the group that travels without her after the flight disruption.</p>
+                    <div class="qualities-grid">
+                        <div class="quality-card">
+                            <h4 class="quality-title">Mental</h4>
+                            <p class="quality-desc"><mark>Pragmatic</mark>: he reasons from what he already believes. A score that does not fit his picture of Melody is a problem with the score, not with his picture.</p>
+                        </div>
+                        <div class="quality-card">
+                            <h4 class="quality-title">Moral</h4>
+                            <p class="quality-desc"><mark>Prejudiced</mark>: he holds an assumption Melody has no way to correct. The word comes from the handout's Judgement list of Big Ideas rather than from its Moral bank, and it is the accurate one.</p>
+                        </div>
+                        <div class="quality-card">
+                            <h4 class="quality-title">Physical</h4>
+                            <p class="quality-desc">The novel gives little physical description; use a detail from your edition or leave this quality undescribed rather than guessing.</p>
+                        </div>
+                        <div class="quality-card">
+                            <h4 class="quality-title">Social</h4>
+                            <p class="quality-desc"><mark>Condescending</mark>: he talks about her in front of the class in the register people use for someone they have decided not to bother with.</p>
+                        </div>
+                    </div>
+                    <p class="key-scene"><strong>Key scene:</strong> Melody's quiz score is questioned during practice, then the team travels without her after weather disrupts her flight. <em>Locator: practice-test and airport scenes; record pages in your edition.</em></p>
                 </div>
-                <h3>Atmospheric Details</h3>
-                <p>Draper uses strong imagery to create vivid scenarios, particularly focusing on:</p>
-                <ul>
-                    <li>Conversation that Melody hears but cannot respond to</li>
-                    <li>The frustration of physical limitations in inaccessible buildings</li>
-                    <li>The safety of inclusive spaces versus the uncertainty of exclusion</li>
-                </ul>
-            </div>
-        </div>
-        <div id="tone" class="page">
-            <div class="content-card">
-                <h2>Tone</h2>
-                <div class="highlight-box"><strong>Main Attitude:</strong> <em>Alienation,</em> the bridge between Melody's inner mind and how the world sees her.</div>
-                <p>The leading tone of <em>Out of My Mind</em> is one of <strong>alienation</strong>. In the beginning, Draper creates a strong feeling of isolation. Melody is mentally present, being sharp, observant, and brilliant, yet treated as incapable because of her physical disability. This divide between reality and stereotypes develops the novel's heavy emotional weight.</p>
-                <div class="quote">"There was the team, and there was me, and we were in the same room. But we weren't quite a team."<a href="#cite-6" class="cite-ref" id="ref-6-1" data-tooltip="SparkNotes. 'Out of My Mind: Famous Quotes Explained.' Accessed 27 May 2026.">[6]</a></div>
-                <h3>How It Began</h3>
-                <ul>
-                    <li><strong>In the school:</strong> Teachers talked <em>about</em> Melody, not <em>to</em> her, and lessons in H-5 are simplified despite her photographic memory and sharp mind.</li>
-                    <li><strong>In social spaces:</strong> Peers ignore her being there or act kind without any connection</li>
-                    <li><strong>In narrative voice:</strong> Melody's internal monologue contrasts starkly with her external silence</li>
-                </ul>
-                <div class="image-container has-image"><img src="excluded.jpg" alt="Visual metaphor for alienation: empty classroom, Melody observing from the edge" loading="lazy" decoding="async"></div>
-                <h3>How This Affects The Book</h3>
-                <p>This tone is more than fluff or texture: it has meaning. Because readers can <em>feel</em> Melody's alienation, we're challenged to examine our own thoughts on ability, intelligence, and value. The novel makes a clear point: <em>Who gets to be seen? Who gets to be heard?</em></p>
-                <div class="highlight-box"><strong>The Tracks Diverge:</strong> After Melody got the Medi-Talker and the ability to communicate, alienation didn't vanish completely, but existed parallel to Melody's life. As the tone developed, it developed defiance, resilience, and finally hard-won hope. The entire time, the feeling of being misunderstood lingered, and the story remained honest and strong.</div>
-            </div>
-        </div>
-        <div id="pov" class="page">
-            <div class="content-card">
-                <h2>Point of View</h2>
-                <div class="image-container has-image"><img src="perspective.jpg" alt="Inside Melody's Mind - First Person Perspective" loading="lazy" decoding="async"></div>
-                <p><em>Out of My Mind</em> is told by <strong>Melody Brooks</strong> herself, in the <strong>first-person</strong> point of view and the <strong>past tense</strong>. This narrative choice is crucial to the novel: it places readers directly inside Melody's consciousness, overriding the assumptions others make about her from the outside.</p>
-                <h3>What It Reveals</h3>
-                <p>Because it is told in Melody's own voice, we are granted unfiltered access to all dimensions of her reality:</p>
-                <ul>
-                    <li><strong>Her Thoughts:</strong> Her monologue is sharp, observant, and witty, and most importantly, it is loud, standing in contrast to her silence on the outside.</li>
-                    <li><strong>Her Abilities:</strong> Her photographic memory, rapid comprehension, and analytical mind: all capabilities always overlooked by teachers and peers.</li>
-                    <li><strong>Her Frustrations:</strong> The anger of being underestimated, the anger of being ignored, and the alienation when the world judges her by her body rather than her brain.</li>
-                </ul>
-                <div class="quote">"I have never spoken one single word. I am almost eleven years old."<a href="#cite-3" class="cite-ref" id="ref-3-2" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></div>
-                <div class="highlight-box"><strong>How This Affects The Story:</strong> The first-person point of view depicts Melody as a person rather than an object of pity. As readers direct access to her mind, Draper ensures that we do not confuse her physical limitations with her intellectual ability. The narrative becomes the voice she doesn't have.</div>
-                <p>Because it is written in the past tense, Melody reflects on both raw childhood emotion and past mistakes. This allows the story to explore vulnerability and insight while preserving her voice's authenticity.</p>
+
+                <h3>Two teachers in one classroom building</h3>
+                <p>The novel's sharpest short confrontation is between two adults who never meet. Both are teachers, and each proves her own point about teaching.</p>
+                <blockquote class="quote">
+                    <p>"We were reviewing the alphabet, of course&hellip; I always start with the basics. These children need constant review because they don't retain information like the rest of us."<a href="#cite-2" class="cite-ref" id="ref-2-3" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a></p>
+                </blockquote>
+                <p><strong>In the text:</strong> that is a teacher meeting Melody in a fifth-grade room and beginning where she began. <strong>Interpretation:</strong> the sentence is not cruel, and that is the problem &mdash; it is reasonable-sounding, professional, and completely wrong.</p>
+                <blockquote class="quote">
+                    <p>"I believe every one of y'all got potential all stuffed inside, and together we're gonna try to make some of that stuff shine."<a href="#cite-2" class="cite-ref" id="ref-2-4" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a></p>
+                </blockquote>
+                <p><strong>In the text:</strong> that is Mrs. Shannon, Melody's own teacher. <strong>Interpretation:</strong> the two speeches are the novel's argument in miniature &mdash; one adult describes what a class can do, the other describes what a class has to work with.</p>
+                <p>Two more figures matter for the plot. <strong>Molly</strong> and <strong>Claire</strong> are the classmates who bully Melody on the assumption that she cannot think because she cannot speak.<a href="#cite-5" class="cite-ref" id="ref-5-10" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a> <strong>Catherine</strong>, the teacher aide who joins Melody in the mainstream classroom, is the adult who finally works with her on the autobiography that the whole book turns out to be.</p>
             </div>
         </div>
         <div id="plot" class="page">
             <div class="content-card">
                 <h2>Plot</h2>
                 <div class="image-grid">
-                    <div class="image-container has-image"><img src="voice.jpg" alt="Melody's Journey - Finding Her Voice" loading="lazy" decoding="async"></div>
-                    <div class="image-container has-image"><img src="meditalker.jpg" alt="The Medi-Talker Communication Device" loading="lazy" decoding="async"></div>
+                    <div class="image-container has-image"><img src="voice.jpg" alt="Finding a voice" loading="lazy" decoding="async"></div>
+                    <div class="image-container has-image"><img src="meditalker.jpg" alt="An assistive communication device" loading="lazy" decoding="async"></div>
+                </div>
+                <div class="qualities-intro">
+                    <strong>Directions:</strong> the pamphlet asks you to answer all five stages "with descriptive phrases" and to include page numbers.<a href="#cite-8" class="cite-ref" id="ref-8-4" data-tooltip="Active Reading Pamphlet.pdf, p. 1, Unforgettable Moments.">[8]</a> Write the phrase from the paragraph below, then open your own copy, find the scene, and add your page number. Locators here are scene descriptions rather than page numbers, because page numbers change with every edition.
+                </div>
+                <div class="qualities-intro">
+                    <strong>Spoiler:</strong> this section describes the ending. If you are reading for the first time, stop here and come back.
                 </div>
                 <h3>Exposition</h3>
-                <p>The novel opens by immediately establishing the biggest antagonist throughout the book: eleven-year-old Melody Brooks is physically unable to speak or move freely (p. 11). While her parents take care of her daily physical care, the narrative shows her true nature: mentally sharp, observant, and extremely competent. Her body traps her, but she is smart.<a href="#cite-3" class="cite-ref" id="ref-3-3" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
+                <p>Melody Brooks is eleven and in fifth grade. She has cerebral palsy; she cannot walk, speak or write, and she has never spoken a word. She remembers almost everything and understands rather more than the room allows her to show, and she spends her days in H-5, the special-education classroom, where the alphabet is repeated because the adults believe it has to be. Her parents have spent years building ways for her to answer; her neighbour Mrs. V, a retired special education teacher, teaches her to roll over and then to crawl. Her little sister Penny is two years younger and can do everything Melody cannot.</p>
+                <p>Melody introduces herself and the fact that she has never spoken.</p>
+                <blockquote class="quote">
+                    <p>"I have never spoken one single word. I am almost eleven years old."<a href="#cite-1" class="cite-ref" id="ref-1-1" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></p>
+                </blockquote>
+                <p class="key-scene"><em>Locator: the opening page &mdash; Melody describing her room and her words. Record your edition's page here: ______________</em></p>
                 <h3>Rising Action</h3>
-                <p>Melody's journey is driven by her experience with the medical (p. 18) and educational (p. 27) systems, both of which assume her disability is immediately intellectual incapacity. As her inability to communicate becomes a central source of tension, she meets Mrs. V, a neighbor and former teacher who sees her Melody for who she is. A major turning point occurs when Melody receives the Medi-Talker (p. 138), granting her the ability to finally communicate. Suddenly, those around her begin to perceive her as an actual person (p. 143). Because of her smarts, she auditions for the academic Whiz Kids team and earns a spot, defying the beliefs of others (p. 190), and secures a place on the trip to Washington, D.C.<a href="#cite-3" class="cite-ref" id="ref-3-4" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
+                <p>Melody joins some fifth-grade classes, befriends Rose and faces bullying from Molly and Claire. The Medi-Talker gives her a much larger vocabulary to communicate.<a href="#cite-6" class="cite-ref" id="ref-6-2" data-tooltip="&quot;Out of My Mind: Full Book Summary.&quot; LitCharts.">[6]</a> After a perfect practice score is questioned, Melody studies for the Whiz Kids team, qualifies and helps the team win a regional competition.<a href="#cite-5" class="cite-ref" id="ref-5-11" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a></p>
+                <p><strong>In the text:</strong> the teacher who meets her in the fifth-grade room begins the test where Melody's whole school year began.</p>
+                <blockquote class="quote">
+                    <p>"We were reviewing the alphabet, of course&hellip; I always start with the basics. These children need constant review because they don't retain information like the rest of us."<a href="#cite-2" class="cite-ref" id="ref-2-5" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a></p>
+                </blockquote>
+                <p class="key-scene"><em>Locator: the practice-test scene in the fifth-grade room, after the Medi-Talker arrives. Record your edition's page here: ______________</em></p>
                 <h3>Climax</h3>
-                <p>The narrative reaches a climax with two conflicts: the Whiz Kids and Penny. The Whiz Kids team leaves for Washington, D.C. without Melody after a silent, collective agreement not to call her: a deliberate betrayal led, surprisingly, by Rose (p. 291). This soul-shattering experience is compounded by Penny's near-death experience (p. 276), which takes away Melody's feelings of safety and forces her to face vulnerability.<a href="#cite-3" class="cite-ref" id="ref-3-5" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
+                <p><strong>Spoiler.</strong> The team leaves for Washington on an earlier flight while Melody's flight is cancelled because of the storm; no one calls to tell her.<a href="#cite-5" class="cite-ref" id="ref-5-12" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a> Later, in the family car during a storm, Melody sees Penny behind the vehicle and urgently tries to alert her mother. Diane misunderstands her actions and begins to drive.</p>
+                <p><strong>In the text:</strong> this is the sentence the whole novel has been building toward, and it also explains the title.</p>
+                <blockquote class="quote">
+                    <p>"I had to tell her that Penny was out there! Never had I wanted words more. I was going out of my mind."<a href="#cite-1" class="cite-ref" id="ref-1-2" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></p>
+                </blockquote>
+                <p class="key-scene"><em>Locator: the chapter after the team travels, in the family car, before the hospital. Record your edition's page here: ______________</em></p>
                 <h3>Falling Action</h3>
-                <p>After the Whiz Kids team gets back, Rose and the team offer apologies out of social guilt more than genuine sincerity. Melody is left to navigate the dissolution of her trust, fighting with tarnished self-worth after struggling so hard to be seen, only to be discarded by the very people who claimed to support her.<a href="#cite-3" class="cite-ref" id="ref-3-6" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
+                <p>Penny survives the accident with a broken leg. After the trip, the team apologizes and offers Melody its trophy. Melody drops it, and it breaks.<a href="#cite-5" class="cite-ref" id="ref-5-13" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a></p>
+                <p><strong>Possible reading:</strong> the damaged trophy can suggest that the team's apology cannot undo Melody's exclusion; readers may interpret the moment differently.</p>
+                <p class="key-scene"><em>Locator: the fifth-grade classroom, the scene with the trophy. Record your edition's page here: ______________</em></p>
                 <h3>Resolution</h3>
-                <p>Penny lives with no major injury, and peace is brought to the Brooks household (for once). More significantly, Melody comes to a profound internal conclusion: despite the inability of the world to understand and see her, she knows to her core that she is human. The novel concludes with a strong declaration of self-peace and freedom.<a href="#cite-3" class="cite-ref" id="ref-3-7" data-tooltip="Draper, Sharon M. Out of My Mind. Simon &amp; Schuster, 9 Mar. 2010.">[7]</a></p>
-                <div class="highlight-box"><strong>Central Conflict:</strong> The plot is driven by the contrast between Melody's internal ability and society's external interpretation. Every stage of her journey, from learning trust to ultimately being shattered, asks strong questions about who defines human worth?</div>
+                <p>Melody and Catherine begin her autobiography assignment, and the introductory paragraph she writes is the opening paragraph of the book. She finishes where she began, writing about words &mdash; except that the reader now knows everything that happened between the first sentence and the last.<a href="#cite-5" class="cite-ref" id="ref-5-14" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a></p>
+                <p class="key-scene"><em>Locator: the final chapter, back in the language-arts assignment. Record your edition's page here: ______________</em></p>
+                <div class="highlight-box">
+                    <strong>Central conflict:</strong> Melody can understand and communicate far more than many people around her recognize. The novel explores how assumptions about disability shape whether others listen to her.
+                </div>
+                <div class="highlight-box">
+                    <strong>One subplot worth naming:</strong> H-5 keeps a class fish called Ollie, and the author's own discussion guide asks what is significant about "the story of Ollie the fish" and whether Ollie's life mirrors Melody's.<a href="#cite-2" class="cite-ref" id="ref-2-6" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a> The fish watches everything from its bowl and can reach nothing. <strong>Interpretation:</strong> that is not a metaphor the novel has to explain; it is a situation the reader recognises on sight.
+                </div>
+            </div>
+        </div>
+        <div id="setting" class="page">
+            <div class="content-card">
+                <h2>Setting</h2>
+                <div class="image-grid">
+                    <div class="image-container has-image"><img src="school.jpg" alt="An American elementary school" loading="lazy" decoding="async"></div>
+                    <div class="image-container has-image"><img src="home.jpg" alt="A suburban family home" loading="lazy" decoding="async"></div>
+                </div>
+                <div class="qualities-intro">
+                    <strong>Definition on the handout:</strong> setting is "the background against which action takes place," and it is built from four elements. The pamphlet asks you to gather descriptions that <em>show</em> rather than tell, and then test them against Plot, Setting, Character and Symbol.<a href="#cite-8" class="cite-ref" id="ref-8-5" data-tooltip="Setting Details.pdf, p. 1, from the Active Reading Pamphlet handouts.">[8]</a>
+                </div>
+                <h3>Element 1 &mdash; Geographical location and physical arrangements</h3>
+                <p>The story takes place in an Ohio community. The school includes H-5 and fifth-grade classrooms; other important settings include the Brooks home, Mrs. V's home, the car and the airport.<a href="#cite-6" class="cite-ref" id="ref-6-3" data-tooltip="&quot;Out of My Mind: Full Book Summary.&quot; LitCharts.">[6]</a><a href="#cite-5" class="cite-ref" id="ref-5-15" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a> Consider how access to different rooms and communication tools affects Melody's experiences.</p>
+                <h3>Element 2 &mdash; Occupations and daily manner of living</h3>
+                <p><strong>In the text:</strong> Diane and Mr. Brooks raise Melody and a second daughter, work jobs, and do all of it around her care. Diane advocates at school. Mrs. V, retired, works as Melody's neighbour and tutor. Catherine is the classroom aide. Melody attends school, does homework, rides in a wheelchair, and is read to, moved, and fed by other people as a matter of routine, not emergency.<a href="#cite-5" class="cite-ref" id="ref-5-16" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a></p>
+                <h3>Element 3 &mdash; Time period</h3>
+                <p>The novel is contemporary with its 2010 publication, though it does not name a calendar year. Avoid assigning a more exact date without evidence.</p>
+                <h3>Element 4 &mdash; General environment: mental, moral, social and emotional conditions</h3>
+                <p>The school setting includes both a separate special-education room and inclusive classes. One possible interpretation is that this contrast highlights how adult expectations can affect a student's access to learning and peers.</p>
+                <h3>Descriptions that show, not tell</h3>
+                <p>Melody's senses are not decoration in this book &mdash; they are how she reads a room when she cannot speak in it. The opening passage is a catalogue of a house through sound and smell.</p>
+                <blockquote class="quote">
+                    <p>"I began to recognize noises and smells and tastes. The whump and whoosh of the furnace coming alive each morning. The tangy odor of heated dust as the house warmed up.&hellip; It's like I've always had a painted musical soundtrack playing background to my life."<a href="#cite-1" class="cite-ref" id="ref-1-3" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></p>
+                </blockquote>
+                <ul>
+                    <li><strong>Heard:</strong> the furnace starting each morning; her own screams filling the car; the silence of an apartment where nobody has noticed she is not there.</li>
+                    <li><strong>Smelled and tasted:</strong> "the tangy odor of heated dust as the house warmed up"; jazz, which "sounds brown and tan and it smells like wet dirt."<a href="#cite-1" class="cite-ref" id="ref-1-4" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></li>
+                    <li><strong>Felt:</strong> being lifted, turned and set down; the quilt on the floor of Mrs. V's house; a toy placed just out of reach.</li>
+                </ul>
+                <p class="key-scene"><em>Locator: the opening pages, where Melody lists the noises, smells, tastes and music of her mornings. Record your edition's page here: ______________</em></p>
+                <h3>The four lenses</h3>
+                <ul>
+                    <li><strong>Plot:</strong> the setting moves the plot along. Moving from H-5 into the fifth-grade rooms is the plot's engine, and every later event depends on which room Melody is standing in.</li>
+                    <li><strong>Setting (imagery):</strong> the imagery is built from sound, smell and taste rather than sight, because sight is what the other characters use to judge her. The novel quietly makes you see the world her way.</li>
+                    <li><strong>Character:</strong> the setting decides who is allowed where. Penny gets the house and the yard. Rose gets the classroom. Molly and Claire get the corridor. Melody is moved between all of them, and belongs fully in none.</li>
+                    <li><strong>Symbol:</strong> the class fish in H-5 sees everything and reaches nothing &mdash; a small, ordinary emblem of the whole novel. The Medi-Talker is the opposite symbol: a key that opens doors, and an object that can be left behind at the worst possible moment.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Scene traits to choose from:</strong> the handout's bank is long, so pick the one or two words that fit and use them as a description rather than a label. Room H-5: <em>cramped, worn, neglected</em>. The fifth-grade rooms: <em>busy, crowded, colourful</em>. The Brooks' house: <em>cozy, warm, open</em>. Mrs. V's house on the quilt: <em>safe, uncluttered</em>. The car: <em>claustrophobic, cramped</em>. The airport: <em>hushed, desolate, foreboding</em>. Melody's bedroom and her mind: <em>vivid, expansive, painted</em>.<a href="#cite-8" class="cite-ref" id="ref-8-6" data-tooltip="Setting Details.pdf, pp. 1&ndash;2, Scene Setting Traits.">[8]</a>
+                </div>
+            </div>
+        </div>
+        <div id="pov" class="page">
+            <div class="content-card">
+                <h2>Point of View</h2>
+                <div class="image-container has-image"><img src="perspective.jpg" alt="Looking out from inside a mind" loading="lazy" decoding="async"></div>
+                <div class="qualities-intro">
+                    <strong>Directions:</strong> identify the narrator and gather evidence of how the perspective influences the story, using at least two of the bolded words on the pamphlet.<a href="#cite-8" class="cite-ref" id="ref-8-7" data-tooltip="Narration Traits.pdf, p. 1, from the Active Reading Pamphlet handouts.">[8]</a>
+                </div>
+                <p><strong>The narrator is Melody Brooks.</strong> The novel uses first person and is framed by Melody's autobiography assignment, which returns in the last chapter.<a href="#cite-3" class="cite-ref" id="ref-3-2" data-tooltip="&quot;Sharon M. Draper.&quot; Wikipedia, The Free Encyclopedia.">[3]</a><a href="#cite-5" class="cite-ref" id="ref-5-17" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a><a href="#cite-2" class="cite-ref" id="ref-2-7" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a></p>
+                <h3>Narration terms and evidence</h3>
+                <h3>1. First Person</h3>
+                <p>The handout defines first person as the narrator being a character in the story and referring to themself as "I." Every fact about Melody arrives through that "I," including the facts she cannot verify &mdash; she can tell you what her mother said, and what her mother's face did, but not what her mother was thinking.</p>
+                <blockquote class="quote">
+                    <p>"I have never spoken one single word. I am almost eleven years old."<a href="#cite-1" class="cite-ref" id="ref-1-5" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></p>
+                </blockquote>
+                <p><strong>Effect:</strong> readers encounter Melody's thoughts directly rather than learning about her only through other characters.</p>
+                <h3>2. Perspective</h3>
+                <p>The handout separates <strong>point of view</strong> (who is telling) from <strong>perspective</strong> (how the characters view and process what happens). Both are on display, and the novel is built on the gap between them.</p>
+                <ul>
+                    <li>The practice-test score is proof of ability to Melody and evidence of cheating to Mr. Dimming.</li>
+                    <li>The trip to Washington is a reward to the team and an abandonment to the one member they did not call.</li>
+                    <li>Being cared for is a gift to Diane and a daily loss of privacy to Melody.</li>
+                </ul>
+                <p><strong>Interpretation:</strong> the contrast shows how the same event can look different to people with different information and assumptions.</p>
+                <h3>3. Narrative Distance</h3>
+                <p>The handout describes narrative distance as the proximity of the narrator to the subject. Here it is almost zero &mdash; and the consequence is the book's sharpest technical effect.</p>
+                <blockquote class="quote">
+                    <p>"I can't take any more, Melody!"<a href="#cite-1" class="cite-ref" id="ref-1-6" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></p>
+                </blockquote>
+                <p><strong>Effect:</strong> readers know Melody's intentions in this moment, while Diane does not. That difference makes the scene especially tense.</p>
+                <h3>4. Bias and reliability</h3>
+                <p>Melody tells the story from her own perspective and describes mixed feelings, including jealousy of Penny. This limited perspective is not by itself proof that she is unreliable; consider which events she can observe and where she may be interpreting another person's motives.</p>
+                <h3>The handout's questions, answered</h3>
+                <ul>
+                    <li><strong>Who is telling the story, and from what point of view?</strong> First person, Melody Brooks, throughout.</li>
+                    <li><strong>Does the narrator ever speak directly to "you"?</strong> The frame presents Melody writing for a class assignment; readers can consider how that implied audience shapes her account.</li>
+                    <li><strong>Does the story change perspectives?</strong> No, and the refusal is the point. The author's own discussion guide asks how the book would change if it were told from the parents' view or from an outside observer.<a href="#cite-2" class="cite-ref" id="ref-2-8" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a> The novel answers by never handing them the microphone.</li>
+                    <li><strong>Can you trust the narrator?</strong> Assess claims against what Melody observes and what the text reveals; first-person narration alone does not establish unreliability.</li>
+                </ul>
+            </div>
+        </div>
+        <div id="tone" class="page">
+            <div class="content-card">
+                <h2>Tone</h2>
+                <div class="qualities-intro">
+                    <strong>Two different questions.</strong> <strong>Attitude</strong> is "the attitude a writer takes toward the subject of a work, the characters in it, or the audience." <strong>Mood</strong> "evokes feelings in readers through words and descriptions." The handout's shorthand is the whole point: <strong>Attitude = Author. Mood = Me.</strong><a href="#cite-8" class="cite-ref" id="ref-8-9" data-tooltip="Attitude vs. Mood.pdf, p. 1, from the Active Reading Pamphlet handouts.">[8]</a>
+                </div>
+                <div class="qualities-intro">
+                    <strong>Spoiler:</strong> the scene below is the climax.
+                </div>
+                <h3>Attitude &mdash; the author's side</h3>
+                <p><strong>Selected scene:</strong> the car, the morning after the team flies to Washington without her. Melody sees Penny behind the van and cannot make her mother understand.</p>
+                <p><strong>Evidence from the story:</strong> she screams, hits, kicks and grabs at her mother; her mother shouts that she cannot take any more and puts a hand on the keys; Melody scratches her mother's hand trying to get the keys. The narrator's sentence at the end names the condition the whole book has been describing.</p>
+                <blockquote class="quote">
+                    <p>"I had to tell her that Penny was out there! Never had I wanted words more. I was going out of my mind."<a href="#cite-1" class="cite-ref" id="ref-1-7" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></p>
+                </blockquote>
+                <p><strong>Possible attitude:</strong> <mark>Empathetic</mark>. The narration gives close attention to Melody's fear and urgency; support this reading with the quoted line. The word describes a possible authorial effect, not a single required answer.<a href="#cite-8" class="cite-ref" id="ref-8-10" data-tooltip="Character Traits.pdf, p. 1, Moral Qualities; Attitude vs. Mood.pdf, p. 1, Tone Wheel.">[8]</a></p>
+                <p class="key-scene"><em>Locator: the chapter after the team travels, in the car, before the hospital. Record your edition's page here: ______________</em></p>
+                <h3>Mood &mdash; the reader's side</h3>
+                <p>The mood is built from short sentences, sensory catalogue, and long passages in which nothing is said at all. You can feel the heat of a house through a furnace; you can feel the inside of a car going silent. Possible mood words for your reaction: <mark>Vulnerable</mark>, <mark>Anxious</mark>, <mark>Hopeful</mark>.<a href="#cite-8" class="cite-ref" id="ref-8-11" data-tooltip="Attitude vs. Mood.pdf, p. 1.">[8]</a></p>
+                <h3>Does the whole book have one tone?</h3>
+                <p><strong>Interpretation:</strong> it starts <em>alienated</em> and ends <em>defiant</em>, and it never becomes sentimental. The reception record is a useful corrective: reviews from <em>School Library Journal</em>, <em>Booklist</em> and <em>Kirkus Reviews</em> were starred, while <em>Publishers Weekly</em> criticised the plot for a lack of tension.<a href="#cite-5" class="cite-ref" id="ref-5-18" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a> Quote the criticism in discussion. A book can be well loved and still be doing something a plot-shaped book does not.</p>
+                <div class="image-container has-image"><img src="excluded.jpg" alt="A student watching from the edge of a classroom" loading="lazy" decoding="async"></div>
+                <h3>Emotional Sparks</h3>
+                <p>The pamphlet asks for excerpts with page numbers, plus your emotional reaction explained in mood words.<a href="#cite-8" class="cite-ref" id="ref-8-12" data-tooltip="Active Reading Pamphlet.pdf, p. 2, Emotional Sparks.">[8]</a> Record the page from your own copy beside each excerpt.</p>
+                <p><strong>Spark 1 &mdash; the car. <em>Locator: the climax; search your copy for the line about never having wanted words more.</em></strong></p>
+                <blockquote class="quote">
+                    <p>"Never had I wanted words more."<a href="#cite-1" class="cite-ref" id="ref-1-8" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></p>
+                </blockquote>
+                <p><strong>Mood word:</strong> <mark>Vulnerable</mark> &mdash; capable of being hurt. <strong>Personal response (replace this with your own):</strong> the sentence works because it is short and past tense, as though the memory has already been filed. My reaction was <em>frightened</em> rather than sad, because nothing in it gives anyone a chance to act differently.</p>
+                <p><strong>Spark 2 &mdash; the practice test. <em>Locator: the fifth-grade room, just after the Medi-Talker arrives.</em></strong></p>
+                <blockquote class="quote">
+                    <p>"I always start with the basics. These children need constant review because they don't retain information like the rest of us."<a href="#cite-1" class="cite-ref" id="ref-1-9" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></p>
+                </blockquote>
+                <p><strong>Mood word:</strong> <mark>Ridiculed</mark> &mdash; speech or action intended to cause contemptuous laughter at a person. <strong>Interpretation:</strong> nobody in this scene intends a joke, which is exactly what makes it one. <strong>Personal response (replace this with your own):</strong> my reaction was <em>angry</em>, because the sentence sounds like a professional judgement rather than an insult.</p>
+                <p><strong>Spark 3 &mdash; the airport. <em>Locator: the chapter after the regional competition, when nobody calls.</em></strong></p>
+                <blockquote class="quote">
+                    <p>"The entire airport felt like a vacuum. No sound. No voices. No air."<a href="#cite-1" class="cite-ref" id="ref-1-10" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></p>
+                </blockquote>
+                <p><strong>Mood word:</strong> <mark>Apathetic</mark> &mdash; little or no interest, concern or emotion. <strong>Personal response (replace this with your own):</strong> the list of absences is what got me. A loud place is described by what it contains; this one is described by what it no longer has.</p>
+            </div>
+        </div>
+        <div id="vocab" class="page">
+            <div class="content-card">
+                <h2>Close Reading Vocabulary</h2>
+                <div class="qualities-intro">
+                    <strong>Directions:</strong> gather words you do not know, and include page numbers and definitions.<a href="#cite-8" class="cite-ref" id="ref-8-13" data-tooltip="Active Reading Pamphlet.pdf, p. 2, Close Reading Vocabulary.">[8]</a> Locators below are scene descriptions, not page numbers; find the passage in your own copy and record its page beside the entry.
+                </div>
+                <h3>From the novel</h3>
+                <ul>
+                    <li><strong>tangy</strong> &mdash; sharp-smelling or sharp-tasting. "The tangy odor of heated dust as the house warmed up." <em>Locator: the opening pages, where Melody lists the noises, smells and tastes of her mornings.</em><a href="#cite-1" class="cite-ref" id="ref-1-11" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></li>
+                    <li><strong>painted musical soundtrack</strong> &mdash; Melody's name for music she experiences as colour and as smell; she can "almost hear colors and smell images." <em>Locator: the same opening pages.</em><a href="#cite-1" class="cite-ref" id="ref-1-12" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></li>
+                    <li><strong>Medi-Talker</strong> &mdash; the assistive communication device: a computer that speaks Melody's words out loud, widening what she can say from a few dozen phrases to tens of thousands. <em>Locator: the chapter in which it arrives.</em><a href="#cite-6" class="cite-ref" id="ref-6-4" data-tooltip="&quot;Out of My Mind: Full Book Summary.&quot; LitCharts.">[6]</a></li>
+                    <li><strong>H-5</strong> &mdash; the special-education classroom at Spaulding Street Elementary School. The room number matters: it is how a child is sorted before anyone has met her. <em>Locator: the first chapter.</em><a href="#cite-5" class="cite-ref" id="ref-5-19" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a></li>
+                    <li><strong>retain</strong> &mdash; to keep and remember; used in the sentence that reduces Melody's class to a memory problem. <em>Locator: the fifth-grade room, when the teacher tests Melody.</em><a href="#cite-2" class="cite-ref" id="ref-2-9" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a></li>
+                    <li><strong>Ollie</strong> &mdash; the name of the class fish kept in H-5. The author's own discussion guide asks what is significant about "the story of Ollie the fish" and whether Ollie's life mirrors Melody's. <em>Locator: the H-5 scenes.</em><a href="#cite-2" class="cite-ref" id="ref-2-10" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a></li>
+                    <li><strong>Elvira</strong> &mdash; the name Melody gives her computer. The author's discussion guide asks why she chooses it. <em>Locator: after the Medi-Talker arrives.</em><a href="#cite-2" class="cite-ref" id="ref-2-11" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a></li>
+                    <li><strong>paparazzi</strong> &mdash; photographers who follow celebrities; Melody's joke about her father following her baby sister with a camcorder. <em>Locator: the chapter that introduces Penny.</em><a href="#cite-1" class="cite-ref" id="ref-1-13" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></li>
+                    <li><strong>autobiography</strong> &mdash; an account of a person's life written by that person. The novel you are holding is one, which is why its last chapter turns back into a school assignment. <em>Locator: the final chapter.</em><a href="#cite-5" class="cite-ref" id="ref-5-20" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a></li>
+                </ul>
+                <h3>Resource words to know</h3>
+                <p>The handouts list words that will be tested. The definitions below are the handouts' own wording, and each is cited to its file and page.</p>
+                <ul>
+                    <li><strong>Attitude vs. Mood.pdf, p. 1</strong> &mdash; Ambitious: eagerly desirous of achieving or obtaining success, power, wealth, a specific goal. Apathetic: having or showing little or no interest, concern or emotion. Cheeky: boldly rude, impudent or disrespectful (the handout's own line breaks off mid-definition). Nauseated: filled with disgust; sickness stemming from the stomach. Ridiculed: speech or action intended to cause contemptuous laughter at a person or thing. Skeptical: doubtful about a particular thing. Vulnerable: capable of or susceptible to being attacked, damaged or hurt.<a href="#cite-8" class="cite-ref" id="ref-8-14" data-tooltip="Attitude vs. Mood.pdf, p. 1.">[8]</a></li>
+                    <li><strong>Setting Details.pdf, p. 2</strong> &mdash; Arid: without moisture; extremely dry. Desolate: deprived or destitute of inhabitants; deserted. Enigmatic: puzzling; perplexing. Foreboding: a strong inner feeling of future misfortune. Melancholy: a gloomy state of mind, especially when prolonged. Ominous: indicating the nature of a future event, for good or evil. Somber: gloomily dark; shadowy; dimly lighted.<a href="#cite-8" class="cite-ref" id="ref-8-15" data-tooltip="Setting Details.pdf, p. 2.">[8]</a></li>
+                    <li><strong>Character Traits.pdf, p. 2</strong> &mdash; Astute: keenly perceptive or discerning. Austere: severe in manner or appearance; uncompromising. Ingenious: cleverly inventive or resourceful. Precocious: unusually advanced or mature in development. Robust: strong and healthy; hardy. Unkempt: uncared-for or neglected; disheveled. Urbane: reflecting elegance and sophistication in expression.<a href="#cite-8" class="cite-ref" id="ref-8-16" data-tooltip="Character Traits.pdf, p. 2.">[8]</a></li>
+                    <li><strong>Theme &amp; Big Ideas.pdf, p. 2</strong> &mdash; Judgement: Acceptance, Guilt, Hypocrisy, Injustice, Innocence, Oppression, Prejudice, Racism, Redemption, Resistance, Truth, Vanity, Virtue. Deception: Alienation, Betrayal, Disillusionment, Free Will, Greed, Honesty, Jealousy, Manipulation, Trust, Violence.<a href="#cite-8" class="cite-ref" id="ref-8-17" data-tooltip="Theme &amp; Big Ideas.pdf, p. 2, Big List of Big Ideas.">[8]</a></li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>A word to use carefully.</strong> Two words on the Character Traits test list are hazards rather than descriptions. <strong>Obtuse</strong> is defined as "not quick or alert in perception, feeling, or intellect," and <strong>Degenerate</strong> as "an immoral or corrupt person."<a href="#cite-8" class="cite-ref" id="ref-8-18" data-tooltip="Character Traits.pdf, p. 2.">[8]</a> In this novel they would both be used <em>about</em> a child who cannot speak, which is the exact error the book exists to correct. Knowing the definition is not the same as earning the right to use it.
+                </div>
+                <div class="highlight-box">
+                    <strong>Notice the pattern:</strong> every word on the tested Attitude vs. Mood list describes a way people treat one another, and nearly all of them are applied <em>to</em> Melody by someone who has never asked. <em>Skeptical</em> and <em>vulnerable</em> describe her situation; <em>ambitious</em> and <em>cheeky</em> describe her refusal to accept it. That is the book's whole argument in six words.
+                </div>
+            </div>
+        </div>
+        <div id="theme" class="page">
+            <div class="content-card">
+                <h2>Theme &amp; Big Ideas</h2>
+                <div class="qualities-intro">
+                    <strong>From the handout:</strong> a <strong>Big Idea</strong> is a topic the story circles, usually a word or two &mdash; <em>Friendship</em>, <em>Hope</em>, <em>Belonging</em>. A <strong>theme statement</strong> is a complete sentence saying what the story argues about that idea, and it must hold true for the beginning, the middle and the end, avoid clich&eacute;s, leave out character names, and reach beyond the text to a common human concern.<a href="#cite-8" class="cite-ref" id="ref-8-19" data-tooltip="Theme &amp; Big Ideas.pdf, pp. 1&ndash;2.">[8]</a>
+                </div>
+                <h3>Big Ideas the story circles</h3>
+                <ul>
+                    <li><strong>Love:</strong> Friendship, Companionship, Acceptance, Belonging.</li>
+                    <li><strong>Deception:</strong> Betrayal, Trust, Manipulation, Dishonesty &mdash; none of it malicious, which is why it works.</li>
+                    <li><strong>Good &amp; Evil:</strong> Discrimination, Injustice, Selfishness, Hypocrisy.</li>
+                    <li><strong>Coming of Age:</strong> Identity, Knowledge, Self-Esteem, Individuality.</li>
+                    <li><strong>Suffering:</strong> Oppression, Loneliness, Heartbreak, Grief.</li>
+                    <li><strong>Circle of Life:</strong> Loss, Mortality, Friendship.</li>
+                </ul>
+                <div class="qualities-intro">
+                    <strong>The method in four steps:</strong> find the Big Idea, read the whole book and notice where it keeps turning up, connect it to the central conflict and to the main character's thinking, then ask what the main character learned &mdash; and what the same lesson looks like in a life that is not this one.<a href="#cite-8" class="cite-ref" id="ref-8-20" data-tooltip="Theme &amp; Big Ideas.pdf, p. 1.">[8]</a>
+                </div>
+                <h3>Which Big Idea this novel actually earns</h3>
+                <p>Possible Big Ideas include <strong>Acceptance</strong>, <strong>Belonging</strong>, <strong>Communication</strong>, <strong>Prejudice</strong> and <strong>Identity</strong>. Choose one or more and trace how the novel develops them; the interpretation should fit the full story.<a href="#cite-5" class="cite-ref" id="ref-5-21" data-tooltip="&quot;Out of My Mind (novel).&quot; Wikipedia, The Free Encyclopedia.">[5]</a></p>
+                <p>Running alongside it: <strong>Friendship and Belonging</strong> (the team, Rose, and the bet), and <strong>Identity and Knowledge</strong> (a girl who must know who she is without anyone confirming it).</p>
+                <h3>Finished theme statement</h3>
+                <p><strong>Template from the handout:</strong> "A central issue that reappears throughout ____ by ____ is ____. This issue is exemplified when ____, ____, and ____. It is at these pivotal moments the reader realizes the theme that ____."</p>
+                <blockquote class="quote">
+                    <p>A central issue that reappears throughout <em>Out of My Mind</em> by Sharon M. Draper is how assumptions can limit a person's opportunities. This issue is exemplified when Melody is given work below her ability, when her quiz score is doubted, and when communication fails in the car. These moments suggest that listening to people and recognizing their abilities requires more than judging by appearances.<a href="#cite-1" class="cite-ref" id="ref-1-14" data-tooltip="Draper, Sharon M. Out of My Mind. Atheneum Books for Young Readers, 2010.">[1]</a></p>
+                </blockquote>
+                <div class="qualities-intro">
+                    This example is a complete, general statement supported by scenes from different parts of the novel. Revise it to fit the Big Idea and evidence you choose.
+                </div>
+                <div class="highlight-box">
+                    Friendship is another possible focus. A strong theme statement should account for evidence across the beginning, middle and end, and should express an idea about life rather than only summarize events.
+                </div>
+            </div>
+        </div>
+        <div id="questions" class="page">
+            <div class="content-card">
+                <h2>Questions</h2>
+                <div class="qualities-intro">
+                    The pamphlet invites you to record questions for your reading group.<a href="#cite-8" class="cite-ref" id="ref-8-21" data-tooltip="Active Reading Pamphlet.pdf, p. 2, Questions.">[8]</a> These prompts include possible answers, not definitive readings. Several connect to topics in Draper's discussion guide.<a href="#cite-2" class="cite-ref" id="ref-2-12" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a>
+                </div>
+                <div class="qualities-intro">
+                    <strong>Spoiler:</strong> questions 1&ndash;6 discuss the ending.
+                </div>
+                <h3>1. Why does the novel open and close with the same paragraph?</h3>
+                <p><strong>Possible answer:</strong> the last chapter reveals that Melody is writing an autobiography for an assignment, and the repeated paragraph becomes its opening.</p>
+                <p><strong>Reading:</strong> the repeated words invite comparison between Melody's circumstances at the start and what the reader has learned by the end.</p>
+                <h3>2. Who is the real obstacle &mdash; a teacher, a friend, two bullies, or an assumption?</h3>
+                <p><strong>Possible answer:</strong> no single character is the only obstacle. Several characters' assumptions and choices create difficulties for Melody.</p>
+                <p><strong>Reading:</strong> compare how different people respond to her communication and abilities before deciding whether a person, an attitude or a broader barrier is most important.</p>
+                <h3>3. Molly and Claire think a body that cannot speak is a mind that cannot think. What does the novel do about that?</h3>
+                <p><strong>Suggested answer:</strong> it refuses to settle the matter with kindness. Being told "you are not disabled in the mind" would concede the question; instead Melody wins a regional quiz competition in front of them, and the narrator lets the reader notice that an opinion like theirs was never the kind of thing that could be argued out of existence.</p>
+                <p><strong>Analysis:</strong> the book's position is structural rather than moral. Access to proof is the real remedy, and even a perfect score does not fully deliver it. That is a harder claim than "be nice," and it is the one the plot supports.</p>
+                <h3>4. Why does the Medi-Talker solve the communication problem but not the credibility problem?</h3>
+                <p><strong>Possible answer:</strong> it gives Melody a way to speak words aloud, but it cannot guarantee that people will believe or listen to her. In the car scene, she cannot use it to communicate her warning.</p>
+                <p><strong>Reading:</strong> the novel distinguishes access to communication from other people's willingness to understand.</p>
+                <h3>5. Is Rose's apology enough?</h3>
+                <p><strong>Possible answer:</strong> the apology may matter, but readers can question whether it repairs the hurt caused by leaving her behind.</p>
+                <p><strong>Reading:</strong> Melody drops the offered trophy and it breaks. The moment can be read as anger, disappointment or rejection of a gesture that cannot undo what happened.</p>
+                <h3>6. What does Diane Brooks do in the car, and how should we judge her?</h3>
+                <p><strong>Suggested answer:</strong> she cannot decode her daughter's screaming and she reverses. The novel does not let her off, but it refuses to make her a villain either.</p>
+                <p><strong>Analysis:</strong> the scene works because Diane is the person who has done the most to make Melody understood and the one person in the car who still cannot translate her. Reading her as a villain makes the book easy; reading her as a parent doing her best without the tool makes it true.</p>
+                <h3>7. How does Draper keep a sad book from turning into a book about pity?</h3>
+                <p><strong>Possible answer:</strong> Melody's humor, interests and mixed feelings give her a personality beyond her disability; the first-person narration lets readers encounter those thoughts directly.</p>
+                <p><strong>Reading:</strong> consider how particular scenes balance painful events with Melody's voice and observations.</p>
+                <h3>8. How would the novel change if it were written in the third person?</h3>
+                <p><strong>Possible answer:</strong> a third-person version could create distance from Melody or provide access to other characters' perspectives, depending on the narrator chosen.</p>
+                <p><strong>Reading:</strong> Draper's discussion guide asks readers to consider third person, a parent's viewpoint or an outside observer; these choices would emphasize different information and relationships.<a href="#cite-2" class="cite-ref" id="ref-2-13" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a></p>
+                <h3>9. Explain the title.</h3>
+                <p><strong>Suggested answer:</strong> at least three readings work. The idiom "out of my mind" means confused or overwhelmed, which is exactly Melody in the car. The title also names the autobiography she is writing &mdash; a mind on paper, when the body cannot speak. And it names what the adults do to her: out of her mind, that is, not in it.</p>
+                <p><strong>Analysis:</strong> the author's guide asks for several possible interpretations, which is a hint that the title is doing more than one job at once.<a href="#cite-2" class="cite-ref" id="ref-2-14" data-tooltip="Draper, &quot;Out of My Mind: Discussion Topics, Activities and Writing Prompts.&quot; Sharon M. Draper.">[2]</a> Bring your own; a reading you can defend from two specific scenes is worth more than one that merely sounds clever.</p>
+                <h3>10. What creates tension after the regional competition?</h3>
+                <p><strong>Possible answer:</strong> the airport disappointment and the later accident shift attention from the team's result to Melody's relationships, communication and safety.</p>
+                <p><strong>Reading:</strong> readers may differ about the pacing. Support your view with scenes from both halves rather than assuming the competition resolves the novel's conflicts.</p>
+                <h3>11. What is the central conflict, in one sentence you could defend in an essay?</h3>
+                <p><strong>Suggested answer:</strong> a child has the ability to be understood and almost no power to make anyone listen.</p>
+                <p><strong>Analysis:</strong> test yours against all five plot stages; if it fails at any one of them, it is not yet the central conflict. The handout asks for theme to hold for beginning, middle and end, and the same test applies to a conflict sentence. It is the fastest way to discard a summary that only describes the exciting parts.</p>
+                <div class="highlight-box">
+                    <strong>Group tip:</strong> come with one quotation, one scene locator, and one sentence of your own. Score the reasoning, not the answer &mdash; and label your reaction as personal, the way the Emotional Sparks box on this page does.
+                </div>
             </div>
         </div>
         <div id="citations" class="page">
@@ -423,36 +636,40 @@
                 <h2>Works Cited</h2>
                 <p class="citation-legend">Badge numbers match the in-text citations. Each badge returns to the most recently followed reference.</p>
                 <div class="citation" id="cite-1">
-                    <a href="#ref-1-1" class="cite-badge" aria-label="Back to in-text citation 4" title="Back to in-text citation [4]">4</a>
-                    Audible. "Out of My Mind by Sharon M. Draper." <em>Audible Blog</em>, 2026, <a class="citation-source-link" href="https://www.audible.com/blog/summary-out-of-my-mind-by-sharon-m-draper">audible.com/blog/summary-out-of-my-mind-by-sharon-m-draper</a>. Accessed 19 May 2026.
+                    <a href="#ref-1-1" class="cite-badge" aria-label="Back to in-text citation 1" title="Back to in-text citation [1]">1</a>
+                    Draper, Sharon M. <em>Out of My Mind</em>. Atheneum Books for Young Readers, 2010. First published 9 March 2010. Quotations are brief; the author's teaching resource [2] verifies several passages quoted here. Scene locators are provided because editions differ; record page numbers from your own copy.
                 </div>
                 <div class="citation" id="cite-2">
                     <a href="#ref-2-1" class="cite-badge" aria-label="Back to in-text citation 2" title="Back to in-text citation [2]">2</a>
-                    "Biography." <em>Sharon M. Draper</em>, 2021, <a class="citation-source-link" href="https://www.sharondraper.com/biography">sharondraper.com/biography</a>.
+                    Draper, Sharon M. "Out of My Mind: Discussion Topics, Activities and Writing Prompts." <em>Sharon M. Draper</em>, <a class="citation-source-link" href="https://www.sharondraper.com/resources/out-of-my-mind">sharondraper.com/resources/out-of-my-mind</a>. Consulted 14 Oct 2026. Used to verify the wording of the longer passages quoted on this page, and as the source of the discussion and writing prompts adapted in the Questions section.
                 </div>
                 <div class="citation" id="cite-3">
-                    <a href="#ref-3-1" class="cite-badge" aria-label="Back to in-text citation 7" title="Back to in-text citation [7]">7</a>
-                    Draper, Sharon M. <em>Out of My Mind</em>. Simon &amp; Schuster, 9 Mar. 2010.
+                    <a href="#ref-3-2" class="cite-badge" aria-label="Back to in-text citation 3" title="Back to in-text citation [3]">3</a>
+                    "Sharon M. Draper." <em>Wikipedia, The Free Encyclopedia</em>, <a class="citation-source-link" href="https://en.wikipedia.org/wiki/Sharon_M._Draper">en.wikipedia.org/wiki/Sharon_M._Draper</a>. Consulted 14 Oct 2026. Used for dates, degrees, the award record, the teaching career and the series bibliography; checked against the author's own biography [4] wherever the two differed.
                 </div>
                 <div class="citation" id="cite-4">
-                    <a href="#ref-4-1" class="cite-badge" aria-label="Back to in-text citation 3" title="Back to in-text citation [3]">3</a>
-                    Goodreads. "Sharon M. Draper Quotes (Author of Out of My Mind)." <em>Goodreads</em>, <a class="citation-source-link" href="https://www.goodreads.com/author/quotes/51942.Sharon_M_Draper">goodreads.com/author/quotes/51942.Sharon_M_Draper</a>. Accessed 18 May 2026.
+                    <a href="#ref-4-1" class="cite-badge" aria-label="Back to in-text citation 4" title="Back to in-text citation [4]">4</a>
+                    "Biography." <em>Sharon M. Draper</em>, <a class="citation-source-link" href="https://www.sharondraper.com/biography">sharondraper.com/biography</a>. Consulted 14 Oct 2026. The author's own account of her honours, including the Dean's Award from Howard University School of Education, the 2009 Doctor of Laws degree from Pepperdine University, and her description of the novel's run on the bestseller list.
                 </div>
                 <div class="citation" id="cite-5">
-                    <a href="#ref-5-1" class="cite-badge" aria-label="Back to in-text citation 1" title="Back to in-text citation [1]">1</a>
-                    Scholastic. "Out of My Mind." <em>Scholastic Book Clubs</em>, <a class="citation-source-link" href="https://clubs.scholastic.com/out-of-my-mind/9781416971719-rco-us.html">clubs.scholastic.com/out-of-my-mind/9781416971719-rco-us.html</a>. Accessed 18 May 2026.
+                    <a href="#ref-5-1" class="cite-badge" aria-label="Back to in-text citation 5" title="Back to in-text citation [5]">5</a>
+                    "Out of My Mind (novel)." <em>Wikipedia, The Free Encyclopedia</em>, <a class="citation-source-link" href="https://en.wikipedia.org/wiki/Out_of_My_Mind_(novel)">en.wikipedia.org/wiki/Out_of_My_Mind_(novel)</a>. Consulted 14 Oct 2026. Used for the plot summary, character names, reading level, book awards and the 2024 adaptation.
                 </div>
                 <div class="citation" id="cite-6">
                     <a href="#ref-6-1" class="cite-badge" aria-label="Back to in-text citation 6" title="Back to in-text citation [6]">6</a>
-                    SparkNotes. "Out of My Mind: Famous Quotes Explained." <em>SparkNotes</em>, <a class="citation-source-link" href="https://www.sparknotes.com/lit/out-of-my-mind/quotes/">sparknotes.com/lit/out-of-my-mind/quotes/</a>. Accessed 27 May 2026.
+                    "Out of My Mind: Full Book Summary." <em>LitCharts</em>, <a class="citation-source-link" href="https://www.litcharts.com/lit/out-of-my-mind/summary">litcharts.com/lit/out-of-my-mind/summary</a>. Consulted 14 Oct 2026. Used for the Medi-Talker's effect on the range of Melody's speech, the team's regional competition, and the plot of the ending.
                 </div>
                 <div class="citation" id="cite-7">
-                    <a href="#ref-7-1" class="cite-badge" aria-label="Back to in-text citation 5" title="Back to in-text citation [5]">5</a>
-                    ---. "Out of My Mind: Plot Overview." <em>SparkNotes</em>, <a class="citation-source-link" href="https://www.sparknotes.com/lit/out-of-my-mind/summary/">sparknotes.com/lit/out-of-my-mind/summary/</a>. Accessed 27 May 2026.
+                    <a href="#ref-7-1" class="cite-badge" aria-label="Back to in-text citation 7" title="Back to in-text citation [7]">7</a>
+                    "Out of My Mind." <em>Simon &amp; Schuster</em>, <a class="citation-source-link" href="https://www.simonandschuster.com/books/Out-of-My-Mind/Sharon-M-Draper/The-Out-of-My-Mind-Series/9781665979634">simonandschuster.com/books/Out-of-My-Mind/Sharon-M-Draper/The-Out-of-My-Mind-Series/9781665979634</a>. Consulted 14 Oct 2026. Publisher's catalog entry, used for the imprint, the bestseller claim and the starred reviews.
+                </div>
+                <div class="citation" id="cite-8">
+                    <a href="#ref-8-1" class="cite-badge" aria-label="Back to in-text citation 8" title="Back to in-text citation [8]">8</a>
+                    Active Reading Pamphlet course handouts, supplied as seven local files and cited by filename and page: <em>Active Reading Pamphlet.pdf</em> (pp. 1&ndash;2), <em>Directions &amp; Scoring.pdf</em> (p. 1), <em>Character Traits.pdf</em> (pp. 1&ndash;2), <em>Setting Details.pdf</em> (pp. 1&ndash;2), <em>Narration Traits.pdf</em> (p. 1), <em>Attitude vs. Mood.pdf</em> (p. 1), and <em>Theme &amp; Big Ideas.pdf</em> (pp. 1&ndash;2). Page numbers refer to pages in the supplied copies.
                 </div>
             </div>
         </div>
-        <div class="last-updated">Last updated: August 2026 | Thank you for reading Melody's story</div>
+        <div class="last-updated">Last updated: October 2026 | A companion for Melody's story</div>
     </main>
     <footer>
         <p>2026 Educational Resource | Out of My Mind by Sharon M. Draper</p>
@@ -505,7 +722,7 @@
             setToggleState(reduceMotionToggle, 'reduce-motion', enabled);
             writePreference('reduceMotion', enabled);
         });
-        const pageIds = new Set(['home', 'author', 'context', 'characters', 'setting', 'tone', 'pov', 'plot', 'citations']);
+        const pageIds = new Set(['home', 'author', 'context', 'characters', 'plot', 'setting', 'pov', 'tone', 'vocab', 'theme', 'questions', 'citations']);
         const lastReferenceByCitation = new Map();
         function scrollBehavior() { return document.body.classList.contains('reduce-motion') ? 'auto' : 'smooth'; }
         function activatePage(pageId) {

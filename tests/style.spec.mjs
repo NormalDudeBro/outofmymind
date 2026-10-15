@@ -5,7 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const pages = ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html', 'of-mice-and-men.html'];
-const sectionsPerPage = { 'out-of-my-mind.html': 9, 'of-mice-and-men.html': 12 };
+const sectionsPerPage = { 'out-of-my-mind.html': 12, 'of-mice-and-men.html': 12 };
 
 // Compare the shared shell, not the intentionally different content headings or note inks.
 async function shell(page) {

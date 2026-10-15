@@ -6,6 +6,8 @@ o Absolute Value Rule
 -> The parent graph is a V with vertex (0, 0).
 -> Its domain is all real numbers; its range is y >= 0.
 -> Opposite inputs have equal absolute values.
+-> |x - c| is the distance between the input and the point c.
+-> Factoring: |2x - 6| = 2|x - 3| leaves the zeros unchanged.
 o General Graph Form
 -> Write y = a|x - h| + k, with a != 0.
 -> The vertex is (h, k); the symmetry line is x = h.
@@ -14,6 +16,8 @@ o General Graph Form
 -> If a < 0, the V opens downward and the range is y <= k.
 -> The left branch slope is -a; the right branch slope is a.
 -> Larger |a| makes a steeper V; smaller |a| makes it flatter.
+-> The V meets the x-axis exactly when a*k <= 0.
+-> Points the same distance from h give the same output y.
 o Upward Worked Example
 -> For y = |x - 1| + 3, a = 1, h = 1, and k = 3.
 -> The vertex is (1, 3); the symmetry line is x = 1.
@@ -22,6 +26,8 @@ o Upward Worked Example
 -> At x = -1 or x = 3, y = 5.
 -> For x < 1, y = -(x - 1) + 3 = -x + 4.
 -> For x >= 1, y = x - 1 + 3 = x + 2.
+-> Table style: choose x one unit left, at, and right of h = 1.
+-> x-intercepts: |x - 1| = -3 has none, so no crossings.
 o Downward Worked Example
 -> For y = -(2/3)|x + 3| + 1, h = -3, not 3.
 -> The vertex is (-3, 1); the symmetry line is x = -3.
@@ -30,6 +36,8 @@ o Downward Worked Example
 -> The left slope is 2/3; the right slope is -2/3.
 -> At x = -6 or x = 0, y = -(2/3)(3) + 1 = -1.
 -> Plot these symmetric points and draw the two rays.
+-> At x = -3 the absolute term vanishes, leaving y = 1.
+-> The y-intercept is (0, -1), one of the symmetric points.
 o Equation Strategy
 -> Isolate the absolute value before splitting into cases.
 -> For |u| = q with q < 0, there are no real solutions.
@@ -38,6 +46,8 @@ o Equation Strategy
 -> If u is linear with nonzero slope, q > 0 gives two roots.
 -> For nonlinear u, the number of roots can differ.
 -> Check roots in the original equation for extraneous roots.
+-> Graph view: |u| = q cuts the curve y = |u| at height q.
+-> After splitting, keep each branch with its case condition.
 o Solve and Check
 -> Solve 2|x - 1| + 3 = 11: first get |x - 1| = 4.
 -> x - 1 = 4 or x - 1 = -4 gives x = 5 or x = -3.
@@ -46,3 +56,5 @@ o Solve and Check
 -> |x + 2| = 0 gives x = -2, exactly one solution.
 -> Squaring |x + 2| = -3 would falsely suggest x = 1 or -5.
 -> Both fail the original equation; reject those extra roots.
+-> Plotting both roots shows they sit 4 units from h = 1.
+-> |x - 2| = 5 gives x = 7 and x = -3, both checked.

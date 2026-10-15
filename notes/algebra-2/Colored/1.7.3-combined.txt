@@ -6,6 +6,8 @@
 (pen)-> a controls vertical scale and x-axis reflection.
 (pen)-> b controls reciprocal horizontal scale and y-reflection.
 (pen)-> h shifts horizontally; k shifts vertically.
+(pen)-> Test the rule with the parent vertex or any known point.
+(pen)-> (g)Domain and range(pen) come from the parent; k moves the range.
 (pen)o (li)Factor Before Reading(pen)
 (pen)-> (li)Factor(pen) the entire inside to find b and h.
 (pen)-> 0.4*x+2 = 0.4*(x+5), so b = 0.4, h = -5.
@@ -14,6 +16,8 @@
 (pen)-> Here a = -1, b = 0.4, h = -5, k = 0.
 (pen)-> Stretch horizontally by 2.5; reflect x; shift left 5.
 (pen)-> Equivalent: g(x) = -0.4*x-2; (0,0) maps to (-5,0).
+(pen)-> Always (li)factor out b(pen) first, then read the leftover constant.
+(pen)-> Confirm with a value: g(0) = -2 matches the expanded form.
 (pen)o (pu)Absolute Value Combined(pen)
 (pen)-> g(x) = -(2/3)*|x+3| + 1 uses a = -2/3, b = 1.
 (pen)-> Reflect x; compress vertically 2/3; left 3; up 1.
@@ -22,6 +26,8 @@
 (pen)-> The V opens down; its (pu)maximum(pen) output is 1.
 (pen)-> Domain: R. Range: (-inf,1].
 (pen)-> With b = 1 only, the mapping is (u+h,a*v+k).
+(pen)-> Its ray slopes are 2/3 on the left and -2/3 on the right.
+(pen)-> (pu)Ray check(pen): g(-6) = -(2/3)*3 + 1 = -1, as listed.
 (pen)o (br)Quadratic Combined(pen)
 (pen)-> Start with f(x) = x^2.
 (pen)-> Open down, stretch vertically 4, right 2, down 5.
@@ -30,6 +36,8 @@
 (pen)-> (br)Vertex(pen): (2,-5); axis: x = 2; maximum: -5.
 (pen)-> (1,1) maps to (3,-9); check: g(3) = -4-5 = -9.
 (pen)-> Domain: R. Range: (-inf,-5]; there are no real zeros.
+(pen)-> (br)Expand to confirm(pen): g(x) = -4*x^2 + 16*x - 21.
+(pen)-> The y-intercept (0,-21) lies 16 units below the maximum.
 (pen)o (r)Dolphin Model(pen)
 (pen)-> g(x) = -0.125*(x-12)^2 + 18 models height.
 (pen)-> Vertex: (12,18); maximum height: 18 (r)distance units(pen).
@@ -38,6 +46,8 @@
 (pen)-> Zeros: x = 0 and x = 24; symmetry axis: x = 12.
 (pen)-> Context domain: [0,24]; context range: [0,18].
 (pen)-> The packet does not specify distance units.
+(pen)-> (r)Spot check(pen) the middle: g(12) = 18, the peak of the arc.
+(pen)-> At x = 6 the height is 13.5, three quarters of 18.
 (pen)o (db)Reflection and Point Check(pen)
 (pen)-> g(x) = -2*|-(x-5)| + 4 has a = -2, b = -1.
 (pen)-> Reflect y then x; stretch vertically 2; right 5; up 4.
@@ -46,3 +56,5 @@
 (pen)-> (-1,1) maps to (6,2); (1,1) maps to (4,2).
 (pen)-> Absolute value hides the y-axis (db)reflection(pen).
 (pen)-> Check each mapped point by substituting into g(x).
+(pen)-> Verify the (db)far ray(pen): g(9) = -2*4 + 4 = -4.
+(pen)-> b = -1 sends every input u to -u before shifting right 5.

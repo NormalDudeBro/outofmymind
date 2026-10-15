@@ -6,6 +6,8 @@ o Parent Functions
 -> A function assigns each input exactly one output.
 -> A vertical line meets a function graph at most once.
 -> Compare shape, intercepts, domain, and range.
+-> The x-intercept is where y = 0; the y-intercept is x = 0.
+-> Rates of change separate constant, linear, and curved parents.
 o Constant Parent
 -> f(x) = a gives the same output for every input.
 -> Its graph is the horizontal line y = a.
@@ -14,6 +16,8 @@ o Constant Parent
 -> Example: f(x) = 3 has range {3}.
 -> Its y-intercept is (0,a); if a != 0, it has no zero.
 -> If a = 0, every real input is a zero.
+-> Slope is 0, so every secant line is horizontal.
+-> Average rate of change is 0 between any two distinct inputs.
 o Identity Parent
 -> f(x) = x returns the input unchanged.
 -> Its graph is a line through (0,0) with slope 1.
@@ -22,6 +26,8 @@ o Identity Parent
 -> Table outputs: y = -2, -1, 0, 1, 2.
 -> Example: f(-2) = -2 and f(2) = 2.
 -> Both intercepts are (0,0); the function increases.
+-> Average rate of change is 1 on every interval.
+-> It is the only line whose points all have y = x.
 o Absolute Value Parent
 -> f(x) = |x| measures distance from zero.
 -> Domain: R. Range: [0,inf).
@@ -30,6 +36,8 @@ o Absolute Value Parent
 -> The V has vertex (0,0) and y-axis symmetry.
 -> For x < 0, |x| = -x; for x >= 0, |x| = x.
 -> The minimum is 0; opposite inputs give equal outputs.
+-> Rate of change: -1 on (-inf,0) and 1 on (0,inf).
+-> It is not linear: slopes jump from -1 to 1 at x = 0.
 o Quadratic Parent
 -> f(x) = x^2 squares each input.
 -> Domain: R. Range: [0,inf).
@@ -38,6 +46,8 @@ o Quadratic Parent
 -> The parabola opens up with vertex (0,0).
 -> It has y-axis symmetry and a minimum of 0.
 -> Unlike |x|, it curves; both have nonnegative outputs.
+-> From 0 to h != 0, average rate of change is h^2/h = h.
+-> Equal input steps give unequal changes in squared outputs.
 o Choosing Models
 -> Constant: temperature held fixed over a time interval.
 -> Linear: wages W(t) = r*t at a fixed hourly rate r.
@@ -46,3 +56,5 @@ o Choosing Models
 -> H(t) = -t^2 + 4*t; 0 <= t <= 4; range: [0,4].
 -> Absolute value: |s-c| is distance from reference c.
 -> s is signed position, not total distance traveled.
+-> Wages at $12 per hour: W(30) = 12*30 = 360 dollars.
+-> H(t) peaks at t = 2 with H(2) = 4, matching range [0,4].

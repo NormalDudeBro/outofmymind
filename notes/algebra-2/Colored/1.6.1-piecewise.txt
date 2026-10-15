@@ -6,6 +6,8 @@
 (pen)-> An included input must have exactly one output.
 (pen)-> Check boundary inputs carefully for < versus <=.
 (pen)-> An input outside all listed intervals is outside the domain.
+(pen)-> A (g)branch condition(pen) may test x, or it may name an interval.
+(pen)-> With x >= 2 listed, every larger x is already (g)covered(pen).
 (pen)o (pu)Worked Piecewise Example(pen)
 (pen)-> Illustrative example using three (g)distinct input intervals(pen).
 (pen)-> Define f(x) = 2x for x < 0.
@@ -14,6 +16,8 @@
 (pen)-> f(-2) = 2(-2) = -4 using the first branch.
 (pen)-> f(1) = 3 using the middle branch.
 (pen)-> f(4) = -4 + 5 = 1 using the last branch.
+(pen)-> f(0) uses the (pu)middle branch(pen) because 0 satisfies 0 <= 0.
+(pen)-> f(2) uses the (pu)last branch(pen) because 2 satisfies x >= 2.
 (pen)o (br)Restricted Graphs(pen)
 (pen)-> Graph each rule only on its (br)assigned input interval(pen).
 (pen)-> For the example, draw y = 2x only to the left of x = 0.
@@ -22,6 +26,8 @@
 (pen)-> The middle branch has an open endpoint at (2, 3).
 (pen)-> The last branch includes (2, 3); the final point is (br)closed(pen).
 (pen)-> Thus f(0) = 3 and f(2) = 3, each with one output.
+(pen)-> f is (br)increasing(pen), flat, then decreasing across its domain.
+(pen)-> The (br)three rules(pen) give three pieces, not one line.
 (pen)o (db)Jersey Total Cost(pen)
 (pen)-> Let n be the number of jerseys; C(n) is (db)total cost(pen).
 (pen)-> The domain is (db)positive integers(pen), not all real numbers.
@@ -30,6 +36,8 @@
 (pen)-> C(n) = 65n for 12 <= n <= 29.
 (pen)-> C(n) = 56n for n >= 30.
 (pen)-> These are all-units discounts: one rate for the whole order.
+(pen)-> The (db)tiers(pen) leave no gap: 1-5, 6-11, 12-29, then 30 and up.
+(pen)-> Reading the (db)domain(pen) first stops you from using 0 jerseys.
 (pen)o (r)Jersey Calculations(pen)
 (pen)-> For 11 jerseys, choose the 6 through 11 tier.
 (pen)-> C(11) = 75(11) = 825 dollars.
@@ -38,6 +46,8 @@
 (pen)-> C(5) = 440, while C(6) = 450.
 (pen)-> C(11) = 825, while C(12) = 780: total cost can (r)fall(pen).
 (pen)-> C(29) = 1885, while C(30) = 1680.
+(pen)-> (r)Rates(pen) step down: 88, 75, 65, then 56 per jersey.
+(pen)-> At n = 30 the (r)total drops(pen) the most: 205 dollars.
 (pen)o (hp)Rates and Model Checks(pen)
 (pen)-> An all-units price changes for every item at a tier boundary.
 (pen)-> A (hp)progressive rate(pen) applies each rate only to its own band.
@@ -46,3 +56,5 @@
 (pen)-> Total cost rises within tiers; it is (hp)not a step function(pen).
 (pen)-> Plot separate integer points; do not fill gaps in the domain.
 (pen)-> Tier prices jump; the integer-domain total has tier changes.
+(pen)-> A (hp)progressive tier(pen) would multiply each band by its own rate.
+(pen)-> (hp)Compare(pen) the two models at n = 12 before choosing one.

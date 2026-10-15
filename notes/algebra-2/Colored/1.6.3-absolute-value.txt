@@ -6,6 +6,8 @@
 (pen)-> The parent graph is a V with (g)vertex(pen) (0, 0).
 (pen)-> Its domain is all real numbers; its range is y >= 0.
 (pen)-> Opposite inputs have equal absolute values.
+(pen)-> |x - c| is the distance between the input and the point c.
+(pen)-> (g)Factoring(pen): |2x - 6| = 2|x - 3| leaves the zeros unchanged.
 (pen)o (pu)General Graph Form(pen)
 (pen)-> Write y = a|x - h| + k, with a != 0.
 (pen)-> The vertex is (h, k); the (pu)symmetry line(pen) is x = h.
@@ -14,6 +16,8 @@
 (pen)-> If a < 0, the V opens downward and the range is y <= k.
 (pen)-> The left branch slope is -a; the right branch slope is a.
 (pen)-> Larger |a| makes a (pu)steeper(pen) V; smaller |a| makes it flatter.
+(pen)-> The V meets the x-axis exactly when a*k <= 0.
+(pen)-> Points the same distance from h give the same (pu)output(pen) y.
 (pen)o (br)Upward Worked Example(pen)
 (pen)-> For y = |x - 1| + 3, a = 1, h = 1, and k = 3.
 (pen)-> The vertex is (1, 3); the symmetry line is x = 1.
@@ -22,6 +26,8 @@
 (pen)-> At x = -1 or x = 3, y = 5.
 (pen)-> For x < 1, y = -(x - 1) + 3 = -x + 4.
 (pen)-> For x >= 1, y = x - 1 + 3 = x + 2.
+(pen)-> Table style: choose x one unit left, at, and right of h = 1.
+(pen)-> x-(br)intercepts(pen): |x - 1| = -3 has none, so no crossings.
 (pen)o (db)Downward Worked Example(pen)
 (pen)-> For y = -(2/3)|x + 3| + 1, h = -3, not 3.
 (pen)-> The vertex is (-3, 1); the symmetry line is x = -3.
@@ -30,6 +36,8 @@
 (pen)-> The left slope is 2/3; the right slope is -2/3.
 (pen)-> At x = -6 or x = 0, y = -(2/3)(3) + 1 = -1.
 (pen)-> Plot these (db)symmetric points(pen) and draw the two rays.
+(pen)-> At x = -3 the absolute term vanishes, leaving y = 1.
+(pen)-> The y-(db)intercept(pen) is (0, -1), one of the symmetric points.
 (pen)o (r)Equation Strategy(pen)
 (pen)-> (r)Isolate(pen) the absolute value before splitting into cases.
 (pen)-> For |u| = q with q < 0, there are no real solutions.
@@ -38,6 +46,8 @@
 (pen)-> If u is linear with nonzero slope, q > 0 gives two roots.
 (pen)-> For nonlinear u, the number of roots can differ.
 (pen)-> Check roots in the original equation for (r)extraneous roots(pen).
+(pen)-> Graph view: |u| = q cuts the curve y = |u| at height q.
+(pen)-> After (r)splitting(pen), keep each branch with its case condition.
 (pen)o (hp)Solve and Check(pen)
 (pen)-> Solve 2|x - 1| + 3 = 11: first get |x - 1| = 4.
 (pen)-> x - 1 = 4 or x - 1 = -4 gives x = 5 or x = -3.
@@ -46,3 +56,5 @@
 (pen)-> |x + 2| = 0 gives x = -2, exactly one solution.
 (pen)-> Squaring |x + 2| = -3 would falsely suggest x = 1 or -5.
 (pen)-> Both fail the original equation; (hp)reject(pen) those extra roots.
+(pen)-> (hp)Plotting(pen) both roots shows they sit 4 units from h = 1.
+(pen)-> |x - 2| = 5 gives x = 7 and x = -3, both checked.

@@ -6,6 +6,8 @@ o Step Function Basics
 -> Inputs may vary continuously across real intervals.
 -> A context may instead allow only discrete inputs.
 -> State the domain from the model, not just the picture.
+-> Inside one step, rise over run is 0, so the slope is 0.
+-> Jumps happen only at interval endpoints, never inside.
 o Greatest Integer Rule
 -> floor(x) is the greatest integer less than or equal to x.
 -> It rounds down toward negative infinity.
@@ -14,6 +16,8 @@ o Greatest Integer Rule
 -> floor(5) = 5; an integer stays unchanged.
 -> floor(-0.2) = -1, not 0.
 -> Truncation toward zero is not floor for negative nonintegers.
+-> floor(2.999) = 2; the value never reaches the next integer.
+-> Writing x = 5 + r with 0 <= r < 1 gives floor(x) = 5.
 o Floor Intervals
 -> For an integer k, floor(x) = k when k <= x < k + 1.
 -> The left endpoint is closed; the right endpoint is open.
@@ -22,6 +26,8 @@ o Floor Intervals
 -> At x = -1, use the next step: floor(-1) = -1.
 -> The domain of floor(x) is all real numbers.
 -> The range of floor(x) is all integers.
+-> Each interval has length 1, so steps repeat every 1 unit.
+-> floor(x) = -1 on -1 <= x < 0, not -1 < x < 0.
 o Transformed Floor Rule
 -> Let f(x) = floor(2x - 1); let k be an integer.
 -> f(x) = k exactly when k <= 2x - 1 < k + 1.
@@ -30,6 +36,8 @@ o Transformed Floor Rule
 -> Each step has width 1/2, closed left and open right.
 -> The domain is all real numbers; the range is all integers.
 -> A positive input coefficient preserves endpoint order.
+-> A coefficient a > 0 makes each step width 1/a.
+-> With 2x - 1 inside, steps break where 2x - 1 is an integer.
 o Transformed Examples
 -> For k = 0, f(x) = 0 on 1/2 <= x < 1.
 -> f(0.75) = floor(0.5) = 0.
@@ -38,6 +46,8 @@ o Transformed Examples
 -> f(0.25) = floor(-0.5) = -1.
 -> For k = -2, f(x) = -2 on -1/2 <= x < 0.
 -> f(-0.25) = floor(-1.5) = -2.
+-> For k = 1, f(x) = 1 on the next step to the right.
+-> f(0.6) = floor(0.2) = 0, so the input lies in 1/2 to 1.
 o Context and Endpoints
 -> Parking fees can stay constant within each time bracket.
 -> Read each interval and its included endpoints from the source.
@@ -46,3 +56,5 @@ o Context and Endpoints
 -> Included branches with the same output still give one value.
 -> Two open endpoints at an input may leave it out of the domain.
 -> Check boundary values before using a step model for a charge.
+-> Fee brackets behave like steps; the clock sets the inputs.
+-> Two brackets meeting at one time must agree or the rule fails.

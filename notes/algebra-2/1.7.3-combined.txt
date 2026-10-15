@@ -6,6 +6,8 @@ o Combined Rule
 -> a controls vertical scale and x-axis reflection.
 -> b controls reciprocal horizontal scale and y-reflection.
 -> h shifts horizontally; k shifts vertically.
+-> Test the rule with the parent vertex or any known point.
+-> Domain and range come from the parent; k moves the range.
 o Factor Before Reading
 -> Factor the entire inside to find b and h.
 -> 0.4*x+2 = 0.4*(x+5), so b = 0.4, h = -5.
@@ -14,6 +16,8 @@ o Factor Before Reading
 -> Here a = -1, b = 0.4, h = -5, k = 0.
 -> Stretch horizontally by 2.5; reflect x; shift left 5.
 -> Equivalent: g(x) = -0.4*x-2; (0,0) maps to (-5,0).
+-> Always factor out b first, then read the leftover constant.
+-> Confirm with a value: g(0) = -2 matches the expanded form.
 o Absolute Value Combined
 -> g(x) = -(2/3)*|x+3| + 1 uses a = -2/3, b = 1.
 -> Reflect x; compress vertically 2/3; left 3; up 1.
@@ -22,6 +26,8 @@ o Absolute Value Combined
 -> The V opens down; its maximum output is 1.
 -> Domain: R. Range: (-inf,1].
 -> With b = 1 only, the mapping is (u+h,a*v+k).
+-> Its ray slopes are 2/3 on the left and -2/3 on the right.
+-> Ray check: g(-6) = -(2/3)*3 + 1 = -1, as listed.
 o Quadratic Combined
 -> Start with f(x) = x^2.
 -> Open down, stretch vertically 4, right 2, down 5.
@@ -30,6 +36,8 @@ o Quadratic Combined
 -> Vertex: (2,-5); axis: x = 2; maximum: -5.
 -> (1,1) maps to (3,-9); check: g(3) = -4-5 = -9.
 -> Domain: R. Range: (-inf,-5]; there are no real zeros.
+-> Expand to confirm: g(x) = -4*x^2 + 16*x - 21.
+-> The y-intercept (0,-21) lies 16 units below the maximum.
 o Dolphin Model
 -> g(x) = -0.125*(x-12)^2 + 18 models height.
 -> Vertex: (12,18); maximum height: 18 distance units.
@@ -38,6 +46,8 @@ o Dolphin Model
 -> Zeros: x = 0 and x = 24; symmetry axis: x = 12.
 -> Context domain: [0,24]; context range: [0,18].
 -> The packet does not specify distance units.
+-> Spot check the middle: g(12) = 18, the peak of the arc.
+-> At x = 6 the height is 13.5, three quarters of 18.
 o Reflection and Point Check
 -> g(x) = -2*|-(x-5)| + 4 has a = -2, b = -1.
 -> Reflect y then x; stretch vertically 2; right 5; up 4.
@@ -46,3 +56,5 @@ o Reflection and Point Check
 -> (-1,1) maps to (6,2); (1,1) maps to (4,2).
 -> Absolute value hides the y-axis reflection.
 -> Check each mapped point by substituting into g(x).
+-> Verify the far ray: g(9) = -2*4 + 4 = -4.
+-> b = -1 sends every input u to -u before shifting right 5.

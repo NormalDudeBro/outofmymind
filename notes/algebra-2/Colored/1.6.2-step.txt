@@ -6,6 +6,8 @@
 (pen)-> Inputs may vary continuously across real intervals.
 (pen)-> A context may instead allow only discrete inputs.
 (pen)-> State the domain from the model, not just the picture.
+(pen)-> Inside one step, (g)rise over run(pen) is 0, so the slope is 0.
+(pen)-> Jumps happen only at (g)interval endpoints(pen), never inside.
 (pen)o (pu)Greatest Integer Rule(pen)
 (pen)-> floor(x) is the (pu)greatest integer(pen) less than or equal to x.
 (pen)-> It rounds down toward negative infinity.
@@ -14,6 +16,8 @@
 (pen)-> floor(5) = 5; an integer stays unchanged.
 (pen)-> floor(-0.2) = -1, not 0.
 (pen)-> (pu)Truncation(pen) toward zero is not floor for negative nonintegers.
+(pen)-> floor(2.999) = 2; the value never reaches the (pu)next integer(pen).
+(pen)-> Writing x = 5 + r with 0 <= r < 1 gives (pu)floor(pen)(x) = 5.
 (pen)o (br)Floor Intervals(pen)
 (pen)-> For an integer k, floor(x) = k when k <= x < k + 1.
 (pen)-> The left endpoint is (br)closed(pen); the right endpoint is open.
@@ -22,6 +26,8 @@
 (pen)-> At x = -1, use the next step: floor(-1) = -1.
 (pen)-> The (br)domain(pen) of floor(x) is all real numbers.
 (pen)-> The range of floor(x) is all integers.
+(pen)-> Each (br)interval(pen) has length 1, so steps repeat every 1 unit.
+(pen)-> floor(x) = -1 on -1 <= x < 0, not -1 < x < 0.
 (pen)o (db)Transformed Floor Rule(pen)
 (pen)-> Let f(x) = floor(2x - 1); let k be an integer.
 (pen)-> f(x) = k exactly when k <= 2x - 1 < k + 1.
@@ -30,6 +36,8 @@
 (pen)-> Each step has (db)width(pen) 1/2, closed left and open right.
 (pen)-> The domain is all real numbers; the range is all integers.
 (pen)-> A positive input coefficient preserves (db)endpoint order(pen).
+(pen)-> A coefficient a > 0 makes each (db)step width(pen) 1/a.
+(pen)-> With 2x - 1 inside, steps break where 2x - 1 is an (db)integer(pen).
 (pen)o (r)Transformed Examples(pen)
 (pen)-> For k = 0, f(x) = 0 on 1/2 <= x < 1.
 (pen)-> f(0.75) = floor(0.5) = 0.
@@ -38,6 +46,8 @@
 (pen)-> f(0.25) = floor(-0.5) = -1.
 (pen)-> For k = -2, f(x) = -2 on -1/2 <= x < 0.
 (pen)-> f(-0.25) = floor(-1.5) = -2.
+(pen)-> For k = 1, f(x) = 1 on the (r)next step(pen) to the right.
+(pen)-> f(0.6) = floor(0.2) = 0, so the (r)input(pen) lies in 1/2 to 1.
 (pen)o (hp)Context and Endpoints(pen)
 (pen)-> Parking fees can stay (g)constant(pen) within each time bracket.
 (pen)-> Read each interval and its included endpoints from the source.
@@ -46,3 +56,5 @@
 (pen)-> Included branches with the same output still give one value.
 (pen)-> Two open endpoints at an input may leave it out of the (hp)domain(pen).
 (pen)-> Check boundary values before using a step model for a charge.
+(pen)-> Fee brackets behave like (hp)steps(pen); the clock sets the inputs.
+(pen)-> Two brackets meeting at one time must (hp)agree(pen) or the rule fails.

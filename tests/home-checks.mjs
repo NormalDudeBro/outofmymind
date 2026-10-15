@@ -3,6 +3,7 @@ import { readFileSync, statSync } from 'node:fs';
 import { dirname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderHome } from '../scripts/home.mjs';
+import { analysisPages, entryCount, handouts, interpretationCaveat, locatorCaveat, pamphletFields, plotStages, qualities, scriptedPages, sections, spine, text } from './literature.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const pages = ['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html', 'of-mice-and-men.html'];
@@ -74,3 +75,56 @@ for (const page of pages) {
 }
 
 console.log('PASS: reproducible Home, five collection destinations, six-page shared stylesheet and relative navigation/current state, unique IDs, valid fragments, local assets, no Home JavaScript or remote fonts.');
+
+// The two literary companions share one twelve-section spine built from the Active Reading
+// Pamphlet resource: the same ordered sections, a Home map of every pamphlet field, and an
+// explicit citation of all seven handout PDFs. These check that contract, not the prose.
+for (const page of analysisPages) {
+  const html = readFileSync(resolve(root, page), 'utf8');
+  const byId = Object.fromEntries(sections(html).map(entry => [entry.id, entry]));
+  assert.deepEqual(Object.keys(byId), spine, `${page}: twelve-section spine in document order`);
+  assert.deepEqual(
+    [...html.matchAll(/<nav\b[^>]*\bid="main-nav"[^>]*>([\s\S]*?)<\/nav>/g)]
+      .flatMap(match => [...match[1].matchAll(/<a\b[^>]*\bhref="#([^"]+)"/g)].map(link => link[1])),
+    spine,
+    `${page}: section navigation follows the same spine`
+  );
+  assert.deepEqual(scriptedPages(html), spine, `${page}: progressive enhancement can activate every section`);
+  for (const [id, entry] of Object.entries(byId)) {
+    assert.match(entry.html, /<h2\b/, `${page}: ${id} has a section heading`);
+    assert.ok(text(entry.html).split(/\s+/).length >= 40, `${page}: ${id} carries substantive content`);
+  }
+
+  // Handout pagination is distinct from novel locators; readers supply their own edition's pages.
+  for (const handout of handouts) assert.ok(text(html).includes(handout), `${page}: cites ${handout}`);
+  assert.ok(handouts.some(handout => text(byId.citations.html).includes(handout)), `${page}: Works Cited names the handout files`);
+  for (const id of ['characters', 'plot', 'vocab', 'tone']) {
+    assert.match(text(byId[id].html), /\blocator\b|\bCh\.\s*\d|\bsearch:/i, `${page}: ${id} gives novel evidence locators`);
+  }
+
+  // Every pamphlet field is named on Home and linked to the section that answers it.
+  for (const { field, section, label } of pamphletFields) {
+    assert.match(text(byId.home.html), label, `${page}: Home map names the ${field} field`);
+    if (section === 'home') continue;
+    assert.ok(byId.home.html.includes(`href="#${section}"`), `${page}: Home map links ${field} to #${section}`);
+  }
+
+  // Each guide section carries the field content the handout asks a student to record.
+  assert.ok(entryCount(byId.vocab.html) >= 6, `${page}: vocabulary entries`);
+  assert.match(text(byId.vocab.html), /definition/i, `${page}: vocabulary gives definitions`);
+  assert.ok(entryCount(byId.theme.html) >= 3, `${page}: theme section lists its Big Ideas`);
+  assert.match(text(byId.theme.html), /big idea/i, `${page}: theme section covers Big Ideas`);
+  assert.match(text(byId.theme.html), /theme statement/i, `${page}: theme section states the theme`);
+  assert.ok(entryCount(byId.questions.html) >= 4, `${page}: discussion questions`);
+  assert.ok((text(byId.questions.html).match(/\?/g) ?? []).length >= 4, `${page}: questions are asked as questions`);
+  for (const stage of plotStages) assert.match(text(byId.plot.html), new RegExp(stage, 'i'), `${page}: plot covers ${stage}`);
+  for (const quality of qualities) assert.match(text(byId.characters.html), new RegExp(quality, 'i'), `${page}: characters cover the ${quality} quality`);
+  assert.ok((byId.characters.html.match(/<h3\b/gi) ?? []).length >= 4, `${page}: at least four character entries`);
+  assert.match(text(byId.tone.html), /attitude/i, `${page}: tone separates attitude from mood`);
+  assert.match(text(byId.tone.html), /mood/i, `${page}: tone separates attitude from mood`);
+
+  // Locators and suggested answers each carry the caveat that makes them usable.
+  assert.ok(locatorCaveat.some(pattern => pattern.test(`${text(byId.home.html)} ${text(byId.citations.html)}`)), `${page}: says which printing its page numbers come from`);
+  assert.ok(interpretationCaveat.some(pattern => pattern.test([byId.home, byId.theme, byId.questions].map(entry => text(entry.html)).join(' '))), `${page}: marks its answers as suggestions, not the reader's own`);
+}
+console.log('PASS: both analysis pages share the twelve-section spine in navigation, document order and the enhancement script, every pamphlet field is mapped from Home to its section, all seven handout PDFs are cited by filename, vocabulary/theme/questions/plot/characters/tone carry the field content, evidence locators and interpretation caveats are present.');

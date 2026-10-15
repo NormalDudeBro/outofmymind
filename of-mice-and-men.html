@@ -5,101 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
-    <title>Of Mice and Men | A Literary Journal</title>
+    <title>Of Mice and Men | Active Reading Companion</title>
     <link rel="stylesheet" href="styles/site.css">
-    <style>
-        .analysis-site { --body-font: Georgia, "Times New Roman", serif; --heading-font: var(--body-font); background: var(--paper); color: var(--ink); font-family: var(--body-font); }
-        body.high-contrast { --paper: #fff; --ink: #000; --muted: #000; --rule: #000; --accent: #0000c7; }
-        body.dyslexia-friendly { --body-font: Arial, sans-serif; }
-        body.dyslexia-friendly :is(h1, h2, h3, h4, .quote) { letter-spacing: 0.05em; line-height: 1.6; }
-        body.dyslexia-friendly .wordmark { font-family: var(--body-font); }
-        html { scroll-behavior: smooth; }
-        html:has(body.reduce-motion), body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after {
-            scroll-behavior: auto !important; animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important; transition-duration: 0.01ms !important;
-        }
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-        }
-        .analysis-site :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-        .analysis-site main:focus { outline: none; }
-        .section-nav { position: sticky; inset-block-start: 0; z-index: 10; background: var(--paper); border-block-end: 1px solid var(--rule); }
-        .section-nav.scrolled { border-block-end-color: var(--ink); }
-        .section-nav ul { display: flex; flex-wrap: wrap; gap: 4px 22px; list-style: none; margin: 0; padding-block: 10px; padding-inline: 0; }
-        .section-nav a { display: block; padding-block: 10px; min-block-size: 36px; font: 12px/1.4 system-ui, sans-serif; color: var(--muted); text-decoration: none; }
-        .section-nav a:hover, .section-nav a[aria-current="location"] { color: var(--accent); text-decoration: underline; text-underline-offset: 5px; }
-        .section-nav a[aria-current="location"] { font-weight: 600; }
-        .accessibility-controls { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 16px 0; }
-        .no-js .accessibility-controls { display: none; }
-        .a11y-btn { min-block-size: 44px; padding-block: 8px; padding-inline: 12px; background: var(--paper); border: 1px solid var(--rule); color: var(--ink); font: 11px/1.5 system-ui, sans-serif; cursor: pointer; }
-        .a11y-btn:hover { border-color: var(--accent); }
-        .a11y-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-        .a11y-btn:disabled { cursor: not-allowed; }
-        .container { padding-block: 48px 36px; min-inline-size: 0; font-size: 17px; line-height: 1.75; }
-        .page, .citation, .cite-ref { scroll-margin-block-start: var(--section-offset, 100px); }
-        .page { background: var(--paper); }
-        .js .page { display: none; }
-        .js .page.active { display: block; }
-        .hero { padding-block-end: 40px; border-block-end: 1px solid var(--ink); }
-        .hero h1 { margin: 0; font: normal clamp(42px, 5.7vw, 72px)/1.05 var(--heading-font); letter-spacing: -0.035em; }
-        .hero .author { margin-block: 16px 24px; font-size: 21px; font-style: italic; color: var(--accent); }
-        .hero p:not(.author) { margin-block: 0 24px; color: var(--muted); font-size: 18px; max-inline-size: 65ch; }
-        .cta-button { display: inline-block; padding-block: 10px; color: var(--accent); font: 12px/1.5 system-ui, sans-serif; text-underline-offset: 5px; }
-        .content-card, .works-cited { margin-block: 0 32px; padding-block: 32px; }
-        .content-card h2, .works-cited h2 { margin-block: 0 24px; padding-block-end: 18px; border-block-end: 1px solid var(--rule); font: normal clamp(30px, 3.5vw, 42px)/1.2 var(--heading-font); }
-        .content-card h3 { margin-block: 30px 12px; font: normal 25px/1.3 var(--heading-font); }
-        .content-card p, .content-card li { color: var(--muted); margin-block: 0 16px; }
-        .content-card ul { padding-inline-start: 24px; margin-block: 16px 24px; }
-        .content-card li { padding-inline-start: 4px; }
-        .qualities-intro, .highlight-box { padding-block: 20px; padding-inline: 24px; margin-block: 26px; border: 1px solid var(--rule); color: var(--muted); }
-        .qualities-intro strong, .highlight-box strong { color: var(--ink); }
-        .highlight-box p { margin-block-end: 0; }
-        .character-full { margin-block: 32px; padding-block: 28px; border-block-start: 1px solid var(--ink); }
-        .character-full-header { padding-block-end: 20px; margin-block-end: 20px; border-block-end: 1px solid var(--rule); }
-        .character-full-name h3 { margin-block: 0 10px; }
-        .character-full-role, .quality-title, .last-updated, .locator, .pamphlet-map dt, .definition-term { font: 10px/1.6 system-ui, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
-        .qualities-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-block: 24px; }
-        .quality-card { padding-block: 20px; padding-inline: 22px; border: 1px solid var(--rule); }
-        .quality-title { margin-block: 0 14px; font-weight: 600; }
-        .content-card .quality-desc { margin-block: 0; font-size: 16px; }
-        .key-scene { padding-block: 14px 0; margin-block: 0; border-block-start: 1px solid var(--rule); }
-        .locator { display: block; margin-block: 6px; }
-        .pamphlet-map { margin-block: 16px 8px; }
-        .pamphlet-map dt { margin-block-start: 16px; }
-        .pamphlet-map dd { margin: 4px 0 0; color: var(--muted); }
-        .definition-list { margin-block: 16px 24px; }
-        .definition-list dt { font-weight: 600; color: var(--ink); margin-block-start: 14px; }
-        .definition-list dd { margin: 2px 0 0; color: var(--muted); }
-        .scene-details { margin-block: 16px 24px; }
-        .scene-details dt { font: 10px/1.6 system-ui, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-block-start: 16px; }
-        .scene-details dd { margin: 4px 0 0; color: var(--muted); }
-        mark { background: transparent; color: var(--ink); font-weight: 600; }
-        .quote { font: italic clamp(20px, 2.3vw, 26px)/1.65 var(--heading-font); color: var(--ink); border-inline-start: 2px solid var(--accent); padding-inline: 24px 0; margin-block: 32px; }
-        .citation { position: relative; padding-block: 18px; padding-inline-start: 56px; border-block-end: 1px solid var(--rule); color: var(--muted); overflow-wrap: anywhere; }
-        .cite-badge { position: absolute; inset-inline-start: 0; inset-block-start: 18px; display: inline-flex; align-items: center; justify-content: center; min-inline-size: 36px; min-block-size: 36px; border: 1px solid var(--rule); color: var(--accent); font: 12px/1.4 system-ui, sans-serif; text-decoration: none; }
-        .cite-badge:hover { border-color: var(--accent); text-decoration: underline; }
-        .citation-legend { color: var(--muted); font-size: 15px; margin-block: 0 24px; }
-        .citation-source-link { color: var(--accent); overflow-wrap: anywhere; }
-        .cite-ref { font: 11px/1.5 system-ui, sans-serif; vertical-align: super; color: var(--accent); white-space: nowrap; padding-inline: 3px; margin-inline-start: 2px; text-underline-offset: 3px; }
-        .citation:target, .cite-ref:target { outline: 2px solid var(--accent); outline-offset: 4px; }
-        .last-updated { color: var(--muted); padding-block-start: 20px; border-block-start: 1px solid var(--rule); }
-        @media (max-width: 760px) {
-            .container { padding-block: 32px; }
-            .section-nav ul { flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: thin; padding-inline: 4px; }
-            .section-nav a { white-space: nowrap; }
-            .hero p:not(.author) { font-size: 16px; }
-        }
-        @media (max-width: 540px) {
-            .qualities-grid { grid-template-columns: minmax(0, 1fr); }
-            .qualities-intro, .highlight-box, .quality-card { padding-inline: 18px; }
-        }
-        @media print {
-            .section-nav, .accessibility-controls { display: none; }
-            .js .page { display: block; }
-            .quote, .quality-card { break-inside: avoid; }
-        }
-    </style>
 </head>
 <body class="analysis-site">
     <a href="#main-content" class="skip skip-link">Skip to content</a>
@@ -134,81 +41,90 @@
             <div class="hero">
                 <h1>Of Mice and Men</h1>
                 <p class="author">by John Steinbeck</p>
-                <p><em>Of Mice and Men</em> is John Steinbeck's 1937 novella about George Milton and Lennie Small, two migrant ranch workers travelling through California's Salinas Valley who share one dream: a small place of their own, with rabbits to tend. This page is a complete companion to the story, built so you can fill your Active Reading Pamphlet from it.</p>
+                <p><em>Of Mice and Men</em> is John Steinbeck's 1937 novella about George Milton and Lennie Small, two migrant ranch workers travelling through California's Salinas Valley who share one dream: a small place of their own, with rabbits to tend.</p>
                 <a href="#context" class="cta-button nav-link" data-page="context">Explore the Story</a>
             </div>
             <div class="content-card">
                 <h2>About This Book</h2>
                 <div class="highlight-box">
-                    <strong>Published:</strong> 1937 by Covici Friede, written when Steinbeck was thirty-four<a href="#cite-4" class="cite-ref" id="ref-4-1" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia.">[4]</a><br>
-                    <strong>Form:</strong> A novella of about 30,000 words in six chapters, built as three acts of two chapters so it could be read as a novel or staged as a play<a href="#cite-4" class="cite-ref" id="ref-4-2" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia.">[4]</a><br>
-                    <strong>Reading level:</strong> Grade 9&ndash;12 classrooms commonly study it; the story itself is short, direct, and dialogue-driven
+                    <strong>What this page is &mdash; and is not.</strong> Everything below is a set of <em>suggested, evidence-based answers</em>, written to the directions on the seven class handouts in your Active Reading Pamphlet resource.<a href="#cite-6" class="cite-ref" id="ref-6-1" data-tooltip="The seven supplied course handouts. See Works Cited for exact filenames.">[6]</a> They are models, <strong>not a replacement for your assignment</strong>: the pamphlet asks for what <em>you</em> read, what <em>you</em> selected, and what <em>your</em> group decided, and your teacher decides what counts. Read the novella yourself, then use these answers to check your own evidence and to fill gaps you are still missing.
                 </div>
-                <p>The novella follows one week in harvest season and closes where it opened, at a green pool on the Salinas River. Because editions differ, every locator on this page gives a <strong>chapter</strong>, a <strong>reference page</strong> from a public 1947 printing, and a short <strong>search phrase</strong> so you can find the passage in whichever copy you are holding.<a href="#cite-5" class="cite-ref" id="ref-5-1" data-tooltip="Steinbeck, John. Of Mice and Men. World Publishing Company, Tower Books Edition, 1947.">[5]</a></p>
                 <div class="highlight-box">
-                    <strong>Content note:</strong> The novella depicts a shooting, an accidental death, an old dog being put down, and the racism of the period; a racial slur appears in Chapter Four. This guide quotes the story briefly and never reproduces that word.
+                    <strong>Published:</strong> 1937 by Covici Friede<a href="#cite-4" class="cite-ref" id="ref-4-1" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Publication, form, and reception.">[4]</a><br>
+                    <strong>Form:</strong> a novella of about 30,000 words in six chapters, arranged as three acts of two so it could be staged as a play as well as read<a href="#cite-4" class="cite-ref" id="ref-4-3" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Development: three acts of two chapters, 30,000 words.">[4]</a><br>
+                    <strong>Course fit:</strong> read against standard <strong>RL.1</strong> &mdash; "cite strong and thorough textual evidence to support analysis of what the text says explicitly as well as inferences drawn from the text" (<cite>Directions &amp; Scoring.pdf</cite>, p. 1)<a href="#cite-6" class="cite-ref" id="ref-6-3" data-tooltip="Directions &amp; Scoring.pdf, p. 1: scoring guide, standard RL.1.">[6]</a>
+                </div>
+                <p class="qualities-intro"><strong>Spoilers:</strong> Plot, Attitude, Theme, and Questions discuss the ending. Begin with Author if you want to avoid plot details, and return to those sections after reading.</p>
+                <p>The novella covers only a few days in harvest season and closes where it opened, at a pool on the Salinas River. Use the <strong>chapter</strong> as your stable anchor and the short <strong>search phrase</strong> to find each passage in whichever copy you are holding. Editions differ, so <strong>record the page from your copy</strong> in the pamphlet; no novel-edition page numbers are supplied here. The handout scores <em>your</em> evidence, not a borrowed number.<a href="#cite-5" class="cite-ref" id="ref-5-2" data-tooltip="Chapter and search-phrase locators are provided; record the page from your own copy.">[5]</a></p>
+                <div class="highlight-box">
+                    <strong>Content note:</strong> The novella depicts a shooting, an accidental death, an old dog being put down, and the racism of the period; a racial slur appears in the men's talk about Crooks. This guide quotes the story briefly and never reproduces that word.
                 </div>
                 <h3>How to Use This Page With Your Pamphlet</h3>
-                <p>Every field on the Active Reading Pamphlet has a matching section here, written to the directions on the class handouts.<a href="#cite-6" class="cite-ref" id="ref-6-1" data-tooltip="Active Reading Pamphlet Resource. LitwithLeo course handouts.">[6]</a></p>
+                <p>The pamphlet itself is a two-page organiser (<cite>Active Reading Pamphlet.pdf</cite>, pp. 1&ndash;2). Every field on it has a matching section here, and the directions are quoted at the top of each one so you can see exactly what the handout asked for.<a href="#cite-6" class="cite-ref" id="ref-6-4" data-tooltip="Active Reading Pamphlet.pdf, pp. 1-2: the student form and its field directions.">[6]</a></p>
                 <dl class="pamphlet-map">
-                    <dt>Name, Title, Author</dt><dd>Use the heading above: <em>Of Mice and Men</em> by John Steinbeck.</dd>
-                    <dt>Author Information</dt><dd><a href="#author" class="nav-link" data-page="author">Author</a> &mdash; the 5Ws of Steinbeck's life.</dd>
-                    <dt>Contextual Information</dt><dd><a href="#context" class="nav-link" data-page="context">Context</a> &mdash; how genre, history, and culture show up in the book.</dd>
-                    <dt>Unforgettable Moments</dt><dd><a href="#plot" class="nav-link" data-page="plot">Plot</a> &mdash; exposition, rising action, climax, falling action, resolution, with locators.</dd>
-                    <dt>Important Characters</dt><dd><a href="#characters" class="nav-link" data-page="characters">Characters</a> &mdash; name, key scene, and four qualities each.</dd>
-                    <dt>Close Reading Vocabulary</dt><dd><a href="#vocab" class="nav-link" data-page="vocab">Vocabulary</a> &mdash; words, definitions, and where to find them.</dd>
-                    <dt>Valuable Details: Setting</dt><dd><a href="#setting" class="nav-link" data-page="setting">Setting</a> &mdash; descriptions that show, not just tell.</dd>
-                    <dt>Valuable Details: Narrator</dt><dd><a href="#pov" class="nav-link" data-page="pov">Narration</a> &mdash; narrator and bolded narration words with evidence.</dd>
-                    <dt>Valuable Details: Attitude</dt><dd><a href="#tone" class="nav-link" data-page="tone">Attitude</a> &mdash; one emotional scene described with an attitude word.</dd>
-                    <dt>Emotional Sparks</dt><dd><a href="#tone" class="nav-link" data-page="tone">Attitude</a> &mdash; excerpts, mood words, and a model reaction.</dd>
-                    <dt>Theme &amp; Big Ideas</dt><dd><a href="#theme" class="nav-link" data-page="theme">Theme</a> &mdash; big idea selection and a finished theme statement.</dd>
-                    <dt>Questions</dt><dd><a href="#questions" class="nav-link" data-page="questions">Questions</a> &mdash; sticking points to raise with your reading group.</dd>
+                    <dt>Name</dt><dd><strong>Your name:</strong> ____________________________________. The form asks for the reader's name here, not the book's author &mdash; <em>Of Mice and Men</em> is the Title, and John Steinbeck is the Author.</dd>
+                    <dt>Author Information</dt><dd><a href="#author" class="nav-link" data-page="author">Author</a> &mdash; "important facts of the author's life like the the 5Ws (who, what, when, where, &amp; why)."</dd>
+                    <dt>Contextual Information</dt><dd><a href="#context" class="nav-link" data-page="context">Context</a> &mdash; how the genre, history, or culture of 1937 shows up in the book.</dd>
+                    <dt>Unforgettable Moments</dt><dd><a href="#plot" class="nav-link" data-page="plot">Plot</a> &mdash; exposition, rising action, climax, falling action, resolution, as descriptive phrases with page numbers.</dd>
+                    <dt>Important Characters</dt><dd><a href="#characters" class="nav-link" data-page="characters">Characters</a> &mdash; name, key scene with a page number, and four qualities each.</dd>
+                    <dt>Close Reading Vocabulary</dt><dd><a href="#vocab" class="nav-link" data-page="vocab">Vocabulary</a> &mdash; words you did not know, with page numbers and definitions, plus the handouts' tested word list.</dd>
+                    <dt>Valuable Details: Setting</dt><dd><a href="#setting" class="nav-link" data-page="setting">Setting</a> &mdash; the four elements, described so they show, not just tell.</dd>
+                    <dt>Valuable Details: Narrator</dt><dd><a href="#pov" class="nav-link" data-page="pov">Narration</a> &mdash; the narrator, at least two bolded narration words, and evidence of how the perspective influences the story.</dd>
+                    <dt>Valuable Details: Attitude</dt><dd><a href="#tone" class="nav-link" data-page="tone">Attitude</a> &mdash; one emotional scene, with evidence described using an attitude word.</dd>
+                    <dt>Emotional Sparks</dt><dd><a href="#tone" class="nav-link" data-page="tone">Attitude</a> &mdash; excerpts with page numbers and your emotional reaction explained in mood words.</dd>
+                    <dt>Theme &amp; Big Ideas</dt><dd><a href="#theme" class="nav-link" data-page="theme">Theme</a> &mdash; big idea selection and a finished theme statement in the handout's template.</dd>
+                    <dt>Questions</dt><dd><a href="#questions" class="nav-link" data-page="questions">Questions</a> &mdash; sticking points to raise with your reading group, each with a suggested answer.</dd>
                 </dl>
             </div>
         </div>
         <div id="author" class="page">
             <div class="content-card">
                 <h2>Author Information</h2>
+                <p><strong>What the handout asks:</strong> "Include important facts of the author's life like the the 5Ws (who, what, when, where, &amp; why)." (<cite>Active Reading Pamphlet.pdf</cite>, p. 1)<a href="#cite-6" class="cite-ref" id="ref-6-5" data-tooltip="Active Reading Pamphlet.pdf, p. 1: Author Information - the 5Ws.">[6]</a> The five answers below use the Nobel Prize biography and the cited account of the novella's development; keep the source distinction in mind.</p>
                 <h3>John Steinbeck</h3>
                 <div class="highlight-box">
-                    <strong>Who:</strong> John Ernst Steinbeck Jr., American novelist and short-story writer<br>
-                    <strong>When:</strong> Born February 27, 1902; died December 20, 1968<br>
-                    <strong>Where:</strong> Born in Salinas, California; died in New York City<br>
-                    <strong>What:</strong> Author of <em>Tortilla Flat</em> (1935), <em>Of Mice and Men</em> (1937), <em>The Grapes of Wrath</em> (1939); winner of the 1962 Nobel Prize in Literature<br>
-                    <strong>Why:</strong> His books examine the economic lives of rural labourers with "sympathetic humor and keen social perception"<a href="#cite-3" class="cite-ref" id="ref-3-1" data-tooltip="The Nobel Prize in Literature 1962. NobelPrize.org.">[3]</a><a href="#cite-2" class="cite-ref" id="ref-2-1" data-tooltip="John Steinbeck &ndash; Biographical. NobelPrize.org.">[2]</a>
+                    <strong>Who:</strong> John Steinbeck, American novelist and short-story writer<br>
+                    <strong>When:</strong> born 1902; died December 20, 1968<br>
+                    <strong>Where:</strong> born in Salinas, California; died in New York City<br>
+                    <strong>What:</strong> <em>Tortilla Flat</em> (1935), <em>In Dubious Battle</em> (1936), <em>Of Mice and Men</em> (1937), <em>The Long Valley</em> (1938), <em>The Grapes of Wrath</em> (1939); Nobel Prize in Literature, 1962<br>
+                    <strong>Why:</strong> his books treat the economic lives of rural labourers, and the Nobel Committee honoured them for "sympathetic humour and keen social perception"<a href="#cite-3" class="cite-ref" id="ref-3-1" data-tooltip="NobelPrize.org. 'The Nobel Prize in Literature 1962.'">[3]</a><a href="#cite-2" class="cite-ref" id="ref-2-1" data-tooltip="NobelPrize.org. 'John Steinbeck - Biographical.'">[2]</a>
                 </div>
-                <p>Steinbeck "came from a family of moderate means" in Salinas and "worked his way through college at Stanford University but never graduated." In 1925 he tried for a few years to establish himself as a freelance writer in New York, failed, and returned to California. After some novels and short stories he became widely known with <em>Tortilla Flat</em> in 1935.<a href="#cite-2" class="cite-ref" id="ref-2-2" data-tooltip="John Steinbeck &ndash; Biographical. NobelPrize.org.">[2]</a></p>
-                <p>He knew the world of this novella first-hand. Before he was a famous writer he worked the same California country he would later write about, and in a 1937 interview he said he had "been a bindlestiff" himself, working alongside migrant labourers.<a href="#cite-4" class="cite-ref" id="ref-4-3" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia.">[4]</a> The Nobel biographers place <em>Of Mice and Men</em> (1937) between <em>In Dubious Battle</em> (1936) and <em>The Long Valley</em> (1938), with <em>The Grapes of Wrath</em> following in 1939.<a href="#cite-2" class="cite-ref" id="ref-2-3" data-tooltip="John Steinbeck &ndash; Biographical. NobelPrize.org.">[2]</a></p>
-                <div class="quote">
-                    "for his realistic and imaginative writings, combining as they do sympathetic humor and keen social perception"<a href="#cite-3" class="cite-ref" id="ref-3-2" data-tooltip="The Nobel Prize in Literature 1962. NobelPrize.org.">[3]</a>
-                </div>
-                <p>That was the wording of the 1962 Nobel Prize in Literature. Steinbeck died in New York City in 1968.<a href="#cite-2" class="cite-ref" id="ref-2-4" data-tooltip="John Steinbeck &ndash; Biographical. NobelPrize.org.">[2]</a></p>
+                <p>Steinbeck "came from a family of moderate means" in Salinas and "worked his way through college at Stanford University but never graduated." In 1925 he went to New York, where he tried for a few years to establish himself as a freelance writer, failed, and returned to California. After publishing some novels and short stories, he first became widely known with <em>Tortilla Flat</em> (1935).<a href="#cite-2" class="cite-ref" id="ref-2-3" data-tooltip="NobelPrize.org. 'John Steinbeck - Biographical.'">[2]</a></p>
+                <p>He knew the world of this novella first-hand, which is the real answer to the handout's <strong>why</strong>. Steinbeck based the novella on his own experiences as a teenager working alongside migrant farm workers in the 1910s, before the arrival of the Okies he would later dramatise in <em>The Grapes of Wrath</em>, and he told <em>The New York Times</em> in 1937:<a href="#cite-4" class="cite-ref" id="ref-4-4" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Steinbeck's 1937 New York Times interview, quoted.">[4]</a></p>
+                <blockquote class="quote">
+                    "I was a bindlestiff myself for quite a spell. I worked in the same country that the story is laid in."<a href="#cite-4" class="cite-ref" id="ref-4-5" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Steinbeck quoted in The New York Times, 1937.">[4]</a>
+                </blockquote>
+                <p>The Nobel biography places <em>Of Mice and Men</em> (1937) between <em>In Dubious Battle</em> (1936) and <em>The Long Valley</em> (1938), with <em>The Grapes of Wrath</em> following in 1939, and describes his novels as social novels "dealing with the economic problems of rural labour."<a href="#cite-2" class="cite-ref" id="ref-2-4" data-tooltip="NobelPrize.org. 'John Steinbeck - Biographical.'">[2]</a> That is the link between the man and the book: the economics are not decoration in this novella, they are the engine of the plot.</p>
+                <blockquote class="quote">
+                    "for his realistic and imaginative writings, combining as they do sympathetic humour and keen social perception"<a href="#cite-3" class="cite-ref" id="ref-3-2" data-tooltip="NobelPrize.org. 'The Nobel Prize in Literature 1962.'">[3]</a>
+                </blockquote>
+                <p>That was the wording of the 1962 Nobel Prize in Literature. Steinbeck died in New York City in 1968.<a href="#cite-2" class="cite-ref" id="ref-2-5" data-tooltip="NobelPrize.org. 'John Steinbeck - Biographical.'">[2]</a></p>
                 <div class="highlight-box">
-                    <strong>For your pamphlet:</strong> Answer the 5Ws with the box above &mdash; who he was, what he wrote and when, where he came from, and why his subject (the working lives of poor rural labourers) mattered to him.
+                    <strong>For your pamphlet:</strong> copy the 5Ws box, then add one sentence of your own on <em>why</em> this author matters to this book. Be careful with dates: the Nobel biography gives Steinbeck's birth year only, so if you want a full birth date, write the source you took it from rather than borrowing it from here.
                 </div>
             </div>
         </div>
         <div id="context" class="page">
             <div class="content-card">
                 <h2>Contextual Information</h2>
-                <p>The pamphlet asks how the <strong>genre</strong>, <strong>history</strong>, or <strong>culture</strong> of the time the book was written is reflected in it. All three are visible in <em>Of Mice and Men</em>.<a href="#cite-6" class="cite-ref" id="ref-6-2" data-tooltip="Active Reading Pamphlet Resource. LitwithLeo course handouts.">[6]</a></p>
+                <p><strong>What the handout asks:</strong> "Explain how the genre, history or culture of when the book was written is reflected in the book." (<cite>Active Reading Pamphlet.pdf</cite>, p. 1)<a href="#cite-6" class="cite-ref" id="ref-6-6" data-tooltip="Active Reading Pamphlet.pdf, p. 1: Contextual Information.">[6]</a> It asks for one of the three &mdash; genre, <em>or</em> history, <em>or</em> culture &mdash; so you only need the one you can support best. All three are visible in <em>Of Mice and Men</em>, and all three are set out below so you can choose.</p>
                 <h3>Genre</h3>
-                <p>Steinbeck wrote a novella built to be played. It has six chapters arranged as three acts of two, roughly 30,000 words, and reads like a script: scenes happen in real time, in few locations, mostly through dialogue.<a href="#cite-4" class="cite-ref" id="ref-4-4" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia.">[4]</a> Critics of the day called the form a "play-novelette." Within a year of publication the story had already been staged: a San Francisco production opened in May 1937, a Broadway adaptation directed by George S. Kaufman opened that November, and a film followed in 1939.<a href="#cite-4" class="cite-ref" id="ref-4-5" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia.">[4]</a> That dramatic shape is why the book's emotion lands almost entirely through spoken lines rather than narration.</p>
+                <p>Steinbeck wrote a novella built to be played. It has six chapters arranged as three acts of two, roughly 30,000 words, and reads like a script: scenes happen in real time, in few locations, mostly through dialogue.<a href="#cite-4" class="cite-ref" id="ref-4-6" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Development section.">[4]</a> One critic called the form a "play-novelette," and Steinbeck's stated aim was a novel that could be played from its lines or a play that could be read like a novel.<a href="#cite-4" class="cite-ref" id="ref-4-7" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Development section.">[4]</a> Within months it was staged as written by the Theater Union of San Francisco, opening May 21, 1937 and running about two months; Steinbeck's adapted version then opened on Broadway on November 23, 1937, produced by Sam H. Harris, directed by George S. Kaufman, and ran 207 performances; a film followed in 1939.<a href="#cite-4" class="cite-ref" id="ref-4-8" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Adaptations section.">[4]</a> That dramatic shape is why the book's emotion lands almost entirely through spoken lines rather than narration &mdash; and it is a clean, checkable answer for the genre box.</p>
                 <h3>History</h3>
-                <p>The story is set during the <strong>Great Depression</strong>, among itinerant ranch workers in California who move from job to job and live out of bedrolls. Steinbeck drew on his own teenage years working alongside migrant farm workers before the Dust Bowl migration he later dramatised in <em>The Grapes of Wrath</em>.<a href="#cite-4" class="cite-ref" id="ref-4-6" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia.">[4]</a> The economics are the engine of the plot: steady work is scarce, a man can be fired without notice, and buying even a few acres is far beyond a labourer's wages. The novella was published in 1937, in the middle of the Great Depression, and was chosen as a Book of the Month Club selection before it appeared.<a href="#cite-4" class="cite-ref" id="ref-4-7" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia.">[4]</a></p>
+                <p>The story is set during the <strong>Great Depression</strong>, among itinerant ranch workers in California who move from job to job and live out of bedrolls, "searching for jobs during the Great Depression."<a href="#cite-4" class="cite-ref" id="ref-4-9" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Opening summary.">[4]</a> Steinbeck drew on his own teenage years working alongside migrant farm workers before the Dust Bowl migration he later dramatised in <em>The Grapes of Wrath</em>.<a href="#cite-4" class="cite-ref" id="ref-4-10" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Development section.">[4]</a> The economics are the engine of the plot: steady work is scarce, a man can be fired without notice, and buying even a few acres is far beyond a labourer's wages. The novella came out in 1937, in the middle of the Depression, and was chosen as a Book of the Month Club selection before it was published &mdash; the largest positive response to any of Steinbeck's work to that date.<a href="#cite-4" class="cite-ref" id="ref-4-11" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Reception section.">[4]</a></p>
                 <h3>Culture</h3>
                 <ul>
                     <li><strong>A segregated West:</strong> Crooks sleeps apart from the other men in the harness room and is kept out of the bunkhouse; the threat used against him shows what a white accuser could set in motion.</li>
                     <li><strong>Women at the margins:</strong> Curley's wife is never given a name and is spoken about before she is allowed to speak, which the story itself finally corrects in the barn.</li>
                     <li><strong>Disability before the language existed:</strong> Lennie's condition is described with the harsh period words of 1937; modern editions and classrooms read the same behaviour with different vocabulary.</li>
-                    <li><strong>A contested classroom text:</strong> because of the slur, the profanity, and the killing of both the dog and Lennie, the book has been challenged repeatedly and appears on the American Library Association's most-challenged lists.<a href="#cite-4" class="cite-ref" id="ref-4-8" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia.">[4]</a></li>
+                    <li><strong>A contested classroom text:</strong> the novella has been banned or challenged repeatedly for vulgarity, profanity, and racial language, and appears on the American Library Association's most-challenged lists.<a href="#cite-4" class="cite-ref" id="ref-4-12" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Censorship section.">[4]</a></li>
                 </ul>
-                <div class="quote">
-                    "The best laid schemes o' mice an' men / Gang aft agley"<a href="#cite-7" class="cite-ref" id="ref-7-1" data-tooltip="Burns, Robert. &quot;To a Mouse,&quot; 1785.">[7]</a>
-                </div>
-                <p>The title comes from Robert Burns's 1785 poem "To a Mouse," in which a ploughman apologises to a mouse whose nest he has destroyed. Steinbeck first called the story <em>Something That Happened</em>, then took the title from the poem after reading it.<a href="#cite-4" class="cite-ref" id="ref-4-9" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia.">[4]</a> The culture of the time also shaped the words: the poem's idea that careful plans still come to grief matches a decade in which honest work did not guarantee food.</p>
+                <blockquote class="quote">
+                    "The best laid schemes o' mice an' men / Gang aft agley"<a href="#cite-7" class="cite-ref" id="ref-7-1" data-tooltip="Burns, Robert. 'To a Mouse.' 1785. Lines quoted as reproduced in citation 4.">[7]</a>
+                </blockquote>
+                <p>The title comes from Robert Burns's 1785 poem "To a Mouse," in which a ploughman apologises to a mouse whose nest he has destroyed. Steinbeck first called the story <em>Something That Happened</em>, then took the title from the poem after reading it.<a href="#cite-4" class="cite-ref" id="ref-4-13" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Development section.">[4]</a> The culture of the time also shaped the words: the poem's idea that careful plans still come to grief matches a decade in which honest work did not guarantee food.</p>
                 <div class="highlight-box">
-                    <strong>For your pamphlet:</strong> A short paragraph can say: Steinbeck wrote a play-shaped novella (genre) during the Great Depression, from his own years among California migrant workers (history), in a segregated, tightly gendered West whose language and censorship we still argue about (culture).
+                    <strong>For your pamphlet:</strong> you only need one of the three. A short paragraph can say: Steinbeck wrote a play-shaped novella (genre) during the Great Depression, from his own years among California migrant workers (history), in a segregated, tightly gendered West whose language and censorship we still argue about (culture).
                 </div>
             </div>
         </div>
@@ -216,7 +132,10 @@
             <div class="content-card">
                 <h2>Important Characters</h2>
                 <div class="qualities-intro">
-                    <strong>Four Qualities:</strong> The handout says to treat each important character as a whole using one word from each of the four categories &mdash; <strong>Mental</strong> (thinking, judgement), <strong>Moral</strong> (values, treatment of others), <strong>Physical</strong> (body, appearance, condition), and <strong>Social</strong> (conduct and relationships). A character worth putting on the pamphlet can be described in all four.<a href="#cite-6" class="cite-ref" id="ref-6-3" data-tooltip="Character Traits. Active Reading Pamphlet Resource, LitwithLeo course handouts.">[6]</a>
+                    <strong>What the handout asks:</strong> for each character, a "Name &amp; Key Scene w/ P#" plus "4 Qualities" (<cite>Active Reading Pamphlet.pdf</cite>, p. 1).<a href="#cite-6" class="cite-ref" id="ref-6-7" data-tooltip="Active Reading Pamphlet.pdf, p. 1: Important Characters - name, key scene with page number, 4 qualities.">[6]</a> The four qualities are chosen "using one word from each of the 4 qualities listed below, just as we think about real-life people we know &mdash; humans are not one-dimentional" (<cite>Character Traits.pdf</cite>, p. 1): <strong>Mental</strong> (thinking and judgement), <strong>Moral</strong> (values and treatment of others), <strong>Physical</strong> (body, appearance, condition), and <strong>Social</strong> (conduct and relationships). A character worth putting on the pamphlet can be described in all four.<a href="#cite-6" class="cite-ref" id="ref-6-8" data-tooltip="Character Traits.pdf, p. 1: the four quality lists and the directions.">[6]</a>
+                </div>
+                <div class="qualities-intro">
+                    <strong>Two rules worth knowing:</strong> the handout lets you "use other words if you feel they better fit, but make sure you also check the definitions of words you may not know as these will appear on the vocabulary test" (<cite>Character Traits.pdf</cite>, p. 1) &mdash; so a word outside the lists is allowed, but a word <em>on</em> the lists is fair game to use. And the words marked <strong>*</strong> in the handout are exactly the ones "that will appear on a vocabulary test at the end of the year" (<cite>Character Traits.pdf</cite>, p. 2); two of them describe Carlson here, <mark>Boorish</mark>* and <mark>Robust</mark>*.<a href="#cite-6" class="cite-ref" id="ref-6-9" data-tooltip="Character Traits.pdf, pp. 1-2: 'you may use other words' and the vocabulary-test word list.">[6]</a>
                 </div>
 
                 <div class="character-full">
@@ -230,7 +149,7 @@
                         <div class="quality-card"><h4 class="quality-title">Physical</h4><p class="quality-desc"><mark>Slender</mark> and "small and quick," with dark features and restless eyes &mdash; Lennie's opposite in every measurement.</p></div>
                         <div class="quality-card"><h4 class="quality-title">Social</h4><p class="quality-desc"><mark>Guarded</mark>: he snaps at Lennie in front of strangers to look tough, yet is the only man on the ranch with a true friend.</p></div>
                     </div>
-                    <p class="key-scene">Key scene: George tells Slim the whole story of Weed, then admits he could live easily without Lennie &mdash; and would not trade him for it. <span class="locator">Ch. 3 &bull; reference ed. pp. 74&ndash;76 &bull; search: "this girl in a red dress"</span></p>
+                    <p class="key-scene">Key scene: George tells Slim the whole story of Weed, then admits he could live easily without Lennie &mdash; and would not trade him for it. <span class="locator">Ch. 3 &bull; search: "this girl in a red dress"</span></p>
                 </div>
 
                 <div class="character-full">
@@ -240,11 +159,11 @@
                     <p class="character-full-summary">A very large man with a severe intellectual disability, remembered by George since childhood. He loves soft things and forgets everything except the dream of tending rabbits. His strength, uncontrolled, drives the tragedy.</p>
                     <div class="qualities-grid">
                         <div class="quality-card"><h4 class="quality-title">Mental</h4><p class="quality-desc"><mark>Forgetful</mark>: he cannot hold instructions, but he can repeat the farm dream word for word because he wants it more than anything.</p></div>
-                        <div class="quality-card"><h4 class="quality-title">Moral</h4><p class="quality-desc"><mark>Gentle</mark>: he means no harm to any living thing, and his worst acts all begin as affection.</p></div>
+                        <div class="quality-card"><h4 class="quality-title">Moral</h4><p class="quality-desc"><mark>Kind</mark>: he means no harm to any living thing, and his worst acts all begin as affection.</p></div>
                         <div class="quality-card"><h4 class="quality-title">Physical</h4><p class="quality-desc"><mark>Enormous</mark> and bear-like, dragging his feet as he walks, with a strength he cannot judge.</p></div>
                         <div class="quality-card"><h4 class="quality-title">Social</h4><p class="quality-desc"><mark>Dependent</mark>: he needs George for words, rules, and safety, and is frightened to his core of being left alone.</p></div>
                     </div>
-                    <p class="key-scene">Key scene: Lennie asks George to tell the story again, promising this time he will remember. <span class="locator">Ch. 1 &bull; reference ed. p. 13 &bull; search: "I remember about the rabbits"</span></p>
+                    <p class="key-scene">Key scene: Lennie asks George to tell the story again, promising this time he will remember. <span class="locator">Ch. 1 &bull; search: "I remember about the rabbits"</span></p>
                 </div>
 
                 <div class="character-full">
@@ -258,7 +177,7 @@
                         <div class="quality-card"><h4 class="quality-title">Physical</h4><p class="quality-desc"><mark>Ailing</mark>: an old man missing a hand, aware that his body is running out of uses.</p></div>
                         <div class="quality-card"><h4 class="quality-title">Social</h4><p class="quality-desc"><mark>Wistful</mark>: he wants a place at the fire, a corner of the farm, and someone to grow old beside.</p></div>
                     </div>
-                    <p class="key-scene">Key scene: Carlson shoots Candy's dog; Candy lies still, then offers George his money for the little farm. <span class="locator">Ch. 3 &bull; reference ed. pp. 105&ndash;108 &bull; search: "I ought to of shot that dog myself"</span></p>
+                    <p class="key-scene">Key scene: Carlson shoots Candy's dog; Candy lies still, then offers George his money for the little farm. <span class="locator">Ch. 3 &bull; search: "I ought to of shot that dog myself"</span></p>
                 </div>
 
                 <div class="character-full">
@@ -272,7 +191,7 @@
                         <div class="quality-card"><h4 class="quality-title">Physical</h4><p class="quality-desc"><mark>Crooked-backed</mark>: a permanent injury that both names him and keeps him to heavy stable work.</p></div>
                         <div class="quality-card"><h4 class="quality-title">Social</h4><p class="quality-desc"><mark>Withdrawn</mark>: barred from the bunkhouse, he keeps the other men out before they can keep him out.</p></div>
                     </div>
-                    <p class="key-scene">Key scene: Crooks lets slip how lonely he is, then asks whether he might hoe a little garden on the men's farm &mdash; and laughs it off. <span class="locator">Ch. 4 &bull; reference ed. p. 127 &bull; search: "A guy needs somebody to be near him"</span></p>
+                    <p class="key-scene">Key scene: Crooks lets slip how lonely he is, then asks whether he might hoe a little garden on the men's farm &mdash; and laughs it off. <span class="locator">Ch. 4 &bull; search: "A guy needs somebody to be near him"</span></p>
                 </div>
 
                 <div class="character-full">
@@ -286,7 +205,7 @@
                         <div class="quality-card"><h4 class="quality-title">Physical</h4><p class="quality-desc"><mark>Pretty</mark>: curling iron, red nails, soft hair &mdash; the appearance she staked her hopes on.</p></div>
                         <div class="quality-card"><h4 class="quality-title">Social</h4><p class="quality-desc"><mark>Isolated</mark>: she is married, but her husband forbids conversation, so she flirts because it is the only speech available.</p></div>
                     </div>
-                    <p class="key-scene">Key scene: In the barn she admits she is never allowed to talk to anyone, then tells Lennie about the movies she almost was in. <span class="locator">Ch. 5 &bull; reference ed. pp. 150 and 154 &bull; search: "I can't talk to nobody but Curley"</span></p>
+                    <p class="key-scene">Key scene: In the barn she admits she is never allowed to talk to anyone, then tells Lennie about the movies she almost was in. <span class="locator">Ch. 5 &bull; search: "I can't talk to nobody but Curley"</span></p>
                 </div>
 
                 <div class="character-full">
@@ -300,7 +219,7 @@
                         <div class="quality-card"><h4 class="quality-title">Physical</h4><p class="quality-desc"><mark>Steady</mark>: tall, quiet-handed, with a deep voice and a natural calm that settles rooms.</p></div>
                         <div class="quality-card"><h4 class="quality-title">Social</h4><p class="quality-desc"><mark>Respected</mark>: the men take his word as final, and he speaks rarely enough that it carries.</p></div>
                     </div>
-                    <p class="key-scene">Key scene: Slim walks George away from the river and tells him he had no choice. <span class="locator">Ch. 6 &bull; reference ed. p. 186 &bull; search: "You hadda, George"</span></p>
+                    <p class="key-scene">Key scene: Slim walks George away from the river and tells him he had no choice. <span class="locator">Ch. 6 &bull; search: "You hadda, George"</span></p>
                 </div>
 
                 <div class="character-full">
@@ -314,7 +233,7 @@
                         <div class="quality-card"><h4 class="quality-title">Physical</h4><p class="quality-desc"><mark>Compact</mark> and quick, a trained fighter who depends on speed and resentment.</p></div>
                         <div class="quality-card"><h4 class="quality-title">Social</h4><p class="quality-desc"><mark>Abrasive</mark>: his father's position lets him wound people without ever paying for it.</p></div>
                     </div>
-                    <p class="key-scene">Key scene: Curley attacks Lennie in the bunkhouse and Lennie holds his hand until George tells him to stop. <span class="locator">Ch. 3 &bull; search: "glove's fulla vaseline" (Ch. 2, reference ed. p. 51, introduces him)</span></p>
+                    <p class="key-scene">Key scene: Curley attacks Lennie in the bunkhouse and Lennie holds his hand until George tells him to stop. <span class="locator">Ch. 3 &bull; search: "glove's fulla vaseline" (Ch. 2 introduces him)</span></p>
                 </div>
 
                 <div class="character-full">
@@ -325,39 +244,43 @@
                     <div class="qualities-grid">
                         <div class="quality-card"><h4 class="quality-title">Mental</h4><p class="quality-desc"><mark>Blunt</mark>: he says exactly what he notices and never imagines that others feel differently.</p></div>
                         <div class="quality-card"><h4 class="quality-title">Moral</h4><p class="quality-desc"><mark>Indifferent</mark>: he offers to shoot another man's dog as a favour, with no grasp of what it means.</p></div>
-                        <div class="quality-card"><h4 class="quality-title">Physical</h4><p class="quality-desc"><mark>Robust</mark>: strong enough to lift the dog easily and confident with a gun.</p></div>
-                        <div class="quality-card"><h4 class="quality-title">Social</h4><p class="quality-desc"><mark>Insensitive</mark>: his last question &mdash; what is wrong with those two? &mdash; shows he will never understand the story he just watched.</p></div>
+                        <div class="quality-card"><h4 class="quality-title">Physical</h4><p class="quality-desc"><mark>Robust</mark>* &mdash; "strong and healthy; hardy; vigorous" &mdash; strong enough to lift the dog easily and confident with a gun.</p></div>
+                        <div class="quality-card"><h4 class="quality-title">Social</h4><p class="quality-desc"><mark>Boorish</mark>* &mdash; "unmannered; crude; insensitive" &mdash; his last question, what is wrong with those two, shows he will never understand the story he just watched.</p></div>
                     </div>
                     <p class="key-scene">Key scene: Carlson takes Candy's dog out to shoot it, and Candy does not stop him. <span class="locator">Ch. 3 &bull; search: "I ought to of shot that dog myself"</span></p>
                 </div>
 
-                <div class="quote">"Guys like us, that work on ranches, are the loneliest guys in the world."<a href="#cite-1" class="cite-ref" id="ref-1-1" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></div>
+                <blockquote class="quote">"Guys like us, that work on ranches, are the loneliest guys in the world."<a href="#cite-1" class="cite-ref" id="ref-1-1" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></blockquote>
+                <p>Read Curley's wife against Steinbeck's own account of her, which is useful for the group argument but should not be treated as the only meaning: he described her as "not a person, she's a symbol. She has no function, except to be a foil &ndash; and a danger to Lennie," and in a later letter to the actress who played her, he wrote that her harsh, flirtatious behaviour is "a method of defense against her fear for isolation and desperate craving for companionship."<a href="#cite-4" class="cite-ref" id="ref-4-14" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Curley's Wife entry, quoting Steinbeck.">[4]</a> Both readings &mdash; symbol first, then person &mdash; are supported; the novella itself finally chooses the second.</p>
             </div>
         </div>
         <div id="plot" class="page">
             <div class="content-card">
                 <h2>Unforgettable Moments</h2>
                 <div class="qualities-intro">
-                    <strong>Directions:</strong> Answer the five stages with descriptive phrases and include page numbers. The chapter is the stable locator; the reference page is from the 1947 printing, and the search phrase finds the spot in any edition.<a href="#cite-6" class="cite-ref" id="ref-6-4" data-tooltip="Active Reading Pamphlet Resource. LitwithLeo course handouts.">[6]</a><a href="#cite-5" class="cite-ref" id="ref-5-2" data-tooltip="Steinbeck, John. Of Mice and Men. World Publishing Company, Tower Books Edition, 1947.">[5]</a>
+                    <strong>What the handout asks:</strong> "Answer with descriptive phrases; include page numbers" for the five stages &mdash; Exposition, Rising Action, Climax, Falling Action, Resolution (<cite>Active Reading Pamphlet.pdf</cite>, p. 1).<a href="#cite-6" class="cite-ref" id="ref-6-10" data-tooltip="Active Reading Pamphlet.pdf, p. 1: Unforgettable Moments - five stages, descriptive phrases, page numbers.">[6]</a> Write in phrases, not summaries: the box under each stage is a phrase you can copy into the pamphlet once you have checked it against your own page.
+                </div>
+                <div class="qualities-intro">
+                    <strong>Reading locators:</strong> use the <strong>chapter</strong> as the anchor and the <strong>search phrase</strong> to find the scene in your copy. Record the page from your copy before submitting; no physical edition was consulted for pagination.<a href="#cite-5" class="cite-ref" id="ref-5-1" data-tooltip="Chapter and search-phrase locators are provided; record the page from your own copy.">[5]</a>
                 </div>
                 <h3>Exposition</h3>
                 <p>A hot evening on the Salinas River, a few miles south of Soledad: two men in denim come down the path in single file, one small and quick, one huge and dragging his feet like a bear. They drink, squabble, and reveal what they are running from &mdash; the incident in Weed &mdash; and George rehearses the dream Lennie lives for: a little place, cows, pigs, and rabbits.<a href="#cite-1" class="cite-ref" id="ref-1-2" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></p>
-                <p class="locator">Ch. 1 &bull; reference ed. pp. 7&ndash;33 &bull; search: "A few miles south of Soledad"</p>
+                <p class="locator">Ch. 1 &bull; search: "A few miles south of Soledad"</p>
                 <h3>Rising Action</h3>
                 <p>At the ranch the next day: the boss questions them, Curley takes an instant dislike to Lennie, and George warns Lennie away from the boss's son's flirtatious wife. George and Slim talk, and George retells Weed &mdash; Lennie held a girl's red dress and would not let go. Candy's old dog is put down by Carlson, and Candy, gutted, offers his life savings toward the farm. Curley attacks Lennie and his hand is crushed. In the stable, Crooks tests the dream and, for a moment, wants in. Curley's wife tells Lennie her Hollywood dream. The farm suddenly feels close enough to buy.<a href="#cite-1" class="cite-ref" id="ref-1-3" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></p>
-                <p class="locator">Ch. 2&ndash;4 &bull; reference ed. pp. 34&ndash;145 &bull; search: "that glove's fulla vaseline" &bull; "I ought to of shot that dog myself" &bull; "A guy needs somebody to be near him"</p>
+                <p class="locator">Ch. 2&ndash;4 &bull; search: "that glove's fulla vaseline" &bull; "I ought to of shot that dog myself" &bull; "A guy needs somebody to be near him"</p>
                 <h3>Climax</h3>
                 <p>In the barn, Lennie has accidentally killed his puppy. Curley's wife finds him, confesses her loneliness, and lets him stroke her hair; when he does not stop, she panics and screams, and Lennie, frightened, breaks her neck. He covers her with hay and slips away to the river, to the hiding place they agreed on.<a href="#cite-1" class="cite-ref" id="ref-1-4" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></p>
-                <p class="locator">Ch. 5 &bull; reference ed. pp. 158&ndash;162 &bull; search: "Please don't do that. George'll be mad"</p>
+                <p class="locator">Ch. 5 &bull; search: "Please don't do that. George'll be mad"</p>
                 <h3>Falling Action</h3>
                 <p>Candy finds the body and knows the farm is dead; Curley organises a posse to hunt Lennie down; George slips away first. At the pool, Lennie's fear erupts into a hallucination &mdash; Aunt Clara and a giant rabbit accuse him of ruining everything &mdash; until George arrives and calms him by beginning the dream again.<a href="#cite-1" class="cite-ref" id="ref-1-5" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></p>
-                <p class="locator">Ch. 5&ndash;6 &bull; reference ed. pp. 162&ndash;181 &bull; search: "gigantic rabbit" (ref. ed. p. 174)</p>
+                <p class="locator">Ch. 5&ndash;6 &bull; search: "Aunt Clara"</p>
                 <h3>Resolution</h3>
                 <p>With the men shouting in the distance, George tells the farm story once more while Lennie looks across the river, then shoots him from behind. Slim understands immediately and leads George away: "You hadda, George. I swear you hadda." Curley and Carlson are left staring after them, unable to read what they have just seen.<a href="#cite-1" class="cite-ref" id="ref-1-6" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></p>
-                <p class="locator">Ch. 6 &bull; reference ed. pp. 182&ndash;186 &bull; search: "Look acrost the river, Lennie"</p>
-                <div class="quote">"You hadda, George. I swear you hadda."<a href="#cite-1" class="cite-ref" id="ref-1-7" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></div>
+                <p class="locator">Ch. 6 &bull; search: "Look acrost the river, Lennie"</p>
+                <blockquote class="quote">"You hadda, George. I swear you hadda."<a href="#cite-1" class="cite-ref" id="ref-1-19" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></blockquote>
                 <div class="highlight-box">
-                    <strong>Central conflict:</strong> Tenderness in a world with no safety net. Two men build a future out of a promise; an accident, a frightened scream, and a boss's angry son take it apart. The plot's frame &mdash; the same pool at the first and last evening &mdash; tells you before you begin that the story will close a circle.
+                    <strong>Central conflict:</strong> tenderness in a world with no safety net. Two men build a future out of a promise; an accident, a frightened scream, and a boss's angry son take it apart. The plot's frame &mdash; the same pool at the first and last evening &mdash; tells you before you begin that the story will close a circle. Note that the summary of events above follows the novella's own account of what happens; the <em>why</em> of the shooting is argued openly in <a href="#theme" class="nav-link" data-page="theme">Theme</a>, and different readers defend it differently.
                 </div>
             </div>
         </div>
@@ -365,18 +288,21 @@
             <div class="content-card">
                 <h2>Setting</h2>
                 <div class="qualities-intro">
-                    <strong>Setting:</strong> "The background against which action takes place." Gather descriptions using the setting detail that shows, not just tells &mdash; then test them against Plot, Setting, Character, and Symbol.<a href="#cite-6" class="cite-ref" id="ref-6-5" data-tooltip="Setting Details. Active Reading Pamphlet Resource, LitwithLeo course handouts.">[6]</a>
+                    <strong>What the handout asks:</strong> "Setting &mdash; The background against which action takes place," built from four elements: "(1) the geographical location&hellip;; (2) the occupations and daily manner of living of the characters; (3) the time period&hellip;; and (4) the general environment of the characters" (<cite>Setting Details.pdf</cite>, p. 1).<a href="#cite-6" class="cite-ref" id="ref-6-11" data-tooltip="Setting Details.pdf, p. 1: the setting definition and its four elements.">[6]</a> Then "gather descriptions using 1 of 4 setting details that show not just tell."<a href="#cite-6" class="cite-ref" id="ref-6-12" data-tooltip="Setting Details.pdf, p. 1: choose 1 of 4 setting details that show, not just tell.">[6]</a>
+                </div>
+                <div class="qualities-intro">
+                    <strong>The four lenses:</strong> before you choose, the handout asks whether each setting "influence[s] the plot, setting (imagery), character, or function[s] as a symbol," and whether it "reflect[s] or contrast[s] the characters' experience" (<cite>Setting Details.pdf</cite>, p. 1). All four lenses are worked through below.
                 </div>
                 <h3>Geographical Location</h3>
-                <p>The action sits in California's Salinas Valley: a green pool on the Salinas River a few miles south of Soledad, with the Gabilan Mountains on one side and the foothills on the other; then a ranch of bunkhouse, barn, harness room, and whitewashed walls; and finally the river pool again. The windows and doors matter &mdash; the bunkhouse's solid door, Crooks's square four-paned window, the barn's sliding entrance &mdash; because they decide who may enter where.<a href="#cite-1" class="cite-ref" id="ref-1-8" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></p>
+                <p>The action sits in California's Salinas Valley: a green pool on the Salinas River a few miles south of Soledad, with the Gabilan Mountains on one side and the foothills on the other; then a ranch of bunkhouse, barn, harness room, and whitewashed walls; and finally the river pool again. The windows and doors matter &mdash; the bunkhouse's solid door, Crooks's square four-paned window, the barn's sliding entrance &mdash; because they decide who may enter where.<a href="#cite-1" class="cite-ref" id="ref-1-20" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></p>
                 <p class="locator">Ch. 1 &bull; search: "A few miles south of Soledad"</p>
                 <h3>Occupations and Daily Living</h3>
                 <p>Itinerant ranch hands: bucking grain bags, feeding mules and chickens, cleaning stalls, branding, and waiting on the boss's orders. Wages are drawn and spent; Saturdays mean town. Candy sweeps, Crooks tends the horses, Slim drives the mule team, Curley shadows his father's property.</p>
                 <h3>Time Period</h3>
-                <p>Late-1930s California, during the Great Depression, in harvest season &mdash; thrashing machines are running, the days are hot, and the shade climbs the hills by evening. The story spans roughly a week, from one evening at the pool to the next.<a href="#cite-4" class="cite-ref" id="ref-4-10" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia.">[4]</a></p>
+                <p>Late-1930s California, during the Great Depression, in harvest season &mdash; thrashing machines are running, the days are hot, and the shade climbs the hills by evening. The story spans only a few days, from one evening at the pool to the next visit there after the ranch events.<a href="#cite-1" class="cite-ref" id="ref-1-21" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937. The novella's chapter sequence.">[1]</a></p>
                 <h3>General Environment</h3>
-                <p>The social and emotional weather: loneliness as the default condition, money fear under every decision, a colour line drawn through the harness room, a woman with nowhere to stand, and a hierarchy that runs boss &rarr; son &rarr; hands. Guides have noted that the town's name, Soledad, is Spanish for "solitude."<a href="#cite-4" class="cite-ref" id="ref-4-11" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia.">[4]</a></p>
-                <div class="quote">"The deep green pool of the Salinas River was still in the late afternoon."<a href="#cite-1" class="cite-ref" id="ref-1-9" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></div>
+                <p>The social and emotional weather: loneliness as the default condition, money fear under every decision, a colour line drawn through the harness room, a woman with nowhere to stand, and a hierarchy that runs boss &rarr; son &rarr; hands. Guides have noted that the town's name, Soledad, is Spanish for "solitude."<a href="#cite-4" class="cite-ref" id="ref-4-22" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Themes section.">[4]</a></p>
+                <blockquote class="quote">"A few miles south of Soledad, the Salinas River dropped in close to the hillside"<a href="#cite-1" class="cite-ref" id="ref-1-9" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></blockquote>
                 <h3>Descriptions That Show, Not Tell</h3>
                 <dl class="scene-details">
                     <dt>Seen</dt>
@@ -386,7 +312,7 @@
                     <dt>Felt</dt>
                     <dd>Warm river water; the grit of sand; the hot day cooling into evening; Crooks's liniment; the softness of hair that the story keeps returning to.</dd>
                 </dl>
-                <p class="locator">Ch. 1 &bull; reference ed. p. 7 &bull; search: "the golden foothill slopes"</p>
+                <p class="locator">Ch. 1 &bull; search: "A few miles south of Soledad"</p>
                 <h3>The Four Lenses</h3>
                 <ul>
                     <li><strong>Plot:</strong> The pool is the frame &mdash; the men sleep there before the ranch and meet there after it, and the agreed hiding place makes the final meeting inevitable.</li>
@@ -395,7 +321,7 @@
                     <li><strong>Symbol:</strong> The little farm with the cow and rabbits stands for security itself; the pool is a birthplace and a killing ground at once.</li>
                 </ul>
                 <div class="highlight-box">
-                    <strong>Scene traits to choose from:</strong> for the pool scenes: <em>serene, peaceful, hushed</em>; for the bunkhouse and barn: <em>harsh, cramped, oppressive</em>; for the last evening: <em>foreboding, ominous, grim</em>; for Crooks's room and the women's doorway: <em>isolated, lonely, bleak</em>.<a href="#cite-6" class="cite-ref" id="ref-6-6" data-tooltip="Setting Details. Active Reading Pamphlet Resource, LitwithLeo course handouts.">[6]</a>
+                    <strong>Scene traits to choose from:</strong> the handout's list supplies the word choices, and its starred words are on the year-end vocabulary test (<cite>Setting Details.pdf</cite>, pp. 1&ndash;2).<a href="#cite-6" class="cite-ref" id="ref-6-13" data-tooltip="Setting Details.pdf, pp. 1-2: Scene Setting Traits list and vocabulary-test words.">[6]</a> For the pool scenes: <em>serene</em>, <em>hushed</em>, <em>tranquil</em>; for the bunkhouse and barn: <em>cramped</em>, <em>oppressive</em>, <em>crowded</em>; for the last evening: <em>foreboding*</em>, <em>ominous*</em>, <em>somber*</em>, <em>sinister*</em>; for Crooks's room and the women's doorway: <em>isolated</em>, <em>lonely</em>, <em>bleak</em>, <em>desolate*</em>.
                 </div>
             </div>
         </div>
@@ -403,26 +329,26 @@
             <div class="content-card">
                 <h2>Narrator</h2>
                 <div class="qualities-intro">
-                    <strong>Directions:</strong> Identify the narrator and gather evidence of how the perspective influences the story, using at least two of the bolded words from the Narration Traits handout.<a href="#cite-6" class="cite-ref" id="ref-6-7" data-tooltip="Narration Traits. Active Reading Pamphlet Resource, LitwithLeo course handouts.">[6]</a>
+                    <strong>What the handout asks:</strong> "Identify the narrator(s) and gather evidence of how the perspective influences the story using at least 2 of the bolded words on your active reading pamphlet" (<cite>Narration Traits.pdf</cite>, p. 1).<a href="#cite-6" class="cite-ref" id="ref-6-14" data-tooltip="Narration Traits.pdf, p. 1: narrator directions - at least 2 bolded words.">[6]</a> Five of those bolded terms are used below: <strong>Third Person</strong>, <strong>Omniscient</strong>, <strong>Limited Third Person</strong>, <strong>Perspective</strong>, <strong>Bias</strong>, and <strong>Narrative Distance</strong>.
                 </div>
-                <p><em>Of Mice and Men</em> has no named storyteller. An unseen narrator stands outside the story and reports it in the <strong>third person</strong> &mdash; the "(s)he" form &mdash; in past tense, moving like a camera from scene to scene.</p>
+                <p><em>Of Mice and Men</em> has no named storyteller. An unseen narrator stands outside the story and reports it in the <strong>third person</strong> &mdash; the "(s)he" form, defined in the handout as when "the narrator is looking in on the person or people being talked about" &mdash; in past tense, moving like a camera from scene to scene.<a href="#cite-6" class="cite-ref" id="ref-6-15" data-tooltip="Narration Traits.pdf, p. 1: definitions of Third Person, Limited Third Person, Omniscient, Perspective, Bias, Narrative Distance.">[6]</a></p>
                 <h3>Third Person</h3>
-                <p>The narrator is "looking in on the person or people being talked about." Everything is reported: two men emerge from the path; Lennie fills his whole head in the water; George raises the gun and his hand shakes. No "I" ever appears, so no character is telling you this &mdash; which means you must judge every action yourself.</p>
-                <p class="locator">Evidence &bull; Ch. 1 &bull; search: "two men emerged from the path"</p>
-                <h3>Omniscient</h3>
-                <p>The perspective also widens to an all-knowing view. The narrator can enter anyone's mind: George's sudden shame at his own anger, Candy's fear the moment the dog is dead, Curley's wife's rehearsed Hollywood story, and in the final chapter Lennie's hallucination of Aunt Clara and the giant rabbit &mdash; a scene that happens entirely inside his head. We are told what people want before they say it.</p>
-                <p class="locator">Evidence &bull; Ch. 6 &bull; reference ed. pp. 174&ndash;178 &bull; search: "gigantic rabbit"</p>
-                <h3>Limited Third Person</h3>
-                <p>At the same time the camera stays closest to George and Lennie, especially in Chapter One, where the whole dream is learned through their bickering. The narrator keeps a deliberate distance from others: everyone warns the men away from Curley's wife for three chapters, and when she finally appears in the bunkhouse doorway she gets only two quick lines &mdash; her real speech is saved for the barn in Chapter Five. So by the time we hear her, we have already absorbed everyone's warning. Withheld interiority is a choice, and it changes whose side we start on.</p>
+                <p>The narrator is looking in on the people being talked about. Everything is reported: two men come down the path to the river; Lennie fills his whole head in the water; George raises the gun and his hand shakes. No "I" ever appears, so no character is telling you this &mdash; which means you must judge every action yourself.</p>
+                <p class="locator">Evidence &bull; Ch. 1 &bull; search: "A few miles south of Soledad"</p>
+                <h3>Selective Omniscient Narration</h3>
+                <p>The narrator is not strictly limited to one character: stage directions reveal external actions, and occasional narration gives brief access to a character's sensations or thoughts. But the text does not establish unrestricted knowledge of every mind. Lennie's Aunt Clara episode, for example, is explicitly presented as his hallucination rather than proof that the narrator is all-knowing. A careful description is third-person narration with selective shifts in closeness, not simply "omniscient."</p>
+                <p class="locator">Evidence &bull; Ch. 6 &bull; search: "Aunt Clara"</p>
+                <h3>Narrative Distance</h3>
+                <p>The camera stays closest to George and Lennie, especially in Chapter One, where the dream is learned through their bickering. Other characters are initially filtered through what the men say about them: Curley's wife is warned about for chapters before the reader hears her at length in the barn. That distance can make the reader adopt the ranch's suspicion before her account complicates it. This is an effect of the narration; it does not prove a single authorial intention.</p>
                 <p class="locator">Evidence &bull; Ch. 2 &bull; search: "I'm lookin' for Curley" (first time she speaks)</p>
                 <h3>Perspective</h3>
-                <p>How the characters view events, as opposed to who narrates them: the same farm dream looks different through each pair of eyes. To Lennie it is rabbits; to George it is freedom from needing anyone's permission; to Crooks it is a trick that has never once paid off; to Candy it is a way not to be discarded. The narrator reports all four views without endorsing one.</p>
-                <div class="quote">"A guy needs somebody to be near him."<a href="#cite-1" class="cite-ref" id="ref-1-10" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></div>
+                <p>How the characters view and process what is happening, as opposed to who narrates it: the same farm dream looks different through each pair of eyes. To Lennie it is rabbits; to George it is freedom from needing anyone's permission; to Crooks it is a trick that has never once paid off; to Candy it is a way not to be discarded. The narrator reports all four views without endorsing one.</p>
+                <blockquote class="quote">"A guy needs somebody to be near him."<a href="#cite-1" class="cite-ref" id="ref-1-10" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></blockquote>
                 <div class="highlight-box">
-                    <strong>Bias and distance:</strong> The narrator is fair to everyone and warm toward almost everyone, but he does take sides in small ways &mdash; Curley's wife never gets a name, and the men's cruelty (Carlson's shrug, Curley's smirk) is quoted without comment rather than explained. Notice the <strong>narrative distance</strong> at the end: the shot is reported plainly, in one sentence, with no judgment attached. Distance is how the book makes you supply the feeling yourself.
+                    <strong>Bias and distance:</strong> The narrator's restraint can be read as neutrality, but the choice to leave Curley's wife unnamed and to filter her early appearances through the men's warnings also shapes the reader's perspective. Whether that amounts to narrator bias is arguable. <strong>Bias</strong>, in the handout's sense, is "prejudice in favor of or against one thing, person, or group compared with another"; <strong>narrative distance</strong> is "the distance between the narrator and other elements of the fictional world," and it ranges from small to large.<a href="#cite-6" class="cite-ref" id="ref-6-16" data-tooltip="Narration Traits.pdf, p. 1: Bias and Narrative Distance definitions.">[6]</a> At the end, the shot is reported plainly, without an explicit moral verdict; readers must interpret the surrounding actions and silence.
                 </div>
                 <div class="highlight-box">
-                    <strong>How the perspective influences the story:</strong> Because we are kept outside and only briefly let in, every moment of interior access &mdash; Crooks's loneliness, the wife's monologue, Lennie's hallucination &mdash; lands as an event. The narrator's restraint is also why the ending feels like an accident waiting to happen rather than a villain's plan.
+                    <strong>How the perspective influences the story:</strong> because the narration usually stays outside the characters, moments of unusually close access &mdash; Crooks's loneliness, the wife's account, Lennie's hallucination &mdash; stand out. Its restraint helps the ending hold competing readings: the narrator supplies actions and consequences but leaves readers to judge George's choice.
                 </div>
             </div>
         </div>
@@ -430,35 +356,43 @@
             <div class="content-card">
                 <h2>Attitude &amp; Emotional Sparks</h2>
                 <div class="qualities-intro">
-                    <strong>Attitude/Tone:</strong> "The attitude a writer takes toward the subject of a work, the characters in it, or the audience." <strong>Mood:</strong> "Evokes feelings in readers through words and descriptions; it creates an emotional situation." Remember the handouts' keys: <strong>Attitude = Author</strong>, <strong>Mood = Me</strong>.<a href="#cite-6" class="cite-ref" id="ref-6-8" data-tooltip="Attitude vs. Mood. Active Reading Pamphlet Resource, LitwithLeo course handouts.">[6]</a>
+                    <strong>What the handout asks:</strong> two different fields. <strong>Attitude:</strong> "Select 1 emotional scene and provide evidence from the story, describing it using an attitude word." <strong>Emotional Sparks:</strong> "Include excerpts of quotes and page number(s) and explain your emotional reaction using mood words." (<cite>Active Reading Pamphlet.pdf</cite>, p. 2)<a href="#cite-6" class="cite-ref" id="ref-6-17" data-tooltip="Active Reading Pamphlet.pdf, p. 2: Attitude and Emotional Sparks field directions.">[6]</a>
+                </div>
+                <div class="qualities-intro">
+                    <strong>Keep the two apart:</strong> <strong>Attitude/Tone</strong> is "the attitude a writer takes toward the subject of a work, the characters in it, or the audience" &mdash; the handout's key is <strong>Attitude = Author</strong>. <strong>Mood</strong> "evokes feelings in readers through words and descriptions; it creates an emotional situation" &mdash; the handout's key is <strong>Mood = Me</strong>. (<cite>Attitude vs. Mood.pdf</cite>, p. 1)<a href="#cite-6" class="cite-ref" id="ref-6-18" data-tooltip="Attitude vs. Mood.pdf, p. 1: Attitude = Author, Mood = Me.">[6]</a> When you choose, the handout says, "start in the center with the overarching emotion, but then go out into the fan to make the best word choice for the tone."
                 </div>
                 <h3>Attitude: the Emotional Scene</h3>
-                <p><strong>Selected scene:</strong> the last evening at the pool (Ch. 6), when George shoots Lennie while telling him the farm dream one more time.</p>
+                <p><strong>Selected scene:</strong> the last evening at the pool (Ch. 6), when George shoots Lennie while telling him the farm dream one more time. <span class="locator">Ch. 6 &bull; search: "Look acrost the river, Lennie"</span></p>
                 <p><strong>Evidence from the story:</strong> George does not shout. He answers Lennie's worry ("I ain't mad") and begins the whole catalogue of the farm &mdash; the cow, the pigs, the alfalfa, the rabbits &mdash; in the same words he used in Chapter One. He waits until Lennie is looking away across the river. Slim's first words afterward justify him: "You hadda, George." The narrator reports the shot in one flat sentence and lets the men's reactions do the rest.<a href="#cite-1" class="cite-ref" id="ref-1-11" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></p>
-                <p><strong>Attitude word:</strong> <mark>Compassionate</mark> &mdash; the author's attitude toward this act is tender and forgiving rather than condemnatory. If you are working strictly from the wheel, start at the centre emotion <em>sad</em> and move outward to your most precise word; the wheel's job is to move you from a feeling to the exact word.<a href="#cite-6" class="cite-ref" id="ref-6-9" data-tooltip="Attitude vs. Mood. Active Reading Pamphlet Resource, LitwithLeo course handouts.">[6]</a></p>
-                <div class="quote">"Look acrost the river, Lennie"<a href="#cite-1" class="cite-ref" id="ref-1-12" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></div>
+                <p><strong>Attitude word:</strong> <mark>Compassionate</mark> &mdash; the author's attitude toward this act reads as tender rather than condemnatory. A second defensible reading is <mark>Forgiving</mark>: the novella never lets anyone be blamed, and Steinbeck himself called his own way of seeing "something that happened."<a href="#cite-4" class="cite-ref" id="ref-4-15" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Steinbeck's 'Something That Happened' and 'non-teleological thinking'.">[4]</a> Both are attitude words from the handout's moral list, so either earns the box; say which one you are claiming and give the evidence for it.</p>
+                <blockquote class="quote">"Look acrost the river, Lennie"<a href="#cite-1" class="cite-ref" id="ref-1-12" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></blockquote>
                 <p>The last thing George says before he fires is a direction to look at a place that does not exist yet. The attitude is in that choice: even the killing is framed as the dream.</p>
                 <h3>Mood: What the Reader Feels</h3>
-                <p>The mood is built from short sentences, plain words, animals, water, and long stretches of quiet before each blow. Read one page and you can feel the heat; read a chapter and you begin to expect something to go wrong. Possible mood words for your reaction: <mark>Vulnerable</mark>, <mark>Anxious</mark>, <mark>Lonely</mark>, <mark>Hopeful</mark>, <mark>Shocked</mark>.<a href="#cite-6" class="cite-ref" id="ref-6-10" data-tooltip="Attitude vs. Mood. Active Reading Pamphlet Resource, LitwithLeo course handouts.">[6]</a></p>
+                <p>The mood is built from short sentences, plain words, animals, water, and quiet before each blow. A reader might find a scene anxious, lonely, hopeful, or shocking, but those are possibilities, not the reaction the assignment requires. Choose a mood word that fits <em>your</em> response and explain what detail produced it. <mark>Vulnerable</mark> is one tested word from the handout; it can also describe how the dog, puppy, Lennie, and the dream are exposed to harm.<a href="#cite-6" class="cite-ref" id="ref-6-19" data-tooltip="Attitude vs. Mood.pdf, p. 1: definition of mood and tested word Vulnerable.">[6]</a></p>
                 <h3>Emotional Sparks: Excerpts and Reaction</h3>
-                <p><strong>Spark 1 &mdash; Ch. 1 (search: "loneliest guys")</strong></p>
-                <div class="quote">"Guys like us, that work on ranches, are the loneliest guys in the world."<a href="#cite-1" class="cite-ref" id="ref-1-13" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></div>
-                <p><strong>Mood word:</strong> <mark>Isolated</mark>. <strong>Reaction:</strong> It lands because George says it like a fact he has recited before &mdash; the sentence is about "guys like us," not just him, and suddenly the whole ranch full of men looks empty.</p>
-                <p><strong>Spark 2 &mdash; Ch. 5 (search: "I get lonely")</strong></p>
-                <div class="quote">"I get lonely&hellip; I can't talk to nobody but Curley."<a href="#cite-1" class="cite-ref" id="ref-1-14" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></div>
-                <p><strong>Mood word:</strong> <mark>Vulnerable</mark>. <strong>Reaction:</strong> After four chapters of warnings about her, this is the moment she becomes a person; the mood flips from suspicion to guilt, and you realise you had been judging her the way the ranch does.</p>
-                <p><strong>Spark 3 &mdash; Ch. 3 (search: "shot that dog myself")</strong></p>
-                <div class="quote">"I ought to of shot that dog myself"<a href="#cite-1" class="cite-ref" id="ref-1-15" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></div>
-                <p><strong>Mood word:</strong> <mark>Shocked</mark>. <strong>Reaction:</strong> The grief is not about the dog alone &mdash; Candy says it the moment he realises he let a stranger decide for him, and the sentence quietly predicts the end of the book.</p>
+                <p>The handout gives you four blank quotation lines on p. 2. Here are three brief excerpts to check, each with a chapter/search locator, a mood word, and a model reaction. Record the page from your copy beside each excerpt.</p>
+                <p><strong>Spark 1 &mdash; Ch. 1</strong> <span class="locator">Ch. 1 &bull; search: "loneliest guys in the world"</span></p>
+                <blockquote class="quote">"Guys like us, that work on ranches, are the loneliest guys in the world."<a href="#cite-1" class="cite-ref" id="ref-1-13" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></blockquote>
+                <p><strong>Possible mood word:</strong> <mark>Isolated</mark>. <strong>Sample response, not a required feeling:</strong> the general phrase "guys like us" can make one speaker's loneliness feel shared; you might instead feel hopeful because George and Lennie have each other.</p>
+                <p><strong>Spark 2 &mdash; Ch. 5</strong> <span class="locator">Ch. 5 &bull; search: "I can't talk to nobody but Curley"</span></p>
+                <blockquote class="quote">"I get lonely&hellip; I can't talk to nobody but Curley."<a href="#cite-1" class="cite-ref" id="ref-1-14" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></blockquote>
+                <p><strong>Possible mood word:</strong> <mark>Vulnerable</mark>. <strong>Sample response, not a required feeling:</strong> her admission can make a reader reconsider the earlier warnings; another reader may remain uneasy because her loneliness does not erase the threat she makes to Crooks.</p>
+                <p><strong>Spark 3 &mdash; Ch. 3</strong> <span class="locator">Ch. 3 &bull; search: "I ought to of shot that dog myself"</span></p>
+                <blockquote class="quote">"I ought to of shot that dog myself"<a href="#cite-1" class="cite-ref" id="ref-1-15" data-tooltip="Steinbeck, John. Of Mice and Men. Covici Friede, 1937.">[1]</a></blockquote>
+                <p><strong>Possible mood word:</strong> <mark>Grieved</mark>. <strong>Sample response, not a required feeling:</strong> Candy's regret may feel painful because he wishes he had made the decision himself; the scene may also make a reader wary of the later choice George faces.</p>
+                <div class="highlight-box">
+                    <strong>Write your own fourth.</strong> The most useful spark for this book is probably one you choose yourself: the moment in your own copy that made you stop. A spark you picked is worth more on the scoring guide than a better-known one you copied.<a href="#cite-6" class="cite-ref" id="ref-6-20" data-tooltip="Directions &amp; Scoring.pdf, p. 1: scoring guide rewards thorough completion of all fields.">[6]</a>
+                </div>
             </div>
         </div>
         <div id="vocab" class="page">
             <div class="content-card">
                 <h2>Close Reading Vocabulary</h2>
                 <div class="qualities-intro">
-                    <strong>Directions:</strong> Gather words you do not know; include page numbers and definitions. Each entry below gives the chapter and a search phrase so you can record your own edition's page.<a href="#cite-6" class="cite-ref" id="ref-6-11" data-tooltip="Active Reading Pamphlet Resource. LitwithLeo course handouts.">[6]</a>
+                    <strong>What the handout asks:</strong> "Gather words you do not know; include page numbers and definitions" (<cite>Active Reading Pamphlet.pdf</cite>, p. 2).<a href="#cite-6" class="cite-ref" id="ref-6-21" data-tooltip="Active Reading Pamphlet.pdf, p. 2: Close Reading Vocabulary field direction.">[6]</a> Two lists follow: the novella's own hard words, with locators, and the words the three handouts say will be on the year-end test. Definitions in the second list are quoted from the handouts, so check yours against your own copy of the packet.
                 </div>
                 <h3>From the Novella</h3>
+                <p>Each entry gives a <strong>chapter</strong>, the stable anchor, and a <strong>search phrase</strong>; add your own edition's page number beside it.</p>
                 <dl class="definition-list">
                     <dt>bindle</dt><dd>A travelling worker's bundle of belongings, carried rolled or on a stick. <span class="locator">Ch. 1 &bull; search: "unslung his bindle"</span></dd>
                     <dt>jungle-up</dt><dd>To make camp for the night in the brush near water. <span class="locator">Ch. 1 &bull; search: "to jungle-up near water"</span></dd>
@@ -467,25 +401,71 @@
                     <dt>work up a stake / blow a stake</dt><dd>To earn a sum of money, then spend all of it. <span class="locator">Ch. 1 &bull; search: "work up a stake"</span></dd>
                     <dt>off the fatta the lan'</dt><dd>Lennie's way of saying that everything they need will simply be there &mdash; the dream in three words. <span class="locator">Ch. 1 &bull; search: "fatta the lan'"</span></dd>
                     <dt>swamper</dt><dd>The man whose job is cleaning the bunkhouse. <span class="locator">Ch. 2 &bull; search: "the old swamper"</span></dd>
-                    <dt>jerkline skinner</dt><dd>The driver of a long team of mules; the top hand on a ranch. <span class="locator">Ch. 2 &bull; search: "slim's a jerkline skinner"</span></dd>
+                    <dt>jerkline skinner</dt><dd>The driver of a long team of mules; the top hand on a ranch. <span class="locator">Ch. 2 &bull; search: "jerkline skinner"</span></dd>
                     <dt>flop</dt><dd>Slang for a cheap bed for the night. <span class="locator">Ch. 2 &bull; search: "if a guy don't want a flop"</span></dd>
                     <dt>kewpie doll</dt><dd>A small moulded doll, sold as a souvenir &mdash; one of Curley's wife's images of a furnished life. <span class="locator">Ch. 2 &bull; search: "kewpie doll lamp"</span></dd>
                     <dt>liniment</dt><dd>A medicinal rub for aches, kept on the shelf with a man's comb and soap. <span class="locator">Ch. 2 &bull; search: "bottle of pills, his liniment"</span></dd>
-                    <dt>snooker</dt><dd>A cue sport, the game Lennie's hallucinated aunt says George could be playing instead of caring for him. <span class="locator">Ch. 6 &bull; reference ed. p. 176 &bull; search: "played snooker"</span></dd>
+                    <dt>snooker</dt><dd>A cue sport; it is the game Lennie's hallucinated aunt imagines George playing instead of caring for him. <span class="locator">Ch. 6 &bull; search: "snooker"</span></dd>
                 </dl>
-                <h3>Resource Words to Know</h3>
-                <p>The class resource lists seven words that will be tested; their definitions come straight from the handout.<a href="#cite-6" class="cite-ref" id="ref-6-12" data-tooltip="Attitude vs. Mood. Active Reading Pamphlet Resource, LitwithLeo course handouts.">[6]</a></p>
+                <h3>Tested Words From the Character Traits Handout</h3>
+                <p>"The following words will appear on a vocabulary test at the end of the year." (<cite>Character Traits.pdf</cite>, p. 2)<a href="#cite-6" class="cite-ref" id="ref-6-22" data-tooltip="Character Traits.pdf, p. 2: the 23 vocabulary-test words.">[6]</a></p>
+                <dl class="definition-list">
+                    <dt>Astute</dt><dd>keenly perceptive or discerning; shrewd or cunning</dd>
+                    <dt>Austere</dt><dd>severe in manner or appearance; uncompromising; strict; forbidding</dd>
+                    <dt>Bigoted</dt><dd>utterly intolerant of any creed, belief, or opinion that differs from one's own</dd>
+                    <dt>Boorish</dt><dd>unmannered; crude; insensitive</dd>
+                    <dt>Caustic</dt><dd>severely critical or sarcastic</dd>
+                    <dt>Convivial</dt><dd>friendly; agreeable</dd>
+                    <dt>Cordial</dt><dd>courteous and gracious</dd>
+                    <dt>Debonair</dt><dd>courteous, gracious, and having a sophisticated charm</dd>
+                    <dt>Degenerate</dt><dd>an immoral or corrupt person</dd>
+                    <dt>Dissolute</dt><dd>indifferent to moral restraints; given to immoral or improper conduct</dd>
+                    <dt>Emaciated</dt><dd>abnormally thin or weak, especially because of illness or a lack of food</dd>
+                    <dt>Grotesque</dt><dd>a very ugly or comically distorted figure, creature, or image</dd>
+                    <dt>Ingenious</dt><dd>cleverly inventive or resourceful</dd>
+                    <dt>Obtuse</dt><dd>not quick or alert in perception, feeling, or intellect; not sensitive or observant; dull</dd>
+                    <dt>Odious</dt><dd>deserving or causing hatred; hateful; detestable. highly offensive; repugnant; disgusting</dd>
+                    <dt>Petulant</dt><dd>moved to or showing sudden, impatient irritation, especially over some trifling annoyance</dd>
+                    <dt>Precocious</dt><dd>unusually advanced or mature in development, especially mental development</dd>
+                    <dt>Provincial</dt><dd>a person who lacks urban sophistication or broad-mindedness</dd>
+                    <dt>Robust</dt><dd>strong and healthy; hardy; vigorous</dd>
+                    <dt>Unkempt</dt><dd>uncared-for or neglected; disheveled; messy</dd>
+                    <dt>Unscrupulous</dt><dd>conscienceless; unprincipled</dd>
+                    <dt>Urbane</dt><dd>reflecting elegance, sophistication, etc., especially in expression</dd>
+                    <dt>Vulgar</dt><dd>indecent; obscene; lewd</dd>
+                </dl>
+                <h3>Tested Words From the Attitude vs. Mood Handout</h3>
+                <p>"The following words will appear on a vocabulary test at the end of the year." (<cite>Attitude vs. Mood.pdf</cite>, p. 1)<a href="#cite-6" class="cite-ref" id="ref-6-23" data-tooltip="Attitude vs. Mood.pdf, p. 1: the 7 vocabulary-test words.">[6]</a> The <em>Cheeky</em> entry is reproduced exactly as it appears in the handout, which breaks off mid-definition.</p>
                 <dl class="definition-list">
                     <dt>Ambitious</dt><dd>eagerly desirous of achieving or obtaining success, power, wealth, a specific goal, etc.</dd>
                     <dt>Apathetic</dt><dd>having or showing little or no interest, concern, or emotion</dd>
-                    <dt>Cheeky</dt><dd>boldly rude, impudent, or disrespectful (the handout's own line breaks off mid-definition)</dd>
-                    <dt>Nauseated</dt><dd>filled with disgust; sickness stemming from the stomach</dd>
+                    <dt>Cheeky</dt><dd>boldly rude, impudent, or disrespectful in usually a playful or appealing [the handout's line ends here]</dd>
+                    <dt>Nauseated</dt><dd>filled with disgust: sickness stemming from the stomach</dd>
                     <dt>Ridiculed</dt><dd>speech or action intended to cause contemptuous laughter at a person or thing</dd>
                     <dt>Skeptical</dt><dd>doubtful about a particular thing</dd>
                     <dt>Vulnerable</dt><dd>capable of or susceptible to being attacked, damaged, or hurt</dd>
                 </dl>
+                <h3>Tested Words From the Setting Details Handout</h3>
+                <p>The same promise appears in the setting handout: "Some of these words* will also appear in our last unit's vocabulary test" (<cite>Setting Details.pdf</cite>, pp. 1&ndash;2).<a href="#cite-6" class="cite-ref" id="ref-6-24" data-tooltip="Setting Details.pdf, pp. 1-2: 15 vocabulary-test scene setting traits.">[6]</a></p>
+                <dl class="definition-list">
+                    <dt>Arid</dt><dd>being without moisture; extremely dry; parched</dd>
+                    <dt>Barren</dt><dd>not producing or incapable of producing; sterile</dd>
+                    <dt>Desolate</dt><dd>deprived or destitute of inhabitants; deserted; uninhabited</dd>
+                    <dt>Enigmatic</dt><dd>a puzzling occurrence, situation, statement, person, etc.; perplexing; mysterious</dd>
+                    <dt>Foreboding</dt><dd>a strong inner feeling or notion of a future misfortune, evil, etc.; presentiment</dd>
+                    <dt>Grandiose</dt><dd>affectedly grand or important</dd>
+                    <dt>Idyllic</dt><dd>portrays an idealized scene of peace, charm, and rustic simplicity</dd>
+                    <dt>Melancholy</dt><dd>a gloomy state of mind, especially when habitual or prolonged; depression</dd>
+                    <dt>Ominous</dt><dd>indicating the nature of a future event, for good or evil</dd>
+                    <dt>Pristine</dt><dd>having its original purity; uncorrupted or unsullied</dd>
+                    <dt>Sinister</dt><dd>threatening or portending evil, harm, or trouble</dd>
+                    <dt>Somber</dt><dd>gloomily dark; shadowy; dimly lighted</dd>
+                    <dt>Sublime</dt><dd>the greatest or supreme degree of goodness</dd>
+                    <dt>Whimsical</dt><dd>playfully quaint or fanciful, especially in an appealing and amusing way</dd>
+                    <dt>Zealous</dt><dd>showing great energy or enthusiasm in pursuit of a cause or objective</dd>
+                </dl>
                 <div class="highlight-box">
-                    <strong>Notice:</strong> Every one of those seven words describes a way people treat each other in this novella &mdash; Curley is <em>ambitious</em> for status, the men are <em>apathetic</em> about Candy's grief, Crooks is <em>skeptical</em> of dreams, and everyone on the ranch is <em>vulnerable</em> to the next accident.
+                    <strong>Where they may fit:</strong> Carlson can be described as <em>boorish</em> and <em>robust</em>; Curley as <em>petulant</em>; the bunkhouse as <em>crowded</em> or <em>oppressive</em>; and the final evening as <em>foreboding</em>, <em>ominous</em>, or <em>somber</em>. These are interpretive choices, not labels the text explicitly applies. <em>Vulnerable</em> and <em>skeptical</em> can describe recurring tensions, but support either choice with a scene rather than treating a word as the story's single subject.
                 </div>
             </div>
         </div>
@@ -493,23 +473,51 @@
             <div class="content-card">
                 <h2>Theme &amp; Big Ideas</h2>
                 <div class="qualities-intro">
-                    <strong>From the handout:</strong> A Big Idea is a topic the story circles (a word like <em>Friendship</em> or <em>Hope</em>). A theme statement is a complete sentence that says what the story is arguing about that idea, holds true for beginning, middle, and end, avoids clich&eacute;s and character names, and reaches beyond the text to a common human concern.<a href="#cite-6" class="cite-ref" id="ref-6-13" data-tooltip="Theme &amp; Big Ideas. Active Reading Pamphlet Resource, LitwithLeo course handouts.">[6]</a>
+                    <strong>What the handout asks:</strong> look "for the Big Ideas that come up in the story&mdash;these usually can be summed up in one or two words," then ask "what the main character learned; then, consider what lesson you took away that is similar to the main character but can be applied to pretty much any human" (<cite>Theme &amp; Big Ideas.pdf</cite>, p. 1).<a href="#cite-6" class="cite-ref" id="ref-6-25" data-tooltip="Theme &amp; Big Ideas.pdf, p. 1: the four steps for determining a theme.">[6]</a>
+                </div>
+                <div class="qualities-intro">
+                    <strong>What makes a good theme statement</strong> (<cite>Theme &amp; Big Ideas.pdf</cite>, p. 2):<a href="#cite-6" class="cite-ref" id="ref-6-26" data-tooltip="Theme &amp; Big Ideas.pdf, p. 2: the five characteristics of a good theme statement.">[6]</a> it must be expressed in a complete sentence; it must describe a general meaning, not specific events, actions, or characters; it must hold true for the story as a whole &mdash; beginning, middle, <em>and</em> end; it must avoid cliches and be stated in your own words; and the ending must match the theme you claim. "'Morality and Ethics' is not a theme statement," the handout says; "It is just pointing at a Big Idea."
                 </div>
                 <h3>Big Ideas in This Story</h3>
+                <p>Every pick below is on the handout's own Big Idea chart, with the chart's category and page, so your selection can be defended from the source rather than from memory.<a href="#cite-6" class="cite-ref" id="ref-6-27" data-tooltip="Theme &amp; Big Ideas.pdf, pp. 1-2: the categorised Big Idea chart.">[6]</a></p>
                 <ul>
-                    <li><strong>Companionship / Friendship</strong> &mdash; George and Lennie choose each other; everyone else is alone.</li>
-                    <li><strong>Hope</strong> &mdash; the farm is described, re-described, funded, and finally told one last time.</li>
-                    <li><strong>Loneliness (a Suffering idea)</strong> &mdash; Candy, Crooks, Curley's wife, and the hired man who earns a stake only to spend it in town again.</li>
-                    <li><strong>Power / Injustice (a Judgement idea)</strong> &mdash; Curley's privilege, the colour line, a woman with no name, a man who cannot protect himself.</li>
-                    <li><strong>Vulnerability</strong> &mdash; the dog, the puppy, Lennie, and the dream itself: everything tender is also breakable.</li>
+                    <li><strong>Companionship</strong> &mdash; Love, p. 1. George and Lennie choose each other; everyone else is alone.</li>
+                    <li><strong>Friendship</strong> &mdash; Love and Circle of Life, p. 1. The same idea from a second chart.</li>
+                    <li><strong>Hope</strong> &mdash; Love, p. 1; War &amp; Peace, p. 1; Judgement, p. 2. The farm is described, re-described, funded, and finally told one last time.</li>
+                    <li><strong>Loneliness</strong> &mdash; Suffering, p. 1. Candy, Crooks, Curley's wife, and the hired hand who earns a stake only to spend it in town again.</li>
+                    <li><strong>Injustice</strong> &mdash; Suffering, p. 1; Judgement, p. 2. Curley's privilege, the colour line, a woman with no name, a man who cannot protect himself.</li>
+                    <li><strong>Power</strong> &mdash; Survival, p. 1; Judgement, p. 2. Who can hurt whom, and how little it costs those in charge.</li>
+                    <li><strong>Vulnerability</strong> &mdash; Survival, p. 1. The dog, the puppy, Lennie, and the dream itself: everything tender is also breakable.</li>
+                    <li><strong>Fate</strong> &mdash; Love, p. 1; Judgement, p. 2; Good &amp; Evil, p. 2. The title promises it; the novella spends more time on the people caught in it.</li>
+                    <li><strong>Grief</strong> and <strong>Heartbreak</strong> &mdash; Suffering, p. 1. Candy's dog, then Lennie.</li>
+                    <li><strong>Guilt</strong> &mdash; Suffering, p. 1; Judgement, p. 2. Candy's and George's, over the same kind of accident.</li>
                 </ul>
+                <div class="highlight-box">
+                    <strong>Pick two, not ten.</strong> The handout's chart exists to help you choose. A theme statement that tries to cover Companionship, Injustice, Power, and Fate at once is four themes wearing a coat; one Big Idea, tested at the beginning, the middle, and the end, is what the scoring guide rewards.
+                </div>
                 <h3>Finished Theme Statement</h3>
-                <p><strong>Template from the handout:</strong> "A central issue that reappears throughout ____ by ____ is ____. This issue is exemplified when ____, ____, and ____. It is at these pivotal moments the reader realizes the theme that ____."</p>
+                <p><strong>Template from the handout</strong> (<cite>Theme &amp; Big Ideas.pdf</cite>, p. 2): "A central issue that reappears throughout ____ by ____ is ____. This issue is exemplified when ____ [Plot Point 1 &ndash; Beginning] ____, ____ [Plot Point 2 &ndash; Middle] ____, and ____ [Plot Point 3 &ndash; End] ____. It is at these pivotal moments the reader realizes the theme that ____ meaning that is relevant to but goes beyond the text&mdash;this should be a common human concern."</p>
                 <div class="highlight-box">
                     <p>A central issue that reappears throughout <em>Of Mice and Men</em> by John Steinbeck is <strong>the need for companionship and a shared dream to survive hard times</strong>. This issue is exemplified when <strong>two lonely workers rehearse a promise of a little farm of their own (beginning)</strong>, when <strong>an old man offers his life savings to buy into that same promise (middle)</strong>, and when <strong>one friend retells the promise moments before ending the other's life (end)</strong>. It is at these pivotal moments the reader realizes the theme that <strong>shared hope is what makes hardship bearable, yet dreams held by the most vulnerable people can be destroyed by a world that offers them no protection</strong>.</p>
                 </div>
                 <div class="qualities-intro">
-                    <strong>Why this statement works:</strong> it is one complete sentence; it names no characters in the final claim; the same idea is tested at the beginning, middle, and end; it is not a clich&eacute;; and it says something about life beyond this particular ranch.
+                    <strong>Why this statement works against the handout's checklist:</strong> it is one complete sentence; the final claim names no character; the same idea is tested at the beginning, the middle, and the end; it is not a cliche; it reaches past the ranch to a common human concern; and it matches the outcome &mdash; the dream dies, and the loneliness the story opened with returns in its last lines.
+                </div>
+                <div class="qualities-intro">
+                    <strong>Step 4, the one students skip:</strong> the handout asks what the main character <em>learned</em>, then what lesson you took that "can be applied to pretty much any human." Here the lesson a reader takes need not be George's lesson, because George's is contested &mdash; see below. A defensible version: people who build a future together can be undone by a single accident, and the people left behind carry that story forward. That is a claim about life, not a verdict from Steinbeck.
+                </div>
+                <h3>The Ending: What the Text Actually Supports</h3>
+                <div class="qualities-intro">
+                    <strong>Why this gets argued.</strong> Nearly every reader agrees on the facts: Lennie has killed Curley's wife, Curley has organised a posse, and George reaches Lennie first. Groups divide over what the shooting <em>means</em>, and the novella does not settle it. Steinbeck's discarded first title was <em>Something That Happened</em> &mdash; on the events as something nobody can be blamed for &mdash; and he described his own approach as "non-teleological thinking," a non-judgmental point of view.<a href="#cite-4" class="cite-ref" id="ref-4-16" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Steinbeck's 'something that happened' and 'non-teleological thinking'.">[4]</a> The book's own summary states the act and its reason without judging it: George shoots Lennie "giving him a more merciful death than the one he would receive at the hands of the mob."<a href="#cite-4" class="cite-ref" id="ref-4-17" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Plot summary of the ending.">[4]</a> Four readings are defensible here; none of them is the only correct one.
+                </div>
+                <ul>
+                    <li><strong>Mercy.</strong> The posse is minutes away and carries rope. Slim says, "You hadda, George. I swear you hadda," and nobody argues with him. A reading that says something else has to explain why the one character who understands the situation approves of it.</li>
+                    <li><strong>Ending a dream that could not survive its owner.</strong> George has seen the last of it: the money is counted, the woman is dead, and Lennie has already forgotten what he did. The farm existed only for as long as the two of them could repeat it. This reading rests on structure &mdash; the last thing George does is narrate the dream again &mdash; and it does not require calling the act kind.</li>
+                    <li><strong>Kindness with a cost.</strong> George chooses the method and the moment, and the novella never shows Lennie's relief, because Lennie is shot from behind while looking at a place that does not exist yet. Whether that is mercy or simply the least cruel option available is precisely what the book leaves open.</li>
+                    <li><strong>Restraint as the point.</strong> The narrator reports the shot in one flat sentence and never returns to it. Carlson's closing question &mdash; what is wrong with those two &mdash; shows that most people in the book never learn what they saw. A group can reasonably argue that the novella delivers its judgement through structure and silence rather than argument, and that any confident moral verdict on George is the reader's, not Steinbeck's.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Make the claim, then test it.</strong> Calling George's act mercy or calling it murder can each be a defensible interpretation if the evidence and reasoning are clear. Consider the posse and Slim's approval alongside George's choice to shoot Lennie without warning, then address the strongest evidence for another reading. The course standard asks students to "cite strong and thorough textual evidence to support analysis of what the text says explicitly as well as inferences drawn from the text" (<cite>Directions &amp; Scoring.pdf</cite>, p. 1, standard RL.1).<a href="#cite-6" class="cite-ref" id="ref-6-28" data-tooltip="Directions &amp; Scoring.pdf, p. 1: standard RL.1.">[6]</a>
                 </div>
             </div>
         </div>
@@ -517,58 +525,72 @@
             <div class="content-card">
                 <h2>Questions</h2>
                 <div class="qualities-intro">
-                    <strong>Directions:</strong> Record sticking points you want clarified with your reading group. Each question here comes with the passage that starts the argument.<a href="#cite-6" class="cite-ref" id="ref-6-14" data-tooltip="Active Reading Pamphlet Resource. LitwithLeo course handouts.">[6]</a>
+                    <strong>What the handout asks:</strong> "Record any sticking points you want to get clarification from your reading group around" (<cite>Active Reading Pamphlet.pdf</cite>, p. 2).<a href="#cite-6" class="cite-ref" id="ref-6-29" data-tooltip="Active Reading Pamphlet.pdf, p. 2: Questions field direction.">[6]</a> A sticking point is a sentence you cannot resolve alone, so bring a quotation and a chapter number, not just an opinion. Each question below is followed by a <em>suggested answer</em> with its evidence &mdash; a model to argue with, not a line to copy.
                 </div>
-                <ul>
-                    <li><strong>Why does George shoot Lennie himself?</strong> Read Slim's reaction next to Carlson's confusion at the very end (Ch. 6, search: "Now what the hell ya suppose is eatin' them two guys") &mdash; which man understands what happened, and why?</li>
-                    <li><strong>Why is Curley's wife never named?</strong> Track when she first speaks versus when she is first discussed (Ch. 1&ndash;5). What does the missing name do to the reader's judgement of her?</li>
-                    <li><strong>Is the dream ever realistic?</strong> Look at Candy's arithmetic (Ch. 3, search: "I'd make a will") and Crooks's mockery (Ch. 4) and decide whether the farm was ever more than a story they told each other.</li>
-                    <li><strong>What is Candy's dog for?</strong> Compare the dog's death to Lennie's death: same chapter pattern, same friend holding the gun. Is one a rehearsal for the other?</li>
-                    <li><strong>Why does the story begin and end at the same pool?</strong> Set Ch. 1 against Ch. 6, and note the rabbits and the water in both.</li>
-                    <li><strong>Was Crooks's hope in Chapter 4 genuine?</strong> Watch what happens to his face when Curley's wife makes her threat (search: "I could get you strung up").</li>
-                    <li><strong>Whose fault is the tragedy?</strong> Weigh Lennie's accident, Curley's wife's scream, Curley's hunting, and the economic trap that kept the four men in one place (Ch. 5).</li>
-                    <li><strong>What does the title promise?</strong> Take Burns's line &mdash; plans going awry &mdash; and decide whether the novella is about fate, about careless power, or about both.</li>
-                </ul>
+                <h3>1. Why does George shoot Lennie himself?</h3>
+                <p><strong>Suggested answer:</strong> because Curley has already organised a posse and would not stop, and because George believes a quick death is better than what Lennie would get from a crowd. Slim, the one man who understands both men, endorses it in a single line &mdash; "You hadda, George. I swear you hadda" &mdash; while Curley and Carlson never learn what they saw. Compare that with Carlson's closing question, "Now what the hell ya suppose is eatin' them two guys" (Ch. 6): the man who watched the whole thing still cannot read it. <span class="locator">Ch. 6 &bull; search: "You hadda, George"</span></p>
+                <h3>2. Why is Curley's wife never named?</h3>
+                <p><strong>Suggested answer:</strong> the novella never gives her a personal name; "Curley's wife" identifies her through her husband's role. That choice can be read as reflecting how the ranch men reduce her to a label, and it shapes how readers first encounter her: through their warnings before hearing her at length in the barn. Her account complicates that first impression without changing the fact that she remains unnamed. <span class="locator">Ch. 2 and Ch. 5 &bull; search: "I'm lookin' for Curley"</span></p>
+                <h3>3. Is the dream ever realistic?</h3>
+                <p><strong>Suggested answer:</strong> the dream becomes more concrete when Candy offers his savings, but the figures do not yet add up to the farm's price. In Chapter 3, Candy has about $350; George estimates the place at $600 and says the three of them could save enough within a month if they worked. That calculation makes the plan imaginable, not guaranteed: their wages, continued employment, and the farm's availability all matter. <span class="locator">Ch. 3 &bull; search: "six hundred dollars"</span></p>
+                <h3>4. What is Candy's dog for?</h3>
+                <p><strong>Suggested answer:</strong> the dog scene can be read as a parallel to the ending: an old, vulnerable companion is killed by someone close to him, and the survivor is left with regret. Candy's line, "I ought to of shot that dog myself," comes after Carlson has shot the dog; he regrets letting a stranger do it. That later guilt may shape how a reader interprets George's choice, though the two situations are not identical. <span class="locator">Ch. 3 &bull; search: "I ought to of shot that dog myself"</span></p>
+                <h3>5. Why does the story begin and end at the same pool?</h3>
+                <p><strong>Suggested answer:</strong> returning to the same river pool gives the novella a frame and makes the ending echo the opening. The setting's repeated description links the scenes, while the changed circumstances and George's final retelling of the farm dream make the return feel different. Notice which details and actions actually recur in your edition rather than assuming every movement is repeated. <span class="locator">Ch. 1 and Ch. 6 &bull; search: "A few miles south of Soledad"</span></p>
+                <h3>6. Was Crooks's hope in Chapter 4 genuine?</h3>
+                <p><strong>Suggested answer:</strong> briefly, and the novella lets him say so. He asks whether he might have a small patch of garden on their place, tells them he would help with the rabbits, then immediately retreats into mockery because he has been burned before. Minutes later, threatened with being strung up, the loneliness returns. The pattern &mdash; want, joke, shame &mdash; repeats, which is why his chapter is the saddest quiet scene in the book. <span class="locator">Ch. 4 &bull; search: "A guy needs somebody to be near him"</span></p>
+                <h3>7. Whose fault is the tragedy?</h3>
+                <p><strong>Suggested answer:</strong> several pressures contribute, but readers can weigh them differently. Lennie's grip causes the accident; when Curley's wife screams, he panics and tightens his hold rather than releasing it. Curley's posse makes Lennie's hiding place dangerous, while poverty and isolation shape the characters' limited choices. Steinbeck's descriptions of "something that happened" and "non-teleological thinking" may support a reading that resists a simple moral verdict<a href="#cite-4" class="cite-ref" id="ref-4-18" data-tooltip="'Of Mice and Men.' Wikipedia, The Free Encyclopedia. Steinbeck's 'something that happened' and 'non-teleological thinking'.">[4]</a>, but they do not settle questions of responsibility. Make a claim about blame and support it with the scene. <span class="locator">Ch. 5 &bull; search: "Please don't do that. George'll be mad"</span></p>
+                <h3>8. What does the title promise?</h3>
+                <p><strong>Suggested answer:</strong> it promises fate, and the novella delivers something more mixed. Burns's ploughman regrets what he could not control; George's plan is undone by an accident none of them planned. But the same story shows careless power doing deliberate damage: Curley's privilege, the colour line drawn through the harness room, a woman with no name. A strong answer says the title names the shape of the plot while the characters supply the moral pressure. <span class="locator">Title &bull; search: "The best laid schemes o' mice an' men"</span></p>
                 <div class="highlight-box">
-                    <strong>Group tip:</strong> come with one quotation, one chapter number, and one sentence of your own. The handouts' scoring rewards evidence over opinion.
+                    <strong>Group tip:</strong> come with one quotation, one chapter number, and one sentence of your own. The scoring guide gives its top marks to students who "Uses directions in Yellow Pages to thoroughly complete all" the fields and cite strong, thorough textual evidence &mdash; evidence, not opinion.<a href="#cite-6" class="cite-ref" id="ref-6-30" data-tooltip="Directions &amp; Scoring.pdf, p. 1: scoring guide, level 4.">[6]</a>
                 </div>
             </div>
         </div>
         <div id="citations" class="page">
             <div class="works-cited">
                 <h2>Works Cited</h2>
-                <p class="citation-legend">Badge numbers match the in-text citations. Each badge returns to the most recently followed reference.</p>
+                <p class="citation-legend">Badge numbers match the in-text citations. Each badge returns to the most recently followed reference. Web sources are listed with their URLs; the course handouts are local PDF files supplied with the packet, so no web address is claimed for them.</p>
                 <div class="citation" id="cite-1">
                     <a href="#ref-1-1" class="cite-badge" aria-label="Back to in-text citation 1" title="Back to in-text citation [1]">1</a>
-                    Steinbeck, John. <em>Of Mice and Men</em>. Covici Friede, 1937. Quotations are brief and identified by chapter; page numbers marked "reference ed." follow the 1947 printing below.
+                    Steinbeck, John. <em>Of Mice and Men</em>. Covici Friede, 1937. Source of the brief novel quotations and chapter/search-phrase locators on this page. Record page numbers from your own copy in your pamphlet.
                 </div>
                 <div class="citation" id="cite-2">
                     <a href="#ref-2-1" class="cite-badge" aria-label="Back to in-text citation 2" title="Back to in-text citation [2]">2</a>
-                    "John Steinbeck &ndash; Biographical." <em>NobelPrize.org</em>, Nobel Prize Outreach, <a class="citation-source-link" href="https://www.nobelprize.org/prizes/literature/1962/steinbeck/biographical/">nobelprize.org/prizes/literature/1962/steinbeck/biographical</a>.
+                    "John Steinbeck &ndash; Biographical." <em>NobelPrize.org</em>, Nobel Prize Outreach, <a class="citation-source-link" href="https://www.nobelprize.org/prizes/literature/1962/steinbeck/biographical/">nobelprize.org/prizes/literature/1962/steinbeck/biographical</a>. Used for Steinbeck's birth and death years, Salinas and New York, Stanford, the 1925 move to New York, <em>Tortilla Flat</em>, the publication sequence, and the "economic problems of rural labour" description. The page gives Steinbeck's birth year only, so no exact birth date is claimed here.
                 </div>
                 <div class="citation" id="cite-3">
                     <a href="#ref-3-1" class="cite-badge" aria-label="Back to in-text citation 3" title="Back to in-text citation [3]">3</a>
-                    "The Nobel Prize in Literature 1962." <em>NobelPrize.org</em>, Nobel Prize Outreach, <a class="citation-source-link" href="https://www.nobelprize.org/prizes/literature/1962/summary/">nobelprize.org/prizes/literature/1962/summary</a>.
+                    "The Nobel Prize in Literature 1962." <em>NobelPrize.org</em>, Nobel Prize Outreach, <a class="citation-source-link" href="https://www.nobelprize.org/prizes/literature/1962/summary/">nobelprize.org/prizes/literature/1962/summary</a>. Source of the Nobel citation wording, quoted here exactly as this page renders it, including the spelling "humour."
                 </div>
                 <div class="citation" id="cite-4">
                     <a href="#ref-4-1" class="cite-badge" aria-label="Back to in-text citation 4" title="Back to in-text citation [4]">4</a>
-                    "Of Mice and Men." <em>Wikipedia, The Free Encyclopedia</em>, <a class="citation-source-link" href="https://en.wikipedia.org/wiki/Of_Mice_and_Men">en.wikipedia.org/wiki/Of_Mice_and_Men</a>. Used for publication history, the Burns title, stage and film adaptations, and censorship records.
+                    "Of Mice and Men." <em>Wikipedia, The Free Encyclopedia</em>, <a class="citation-source-link" href="https://en.wikipedia.org/wiki/Of_Mice_and_Men">en.wikipedia.org/wiki/Of_Mice_and_Men</a>. Used for the publisher and publication year, the six-chapter, three-act form and 30,000-word length, the discarded title <em>Something That Happened</em>, the Burns title and quotation, the 1937 New York Times interview, the San Francisco, Broadway, and film adaptations, the Book of the Month Club selection, censorship and American Library Association records, the Steinbeck quotes about Curley's wife, and "non-teleological thinking." An encyclopedia, so treat it as a starting point and cite it as one.
                 </div>
                 <div class="citation" id="cite-5">
                     <a href="#ref-5-1" class="cite-badge" aria-label="Back to in-text citation 5" title="Back to in-text citation [5]">5</a>
-                    Steinbeck, John. <em>Of Mice and Men</em>. The World Publishing Company, Tower Books Edition, 1947. Internet Archive scan; all "reference ed." page numbers on this site come from this printing.
+                    <strong>Novel passage locators.</strong> This companion identifies novel passages by chapter and short search phrase. No physical edition was consulted to verify pagination; find each passage in your copy and record its page number there.
                 </div>
                 <div class="citation" id="cite-6">
                     <a href="#ref-6-1" class="cite-badge" aria-label="Back to in-text citation 6" title="Back to in-text citation [6]">6</a>
-                    Active Reading Pamphlet Resource: <em>Active Reading Pamphlet</em>, <em>Directions &amp; Scoring</em>, <em>Character Traits</em>, <em>Setting Details</em>, <em>Narration Traits</em>, <em>Attitude vs. Mood</em>, and <em>Theme &amp; Big Ideas</em>. LitwithLeo course handouts.
+                    <strong>Course handouts.</strong> Seven PDF files supplied with the Active Reading Pamphlet resource, cited on this page by exact filename and page number:
+                    <em>Active Reading Pamphlet.pdf</em> (pp. 1&ndash;2) &mdash; the student form and its field directions;
+                    <em>Directions &amp; Scoring.pdf</em> (p. 1) &mdash; scoring guide, weekly progress check, and standard RL.1;
+                    <em>Character Traits.pdf</em> (pp. 1&ndash;2) &mdash; the four quality lists and the vocabulary-test words;
+                    <em>Setting Details.pdf</em> (pp. 1&ndash;2) &mdash; the setting definition, four elements, four lenses, scene setting traits;
+                    <em>Narration Traits.pdf</em> (p. 1) &mdash; the bolded narration vocabulary;
+                    <em>Attitude vs. Mood.pdf</em> (p. 1) &mdash; "Attitude = Author," "Mood = Me," and seven test words;
+                    <em>Theme &amp; Big Ideas.pdf</em> (pp. 1&ndash;2) &mdash; the Big Idea chart, theme-statement checklist, and sentence template.
+                    These are local course files distributed to the class; no publisher URL or public web location is claimed for them.
                 </div>
                 <div class="citation" id="cite-7">
                     <a href="#ref-7-1" class="cite-badge" aria-label="Back to in-text citation 7" title="Back to in-text citation [7]">7</a>
-                    Burns, Robert. "To a Mouse." 1785. Public-domain source of the novella's title.
+                    Burns, Robert. "To a Mouse." 1785. The two lines quoted here are the lines the novella's title comes from, as reproduced in the article in citation 4; the poem itself was not consulted for this page.
                 </div>
             </div>
         </div>
-        <div class="last-updated">Last updated: October 2026 | A companion for George and Lennie's story</div>
+        <div class="last-updated">Last updated: October 2026 | Suggested answers for the Active Reading Pamphlet, built from the seven course handouts</div>
     </main>
     <footer>
         <p>2026 Educational Resource | Of Mice and Men by John Steinbeck</p>

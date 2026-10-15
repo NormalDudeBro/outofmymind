@@ -11,10 +11,17 @@ const html = readFileSync(resolve(root, 'algebra-2.html'), 'utf8');
 assert.equal(html, renderSite([], undefined, algebra), 'Algebra HTML exactly matches reproducible build');
 assert.match(html, /<title>Algebra 2 Unit 1B: Relations and Functions<\/title>/);
 assert.match(html, /<h1>Algebra 2 Unit 1B: Relations and Functions<\/h1>/);
-assert.equal((html.match(/class="note"/g) ?? []).length, 384);
+assert.equal((html.match(/class="note"/g) ?? []).length, 480);
 const articles = [...html.matchAll(/<article\b[^>]*>([\s\S]*?)<\/article>/g)];
 assert.equal(articles.length, 16, 'two articles per lesson');
-articles.forEach(article => assert.equal((article[1].match(/class="note"/g) ?? []).length, 24));
+articles.forEach(article => assert.equal((article[1].match(/class="note"/g) ?? []).length, 30));
+assert.deepEqual([...html.matchAll(/<p class="caption">([^<]*)<\/p>/g)].map(match => match[1]), Array(8).fill(['Page 1 · Lines 1–30', 'Page 2 · Lines 31–60']).flat(), 'every lesson prints captions for lines 1-30 and 31-60');
+assert.deepEqual([...html.matchAll(/<span class="number" aria-hidden="true">(\d+)<\/span>/g)].map(match => Number(match[1])), Array(8).fill(Array.from({ length: 60 }, (_, index) => index + 1)).flat(), 'printed line numbers run 1-60 in order within every lesson');
+assert.match(html, /Module 1B · Relations and Functions · 8 lessons · 16 pages · 30 lines per page/, 'intro metadata advertises the 30-line Algebra page contract');
+const description = html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '';
+assert.match(description, /30-line|thirty-line/, 'description advertises 30-line Algebra pages');
+assert.doesNotMatch(description, /24-line/, 'description no longer advertises 24-line Algebra pages');
+assert.match(readFileSync(resolve(root, 'ap-lang.html'), 'utf8'), /4 pages · 24 lines per page/, 'AP Lang keeps its own 24-line page contract');
 
 algebra.forEach(lesson => {
   assert.equal(typeof lesson.title, 'string');
@@ -27,19 +34,19 @@ algebra.forEach(lesson => {
   assert.doesNotMatch(lesson.colored, /[^\x00-\x7f]|\r/, 'colored ASCII and LF only');
   assert.equal(lesson.colored.replace(/\((g|li|pu|br|y|r|db|p|lb|hp|pen)\)/g, ''), lesson.source, 'exact stripped equality including final newline');
   const lines = lesson.source.replace(/\n$/, '').split('\n');
-  assert.equal(lines.length, 48);
-  assert.equal(lesson.colored.replace(/\n$/, '').split('\n').length, 48);
+  assert.equal(lines.length, 60);
+  assert.equal(lesson.colored.replace(/\n$/, '').split('\n').length, 60);
   lines.forEach(line => assert.ok(line.length <= 65 && /^(o |-> )\S/.test(line) && line.trim() === line, 'prefix, trimmed text, max 65 characters'));
   assert.equal(lesson.sections.length, 6);
   lesson.sections.forEach(section => {
-    assert.equal(section.lines.length, 8);
+    assert.equal(section.lines.length, 10);
     assert.match(section.lines[0], /^o /);
     section.lines.slice(1).forEach(line => assert.match(line, /^-> /));
     assert.ok(Object.hasOwn(palette, section.color) && !['pen', 'lb'].includes(section.color), 'shared non-LB title ink');
   });
   assert.deepEqual(lesson.sections.flatMap(section => section.lines), lines, 'six sections preserve source order');
 });
-assert.deepEqual([...html.matchAll(/<span class="note">([\s\S]*?)<\/span><\/div>/g)].map(match => match[1]), algebra.flatMap(lesson => lesson.colored.replace(/\n$/, '').split('\n').map(renderLine)), 'all 384 notes use shared renderLine in source order');
+assert.deepEqual([...html.matchAll(/<span class="note">([\s\S]*?)<\/span><\/div>/g)].map(match => match[1]), algebra.flatMap(lesson => lesson.colored.replace(/\n$/, '').split('\n').map(renderLine)), 'all 480 notes use shared renderLine in source order');
 Object.entries(palette).forEach(([token, hex]) => {
   assert.ok(html.includes(`--${token}: ${hex};`), 'shared palette declaration');
   assert.ok(html.includes(`.ink.${token} { color: var(--${token}); }`), 'shared ink rule');
@@ -93,9 +100,9 @@ assert.ok(floors.some(match => Number(match[1]) === -6.35), 'negative floor exam
 assert.ok(floors.some(match => Number(match[1]) === -0.2), 'floor versus truncation example is present');
 floors.forEach(match => assert.equal(Number(match[2]), Math.floor(Number(match[1])), 'published numeric floor calculation'));
 const dilation = algebra[6].source;
-const coefficient = dilation.match(/b = (-?\d+(?:\.\d+)?)/);
+const coefficient = dilation.match(/g\(x\) = \(-2\.5\*x\)\^2 uses f\(x\) = x\^2, b = (-?\d+(?:\.\d+)?)/);
 const mapping = dilation.match(/\((2),(4)\) becomes \((-?\d+(?:\.\d+)?),(4)\)/);
 assert.ok(coefficient && mapping, 'horizontal dilation worked coefficient and point are present');
 assert.equal(Number(mapping[3]), Number(mapping[1]) / Number(coefficient[1]), 'horizontal mapping divides input by b');
 assert.equal(Number(mapping[4]), Number(mapping[2]), 'horizontal-only dilation preserves output');
-console.log('PASS: Algebra 2, eight lessons with 48 source lines each, 16 pages with 24 notes each, six eight-line sections per lesson, 384 ASCII notes, max 65 characters, exact sources and stripped equality, shared renderLine/palette, subject navigation, 16 exact downloads and relative paths, reproducible HTML, selected cost/floor/dilation calculations.');
+console.log('PASS: Algebra 2, eight lessons with 60 source lines each, 16 pages with 30 notes each, six ten-line sections per lesson, 480 ASCII notes numbered 1-60, captions for lines 1-30 and 31-60 with matching 30-line metadata, max 65 characters, exact sources and stripped equality, shared renderLine/palette, subject navigation, AP Lang 24-line contract preserved, 16 exact downloads and relative paths, reproducible HTML, selected cost/floor/dilation calculations.');

@@ -141,19 +141,21 @@ function loadMarkedNotes(folder, file) {
     sections.at(-1).lines.push(text);
     return sections;
   }, []);
-  assert.ok(sections.flatMap(section => section.lines).length % 24 === 0, `${file}: complete 24-line pages`);
+  const pageSize = folder === 'algebra-2' ? 30 : 24;
+  assert.ok(sections.flatMap(section => section.lines).length % pageSize === 0, `${file}: complete ${pageSize}-line pages`);
   return { source, colored, sections };
 }
 
 export function renderSite(data, lang, algebra) {
   const title = algebra ? 'Algebra 2 Unit 1B: Relations and Functions' : lang ? 'AP Lang Unit 1: Rhetorical Analysis' : 'AP World History Notes';
   const study = lang ? [{ ...lang, file: 'ap-lang', label: 'AP Lang', title }] : algebra ?? [];
+  const pageSize = algebra ? 30 : 24;
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="${algebra ? 'Algebra 2 Unit 1B: eight lessons across sixteen color-coded 24-line pages on linear graphs, inequalities, piecewise and step functions, absolute value, parent functions, and transformations.' : lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1 and 2: fourteen topics, twenty-eight printable note pages, and original and colored text downloads.'}">
+  <meta name="description" content="${algebra ? 'Algebra 2 Unit 1B: eight lessons across sixteen color-coded 30-line pages on linear graphs, inequalities, piecewise and step functions, absolute value, parent functions, and transformations.' : lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1 and 2: fourteen topics, twenty-eight printable note pages, and original and colored text downloads.'}">
   <title>${title}</title>
   <link rel="stylesheet" href="styles/site.css">
   <style>
@@ -202,7 +204,7 @@ export function renderSite(data, lang, algebra) {
       .page-title { display: block; font-size: 20px; }
       .caption { margin-bottom: 3mm; }
       .sheet { box-shadow: none; padding: 4mm; }
-      .line { grid-template-columns: 22px minmax(0, 1fr); gap: 8px; height: 8.8mm; min-height: 0; }
+      .line { grid-template-columns: 22px minmax(0, 1fr); gap: 8px; height: ${algebra ? '8mm' : '8.8mm'}; min-height: 0; }
       .number { padding-top: 0.6mm; }
       .note { font-size: 12px; line-height: 3.8mm; padding: 0.6mm 0; }
       .study .topic:last-child article:last-child { break-after: auto; }
@@ -219,7 +221,7 @@ export function renderSite(data, lang, algebra) {
     <div class="notes-intro">
     <p class="eyebrow">${algebra ? 'Algebra 2 / Unit 1B' : lang ? 'AP English Language / Unit 1' : 'AP World History / Units 1 &amp; 2'}</p>
     <h1>${title}</h1>
-    ${algebra ? `<p>Module 1B · Relations and Functions · 8 lessons · 16 pages · 24 lines per page</p>
+    ${algebra ? `<p>Module 1B · Relations and Functions · 8 lessons · 16 pages · 30 lines per page</p>
     <p>Packet-guided rules, worked examples, and checks. Unreadable source graphs are not reconstructed; added examples are labeled.</p>
     <p>Notation: R means real numbers; inf means infinity; ^ denotes a power; floor(x) is the greatest integer at most x. Math symbols remain pencil.</p>
     <ol class="contents">${algebra.map(lesson => `<li><a href="#topic-${escapeHTML(lesson.file.replaceAll('.', '-'))}">${escapeHTML(lesson.label)} ${escapeHTML(lesson.title)}</a></li>`).join('')}</ol>` : lang ? `<p>Unit 1 · Building commentary connections · ${lang.sections.length} color-coded sections · 4 pages · 24 lines per page</p>
@@ -235,10 +237,10 @@ export function renderSite(data, lang, algebra) {
   </header>
   <main id="notes" tabindex="-1"${study.length ? ' class="study"' : ''}>${study.length ? study.map(topic => `<section class="topic" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}" aria-labelledby="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">
     <h2 class="topic-title" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">${algebra ? `${escapeHTML(topic.label)} ` : ''}${escapeHTML(topic.title)}</h2>
-    ${algebra ? `<p class="downloads"><a href="data:text/plain;charset=utf-8;base64,${Buffer.from(topic.source).toString('base64')}" download="${escapeHTML(topic.file)}.txt">Download ${escapeHTML(topic.label)} original</a> · <a href="data:text/plain;charset=utf-8;base64,${Buffer.from(topic.colored).toString('base64')}" download="${escapeHTML(topic.file)}-colored.txt">Download ${escapeHTML(topic.label)} colored</a> · <a href="notes/algebra-2/${escapeHTML(topic.file)}.txt">Open original file</a> · <a href="notes/algebra-2/Colored/${escapeHTML(topic.file)}.txt">Open colored file</a></p>` : ''}<div class="pages">${Array.from({ length: lines(topic.colored).length / 24 }, (_, page) => `<article aria-label="${escapeHTML(topic.label)} page ${page + 1}">
+    ${algebra ? `<p class="downloads"><a href="data:text/plain;charset=utf-8;base64,${Buffer.from(topic.source).toString('base64')}" download="${escapeHTML(topic.file)}.txt">Download ${escapeHTML(topic.label)} original</a> · <a href="data:text/plain;charset=utf-8;base64,${Buffer.from(topic.colored).toString('base64')}" download="${escapeHTML(topic.file)}-colored.txt">Download ${escapeHTML(topic.label)} colored</a> · <a href="notes/algebra-2/${escapeHTML(topic.file)}.txt">Open original file</a> · <a href="notes/algebra-2/Colored/${escapeHTML(topic.file)}.txt">Open colored file</a></p>` : ''}<div class="pages">${Array.from({ length: lines(topic.colored).length / pageSize }, (_, page) => `<article aria-label="${escapeHTML(topic.label)} page ${page + 1}">
     <h3 class="page-title">${algebra ? `${escapeHTML(topic.label)} ` : ''}${escapeHTML(topic.title)}</h3>
-    <p class="caption">Page ${page + 1}${algebra ? '' : ` · ${page < 2 ? 'Building commentary' : 'Deepening analysis'}`} · Lines ${page * 24 + 1}–${page * 24 + 24}</p>
-    <div class="sheet">${lines(topic.colored).slice(page * 24, page * 24 + 24).map((line, index) => `<div class="line"><span class="number" aria-hidden="true">${page * 24 + index + 1}</span><span class="note">${renderLine(line)}</span></div>`).join('\n')}</div>
+    <p class="caption">Page ${page + 1}${algebra ? '' : ` · ${page < 2 ? 'Building commentary' : 'Deepening analysis'}`} · Lines ${page * pageSize + 1}–${page * pageSize + pageSize}</p>
+    <div class="sheet">${lines(topic.colored).slice(page * pageSize, page * pageSize + pageSize).map((line, index) => `<div class="line"><span class="number" aria-hidden="true">${page * pageSize + index + 1}</span><span class="note">${renderLine(line)}</span></div>`).join('\n')}</div>
   </article>`).join('\n')}</div></section>`).join('\n') : data.map((unit, index) => `
     <section class="unit" id="unit-${index + 1}" aria-labelledby="unit-${index + 1}-title">
       <h2 class="unit-title" id="unit-${index + 1}-title">Unit ${index + 1}: ${escapeHTML(unit.name)}</h2>

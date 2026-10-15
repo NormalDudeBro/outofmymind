@@ -6,6 +6,8 @@ o Linear Tables
 -> y values: 4, 3, 2, 1, 0, respectively.
 -> Plot the ordered pairs; connect with a straight line.
 -> Check: 6x + 2y = 10 gives y = -3x + 5.
+-> Pick x values that make the division easy, like 0 and 6.
+-> Equal x steps of 3 give equal y steps of -1: slope -1/3.
 o Intercepts and Slope
 -> For 3x - 2y = -12, set y = 0 to find x.
 -> 3x = -12 gives the x-intercept (-4, 0).
@@ -14,6 +16,8 @@ o Intercepts and Slope
 -> In y = (3/2)x - 4, slope is 3/2.
 -> Start at (0, -4); move right 2 and up 3.
 -> Slope means change in y divided by change in x.
+-> The intercepts are (-4, 0) and (0, 6); no other crossings.
+-> Slope from the intercepts is (6 - 0)/(0 - (-4)) = 3/2.
 o Inequality Boundaries
 -> Replace the inequality sign with = for the boundary.
 -> Use a solid line for <= or >=; equality is included.
@@ -22,6 +26,8 @@ o Inequality Boundaries
 -> For y > mx + b, shade above the boundary.
 -> Dividing by a negative reverses the inequality sign.
 -> The same reversal applies when multiplying by a negative.
+-> For x < c, the vertical boundary is x = c; shade left.
+-> For x > c, use a dashed vertical line and shade right.
 o Rearrange and Test
 -> 12 - 4y > x gives -4y > x - 12.
 -> Divide by -4: y < -x/4 + 3; dashed, shade below.
@@ -30,6 +36,8 @@ o Rearrange and Test
 -> At (3, 5), 9 + 3(5) = 24 and 8(3) = 24.
 -> Equality holds, so (3, 5) is included on the boundary.
 -> Test a point off the line to confirm the shaded side.
+-> Test (0, 0): 9 <= 0 is false, so the shade is below.
+-> The boundary y = -x/4 + 3 passes (0, 3), (4, 2), (8, 1).
 o Weighted Grade Constraints
 -> Let x = test grade and y = homework grade.
 -> With 0 <= x, y <= 100, target: 0.7x + 0.3y >= 90.
@@ -38,6 +46,8 @@ o Weighted Grade Constraints
 -> If y = 100, then x >= 600/7, about 85.71.
 -> If x = 100, then y >= 200/3, about 66.67.
 -> Shade above the solid line within the grade square.
+-> y = 300 - (7/3)x has intercept (0, 300), above the square.
+-> On the boundary, raising x by 3 lowers required y by 7.
 o Regions and Functions
 -> A system's solution satisfies every inequality.
 -> Keep only the overlap of all allowed regions.
@@ -46,3 +56,5 @@ o Regions and Functions
 -> A function assigns exactly one output to each input.
 -> An inequality region generally allows many y values per x.
 -> Do not treat a shaded region as a function graph.
+-> At x = 100, both y = 80 and y = 100 satisfy the target.
+-> At x = 600/7 (about 85.7), y = 100 is the cutoff.

@@ -6,6 +6,8 @@
 (pen)-> k > 0 moves (pu)up(pen); k < 0 moves (pu)down(pen).
 (pen)-> Inside signs look opposite; outside signs act the same.
 (pen)-> A parent point (u,v) becomes (u+h,v+k).
+(pen)-> Translations (g)preserve(pen) the size of the domain and range.
+(pen)-> Every point shifts the same way; the graph never flips.
 (pen)o (li)Reading Shifts(pen)
 (pen)-> g(x) = (x+2)^2 - 4 uses parent f(x) = x^2.
 (pen)-> x+2 = x-(-2), so h = -2 and k = -4.
@@ -14,6 +16,8 @@
 (pen)-> g(x) = |x-7| + 1 shifts right 7 and up 1.
 (pen)-> Its vertex is (7,1); (1,1) becomes (8,2).
 (pen)-> Check: g(8) = |8-7| + 1 = 2.
+(pen)-> For g(x) = |x-7| + 1, the (li)range(pen) is [1,inf).
+(pen)-> The parent range [0,inf) shifts to [-4,inf).
 (pen)o (pu)Writing Equations(pen)
 (pen)-> Begin with the parent, then insert the requested shifts.
 (pen)-> Quadratic right 10 and up 4: h = 10, k = 4.
@@ -22,6 +26,8 @@
 (pen)-> Parent (2,4) moves to (12,8).
 (pen)-> Check: g(12) = (12-10)^2 + 4 = 8.
 (pen)-> Shifts preserve the parabola's width and opening.
+(pen)-> Left 10 and up 4 gives h = -10 and k = 4.
+(pen)-> A pure shift keeps the parent (pu)coefficient(pen) equal to 1.
 (pen)o (br)Quadratic Worked Points(pen)
 (pen)-> For g(x) = (x+5)^2 - 3, h = -5 and k = -3.
 (pen)-> Translate the parent (li)left(pen) 5 and (pu)down(pen) 3.
@@ -30,6 +36,8 @@
 (pen)-> (2,4) becomes (-3,1).
 (pen)-> Check: g(-3) = 2^2 - 3 = 1.
 (pen)-> Domain: R. Range: [-3,inf); axis: x = -5.
+(pen)-> (br)Symmetry(pen) pairs: (-6,-2) and (-4,-2) share output -2.
+(pen)-> The x-intercept: (x+5)^2 = 3, so x = -5 +/- sqrt(3).
 (pen)o (r)Absolute Value Worked Points(pen)
 (pen)-> For g(x) = |x+8| - 5, h = -8 and k = -5.
 (pen)-> Translate left 8 and down 5; (r)vertex(pen): (-8,-5).
@@ -38,6 +46,8 @@
 (pen)-> Domain: R. Range: [-5,inf).
 (pen)-> The axis of symmetry is x = -8.
 (pen)-> Check: g(-7) = |-7+8| - 5 = -4.
+(pen)-> Each pair (r)equidistant(pen) from x = -8 gives one output.
+(pen)-> x-intercepts: |x+8| = 5 gives x = -3 and x = -13.
 (pen)o (db)Factoring and Checks(pen)
 (pen)-> Read h from a (db)fully factored(pen) inside expression.
 (pen)-> With a scale, use b(x-h), not the raw constant.
@@ -46,3 +56,5 @@
 (pen)-> For pure translations, the inside coefficient is 1.
 (pen)-> Shift (li)domain(pen) horizontally and (pu)range(pen) vertically.
 (pen)-> Verify a vertex and a second point by substitution.
+(pen)-> (db)Factored(pen) check: x^2 - 6x + 9 = (x-3)^2, so h = 3, k = 0.
+(pen)-> Complete the square: x^2 - 6x + 11 = (x-3)^2 + 2.

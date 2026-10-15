@@ -6,6 +6,8 @@
 (pen)-> y values: 4, 3, 2, 1, 0, respectively.
 (pen)-> Plot the ordered pairs; connect with a straight line.
 (pen)-> (g)Check(pen): 6x + 2y = 10 gives y = -3x + 5.
+(pen)-> Pick x values that make the (g)division(pen) easy, like 0 and 6.
+(pen)-> Equal x steps of 3 give equal y steps of -1: (g)slope(pen) -1/3.
 (pen)o (pu)Intercepts and Slope(pen)
 (pen)-> For 3x - 2y = -12, set y = 0 to find x.
 (pen)-> 3x = -12 gives the x-intercept (-4, 0).
@@ -14,6 +16,8 @@
 (pen)-> In y = (3/2)x - 4, (pu)slope(pen) is 3/2.
 (pen)-> Start at (0, -4); move right 2 and up 3.
 (pen)-> Slope means change in y divided by change in x.
+(pen)-> The (pu)intercepts(pen) are (-4, 0) and (0, 6); no other crossings.
+(pen)-> (pu)Slope(pen) from the intercepts is (6 - 0)/(0 - (-4)) = 3/2.
 (pen)o (br)Inequality Boundaries(pen)
 (pen)-> Replace the inequality sign with = for the boundary.
 (pen)-> Use a (br)solid(pen) line for <= or >=; equality is included.
@@ -22,6 +26,8 @@
 (pen)-> For y > mx + b, shade above the boundary.
 (pen)-> Dividing by a negative reverses the inequality sign.
 (pen)-> The same reversal applies when multiplying by a negative.
+(pen)-> For x < c, the (br)vertical boundary(pen) is x = c; shade left.
+(pen)-> For x > c, use a (br)dashed(pen) vertical line and shade right.
 (pen)o (r)Rearrange and Test(pen)
 (pen)-> 12 - 4y > x gives -4y > x - 12.
 (pen)-> Divide by -4: y < -x/4 + 3; dashed, shade below.
@@ -30,6 +36,8 @@
 (pen)-> At (3, 5), 9 + 3(5) = 24 and 8(3) = 24.
 (pen)-> (r)Equality(pen) holds, so (3, 5) is included on the boundary.
 (pen)-> (r)Test(pen) a point off the line to confirm the shaded side.
+(pen)-> (r)Test(pen) (0, 0): 9 <= 0 is false, so the shade is below.
+(pen)-> The (r)boundary(pen) y = -x/4 + 3 passes (0, 3), (4, 2), (8, 1).
 (pen)o (db)Weighted Grade Constraints(pen)
 (pen)-> Let x = test grade and y = homework grade.
 (pen)-> With 0 <= x, y <= 100, (db)target(pen): 0.7x + 0.3y >= 90.
@@ -38,6 +46,8 @@
 (pen)-> If y = 100, then x >= 600/7, about 85.71.
 (pen)-> If x = 100, then y >= 200/3, about 66.67.
 (pen)-> Shade above the solid line within the (db)grade square(pen).
+(pen)-> y = 300 - (7/3)x has (db)intercept(pen) (0, 300), above the square.
+(pen)-> On the (db)boundary(pen), raising x by 3 lowers required y by 7.
 (pen)o (hp)Regions and Functions(pen)
 (pen)-> A system's solution satisfies every inequality.
 (pen)-> Keep only the (hp)overlap(pen) of all allowed regions.
@@ -46,3 +56,5 @@
 (pen)-> A (hp)function(pen) assigns exactly one output to each input.
 (pen)-> An inequality region generally allows many y values per x.
 (pen)-> Do not treat a shaded region as a function graph.
+(pen)-> At x = 100, both y = 80 and y = 100 satisfy the (hp)target(pen).
+(pen)-> At x = 600/7 (about 85.7), y = 100 is the (hp)cutoff(pen).

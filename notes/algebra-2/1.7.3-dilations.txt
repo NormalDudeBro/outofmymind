@@ -6,6 +6,8 @@ o Vertical Dilations
 -> a < 0 also reflects across the x-axis.
 -> A parent point (u,v) becomes (u,a*v).
 -> x stays fixed; a negative a reverses output signs.
+-> Zeros persist: f(c) = 0 gives g(c) = a*f(c) = 0.
+-> The y-intercept is not fixed: it becomes a*f(0) at x = 0.
 o Horizontal Dilations
 -> In g(x) = f(b*x), use b != 0.
 -> The horizontal factor is 1/|b|, not |b|.
@@ -14,6 +16,8 @@ o Horizontal Dilations
 -> b < 0 also reflects across the y-axis.
 -> A parent point (u,v) becomes (u/b,v).
 -> Solve b*x = u to locate the new input x = u/b.
+-> Outputs never move; only the input coordinate is rescaled.
+-> With b = 1/2, stretch by 2; with b = 2, compress by 1/2.
 o Linear Worked Examples
 -> Use identity f(x) = x as the parent.
 -> g(x) = -(2/5)*x has a = -2/5.
@@ -22,6 +26,8 @@ o Linear Worked Examples
 -> g(x) = -3*x has a = -3.
 -> Stretch vertically by 3 and reflect across x-axis.
 -> (1,1) becomes (1,-3); both graphs pass through (0,0).
+-> The slope of the image line equals a times the parent slope.
+-> A negative a makes increasing lines appear to decrease.
 o Even Parent Examples
 -> g(x) = (-2.5*x)^2 uses f(x) = x^2, b = -2.5.
 -> Compress horizontally by 2/5 and reflect across y-axis.
@@ -30,6 +36,8 @@ o Even Parent Examples
 -> g(x) = (2/3)*|-x| reflects across y-axis.
 -> It also compresses vertically by 2/3.
 -> Since |-x| = |x|, this reflection is also invisible.
+-> The same trick works for |x| and every other even parent.
+-> Even symmetry gives f(-b*x) = f(b*x), not f(b*x) = f(x).
 o Combining Two Dilations
 -> In g(x) = a*f(b*x), use nonzero a and b.
 -> Map (u,v) to (u/b,a*v); divide input, scale output.
@@ -38,6 +46,8 @@ o Combining Two Dilations
 -> g(x) = -8*(2*x)^2 = -32*x^2.
 -> For g(x) = -4*|2*x|, (-2,2) becomes (-1,-8).
 -> The other parent point (2,2) becomes (1,-8).
+-> For a power parent, the coefficient becomes a*b^k.
+-> The sign of b is free for even parents: -2 works like 2.
 o Equivalent Descriptions
 -> g(x) = (-3*x)^2 = 9*x^2.
 -> Inside form: compress horizontally 1/3; reflect y-axis.
@@ -46,3 +56,5 @@ o Equivalent Descriptions
 -> Even parents satisfy f(-x) = f(x).
 -> Their y-axis reflections can be invisible.
 -> Parameter representations need not be unique.
+-> Simplify first: (-3*x)^2 = 9*x^2 keeps a positive a.
+-> Verify by testing one x: both forms give 36 at x = 2.

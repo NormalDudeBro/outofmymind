@@ -2,6 +2,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { spine as analysisSpine } from './literature.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const subjects = [
@@ -148,6 +149,8 @@ test('restored analysis retains historical sections, citation return navigation 
   await page.goto('/');
   await page.locator('main a[href="out-of-my-mind.html"]').click();
   await expect(page.getByRole('heading', { name: 'Out of My Mind', level: 1, exact: true })).toBeVisible();
+  await expect(page.locator('#main-nav a')).toHaveCount(12);
+  expect(await page.locator('#main-nav a').evaluateAll(links => links.map(link => link.getAttribute('href')))).toEqual(analysisSpine.map(id => `#${id}`));
   for (const [id, heading] of [
     ['author', 'Author Information'], ['context', 'Contextual Information'], ['characters', 'Characters'],
     ['setting', 'Setting'], ['tone', 'Tone'], ['pov', 'Point of View'], ['plot', 'Plot'], ['citations', 'Works Cited']
@@ -159,12 +162,26 @@ test('restored analysis retains historical sections, citation return navigation 
     if (id === 'characters') await expect(page.locator('#characters').getByRole('heading', { name: /\bMelody Brooks$/, level: 3 })).toBeVisible();
     if (id === 'plot') await expect(page.locator('#plot').getByRole('heading', { name: /\bResolution$/, level: 3 })).toBeVisible();
   }
+  // The three pamphlet fields added to reach twelve sections are checked structurally:
+  // the fragment resolves, the section is revealed, and it carries a heading with content.
+  for (const id of ['vocab', 'theme', 'questions']) {
+    await page.locator(`#main-nav a[href="#${id}"]`).click();
+    await expect(page).toHaveURL(new RegExp(`#${id}$`));
+    await expect(page.locator(`#${id}`)).toBeVisible();
+    await expect(page.locator(`#${id} h2`).first()).toBeVisible();
+    await expect(page.locator(`#${id}`)).not.toBeEmpty();
+  }
+  // A citation returns to the exact in-text reference it was followed from, found rather
+  // than hard-coded so renumbering the Works Cited entries does not break the round trip.
   await page.locator('#main-nav a[href="#pov"]').click();
-  await page.locator('#ref-3-2').click();
-  await expect(page).toHaveURL(/#cite-3$/);
-  await expect(page.locator('#cite-3')).toBeVisible();
-  await page.locator('#cite-3 .cite-badge').click();
-  await expect(page).toHaveURL(/#ref-3-2$/);
+  const reference = page.locator('#pov .cite-ref').first();
+  const citation = await reference.getAttribute('href');
+  const target = await reference.evaluate(element => `#${element.id}`);
+  await reference.click();
+  await expect(page).toHaveURL(new RegExp(`${citation}$`));
+  await expect(page.locator(citation)).toBeVisible();
+  await page.locator(`${citation} .cite-badge`).click();
+  await expect(page).toHaveURL(new RegExp(`${target}$`));
   await expect(page.getByRole('heading', { name: 'Point of View', level: 2, exact: true })).toBeVisible();
   for (const [name, className] of [
     ['Toggle high contrast mode', 'high-contrast'], ['Toggle readable font', 'dyslexia-friendly'], ['Toggle reduced motion', 'reduce-motion']
