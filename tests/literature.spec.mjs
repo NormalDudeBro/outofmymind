@@ -12,6 +12,7 @@ for (const analysisPage of analysisPages) {
     for (const width of [375, 1280]) {
       await page.setViewportSize({ width, height: 812 });
       await page.goto(`/${analysisPage}`);
+      await expect(page.locator('.a11y-btn').first()).toHaveCSS('border-top-style', 'none');
       await expect(page.locator('#main-nav a')).toHaveCount(spine.length);
       expect(await page.locator('#main-nav a').evaluateAll(links => links.map(link => link.getAttribute('href')))).toEqual(spine.map(id => `#${id}`));
 
@@ -109,6 +110,7 @@ test(`${analysisPage} renders vocabulary, theme, questions and the handout citat
         expect(labels.some(label => new RegExp(`\\b${quality}\\b`, 'i').test(label)), `${await entry.locator('h3').first().innerText()}: ${quality} quality`).toBe(true);
       }
       const scene = entry.locator('.key-scene');
+      await expect(entry.locator('.quality-card').first()).toHaveCSS('border-top-style', 'none');
       await expect(scene, 'a specific key-scene description and locator').toBeVisible();
       expect(await scene.innerText()).toMatch(/key scene/i);
       expect(await scene.innerText()).toMatch(/\b(?:chapter|scene|search|locator|p\.)\b/i);
@@ -116,8 +118,10 @@ test(`${analysisPage} renders vocabulary, theme, questions and the handout citat
   });
 
   test(`${analysisPage} preserves reading controls and prints every section`, async ({ page }) => {
-    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(`/${analysisPage}#characters`);
+    await expect(page.locator('html')).toHaveCSS('scroll-behavior', 'auto');
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
     for (const [name, className] of [
       ['Toggle high contrast mode', 'high-contrast'],
       ['Toggle readable font', 'dyslexia-friendly'],
