@@ -27,7 +27,6 @@
 (pen)-> The last branch includes (2, 3); the final point is (br)closed(pen).
 (pen)-> Thus f(0) = 3 and f(2) = 3, each with one output.
 (pen)-> f is (br)increasing(pen), flat, then decreasing across its domain.
-(pen)-> The (br)three rules(pen) give three pieces, not one line.
 (pen)o (db)Jersey Total Cost(pen)
 (pen)-> Let n be the number of jerseys; C(n) is (db)total cost(pen).
 (pen)-> The domain is (db)positive integers(pen), not all real numbers.
@@ -56,5 +55,4 @@
 (pen)-> Total cost rises within tiers; it is (hp)not a step function(pen).
 (pen)-> Plot separate integer points; do not fill gaps in the domain.
 (pen)-> Tier prices jump; the integer-domain total has tier changes.
-(pen)-> A (hp)progressive tier(pen) would multiply each band by its own rate.
 (pen)-> (hp)Compare(pen) the two models at n = 12 before choosing one.

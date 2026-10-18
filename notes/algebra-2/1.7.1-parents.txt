@@ -27,7 +27,6 @@ o Identity Parent
 -> Example: f(-2) = -2 and f(2) = 2.
 -> Both intercepts are (0,0); the function increases.
 -> Average rate of change is 1 on every interval.
--> It is the only line whose points all have y = x.
 o Absolute Value Parent
 -> f(x) = |x| measures distance from zero.
 -> Domain: R. Range: [0,inf).
@@ -57,4 +56,3 @@ o Choosing Models
 -> Absolute value: |s-c| is distance from reference c.
 -> s is signed position, not total distance traveled.
 -> Wages at $12 per hour: W(30) = 12*30 = 360 dollars.
--> H(t) peaks at t = 2 with H(2) = 4, matching range [0,4].

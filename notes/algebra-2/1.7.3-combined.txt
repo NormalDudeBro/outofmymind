@@ -27,7 +27,6 @@ o Absolute Value Combined
 -> Domain: R. Range: (-inf,1].
 -> With b = 1 only, the mapping is (u+h,a*v+k).
 -> Its ray slopes are 2/3 on the left and -2/3 on the right.
--> Ray check: g(-6) = -(2/3)*3 + 1 = -1, as listed.
 o Quadratic Combined
 -> Start with f(x) = x^2.
 -> Open down, stretch vertically 4, right 2, down 5.
@@ -57,4 +56,3 @@ o Reflection and Point Check
 -> Absolute value hides the y-axis reflection.
 -> Check each mapped point by substituting into g(x).
 -> Verify the far ray: g(9) = -2*4 + 4 = -4.
--> b = -1 sends every input u to -u before shifting right 5.

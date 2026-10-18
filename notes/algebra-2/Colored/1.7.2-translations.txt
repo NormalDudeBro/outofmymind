@@ -27,7 +27,6 @@
 (pen)-> Check: g(12) = (12-10)^2 + 4 = 8.
 (pen)-> Shifts preserve the parabola's width and opening.
 (pen)-> Left 10 and up 4 gives h = -10 and k = 4.
-(pen)-> A pure shift keeps the parent (pu)coefficient(pen) equal to 1.
 (pen)o (br)Quadratic Worked Points(pen)
 (pen)-> For g(x) = (x+5)^2 - 3, h = -5 and k = -3.
 (pen)-> Translate the parent (li)left(pen) 5 and (pu)down(pen) 3.
@@ -57,4 +56,3 @@
 (pen)-> Shift (li)domain(pen) horizontally and (pu)range(pen) vertically.
 (pen)-> Verify a vertex and a second point by substitution.
 (pen)-> (db)Factored(pen) check: x^2 - 6x + 9 = (x-3)^2, so h = 3, k = 0.
-(pen)-> Complete the square: x^2 - 6x + 11 = (x-3)^2 + 2.

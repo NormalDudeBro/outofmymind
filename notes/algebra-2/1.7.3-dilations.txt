@@ -27,7 +27,6 @@ o Linear Worked Examples
 -> Stretch vertically by 3 and reflect across x-axis.
 -> (1,1) becomes (1,-3); both graphs pass through (0,0).
 -> The slope of the image line equals a times the parent slope.
--> A negative a makes increasing lines appear to decrease.
 o Even Parent Examples
 -> g(x) = (-2.5*x)^2 uses f(x) = x^2, b = -2.5.
 -> Compress horizontally by 2/5 and reflect across y-axis.
@@ -57,4 +56,3 @@ o Equivalent Descriptions
 -> Their y-axis reflections can be invisible.
 -> Parameter representations need not be unique.
 -> Simplify first: (-3*x)^2 = 9*x^2 keeps a positive a.
--> Verify by testing one x: both forms give 36 at x = 2.

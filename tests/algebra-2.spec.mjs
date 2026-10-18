@@ -10,7 +10,7 @@ const files = ['1.5-linear', '1.6.1-piecewise', '1.6.2-step', '1.6.3-absolute-va
 const labels = ['1.5', '1.6.1', '1.6.2', '1.6.3', '1.7.1', '1.7.2', '1.7.3', '1.7.3'];
 const lines = text => text.replace(/\r\n/g, '\n').replace(/\n$/, '').split('\n');
 
-test('Algebra sources and all 480 HTML renderings use the shared marker renderer', () => {
+test('Algebra sources and all 464 HTML renderings use the shared marker renderer', () => {
   const notes = loadAlgebraNotes();
   expect(notes.map(note => note.file)).toEqual(files);
   expect(notes.map(note => note.label)).toEqual(labels);
@@ -23,10 +23,10 @@ test('Algebra sources and all 480 HTML renderings use the shared marker renderer
     expect(note.title.trim()).not.toBe('');
     expect(Buffer.from(note.source)).toEqual(readFileSync(resolve(root, 'notes/algebra-2', `${note.file}.txt`)));
     expect(Buffer.from(note.colored)).toEqual(readFileSync(resolve(root, 'notes/algebra-2/Colored', `${note.file}.txt`)));
-    expect(lines(note.source)).toHaveLength(60);
-    expect(lines(note.colored)).toHaveLength(60);
+    expect(lines(note.source)).toHaveLength(58);
+    expect(lines(note.colored)).toHaveLength(58);
     expect(note.sections).toHaveLength(6);
-    expect(note.sections.map(section => section.lines.length)).toEqual(Array(6).fill(10));
+    expect(note.sections.map(section => section.lines.length)).toEqual([10, 10, 9, 10, 10, 9]);
     expect(note.sections.flatMap(section => section.lines)).toEqual(lines(note.source));
     expect(note.colored.replace(/\((g|li|pu|br|y|r|db|p|lb|hp|pen)\)/g, '')).toBe(note.source);
     for (const [index, line] of lines(note.colored).entries()) {
@@ -50,7 +50,7 @@ test('Algebra sources and all 480 HTML renderings use the shared marker renderer
 });
 
 for (const width of [375, 1280]) {
-  test(`Algebra ordered 30-line pages, shared palette and native contents at ${width}px in LTR/RTL`, async ({ page }) => {
+  test(`Algebra ordered 29-line pages, shared palette and native contents at ${width}px in LTR/RTL`, async ({ page }) => {
     await page.setViewportSize({ width, height: 812 });
     const presentations = [];
     for (const url of ['/ap-world.html', '/ap-lang.html', '/algebra-2.html']) {
@@ -83,19 +83,19 @@ for (const width of [375, 1280]) {
     const notes = loadAlgebraNotes();
     await expect(page.locator('section.topic')).toHaveCount(8);
     await expect(page.locator('article')).toHaveCount(16);
-    await expect(page.locator('.note')).toHaveCount(480);
+    await expect(page.locator('.note')).toHaveCount(464);
     expect(await page.locator('.note').allTextContents()).toEqual(notes.flatMap(note => lines(note.source)));
     expect(await page.locator('.contents a').allTextContents()).toEqual(notes.map(note => `${note.label} ${note.title}`));
     expect(await page.locator('.contents a').evaluateAll(links => links.map(link => link.getAttribute('href')))).toEqual(files.map(file => `#topic-${file.replaceAll('.', '-')}`));
-    expect(await page.locator('.note').evaluateAll(elements => elements.map(element => ({ color: getComputedStyle(element).color, weight: getComputedStyle(element).fontWeight })))).toEqual(Array(480).fill(presentations[0].pencil));
+    expect(await page.locator('.note').evaluateAll(elements => elements.map(element => ({ color: getComputedStyle(element).color, weight: getComputedStyle(element).fontWeight })))).toEqual(Array(464).fill(presentations[0].pencil));
     const colors = Object.fromEntries(Object.entries(palette).map(([token, hex]) => [token, `rgb(${hex.slice(1).match(/../g).map(value => parseInt(value, 16)).join(', ')})`]));
     expect(await page.locator('.ink').evaluateAll(elements => elements.map(element => ({ text: element.textContent, className: element.className, color: getComputedStyle(element).color, weight: getComputedStyle(element).fontWeight })))).toEqual(notes.flatMap(note => lines(note.colored).flatMap(line => spans(line).filter(part => part.color !== 'pen').map(part => ({ text: part.text, className: `ink ${part.color}`, color: colors[part.color], weight: presentations[0].pencil.weight })))));
     for (const [index, note] of notes.entries()) {
       const group = page.locator('section.topic').nth(index);
       await expect(group).toHaveAttribute('id', `topic-${note.file.replaceAll('.', '-')}`);
       await expect(group.locator('article')).toHaveCount(2);
-      await expect(group.locator('.line')).toHaveCount(60);
-      await expect(group.locator('.note')).toHaveCount(60);
+      await expect(group.locator('.line')).toHaveCount(58);
+      await expect(group.locator('.note')).toHaveCount(58);
       expect(await group.locator('.note').allTextContents()).toEqual(lines(note.source));
       await expect(group.locator('.topic-title')).toHaveText(`${note.label} ${note.title}`);
       await expect(group.locator('.topic-title')).toBeVisible();
@@ -103,11 +103,11 @@ for (const width of [375, 1280]) {
       await expect(group.locator('.page-title')).toHaveText(Array(2).fill(`${note.label} ${note.title}`));
       for (const part of [0, 1]) {
         const article = group.locator('article').nth(part);
-        await expect(article.locator('.line')).toHaveCount(30);
-        await expect(article.locator('.note')).toHaveCount(30);
-        expect(await article.locator('.note').allTextContents()).toEqual(lines(note.source).slice(part * 30, part * 30 + 30));
-        await expect(article.locator('.caption')).toHaveText(`Page ${part + 1} · Lines ${part * 30 + 1}–${part * 30 + 30}`);
-        expect(await article.locator('.number').allTextContents()).toEqual(Array.from({ length: 30 }, (_, index) => String(part * 30 + index + 1)));
+        await expect(article.locator('.line')).toHaveCount(29);
+        await expect(article.locator('.note')).toHaveCount(29);
+        expect(await article.locator('.note').allTextContents()).toEqual(lines(note.source).slice(part * 29, part * 29 + 29));
+        await expect(article.locator('.caption')).toHaveText(`Page ${part + 1} · Lines ${part * 29 + 1}–${part * 29 + 29}`);
+        expect(await article.locator('.number').allTextContents()).toEqual(Array.from({ length: 29 }, (_, index) => String(part * 29 + index + 1)));
       }
     }
     for (const direction of ['ltr', 'rtl']) {
@@ -186,7 +186,7 @@ test('all Algebra embedded downloads and relative HTTP files contain exact sourc
   }
 });
 
-test('offline file with JavaScript disabled exposes sixteen 30-line Algebra pages and real downloads', async ({ browser }) => {
+test('offline file with JavaScript disabled exposes sixteen 29-line Algebra pages and real downloads', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   const url = pathToFileURL(resolve(root, 'algebra-2.html')).href;
@@ -199,16 +199,16 @@ test('offline file with JavaScript disabled exposes sixteen 30-line Algebra page
   await expect(page.getByRole('heading', { name: title, exact: true, level: 1 })).toBeVisible();
   const notes = loadAlgebraNotes();
   await expect(page.locator('article')).toHaveCount(16);
-  await expect(page.locator('.note')).toHaveCount(480);
+  await expect(page.locator('.note')).toHaveCount(464);
   expect(await page.locator('.note').allTextContents()).toEqual(notes.flatMap(note => lines(note.source)));
   for (const href of await page.locator('a[href]').evaluateAll(links => links.map(link => link.getAttribute('href')).filter(href => !href.startsWith('#') && !href.startsWith('data:')))) {
     expect(readFileSync(new URL(href, url)).length, `offline relative target ${href} exists and is nonempty`).toBeGreaterThan(0);
   }
   for (const [index, article] of (await page.locator('article').all()).entries()) {
     await expect(article).toBeVisible();
-    await expect(article.locator('.note')).toHaveCount(30);
-    expect(await article.locator('.note').allTextContents()).toEqual(lines(notes[Math.floor(index / 2)].source).slice((index % 2) * 30, (index % 2) * 30 + 30));
-    await expect(article.locator('.caption')).toHaveText(`Page ${(index % 2) + 1} · Lines ${(index % 2) * 30 + 1}–${(index % 2) * 30 + 30}`);
+    await expect(article.locator('.note')).toHaveCount(29);
+    expect(await article.locator('.note').allTextContents()).toEqual(lines(notes[Math.floor(index / 2)].source).slice((index % 2) * 29, (index % 2) * 29 + 29));
+    await expect(article.locator('.caption')).toHaveText(`Page ${(index % 2) + 1} · Lines ${(index % 2) * 29 + 1}–${(index % 2) * 29 + 29}`);
   }
   for (const [index, note] of notes.entries()) {
     const group = page.locator('section.topic').nth(index);
@@ -245,7 +245,7 @@ test('Algebra accessibility permits only existing ink/title contrast exceptions'
   }
 });
 
-test('Algebra prints sixteen physical A4 pages with visible titles and 30 lines each', async ({ page }) => {
+test('Algebra prints sixteen physical A4 pages with visible titles and 29 lines each', async ({ page }) => {
   await page.setViewportSize({ width: Math.floor((210 - 24) * 96 / 25.4), height: 1123 });
   await page.emulateMedia({ media: 'print' });
   await page.goto('/ap-world.html');
@@ -258,19 +258,19 @@ test('Algebra prints sixteen physical A4 pages with visible titles and 30 lines 
   await expect(page.locator('article')).toHaveCount(16);
   await expect(page.locator('.page-title')).toHaveCount(16);
   const rows = await page.locator('.note').evaluateAll(notes => notes.map(note => ({ fontSize: getComputedStyle(note).fontSize, lineHeight: getComputedStyle(note).lineHeight, rowHeight: note.closest('.line').getBoundingClientRect().height })));
-  // Algebra keeps World History note typography; only the row height may compress to seat 30 lines on A4.
-  expect(rows.map(row => ({ fontSize: row.fontSize, lineHeight: row.lineHeight }))).toEqual(Array(480).fill({ fontSize: world.fontSize, lineHeight: world.lineHeight }));
+  // Algebra keeps World History note typography; only the row height may compress to seat 29 lines on A4.
+  expect(rows.map(row => ({ fontSize: row.fontSize, lineHeight: row.lineHeight }))).toEqual(Array(464).fill({ fontSize: world.fontSize, lineHeight: world.lineHeight }));
   expect(new Set(rows.map(row => row.rowHeight)).size).toBe(1);
   expect(rows[0].rowHeight).toBeLessThan(world.rowHeight);
   for (const article of await page.locator('article').all()) {
     await expect(article.locator('.page-title')).toBeVisible();
     await expect(article.locator('.page-title')).toHaveCSS('color', 'rgb(89, 184, 231)');
-    await expect(article.locator('.line')).toHaveCount(30);
-    await expect(article.locator('.note')).toHaveCount(30);
+    await expect(article.locator('.line')).toHaveCount(29);
+    await expect(article.locator('.note')).toHaveCount(29);
   }
   expect(await page.locator('.note').evaluateAll(notes => notes.filter(note => note.getBoundingClientRect().height > note.closest('.line').getBoundingClientRect().height + 1).map(note => note.textContent)), 'printed notes fit line heights within 1px').toEqual([]);
   expect(await page.locator('.line').evaluateAll(lines => lines.filter(line => line.getBoundingClientRect().bottom > line.closest('.sheet').getBoundingClientRect().bottom + 1).map(line => line.textContent)), 'printed lines stay inside sheets within 1px').toEqual([]);
-  expect(await page.locator('article').evaluateAll(articles => articles.filter(article => article.getBoundingClientRect().height > (297 - 24) * 96 / 25.4 + 1).map(article => article.textContent)), 'each 30-line article fits the printable A4 height').toEqual([]);
+  expect(await page.locator('article').evaluateAll(articles => articles.filter(article => article.getBoundingClientRect().height > (297 - 24) * 96 / 25.4 + 1).map(article => article.textContent)), 'each 29-line article fits the printable A4 height').toEqual([]);
   const pdf = await page.pdf({ preferCSSPageSize: true, printBackground: true });
   expect((pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) ?? []).length).toBe(16);
 });

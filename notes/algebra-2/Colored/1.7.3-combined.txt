@@ -27,7 +27,6 @@
 (pen)-> Domain: R. Range: (-inf,1].
 (pen)-> With b = 1 only, the mapping is (u+h,a*v+k).
 (pen)-> Its ray slopes are 2/3 on the left and -2/3 on the right.
-(pen)-> (pu)Ray check(pen): g(-6) = -(2/3)*3 + 1 = -1, as listed.
 (pen)o (br)Quadratic Combined(pen)
 (pen)-> Start with f(x) = x^2.
 (pen)-> Open down, stretch vertically 4, right 2, down 5.
@@ -57,4 +56,3 @@
 (pen)-> Absolute value hides the y-axis (db)reflection(pen).
 (pen)-> Check each mapped point by substituting into g(x).
 (pen)-> Verify the (db)far ray(pen): g(9) = -2*4 + 4 = -4.
-(pen)-> b = -1 sends every input u to -u before shifting right 5.

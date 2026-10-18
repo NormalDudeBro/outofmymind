@@ -26,7 +26,6 @@ o Floor Intervals
 -> At x = -1, use the next step: floor(-1) = -1.
 -> The domain of floor(x) is all real numbers.
 -> The range of floor(x) is all integers.
--> Each interval has length 1, so steps repeat every 1 unit.
 -> floor(x) = -1 on -1 <= x < 0, not -1 < x < 0.
 o Transformed Floor Rule
 -> Let f(x) = floor(2x - 1); let k be an integer.
@@ -56,5 +55,4 @@ o Context and Endpoints
 -> Included branches with the same output still give one value.
 -> Two open endpoints at an input may leave it out of the domain.
 -> Check boundary values before using a step model for a charge.
--> Fee brackets behave like steps; the clock sets the inputs.
 -> Two brackets meeting at one time must agree or the rule fails.

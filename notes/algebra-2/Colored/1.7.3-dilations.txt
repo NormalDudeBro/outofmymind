@@ -27,7 +27,6 @@
 (pen)-> (g)Stretch vertically(pen) by 3 and reflect across x-axis.
 (pen)-> (1,1) becomes (1,-3); both graphs pass through (0,0).
 (pen)-> The (pu)slope(pen) of the image line equals a times the parent slope.
-(pen)-> A negative a makes increasing lines appear to decrease.
 (pen)o (br)Even Parent Examples(pen)
 (pen)-> g(x) = (-2.5*x)^2 uses f(x) = x^2, b = -2.5.
 (pen)-> Compress horizontally by 2/5 and reflect across y-axis.
@@ -57,4 +56,3 @@
 (pen)-> Their y-axis reflections can be invisible.
 (pen)-> Parameter representations need not be unique.
 (pen)-> (db)Simplify first(pen): (-3*x)^2 = 9*x^2 keeps a positive a.
-(pen)-> Verify by testing one x: both forms give 36 at x = 2.

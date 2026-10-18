@@ -27,7 +27,6 @@
 (pen)-> Example: f(-2) = -2 and f(2) = 2.
 (pen)-> Both intercepts are (0,0); the function increases.
 (pen)-> (pu)Average(pen) rate of change is 1 on every interval.
-(pen)-> It is the only line whose points all have y = x.
 (pen)o (br)Absolute Value Parent(pen)
 (pen)-> f(x) = |x| measures (br)distance(pen) from zero.
 (pen)-> Domain: R. Range: [0,inf).
@@ -57,4 +56,3 @@
 (pen)-> (br)Absolute value(pen): |s-c| is distance from reference c.
 (pen)-> s is (db)signed position(pen), not total distance traveled.
 (pen)-> Wages at $12 per hour: W(30) = 12*30 = 360 dollars.
-(pen)-> H(t) (db)peaks(pen) at t = 2 with H(2) = 4, matching range [0,4].

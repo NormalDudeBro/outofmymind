@@ -24,8 +24,7 @@
 (pen)-> Use a (br)dashed(pen) line for < or >; equality is excluded.
 (pen)-> For y < mx + b, shade below the boundary.
 (pen)-> For y > mx + b, shade above the boundary.
-(pen)-> Dividing by a negative reverses the inequality sign.
-(pen)-> The same reversal applies when multiplying by a negative.
+(pen)-> Multiplying or dividing by a negative reverses the sign.
 (pen)-> For x < c, the (br)vertical boundary(pen) is x = c; shade left.
 (pen)-> For x > c, use a (br)dashed(pen) vertical line and shade right.
 (pen)o (r)Rearrange and Test(pen)
@@ -55,6 +54,5 @@
 (pen)-> Its corners are (600/7, 100), (100, 100), (100, 200/3).
 (pen)-> A (hp)function(pen) assigns exactly one output to each input.
 (pen)-> An inequality region generally allows many y values per x.
-(pen)-> Do not treat a shaded region as a function graph.
 (pen)-> At x = 100, both y = 80 and y = 100 satisfy the (hp)target(pen).
 (pen)-> At x = 600/7 (about 85.7), y = 100 is the (hp)cutoff(pen).

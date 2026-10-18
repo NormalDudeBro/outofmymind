@@ -27,7 +27,6 @@ o Writing Equations
 -> Check: g(12) = (12-10)^2 + 4 = 8.
 -> Shifts preserve the parabola's width and opening.
 -> Left 10 and up 4 gives h = -10 and k = 4.
--> A pure shift keeps the parent coefficient equal to 1.
 o Quadratic Worked Points
 -> For g(x) = (x+5)^2 - 3, h = -5 and k = -3.
 -> Translate the parent left 5 and down 3.
@@ -57,4 +56,3 @@ o Factoring and Checks
 -> Shift domain horizontally and range vertically.
 -> Verify a vertex and a second point by substitution.
 -> Factored check: x^2 - 6x + 9 = (x-3)^2, so h = 3, k = 0.
--> Complete the square: x^2 - 6x + 11 = (x-3)^2 + 2.

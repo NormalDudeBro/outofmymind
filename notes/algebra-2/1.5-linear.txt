@@ -24,8 +24,7 @@ o Inequality Boundaries
 -> Use a dashed line for < or >; equality is excluded.
 -> For y < mx + b, shade below the boundary.
 -> For y > mx + b, shade above the boundary.
--> Dividing by a negative reverses the inequality sign.
--> The same reversal applies when multiplying by a negative.
+-> Multiplying or dividing by a negative reverses the sign.
 -> For x < c, the vertical boundary is x = c; shade left.
 -> For x > c, use a dashed vertical line and shade right.
 o Rearrange and Test
@@ -55,6 +54,5 @@ o Regions and Functions
 -> Its corners are (600/7, 100), (100, 100), (100, 200/3).
 -> A function assigns exactly one output to each input.
 -> An inequality region generally allows many y values per x.
--> Do not treat a shaded region as a function graph.
 -> At x = 100, both y = 80 and y = 100 satisfy the target.
 -> At x = 600/7 (about 85.7), y = 100 is the cutoff.

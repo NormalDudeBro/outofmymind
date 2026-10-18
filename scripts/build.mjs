@@ -141,7 +141,7 @@ function loadMarkedNotes(folder, file) {
     sections.at(-1).lines.push(text);
     return sections;
   }, []);
-  const pageSize = folder === 'algebra-2' ? 30 : 24;
+  const pageSize = folder === 'algebra-2' ? 29 : 24;
   assert.ok(sections.flatMap(section => section.lines).length % pageSize === 0, `${file}: complete ${pageSize}-line pages`);
   return { source, colored, sections };
 }
@@ -149,13 +149,13 @@ function loadMarkedNotes(folder, file) {
 export function renderSite(data, lang, algebra) {
   const title = algebra ? 'Algebra 2 Unit 1B: Relations and Functions' : lang ? 'AP Lang Unit 1: Rhetorical Analysis' : 'AP World History Notes';
   const study = lang ? [{ ...lang, file: 'ap-lang', label: 'AP Lang', title }] : algebra ?? [];
-  const pageSize = algebra ? 30 : 24;
+  const pageSize = algebra ? 29 : 24;
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="${algebra ? 'Algebra 2 Unit 1B: eight lessons across sixteen color-coded 30-line pages on linear graphs, inequalities, piecewise and step functions, absolute value, parent functions, and transformations.' : lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1 and 2: fourteen topics, twenty-eight printable note pages, and original and colored text downloads.'}">
+  <meta name="description" content="${algebra ? 'Algebra 2 Unit 1B: eight lessons across sixteen color-coded 29-line pages on linear graphs, inequalities, piecewise and step functions, absolute value, parent functions, and transformations.' : lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1 and 2: fourteen topics, twenty-eight printable note pages, and original and colored text downloads.'}">
   <title>${title}</title>
   <link rel="stylesheet" href="styles/site.css">
   <style>
@@ -221,7 +221,7 @@ export function renderSite(data, lang, algebra) {
     <div class="notes-intro">
     <p class="eyebrow">${algebra ? 'Algebra 2 / Unit 1B' : lang ? 'AP English Language / Unit 1' : 'AP World History / Units 1 &amp; 2'}</p>
     <h1>${title}</h1>
-    ${algebra ? `<p>Module 1B · Relations and Functions · 8 lessons · 16 pages · 30 lines per page</p>
+    ${algebra ? `<p>Module 1B · Relations and Functions · 8 lessons · 16 pages · 29 lines per page</p>
     <p>Packet-guided rules, worked examples, and checks. Unreadable source graphs are not reconstructed; added examples are labeled.</p>
     <p>Notation: R means real numbers; inf means infinity; ^ denotes a power; floor(x) is the greatest integer at most x. Math symbols remain pencil.</p>
     <ol class="contents">${algebra.map(lesson => `<li><a href="#topic-${escapeHTML(lesson.file.replaceAll('.', '-'))}">${escapeHTML(lesson.label)} ${escapeHTML(lesson.title)}</a></li>`).join('')}</ol>` : lang ? `<p>Unit 1 · Building commentary connections · ${lang.sections.length} color-coded sections · 4 pages · 24 lines per page</p>

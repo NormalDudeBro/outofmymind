@@ -26,7 +26,6 @@
 (pen)-> At x = -1, use the next step: floor(-1) = -1.
 (pen)-> The (br)domain(pen) of floor(x) is all real numbers.
 (pen)-> The range of floor(x) is all integers.
-(pen)-> Each (br)interval(pen) has length 1, so steps repeat every 1 unit.
 (pen)-> floor(x) = -1 on -1 <= x < 0, not -1 < x < 0.
 (pen)o (db)Transformed Floor Rule(pen)
 (pen)-> Let f(x) = floor(2x - 1); let k be an integer.
@@ -56,5 +55,4 @@
 (pen)-> Included branches with the same output still give one value.
 (pen)-> Two open endpoints at an input may leave it out of the (hp)domain(pen).
 (pen)-> Check boundary values before using a step model for a charge.
-(pen)-> Fee brackets behave like (hp)steps(pen); the clock sets the inputs.
 (pen)-> Two brackets meeting at one time must (hp)agree(pen) or the rule fails.

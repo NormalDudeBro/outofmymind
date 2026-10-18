@@ -27,7 +27,6 @@ o Restricted Graphs
 -> The last branch includes (2, 3); the final point is closed.
 -> Thus f(0) = 3 and f(2) = 3, each with one output.
 -> f is increasing, flat, then decreasing across its domain.
--> The three rules give three pieces, not one line.
 o Jersey Total Cost
 -> Let n be the number of jerseys; C(n) is total cost.
 -> The domain is positive integers, not all real numbers.
@@ -56,5 +55,4 @@ o Rates and Model Checks
 -> Total cost rises within tiers; it is not a step function.
 -> Plot separate integer points; do not fill gaps in the domain.
 -> Tier prices jump; the integer-domain total has tier changes.
--> A progressive tier would multiply each band by its own rate.
 -> Compare the two models at n = 12 before choosing one.
