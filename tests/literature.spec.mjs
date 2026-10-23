@@ -145,7 +145,7 @@ test(`${analysisPage} renders vocabulary, theme, questions and the handout citat
 
 test('both analysis pages stay complete and navigable with JavaScript disabled', async ({ browser }) => {
   test.setTimeout(180_000);
-  const context = await browser.newContext({ javaScriptEnabled: false });
+  const context = await browser.newContext({ javaScriptEnabled: false, reducedMotion: 'reduce' });
   const page = await context.newPage();
   for (const analysisPage of analysisPages) {
     for (const url of [`http://127.0.0.1:4173/${analysisPage}`, offline(analysisPage)]) {
