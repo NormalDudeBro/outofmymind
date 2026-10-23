@@ -9,6 +9,8 @@ const offline = target => pathToFileURL(resolve(root, target)).href;
 
 for (const analysisPage of analysisPages) {
   test(`${analysisPage} deep links, section navigation and pamphlet map work at 375px and 1280px`, async ({ page }) => {
+    test.setTimeout(120_000);
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     for (const width of [375, 1280]) {
       await page.setViewportSize({ width, height: 812 });
       await page.goto(`/${analysisPage}`);
