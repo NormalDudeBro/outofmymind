@@ -50,7 +50,7 @@ for (const page of pages) {
     }
     assert.doesNotMatch(href, /^(?:[a-z][a-z\d+.-]*:|\/)/i, `${page}: relative local link`);
     const [path, fragment] = href.split('#');
-    const target = path ? resolve(root, decodeURIComponent(path)) : resolve(root, page);
+    const target = path ? resolve(root, decodeURIComponent(path).replace(/\/$/, '/index.html')) : resolve(root, page);
     assert.ok(target.startsWith(`${root}${sep}`), `${page}: link stays inside export`);
     assert.ok(statSync(target).isFile(), `${page}: ${href} exists`);
     if (fragment) {
