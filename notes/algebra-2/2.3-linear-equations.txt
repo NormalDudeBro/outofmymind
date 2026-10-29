@@ -1,0 +1,58 @@
+o Standard Form
+-> Standard form is Ax + By = C with A, B not both zero.
+-> Convention: A >= 0; A, B, C integers; gcd 1.
+-> gcd is greatest common factor; clear fractions when rational.
+-> Example: y = (2/5)x + 14 becomes 2x - 5y = -70.
+-> Subtract (2/5)x: -(2/5)x + y = 14.
+-> Multiply by -5: 2x - 5y = -70.
+-> Here A = 2, B = -5, and C = -70.
+-> Check: -2x + 2y = 2 is not standard; divide by 2.
+-> It reduces to -x + y = 1; multiply by -1: x - y = -1.
+o Slope Intercept
+-> Slope-intercept form is y = mx + b.
+-> m is the slope; b is the y-intercept, not standard B.
+-> Solve the equation for y before reading either value.
+-> Example: 12x - 4y = 24.
+-> Subtract 12x: -4y = -12x + 24.
+-> Divide by -4: y = 3x - 6, so m = 3 and b = -6.
+-> Check 4x = -2y + 22.
+-> Add 2y: 4x + 2y = 22, then 2y = -4x + 22.
+-> Thus y = -2x + 11; a positive 2 is wrong.
+o Point Slope
+-> Point-slope form is y - y1 = m(x - x1).
+-> m is the slope and (x1, y1) is one point on the line.
+-> Example: slope 7 through (2, -3).
+-> Substitute: y - (-3) = 7(x - 2).
+-> Simplify the left side: y + 3 = 7(x - 2).
+-> Expand and solve for y to reach slope-intercept form.
+-> y + 3 = 7x - 14 gives y = 7x - 17.
+-> Check (2, -3): 7(2) - 17 = -3, as required.
+o Two Points
+-> Given two points, first compute the slope.
+-> m = (y2 - y1)/(x2 - x1), provided x2 != x1.
+-> Example: (1, 4) and (5, 16).
+-> m = (16 - 4)/(5 - 1) = 12/4 = 3.
+-> With (1, 4): y - 4 = 3(x - 1).
+-> With (5, 16): y - 16 = 3(x - 5).
+-> Both simplify to y = 3x + 1.
+-> Check (1, 4): 3 + 1 = 4.
+-> Check (5, 16): 15 + 1 = 16.
+o Context Models
+-> Define the input and output with units before writing.
+-> Example: a gym charges $40 to join and $25 per month.
+-> Let x be months and y be total cost in dollars.
+-> The fixed fee is the y-intercept: b = 40.
+-> The monthly rate is the slope: m = 25.
+-> Model: y = 25x + 40.
+-> After 6 months, y = 25(6) + 40 = 190 dollars.
+-> The point (6, 190) satisfies the model.
+-> Use the model only while the rate and fee stay fixed.
+o Model Limits
+-> A linear model assumes a constant rate of change.
+-> Real prices, populations, and demand often change rates.
+-> Extrapolation far beyond the data is a claim, not a fact.
+-> Rounded slopes make predictions approximate, not exact.
+-> Example: slope 4/3 rounded to 1.33 loses precision.
+-> From (0, 2), x = 30 gives (4/3)(30) + 2 = 42 exactly.
+-> The rounded model gives 1.33(30) + 2 = 41.9.
+-> State the domain and the rounding when reporting a result.

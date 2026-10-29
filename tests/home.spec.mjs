@@ -9,7 +9,7 @@ const subjects = [
   { path: 'index.html', label: 'Home', heading: 'A collection for curious minds.' },
   { path: 'ap-lang.html', label: 'AP Lang Notes', heading: 'AP Lang Unit 1: Rhetorical Analysis' },
   { path: 'ap-world.html', label: 'AP World History Notes', heading: 'AP World History Notes' },
-  { path: 'algebra-2.html', label: 'Algebra 2 Notes', heading: 'Algebra 2 Unit 1B: Relations and Functions' },
+  { path: 'algebra-2.html', label: 'Algebra 2 Notes', heading: 'Algebra 2: Functions and Linear Systems' },
   { path: 'out-of-my-mind.html', label: 'Out Of My Mind Analysis', heading: 'Out of My Mind' },
   { path: 'of-mice-and-men.html', label: 'Of Mice And Men Analysis', heading: 'Of Mice and Men' }
 ];

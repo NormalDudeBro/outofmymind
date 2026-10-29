@@ -1,0 +1,58 @@
+(pen)o (g)Substitution(pen)
+(pen)-> (g)Solve(pen) one equation for one variable.
+(pen)-> (g)Substitute(pen) that expression into the other equation.
+(pen)-> Solve the (g)resulting(pen) one-variable equation.
+(pen)-> (g)Back(pen)-substitute to find the other variable.
+(pen)-> Example: x + 3y = 7 and 2x - y = 0.
+(pen)-> From the second equation, y = 2x.
+(pen)-> (g)Substitute(pen): x + 3(2x) = 7.
+(pen)-> Then 7x = 7, so x = 1 and y = 2.
+(pen)-> (g)Check(pen): 1 + 3(2) = 7 and 2(1) - 2 = 0.
+(pen)o (pu)Elimination(pen)
+(pen)-> Line up (pu)like terms(pen) in both equations.
+(pen)-> Add or subtract to (pu)remove(pen) one variable.
+(pen)-> Example: 3x + 4y = 11 and 3x - 2y = 5.
+(pen)-> (pu)Subtract(pen): 6y = 6, so y = 1.
+(pen)-> (pu)Substitute(pen) into the first: 3x + 4 = 11.
+(pen)-> Then 3x = 7 and x = 7/3.
+(pen)-> The (pu)solution(pen) is (7/3, 1).
+(pen)-> (pu)Check(pen) the second: 3(7/3) - 2 = 7 - 2 = 5.
+(pen)-> Opposite terms (pu)add away(pen); equal terms (pu)subtract away(pen).
+(pen)o (br)Scaling(pen)
+(pen)-> (br)Multiply(pen) equations by nonzero constants to match terms.
+(pen)-> Example: 2x + 3y = 8 and 5x - 2y = 1.
+(pen)-> (br)Multiply(pen) by 2 and 3: 4x + 6y = 16.
+(pen)-> The second becomes 15x - 6y = 3.
+(pen)-> (br)Add(pen): 19x = 19, so x = 1.
+(pen)-> Then 2(1) + 3y = 8 gives y = 2.
+(pen)-> (br)Check(pen): 5(1) - 2(2) = 1.
+(pen)-> Scaling changes the (br)form(pen), not the solution set.
+(pen)o (db)Special Outcomes(pen)
+(pen)-> Example: 2x + 4y = 6 and x + 2y = 3.
+(pen)-> The second is the first (db)divided(pen) by 2.
+(pen)-> Same line: (db)infinitely many solutions(pen).
+(pen)-> Multiply the second by -2 and add: 0 = 0.
+(pen)-> Example: 2x + 4y = 6 and x + 2y = 4.
+(pen)-> (db)Proportional left sides(pen), different constants.
+(pen)-> Multiply the second by -2 and add: 0 = -2.
+(pen)-> This is false, so there is (db)no solution(pen).
+(pen)-> A true (db)identity(pen) is dependent; a (db)contradiction(pen) is inconsistent.
+(pen)o (hp)Mixture Model(pen)
+(pen)-> Track total amount and the (hp)active ingredient(pen).
+(pen)-> Example: blend 12 L of 20% juice with 8 L of 45% juice.
+(pen)-> (hp)Total(pen) 20 L; juice: 0.20(12) + 0.45(8) = 6 L.
+(pen)-> (hp)Concentration(pen): 6/20 = 0.30, or 30%.
+(pen)-> (hp)Reverse problem(pen): how much 45% juice makes 20 L at 30%?
+(pen)-> Let x be liters of 45% juice; then 20 - x is 20% juice.
+(pen)-> 0.45x + 0.20(20 - x) = 6.
+(pen)-> 0.25x + 4 = 6 gives x = 8 L of 45% juice.
+(pen)-> Then 12 L of 20% juice; (hp)check(pen) 0.45(8) + 0.20(12) = 6.
+(pen)o (r)Checks(pen)
+(pen)-> (r)Substitute(pen) into both original equations; one is not enough.
+(pen)-> Check (r)units(pen) and whether the answer is viable.
+(pen)-> Example: (3, -1) in 2x + y = 5 and x - y = 4.
+(pen)-> (r)First(pen): 2(3) - 1 = 5, true.
+(pen)-> (r)Second(pen): 3 - (-1) = 4, true.
+(pen)-> (r)Negative amounts(pen) can satisfy algebra but fail context.
+(pen)-> For whole items, check that an (r)integer solution(pen) exists.
+(pen)-> Report the solution with the (r)variable meanings(pen).

@@ -1,0 +1,58 @@
+o Substitution
+-> Solve one equation for one variable.
+-> Substitute that expression into the other equation.
+-> Solve the resulting one-variable equation.
+-> Back-substitute to find the other variable.
+-> Example: x + 3y = 7 and 2x - y = 0.
+-> From the second equation, y = 2x.
+-> Substitute: x + 3(2x) = 7.
+-> Then 7x = 7, so x = 1 and y = 2.
+-> Check: 1 + 3(2) = 7 and 2(1) - 2 = 0.
+o Elimination
+-> Line up like terms in both equations.
+-> Add or subtract to remove one variable.
+-> Example: 3x + 4y = 11 and 3x - 2y = 5.
+-> Subtract: 6y = 6, so y = 1.
+-> Substitute into the first: 3x + 4 = 11.
+-> Then 3x = 7 and x = 7/3.
+-> The solution is (7/3, 1).
+-> Check the second: 3(7/3) - 2 = 7 - 2 = 5.
+-> Opposite terms add away; equal terms subtract away.
+o Scaling
+-> Multiply equations by nonzero constants to match terms.
+-> Example: 2x + 3y = 8 and 5x - 2y = 1.
+-> Multiply by 2 and 3: 4x + 6y = 16.
+-> The second becomes 15x - 6y = 3.
+-> Add: 19x = 19, so x = 1.
+-> Then 2(1) + 3y = 8 gives y = 2.
+-> Check: 5(1) - 2(2) = 1.
+-> Scaling changes the form, not the solution set.
+o Special Outcomes
+-> Example: 2x + 4y = 6 and x + 2y = 3.
+-> The second is the first divided by 2.
+-> Same line: infinitely many solutions.
+-> Multiply the second by -2 and add: 0 = 0.
+-> Example: 2x + 4y = 6 and x + 2y = 4.
+-> Proportional left sides, different constants.
+-> Multiply the second by -2 and add: 0 = -2.
+-> This is false, so there is no solution.
+-> A true identity is dependent; a contradiction is inconsistent.
+o Mixture Model
+-> Track total amount and the active ingredient.
+-> Example: blend 12 L of 20% juice with 8 L of 45% juice.
+-> Total 20 L; juice: 0.20(12) + 0.45(8) = 6 L.
+-> Concentration: 6/20 = 0.30, or 30%.
+-> Reverse problem: how much 45% juice makes 20 L at 30%?
+-> Let x be liters of 45% juice; then 20 - x is 20% juice.
+-> 0.45x + 0.20(20 - x) = 6.
+-> 0.25x + 4 = 6 gives x = 8 L of 45% juice.
+-> Then 12 L of 20% juice; check 0.45(8) + 0.20(12) = 6.
+o Checks
+-> Substitute into both original equations; one is not enough.
+-> Check units and whether the answer is viable.
+-> Example: (3, -1) in 2x + y = 5 and x - y = 4.
+-> First: 2(3) - 1 = 5, true.
+-> Second: 3 - (-1) = 4, true.
+-> Negative amounts can satisfy algebra but fail context.
+-> For whole items, check that an integer solution exists.
+-> Report the solution with the variable meanings.

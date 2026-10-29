@@ -1,0 +1,58 @@
+(pen)o (g)Standard Form(pen)
+(pen)-> (g)Standard form(pen) is Ax + By = C with A, B not both zero.
+(pen)-> (g)Convention(pen): A >= 0; A, B, C integers; gcd 1.
+(pen)-> (g)gcd(pen) is greatest common factor; clear fractions when rational.
+(pen)-> Example: y = (2/5)x + 14 becomes 2x - 5y = -70.
+(pen)-> Subtract (2/5)x: -(2/5)x + y = 14.
+(pen)-> Multiply by -5: 2x - 5y = -70.
+(pen)-> Here A = 2, B = -5, and C = -70.
+(pen)-> (g)Check(pen): -2x + 2y = 2 is not standard; divide by 2.
+(pen)-> It reduces to -x + y = 1; multiply by -1: x - y = -1.
+(pen)o (pu)Slope Intercept(pen)
+(pen)-> (pu)Slope(pen)-intercept form is y = mx + b.
+(pen)-> m is the (pu)slope(pen); b is the y-(pu)intercept(pen), not standard B.
+(pen)-> Solve the equation for y before reading either value.
+(pen)-> Example: 12x - 4y = 24.
+(pen)-> Subtract 12x: -4y = -12x + 24.
+(pen)-> Divide by -4: y = 3x - 6, so m = 3 and b = -6.
+(pen)-> (pu)Check(pen) 4x = -2y + 22.
+(pen)-> Add 2y: 4x + 2y = 22, then 2y = -4x + 22.
+(pen)-> Thus y = -2x + 11; a positive 2 is (pu)wrong(pen).
+(pen)o (br)Point Slope(pen)
+(pen)-> (br)Point(pen)-slope form is y - y1 = m(x - x1).
+(pen)-> m is the (br)slope(pen) and (x1, y1) is one point on the line.
+(pen)-> Example: slope 7 through (2, -3).
+(pen)-> Substitute: y - (-3) = 7(x - 2).
+(pen)-> Simplify the left side: y + 3 = 7(x - 2).
+(pen)-> Expand and solve for y to reach slope-intercept form.
+(pen)-> y + 3 = 7x - 14 gives y = 7x - 17.
+(pen)-> (br)Check(pen) (2, -3): 7(2) - 17 = -3, as required.
+(pen)o (db)Two Points(pen)
+(pen)-> Given two points, first compute the (db)slope(pen).
+(pen)-> m = (y2 - y1)/(x2 - x1), provided x2 != x1.
+(pen)-> (db)Example(pen): (1, 4) and (5, 16).
+(pen)-> m = (16 - 4)/(5 - 1) = 12/4 = 3.
+(pen)-> With (1, 4): y - 4 = 3(x - 1).
+(pen)-> With (5, 16): y - 16 = 3(x - 5).
+(pen)-> Both (db)simplify(pen) to y = 3x + 1.
+(pen)-> (db)Check(pen) (1, 4): 3 + 1 = 4.
+(pen)-> (db)Check(pen) (5, 16): 15 + 1 = 16.
+(pen)o (hp)Context Models(pen)
+(pen)-> Define the input and output with (hp)units(pen) before writing.
+(pen)-> Example: a gym charges $40 to join and $25 per month.
+(pen)-> Let x be months and y be total cost in dollars.
+(pen)-> The (hp)fixed fee(pen) is the y-(hp)intercept(pen): b = 40.
+(pen)-> The (hp)monthly rate(pen) is the slope: m = 25.
+(pen)-> (hp)Model(pen): y = 25x + 40.
+(pen)-> After 6 months, y = 25(6) + 40 = 190 dollars.
+(pen)-> The point (6, 190) satisfies the model.
+(pen)-> Use the model only while the (hp)rate(pen) and fee stay fixed.
+(pen)o (r)Model Limits(pen)
+(pen)-> A linear model assumes a (r)constant rate(pen) of change.
+(pen)-> Real prices, populations, and demand often (r)change rates(pen).
+(pen)-> (r)Extrapolation(pen) far beyond the data is a claim, not a fact.
+(pen)-> (r)Rounded slopes(pen) make predictions approximate, not exact.
+(pen)-> Example: slope 4/3 rounded to 1.33 loses precision.
+(pen)-> From (0, 2), x = 30 gives (4/3)(30) + 2 = 42 exactly.
+(pen)-> The (r)rounded model(pen) gives 1.33(30) + 2 = 41.9.
+(pen)-> State the domain and the (r)rounding(pen) when reporting a result.

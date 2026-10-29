@@ -5,16 +5,19 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { loadAlgebraNotes, palette, renderLine, root, spans } from '../scripts/build.mjs';
 
-const title = 'Algebra 2 Unit 1B: Relations and Functions';
-const files = ['1.5-linear', '1.6.1-piecewise', '1.6.2-step', '1.6.3-absolute-value', '1.7.1-parents', '1.7.2-translations', '1.7.3-dilations', '1.7.3-combined'];
-const labels = ['1.5', '1.6.1', '1.6.2', '1.6.3', '1.7.1', '1.7.2', '1.7.3', '1.7.3'];
+const title = 'Algebra 2: Functions and Linear Systems';
+const files = ['1.5-linear', '1.6.1-piecewise', '1.6.2-step', '1.6.3-absolute-value', '1.7.1-parents', '1.7.2-translations', '1.7.3-dilations', '1.7.3-combined', '2.3-linear-equations', '2.4-graphing-systems', '2.5-algebraic-systems', '2.6-inequality-systems', '2.7-linear-programming'];
+const labels = ['1.5', '1.6.1', '1.6.2', '1.6.3', '1.7.1', '1.7.2', '1.7.3', '1.7.3', '2.3', '2.4', '2.5', '2.6', '2.7'];
 const lines = text => text.replace(/\r\n/g, '\n').replace(/\n$/, '').split('\n');
 
-test('Algebra sources and all 464 HTML renderings use the shared marker renderer', () => {
+test('Algebra sources and all 754 HTML renderings use the shared marker renderer', () => {
   const notes = loadAlgebraNotes();
   expect(notes.map(note => note.file)).toEqual(files);
   expect(notes.map(note => note.label)).toEqual(labels);
   expect(notes[0].title).toBe('Graphing Linear Functions and Inequalities');
+  expect(notes.slice(8).map(note => note.title)).toEqual(['Equations of Linear Functions', 'Solving Systems of Equations Graphically', 'Solving Systems of Equations Algebraically', 'Solving Systems of Inequalities', 'Optimization with Linear Programming']);
+  expect(notes[12].source).toContain('The relaxed maximum is 220 at integer point (2, 8).');
+  expect(notes[11].source).toContain('Point (5, 2) fails y >= x.');
   const html = readFileSync(resolve(root, 'algebra-2.html'), 'utf8');
   expect([...html.matchAll(/<span class="note">([\s\S]*?)<\/span><\/div>/g)].map(match => match[1])).toEqual(notes.flatMap(note => lines(note.colored).map(renderLine)));
   expect(html.match(/<link\b[^>]*>/gi) ?? []).toEqual(['<link rel="stylesheet" href="styles/site.css">']);
@@ -81,13 +84,13 @@ for (const width of [375, 1280]) {
     expect(await page.locator('.subjects a').allTextContents()).toEqual(['Home', 'AP Lang Notes', 'AP World History Notes', 'Algebra 2 Notes', 'Out Of My Mind Analysis', 'Of Mice And Men Analysis']);
     expect(await page.locator('.subjects a').evaluateAll(links => links.map(link => link.getAttribute('href')))).toEqual(['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html', 'of-mice-and-men.html']);
     const notes = loadAlgebraNotes();
-    await expect(page.locator('section.topic')).toHaveCount(8);
-    await expect(page.locator('article')).toHaveCount(16);
-    await expect(page.locator('.note')).toHaveCount(464);
+    await expect(page.locator('section.topic')).toHaveCount(13);
+    await expect(page.locator('article')).toHaveCount(26);
+    await expect(page.locator('.note')).toHaveCount(754);
     expect(await page.locator('.note').allTextContents()).toEqual(notes.flatMap(note => lines(note.source)));
     expect(await page.locator('.contents a').allTextContents()).toEqual(notes.map(note => `${note.label} ${note.title}`));
     expect(await page.locator('.contents a').evaluateAll(links => links.map(link => link.getAttribute('href')))).toEqual(files.map(file => `#topic-${file.replaceAll('.', '-')}`));
-    expect(await page.locator('.note').evaluateAll(elements => elements.map(element => ({ color: getComputedStyle(element).color, weight: getComputedStyle(element).fontWeight })))).toEqual(Array(464).fill(presentations[0].pencil));
+    expect(await page.locator('.note').evaluateAll(elements => elements.map(element => ({ color: getComputedStyle(element).color, weight: getComputedStyle(element).fontWeight })))).toEqual(Array(754).fill(presentations[0].pencil));
     const colors = Object.fromEntries(Object.entries(palette).map(([token, hex]) => [token, `rgb(${hex.slice(1).match(/../g).map(value => parseInt(value, 16)).join(', ')})`]));
     expect(await page.locator('.ink').evaluateAll(elements => elements.map(element => ({ text: element.textContent, className: element.className, color: getComputedStyle(element).color, weight: getComputedStyle(element).fontWeight })))).toEqual(notes.flatMap(note => lines(note.colored).flatMap(line => spans(line).filter(part => part.color !== 'pen').map(part => ({ text: part.text, className: `ink ${part.color}`, color: colors[part.color], weight: presentations[0].pencil.weight })))));
     for (const [index, note] of notes.entries()) {
@@ -163,8 +166,8 @@ test('World, Algebra and Analysis follow AP Lang in keyboard order in LTR/RTL', 
 
 test('all Algebra embedded downloads and relative HTTP files contain exact source bytes', async ({ page, request }) => {
   await page.goto('/algebra-2.html');
-  await expect(page.locator('a[download]')).toHaveCount(16);
-  await expect(page.locator('a[href^="notes/"]')).toHaveCount(16);
+  await expect(page.locator('a[download]')).toHaveCount(26);
+  await expect(page.locator('a[href^="notes/"]')).toHaveCount(26);
   for (const [index, note] of loadAlgebraNotes().entries()) {
     const group = page.locator('section.topic').nth(index);
     for (const version of ['original', 'colored']) {
@@ -186,7 +189,7 @@ test('all Algebra embedded downloads and relative HTTP files contain exact sourc
   }
 });
 
-test('offline file with JavaScript disabled exposes sixteen 29-line Algebra pages and real downloads', async ({ browser }) => {
+test('offline file with JavaScript disabled exposes twenty-six 29-line Algebra pages and real downloads', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   const url = pathToFileURL(resolve(root, 'algebra-2.html')).href;
@@ -198,8 +201,8 @@ test('offline file with JavaScript disabled exposes sixteen 29-line Algebra page
   await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(246, 243, 235)');
   await expect(page.getByRole('heading', { name: title, exact: true, level: 1 })).toBeVisible();
   const notes = loadAlgebraNotes();
-  await expect(page.locator('article')).toHaveCount(16);
-  await expect(page.locator('.note')).toHaveCount(464);
+  await expect(page.locator('article')).toHaveCount(26);
+  await expect(page.locator('.note')).toHaveCount(754);
   expect(await page.locator('.note').allTextContents()).toEqual(notes.flatMap(note => lines(note.source)));
   for (const href of await page.locator('a[href]').evaluateAll(links => links.map(link => link.getAttribute('href')).filter(href => !href.startsWith('#') && !href.startsWith('data:')))) {
     expect(readFileSync(new URL(href, url)).length, `offline relative target ${href} exists and is nonempty`).toBeGreaterThan(0);
@@ -228,7 +231,7 @@ test('offline file with JavaScript disabled exposes sixteen 29-line Algebra page
     expect(readFileSync(await file.path())).toEqual(Buffer.from(version === 'colored' ? note.colored : note.source));
   }
   await page.locator('.contents a').last().click();
-  expect(new URL(page.url()).hash).toBe('#topic-1-7-3-combined');
+  expect(new URL(page.url()).hash).toBe('#topic-2-7-linear-programming');
   await context.close();
 });
 
@@ -245,7 +248,7 @@ test('Algebra accessibility permits only existing ink/title contrast exceptions'
   }
 });
 
-test('Algebra prints sixteen physical A4 pages with visible titles and 29 lines each', async ({ page }) => {
+test('Algebra prints twenty-six physical A4 pages with visible titles and 29 lines each', async ({ page }) => {
   await page.setViewportSize({ width: Math.floor((210 - 24) * 96 / 25.4), height: 1123 });
   await page.emulateMedia({ media: 'print' });
   await page.goto('/ap-world.html');
@@ -255,11 +258,11 @@ test('Algebra prints sixteen physical A4 pages with visible titles and 29 lines 
   await expect(page.locator('header')).toBeHidden();
   await expect(page.locator('.wrap')).toHaveCSS('padding-inline-start', '0px');
   await expect(page.locator('.wrap')).toHaveCSS('padding-inline-end', '0px');
-  await expect(page.locator('article')).toHaveCount(16);
-  await expect(page.locator('.page-title')).toHaveCount(16);
+  await expect(page.locator('article')).toHaveCount(26);
+  await expect(page.locator('.page-title')).toHaveCount(26);
   const rows = await page.locator('.note').evaluateAll(notes => notes.map(note => ({ fontSize: getComputedStyle(note).fontSize, lineHeight: getComputedStyle(note).lineHeight, rowHeight: note.closest('.line').getBoundingClientRect().height })));
   // Algebra keeps World History note typography; only the row height may compress to seat 29 lines on A4.
-  expect(rows.map(row => ({ fontSize: row.fontSize, lineHeight: row.lineHeight }))).toEqual(Array(464).fill({ fontSize: world.fontSize, lineHeight: world.lineHeight }));
+  expect(rows.map(row => ({ fontSize: row.fontSize, lineHeight: row.lineHeight }))).toEqual(Array(754).fill({ fontSize: world.fontSize, lineHeight: world.lineHeight }));
   expect(new Set(rows.map(row => row.rowHeight)).size).toBe(1);
   expect(rows[0].rowHeight).toBeLessThan(world.rowHeight);
   for (const article of await page.locator('article').all()) {
@@ -272,5 +275,5 @@ test('Algebra prints sixteen physical A4 pages with visible titles and 29 lines 
   expect(await page.locator('.line').evaluateAll(lines => lines.filter(line => line.getBoundingClientRect().bottom > line.closest('.sheet').getBoundingClientRect().bottom + 1).map(line => line.textContent)), 'printed lines stay inside sheets within 1px').toEqual([]);
   expect(await page.locator('article').evaluateAll(articles => articles.filter(article => article.getBoundingClientRect().height > (297 - 24) * 96 / 25.4 + 1).map(article => article.textContent)), 'each 29-line article fits the printable A4 height').toEqual([]);
   const pdf = await page.pdf({ preferCSSPageSize: true, printBackground: true });
-  expect((pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) ?? []).length).toBe(16);
+  expect((pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) ?? []).length).toBe(26);
 });

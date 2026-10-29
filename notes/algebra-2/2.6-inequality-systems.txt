@@ -1,0 +1,58 @@
+o Boundary Lines
+-> Replace each inequality sign with = to get a boundary.
+-> Solid boundary: <= or >= includes the line.
+-> Dashed boundary: < or > excludes the line.
+-> Shade the half-plane that satisfies the inequality.
+-> Test a point not on the boundary.
+-> Example: y > 2x - 3.
+-> Test (0, 0): 0 > -3 is true, so shade above.
+-> Example: x < 2 uses a dashed vertical boundary at x = 2.
+-> Points on x = 2 are excluded; shade left.
+o Sign Reversal
+-> Multiplying or dividing by a negative reverses the sign.
+-> Example: -3y <= 12 becomes y >= -4.
+-> Dividing by -3 flips <= to >=.
+-> Example: 2y > -4x + 8.
+-> Divide by 2: y > -2x + 4, with the sign unchanged.
+-> Rewrite 5 - 2y < x by isolating y carefully.
+-> -2y < x - 5, then y > -0.5x + 2.5.
+-> The division by -2 flips < to >.
+-> Test (0, 3): 5 - 6 = -1 < 0 is true.
+o Overlap
+-> The feasible region satisfies every inequality at once.
+-> Shade each half-plane lightly, then keep the common part.
+-> Example: y >= x and y <= 4.
+-> The overlap is above y = x and below y = 4.
+-> Point (1, 3) satisfies both: 3 >= 1 and 3 <= 4.
+-> Point (5, 2) fails y >= x.
+-> Example: y > x and y < x - 2 has no overlap.
+-> Empty overlap means the system has no solution.
+o Bounded Region
+-> A bounded region fits inside a finite polygon.
+-> Bounded describes extent, not whether edges are included.
+-> A dashed boundary excludes its points, so it is not closed.
+-> Example: x >= 0, y >= 0, x + y <= 6.
+-> The vertices are (0, 0), (6, 0), and (0, 6).
+-> Points on x + y = 6 are included by <=.
+-> The region is a triangle with finite area.
+-> Example with x > 0 excludes the y-axis edge.
+-> It excludes (0, 0) and (0, 6), but stays bounded.
+o Unbounded Region
+-> An unbounded region extends without limit.
+-> Example: y >= x + 1 and x >= 0.
+-> The region continues up and to the right forever.
+-> Its only vertex is (0, 1).
+-> A single vertex does not make the region bounded.
+-> Test points: (0, 2) and (10, 20) both satisfy.
+-> Boundedness concerns the whole region, not one corner.
+-> Parallel boundaries may leave a strip or no overlap.
+-> Example: y > x and y < x + 2 gives an unbounded strip.
+o Real Constraints
+-> Count variables in whole items; add nonnegative constraints.
+-> Example: x caps and y shirts, with x + y <= 40.
+-> If at least 10 caps are needed, add x >= 10.
+-> If shirts cost $8 and caps $5, $300 gives 5x + 8y <= 300.
+-> The feasible region is the overlap of all constraints.
+-> Check a candidate such as (20, 12): 20 + 12 <= 40.
+-> Cost: 5(20) + 8(12) = 196 <= 300.
+-> A fractional point may be infeasible if items are discrete.

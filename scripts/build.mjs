@@ -110,6 +110,11 @@ export function loadAlgebraNotes() {
     ['1.7.2-translations', '1.7.2', 'Translations of Functions'],
     ['1.7.3-dilations', '1.7.3', 'Dilations and Reflections'],
     ['1.7.3-combined', '1.7.3', 'Combined Transformations'],
+    ['2.3-linear-equations', '2.3', 'Equations of Linear Functions'],
+    ['2.4-graphing-systems', '2.4', 'Solving Systems of Equations Graphically'],
+    ['2.5-algebraic-systems', '2.5', 'Solving Systems of Equations Algebraically'],
+    ['2.6-inequality-systems', '2.6', 'Solving Systems of Inequalities'],
+    ['2.7-linear-programming', '2.7', 'Optimization with Linear Programming'],
   ].map(([file, label, title]) => ({ file, label, title, ...loadMarkedNotes('algebra-2', file) }));
 }
 
@@ -147,7 +152,7 @@ function loadMarkedNotes(folder, file) {
 }
 
 export function renderSite(data, lang, algebra) {
-  const title = algebra ? 'Algebra 2 Unit 1B: Relations and Functions' : lang ? 'AP Lang Unit 1: Rhetorical Analysis' : 'AP World History Notes';
+  const title = algebra ? 'Algebra 2: Functions and Linear Systems' : lang ? 'AP Lang Unit 1: Rhetorical Analysis' : 'AP World History Notes';
   const study = lang ? [{ ...lang, file: 'ap-lang', label: 'AP Lang', title }] : algebra ?? [];
   const pageSize = algebra ? 29 : 24;
   return `<!DOCTYPE html>
@@ -155,7 +160,7 @@ export function renderSite(data, lang, algebra) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="${algebra ? 'Algebra 2 Unit 1B: eight lessons across sixteen color-coded 29-line pages on linear graphs, inequalities, piecewise and step functions, absolute value, parent functions, and transformations.' : lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1 and 2: fourteen topics, twenty-eight printable note pages, and original and colored text downloads.'}">
+  <meta name="description" content="${algebra ? 'Algebra 2: Functions and Linear Systems. Thirteen lessons across twenty-six color-coded 29-line pages cover linear graphs, inequalities, piecewise and step functions, absolute value, parent functions, transformations, equations of linear functions, solving systems of equations graphically, solving systems of equations algebraically, systems of inequalities, and linear programming.' : lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1 and 2: fourteen topics, twenty-eight printable note pages, and original and colored text downloads.'}">
   <title>${title}</title>
   <link rel="stylesheet" href="styles/site.css">
   <style>
@@ -219,10 +224,11 @@ export function renderSite(data, lang, algebra) {
     <div class="masthead"><p class="wordmark">Joltlined</p><p class="masthead-note">Notes &amp; literary analysis</p></div>
     <nav class="subjects" aria-label="Subjects"><a href="index.html">Home</a><a href="ap-lang.html"${lang ? ' aria-current="page"' : ''}>AP Lang Notes</a><a href="ap-world.html"${study.length ? '' : ' aria-current="page"'}>AP World History Notes</a><a href="algebra-2.html"${algebra ? ' aria-current="page"' : ''}>Algebra 2 Notes</a><a href="out-of-my-mind.html">Out Of My Mind Analysis</a><a href="of-mice-and-men.html">Of Mice And Men Analysis</a></nav>
     <div class="notes-intro">
-    <p class="eyebrow">${algebra ? 'Algebra 2 / Unit 1B' : lang ? 'AP English Language / Unit 1' : 'AP World History / Units 1 &amp; 2'}</p>
+    <p class="eyebrow">${algebra ? 'Algebra 2 / Modules 1B &amp; 2A' : lang ? 'AP English Language / Unit 1' : 'AP World History / Units 1 &amp; 2'}</p>
     <h1>${title}</h1>
-    ${algebra ? `<p>Module 1B · Relations and Functions · 8 lessons · 16 pages · 29 lines per page</p>
+    ${algebra ? `<p>Modules 1B &amp; 2A · Functions and Linear Systems · 13 lessons · 26 pages · 29 lines per page</p>
     <p>Packet-guided rules, worked examples, and checks. Unreadable source graphs are not reconstructed; added examples are labeled.</p>
+    <p>The new Module 2A notes are original study summaries based on the McGraw Hill Module 2A (2.3–2.7) classroom slides, PDF pp. 1–182; examples are practice, not an official answer key.</p>
     <p>Notation: R means real numbers; inf means infinity; ^ denotes a power; floor(x) is the greatest integer at most x. Math symbols remain pencil.</p>
     <ol class="contents">${algebra.map(lesson => `<li><a href="#topic-${escapeHTML(lesson.file.replaceAll('.', '-'))}">${escapeHTML(lesson.label)} ${escapeHTML(lesson.title)}</a></li>`).join('')}</ol>` : lang ? `<p>Unit 1 · Building commentary connections · ${lang.sections.length} color-coded sections · 4 pages · 24 lines per page</p>
     <p>Describe the choice, explain its function, trace a possible audience effect, and justify its contribution to the author's purpose.</p>
@@ -302,6 +308,6 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
         copyFileSync(resolve(root, 'notes', 'algebra-2', folder, `${lesson.file}.txt`), resolve(target, 'notes', 'algebra-2', folder, `${lesson.file}.txt`));
       }));
     }
-    console.log(`Built ${target}: Home, World History (28 pages), AP Lang (4 pages), Algebra 2 (16 pages), restored Out of My Mind analysis, and the Of Mice and Men companion; offline downloads and previews preserved.`);
+    console.log(`Built ${target}: Home, World History (28 pages), AP Lang (4 pages), Algebra 2 (26 pages), restored Out of My Mind analysis, and the Of Mice and Men companion; offline downloads and previews preserved.`);
   });
 }
