@@ -173,13 +173,13 @@ test('notes use only the eight available highlight inks, including print', async
     await expect(page.locator('.legend .swatch')).toHaveCount(9);
     for (const media of ['screen', 'print']) {
       await page.emulateMedia({ media });
-      await expect(page.locator('html')).toHaveCSS('--y', '#369dce');
+      await expect(page.locator('html')).toHaveCSS('--y', '#287db3');
       if (await page.locator('.ink.y').count()) {
-        await expect(page.locator('.ink.y').first()).toHaveCSS('color', 'rgb(54, 157, 206)');
+        await expect(page.locator('.ink.y').first()).toHaveCSS('color', 'rgb(40, 125, 179)');
       }
-      await expect(page.locator('.swatch.y')).toHaveCSS('background-color', 'rgb(54, 157, 206)');
+      await expect(page.locator('.swatch.y')).toHaveCSS('background-color', 'rgb(40, 125, 179)');
       await expect(page.locator('.topic-title').first()).toHaveCSS('color', 'rgb(89, 184, 231)');
-      const allowed = ['rgb(22, 132, 56)', 'rgb(121, 201, 0)', 'rgb(136, 58, 194)', 'rgb(146, 85, 47)', 'rgb(54, 157, 206)', 'rgb(237, 142, 180)', 'rgb(89, 184, 231)', 'rgb(236, 34, 140)'];
+      const allowed = ['rgb(22, 132, 56)', 'rgb(121, 201, 0)', 'rgb(136, 58, 194)', 'rgb(146, 85, 47)', 'rgb(40, 125, 179)', 'rgb(237, 142, 180)', 'rgb(89, 184, 231)', 'rgb(236, 34, 140)'];
       const colors = await page.locator('.ink').evaluateAll(elements => [...new Set(elements.map(element => getComputedStyle(element).color))]);
       expect(colors.every(color => allowed.includes(color))).toBe(true);
     }

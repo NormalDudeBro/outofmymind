@@ -44,7 +44,7 @@ data.flatMap((unit, index) => unit.topics.flatMap(topic => ['', 'Colored'].map(f
 assert.deepEqual(html.match(/<link\b[^>]*>/gi) ?? [], ['<link rel="stylesheet" href="styles/site.css">'], 'exactly one local stylesheet link');
 assert.doesNotMatch(html, /<(script|iframe|img|object|embed)\b|\son\w+\s*=|@import|url\s*\(/i, 'no executable or remote resources');
 assert.doesNotMatch(readFileSync(resolve(root, 'styles/site.css'), 'utf8'), /@import|url\s*\(/i, 'shared stylesheet has no remote or additional resources');
-assert.deepEqual(palette, { g: '#168438', li: '#79c900', pu: '#883ac2', br: '#92552f', y: '#369dce', p: '#ed8eb4', lb: '#59b8e7', hp: '#ec228c', pen: '#62615e' });
+assert.deepEqual(palette, { g: '#168438', li: '#79c900', pu: '#883ac2', br: '#92552f', y: '#287db3', p: '#ed8eb4', lb: '#59b8e7', hp: '#ec228c', pen: '#62615e' });
 assert.equal(Object.keys(palette).filter(token => token !== 'pen').length, 8, 'exactly eight available highlight inks');
 Object.entries(palette).forEach(([token, hex]) => assert.ok(html.includes(`--${token}: ${hex};`)));
 assert.equal(escapeHTML('<script>"&\'</script>'), '&lt;script&gt;&quot;&amp;&#39;&lt;/script&gt;');

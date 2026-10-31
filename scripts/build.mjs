@@ -6,7 +6,7 @@ import { parseArgs } from 'node:util';
 import { renderHome } from './home.mjs';
 
 export const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-export const palette = { g: '#168438', li: '#79c900', pu: '#883ac2', br: '#92552f', y: '#369dce', p: '#ed8eb4', lb: '#59b8e7', hp: '#ec228c', pen: '#62615e' };
+export const palette = { g: '#168438', li: '#79c900', pu: '#883ac2', br: '#92552f', y: '#287db3', p: '#ed8eb4', lb: '#59b8e7', hp: '#ec228c', pen: '#62615e' };
 export const units = [
   { name: 'The Global Tapestry', topics: [
     ['1.1-east-asia', 'Developments in East Asia'],
