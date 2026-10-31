@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
+import { units } from '../scripts/build.mjs';
 
 export function validateUnit3(text) {
   assert.doesNotMatch(text, /[^\x00-\x7f]/, 'ASCII note text');
@@ -30,11 +31,25 @@ export function validateUnit3(text) {
   return lines;
 }
 
-const text = readFileSync(new URL('../notes/unit-3/3-review.txt', import.meta.url), 'utf8');
-validateUnit3(text);
-assert.throws(() => validateUnit3(text.replace('o Imperial expansion', 'o Overview')));
-assert.throws(() => validateUnit3(text.replace('-> Imperial expansion', '-> Wrong title')));
-assert.throws(() => validateUnit3(text.replace('Gunpowder', 'Gunpowder\u2019s')), /ASCII/);
+const topics = [
+  ['3.1-empires-expand', 'Empires Expand'],
+  ['3.2-administration', 'Empires: Administration'],
+  ['3.3-belief-systems', 'Empires: Belief Systems'],
+  ['3.4-comparison', 'Comparison in Land-Based Empires'],
+];
+assert.deepEqual(units[2].topics, topics, 'all four exact Unit 3 topic titles');
+for (const folder of ['', 'Colored/']) {
+  assert.deepEqual(readdirSync(new URL(`../notes/unit-3/${folder}`, import.meta.url)).filter(file => file.endsWith('.txt')).sort(), topics.map(([file]) => `${file}.txt`), 'exactly four topic sources, no obsolete review');
+}
+const sheets = topics.map(([file]) => readFileSync(new URL(`../notes/unit-3/${file}.txt`, import.meta.url), 'utf8'));
+const validated = sheets.map(validateUnit3);
+assert.equal(validated.length, 4, 'four independent sheets');
+assert.equal(validated.flat().length, 192, '192 logical note lines');
+assert.equal(validated.flatMap(lines => [lines.slice(0, 24), lines.slice(24)]).length, 8, 'eight 24-line pages');
+const text = sheets[0];
+assert.throws(() => validateUnit3(text.replace('o Gunpowder and expansion', 'o Overview')));
+assert.throws(() => validateUnit3(text.replace('-> Gunpowder and expansion', '-> Wrong title')));
+assert.throws(() => validateUnit3(text.replace('Cannons', 'Cannons\u2019')), /ASCII/);
 assert.throws(() => validateUnit3(text + '\n'), /48 nonempty lines/);
-assert.throws(() => validateUnit3(text.replace('-> Imperial expansion', `-> ${'x'.repeat(63)}`)), /characters/);
-console.log('PASS: Unit 3 ASCII text, 48 lines, two 24-line pages, max 65 characters, exact prefixes, whitespace, ordered overviews, distinct supported headers.');
+assert.throws(() => validateUnit3(text.replace('-> Gunpowder and expansion', `-> ${'x'.repeat(63)}`)), /characters/);
+console.log('PASS: four Unit 3 topics, eight pages, 192 ASCII note lines; each sheet has 48 lines, two 24-line pages, max 65 characters, exact prefixes, whitespace, ordered overviews, and distinct supported headers.');

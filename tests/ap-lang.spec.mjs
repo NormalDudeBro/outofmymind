@@ -50,7 +50,7 @@ for (const width of [375, 1280]) {
     await page.getByRole('link', { name: 'AP World History Notes', exact: true }).click();
     await expect(page).toHaveURL(/\/ap-world.html$/);
     await expect(page.locator('.subjects [aria-current="page"]')).toHaveText('AP World History Notes');
-    await expect(page.locator('article')).toHaveCount(30);
+    await expect(page.locator('article')).toHaveCount(36);
   });
 }
 
@@ -146,7 +146,7 @@ test('AP Lang exposes four 24-line pages offline without JavaScript and download
     }
     await page.getByRole('link', { name: 'AP World History Notes', exact: true }).click();
     await expect(page).toHaveURL(/\/ap-world.html$/);
-    await expect(page.locator('.note')).toHaveCount(720);
+    await expect(page.locator('.note')).toHaveCount(864);
   }
   await context.close();
 });

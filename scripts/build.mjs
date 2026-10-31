@@ -27,7 +27,10 @@ export const units = [
     ['2.7-comparison', 'Comparison in Networks of Exchange'],
   ] },
   { name: 'Land-Based Empires', period: 'c. 1450–1750', topics: [
-    ['3-review', 'Land-Based Empires, c. 1450–1750', 'Unit 3 Review'],
+    ['3.1-empires-expand', 'Empires Expand'],
+    ['3.2-administration', 'Empires: Administration'],
+    ['3.3-belief-systems', 'Empires: Belief Systems'],
+    ['3.4-comparison', 'Comparison in Land-Based Empires'],
   ] },
 ];
 const marker = /\((g|li|pu|br|y|r|db|p|lb|hp|pen)\)/g;
@@ -88,11 +91,11 @@ export function validateSheet(original, colored, name) {
 }
 
 export function loadNotes(paths = units.map((_, index) => resolve(root, 'notes', `unit-${index + 1}`))) {
-  return units.map((unit, index) => ({ ...unit, topics: unit.topics.map(([file, title, label]) => {
+  return units.map((unit, index) => ({ ...unit, topics: unit.topics.map(([file, title]) => {
     const original = readFileSync(resolve(paths[index], `${file}.txt`), 'utf8');
     const colored = readFileSync(resolve(paths[index], 'Colored', `${file}.txt`), 'utf8');
-    const shortLabel = label ?? file.slice(0, 3);
-    return { file, title, label: shortLabel, heading: label ? `${label}: ${title}` : `${shortLabel} ${title}`, original, colored, lines: validateSheet(original, colored, file) };
+    const shortLabel = file.slice(0, 3);
+    return { file, title, label: shortLabel, heading: `${shortLabel} ${title}`, original, colored, lines: validateSheet(original, colored, file) };
   }) }));
 }
 
@@ -164,7 +167,7 @@ export function renderSite(data, lang, algebra) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="${algebra ? 'Algebra 2: Functions and Linear Systems. Thirteen lessons across twenty-six color-coded 29-line pages cover linear graphs, inequalities, piecewise and step functions, absolute value, parent functions, transformations, equations of linear functions, solving systems of equations graphically, solving systems of equations algebraically, systems of inequalities, and linear programming.' : lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1–3: fourteen topics plus a Unit 3 unit-wide review, thirty printable note pages, and original and colored text downloads.'}">
+  <meta name="description" content="${algebra ? 'Algebra 2: Functions and Linear Systems. Thirteen lessons across twenty-six color-coded 29-line pages cover linear graphs, inequalities, piecewise and step functions, absolute value, parent functions, transformations, equations of linear functions, solving systems of equations graphically, solving systems of equations algebraically, systems of inequalities, and linear programming.' : lang ? 'Color-coded AP Lang rhetorical analysis notes: describe, function, effect, justify, and connection-building guidance.' : 'AP World History Units 1–3: eighteen topics, thirty-six printable note pages, and original and colored text downloads.'}">
   <title>${title}</title>
   <link rel="stylesheet" href="styles/site.css">
   <style>
@@ -238,7 +241,7 @@ export function renderSite(data, lang, algebra) {
     <p>Describe the choice, explain its function, trace a possible audience effect, and justify its contribution to the author's purpose.</p>
     <p>Food-labeling examples are paraphrases or clearly marked hypothetical examples, not direct quotations or guaranteed audience responses. Each note line is at most 65 characters.</p>
     <p class="downloads"><a href="data:text/plain;charset=utf-8;base64,${Buffer.from(lang.source).toString('base64')}" download="ap-lang.txt">Download AP Lang original</a> · <a href="data:text/plain;charset=utf-8;base64,${Buffer.from(lang.colored).toString('base64')}" download="ap-lang-colored.txt">Download AP Lang colored</a> · <a href="notes/ap-lang.txt">Open original file</a> · <a href="notes/Colored/ap-lang.txt">Open colored file</a></p>
-    <p>Use your browser's Print command for colored, numbered sheets. The shared World History inks highlight key words; body text and punctuation stay pencil.</p>` : `<p>Units 1–3 · c. 1200–1750 · 14 topics + Unit 3 review · 30 note pages</p>
+    <p>Use your browser's Print command for colored, numbered sheets. The shared World History inks highlight key words; body text and punctuation stay pencil.</p>` : `<p>Units 1–3 · c. 1200–1750 · 18 topics · 36 note pages</p>
     <nav aria-label="Units">${data.map((unit, index) => `<a href="#unit-${index + 1}">Unit ${index + 1}: ${escapeHTML(unit.name)}${unit.period ? `, ${escapeHTML(unit.period)}` : ''}</a>`).join('')}</nav>
     <ol class="contents">${data.flatMap(unit => unit.topics.map(topic => `<li><a href="#topic-${escapeHTML(topic.file.replaceAll('.', '-'))}">${escapeHTML(topic.heading)}</a></li>`)).join('')}</ol>
     <p>All notes are visible below. Use your browser’s Print command for one sheet per page. Colored text downloads contain the original color markers.</p>`}
@@ -265,7 +268,7 @@ export function renderSite(data, lang, algebra) {
       </section>`).join('\n')}
     </section>`).join('\n')}
   </main>
-  <footer><p>The approved pastel ink palette is preserved. Some ink colors do not meet WCAG text contrast requirements; original pencil-only text files are available for every topic${!lang && !algebra ? ' and unit review' : ''}.</p><a href="#notes">Back to notes</a></footer>
+  <footer><p>The approved pastel ink palette is preserved. Some ink colors do not meet WCAG text contrast requirements; original pencil-only text files are available for every topic.</p><a href="#notes">Back to notes</a></footer>
   </div>
 </body>
 </html>
@@ -312,6 +315,6 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
         copyFileSync(resolve(root, 'notes', 'algebra-2', folder, `${lesson.file}.txt`), resolve(target, 'notes', 'algebra-2', folder, `${lesson.file}.txt`));
       }));
     }
-    console.log(`Built ${target}: Home, World History (30 pages), AP Lang (4 pages), Algebra 2 (26 pages), restored Out of My Mind analysis, and the Of Mice and Men companion; offline downloads and previews preserved.`);
+    console.log(`Built ${target}: Home, World History (36 pages), AP Lang (4 pages), Algebra 2 (26 pages), restored Out of My Mind analysis, and the Of Mice and Men companion; offline downloads and previews preserved.`);
   });
 }
