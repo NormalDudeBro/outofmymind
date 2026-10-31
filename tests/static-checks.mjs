@@ -6,9 +6,16 @@ import { escapeHTML, loadLangNotes, loadNotes, palette, renderLine, renderSite, 
 const data = loadNotes();
 const html = readFileSync(resolve(root, 'ap-world.html'), 'utf8');
 assert.equal(html, renderSite(data), 'checked-in HTML exactly matches reproducible build');
-assert.equal(data.flatMap(unit => unit.topics).length, 14);
-assert.equal((html.match(/<article /g) ?? []).length, 28);
-assert.equal((html.match(/class="note"/g) ?? []).length, 672);
+assert.equal(data.length, 3);
+assert.equal(data.flatMap(unit => unit.topics).length, 15);
+assert.equal((html.match(/<article /g) ?? []).length, 30);
+assert.equal((html.match(/class="note"/g) ?? []).length, 720);
+assert.equal(data[2].name, 'Land-Based Empires');
+assert.equal(data[2].period, 'c. 1450–1750');
+assert.equal(data[2].topics[0].label, 'Unit 3 Review');
+assert.equal(data[2].topics[0].heading, 'Unit 3 Review: Land-Based Empires, c. 1450–1750');
+assert.match(html, /href="#unit-3"/);
+assert.match(html, /Unit 3: Land-Based Empires, c\. 1450–1750/);
 assert.equal(readFileSync(resolve(root, 'CNAME'), 'utf8').trim(), 'www.joltlined.com');
 const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
 assert.equal(new Set(ids).size, ids.length, 'unique IDs');
@@ -17,13 +24,13 @@ links.forEach(link => {
   if (link === 'styles/site.css') return assert.ok(existsSync(resolve(root, link)), 'local stylesheet exists');
   if (['index.html', 'ap-lang.html', 'ap-world.html', 'algebra-2.html', 'out-of-my-mind.html', 'of-mice-and-men.html'].includes(link)) return assert.ok(existsSync(resolve(root, link)));
   if (link.startsWith('#')) return assert.ok(ids.includes(link.slice(1)), `fragment ${link}`);
-  if (link.startsWith('notes/')) return assert.match(link, /^notes\/unit-[12]\/(Colored\/)?[12]\.[1-7]-[a-z-]+\.txt$/);
+  if (link.startsWith('notes/')) return assert.match(link, /^notes\/unit-[123]\/(Colored\/)?(?:[12]\.[1-7]-[a-z-]+|3-review)\.txt$/);
   assert.match(link, /^data:text\/plain;charset=utf-8;base64,[A-Za-z0-9+/]+=*$/);
 });
 const downloads = links.filter(link => link.startsWith('data:'));
 const files = links.filter(link => link.startsWith('notes/'));
-assert.equal(downloads.length, 28);
-assert.equal(files.length, 28);
+assert.equal(downloads.length, 30);
+assert.equal(files.length, 30);
 data.flatMap((unit, index) => unit.topics.flatMap(topic => ['', 'Colored'].map(folder => {
   return { href: `notes/unit-${index + 1}/${folder ? `${folder}/` : ''}${topic.file}.txt`, bytes: Buffer.from(folder ? topic.colored : topic.original) };
 }))).forEach((file, index) => {
@@ -43,7 +50,7 @@ const first = data[0].topics[0];
 assert.throws(() => validateSheet(first.original, first.colored.replace('(pen)', '(oops)'), 'bad'), /equality|markers/);
 assert.throws(() => validateSheet(first.original + '\n', first.colored, 'bad'), /equality/);
 assert.throws(() => validateSheet(first.original, first.colored.replace(/\((g|li|p|hp|r|pu)\)/, '(lb)'), 'bad'), /title|matching/);
-console.log('PASS: 14 topics, 28 pages, 48 lines/topic, 24 lines/page, max 65 characters, stripped equality, marker/punctuation/reset rules, max two colors, full uniform titles, Overview equality, safe HTML, 28 embedded downloads, 28 relative file anchors with exact bytes, fragments, exact reproducibility, CNAME.');
+console.log('PASS: 15 review entries (14 topics plus the Unit 3 review), 30 pages, 48 lines per entry, 24 lines/page, max 65 characters, stripped equality, marker/punctuation/reset rules, max two colors, full uniform titles, Overview equality, safe HTML, 30 embedded downloads, 30 relative file anchors with exact bytes, fragments, exact reproducibility, CNAME.');
 const lang = loadLangNotes();
 const langHTML = readFileSync(resolve(root, 'ap-lang.html'), 'utf8');
 assert.equal(langHTML, renderSite([], lang), 'AP Lang reproducible build');

@@ -73,7 +73,7 @@ export function renderHome() {
           </a>
           <a class="note-entry" href="ap-world.html" aria-labelledby="world-title">
             <span class="entry-number" aria-hidden="true">02</span>
-            <div><h3 class="entry-title" id="world-title">AP World History Notes</h3><p class="entry-description">Trace the societies, ideas, and exchange networks that connected the world from c. 1200 to 1450.</p><span class="entry-meta">UNITS 1 &amp; 2 &middot; 14 TOPICS &middot; 28 PAGES</span></div>
+            <div><h3 class="entry-title" id="world-title">AP World History Notes</h3><p class="entry-description">Trace the societies, empires, ideas, and exchange networks that connected the world from c. 1200 to 1750.</p><span class="entry-meta">UNITS 1&ndash;3 &middot; 15 REVIEW ENTRIES &middot; 30 PAGES</span></div>
             <span class="arrow" aria-hidden="true">&rarr;</span>
           </a>
           <a class="note-entry" href="algebra-2.html" aria-labelledby="algebra-title">

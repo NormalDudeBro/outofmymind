@@ -15,13 +15,24 @@ test('native unit navigation, fragments, history and keyboard', async ({ page })
   await expect(page).toHaveURL(/#unit-1$/);
   await page.locator('nav a[href="#unit-2"]').click();
   await expect(page).toHaveURL(/#unit-2$/);
+  await page.locator('nav a[href="#unit-3"]').click();
+  await expect(page).toHaveURL(/#unit-3$/);
+  await page.goBack();
+  await expect(page).toHaveURL(/#unit-2$/);
   await page.goBack();
   await expect(page).toHaveURL(/#unit-1$/);
   await page.goForward();
   await expect(page).toHaveURL(/#unit-2$/);
+  await page.goForward();
+  await expect(page).toHaveURL(/#unit-3$/);
   await page.reload();
-  await expect(page.locator('#unit-2')).toBeVisible();
-  await expect(page.locator('.topic')).toHaveCount(14);
+  await expect(page.locator('#unit-3')).toBeVisible();
+  await expect(page.locator('.topic')).toHaveCount(15);
+  const review = loadNotes()[2].topics[0];
+  const reviewSection = page.locator('#topic-3-review');
+  await expect(reviewSection.locator('.note')).toHaveText(review.original.replace(/\r\n/g, '\n').replace(/\n$/, '').split('\n'));
+  await expect(reviewSection.locator('.pages article')).toHaveCount(2);
+  await expect(reviewSection.locator('.pages article .note')).toHaveCount(48);
 });
 
 for (const width of [375, 1280]) {
@@ -30,8 +41,8 @@ for (const width of [375, 1280]) {
     page.on('request', request => requests.push(request.url()));
     await page.setViewportSize({ width, height: 812 });
     await page.goto('/ap-world.html');
-    await expect(page.locator('article')).toHaveCount(28);
-    await expect(page.locator('.note')).toHaveCount(672);
+    await expect(page.locator('article')).toHaveCount(30);
+    await expect(page.locator('.note')).toHaveCount(720);
     expect(requests).toEqual(['http://127.0.0.1:4173/ap-world.html', 'http://127.0.0.1:4173/styles/site.css']);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     await expect(page.locator('.topic-title').first()).toHaveCSS('color', 'rgb(89, 184, 231)');
@@ -46,13 +57,13 @@ for (const width of [375, 1280]) {
       await expect(group.locator('.downloads a[download]')).toHaveCount(2);
       await expect(group.locator('.downloads a[href^="notes/"]')).toHaveCount(2);
       for (const [n, link] of (await group.locator('.downloads a[download]').all()).entries()) {
-        expect(await link.getAttribute('download')).toBe(`${topic.file}.txt`);
+        expect(await link.getAttribute('download')).toBe(`${topic.file}${n && index >= 14 ? '-colored' : ''}.txt`);
         expect(Buffer.from((await link.getAttribute('href')).split(',')[1], 'base64').toString('utf8')).toBe(n ? topic.colored : topic.original);
       }
       for (const [n, link] of (await group.locator('.downloads a[href^="notes/"]').all()).entries()) {
         await expect(link).toHaveText(n ? 'Open colored file' : 'Open original file');
         const href = await link.getAttribute('href');
-        expect(href).toBe(`notes/unit-${index < 7 ? 1 : 2}/${n ? 'Colored/' : ''}${topic.file}.txt`);
+        expect(href).toBe(`notes/unit-${index < 7 ? 1 : index < 14 ? 2 : 3}/${n ? 'Colored/' : ''}${topic.file}.txt`);
         const response = await request.get(href);
         expect(response.ok()).toBe(true);
         expect(await response.body()).toEqual(Buffer.from(n ? topic.colored : topic.original));
@@ -60,7 +71,7 @@ for (const width of [375, 1280]) {
     }
     if (process.env.PREVIEW_PATH) {
       await page.goto(pathToFileURL(resolve(process.env.PREVIEW_PATH)).href);
-      await expect(page.locator('article')).toHaveCount(28);
+      await expect(page.locator('article')).toHaveCount(30);
       expect(await page.locator('.note').allTextContents()).toEqual(topics.flatMap(topic => topic.original.replace(/\r\n/g, '\n').replace(/\n$/, '').split('\n')));
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     }
@@ -105,8 +116,9 @@ test('no JavaScript over HTTP and file:// exposes everything and local downloads
   const page = await context.newPage();
   for (const url of ['http://127.0.0.1:4173/ap-world.html', pathToFileURL(resolve(root, 'ap-world.html')).href, ...(process.env.PREVIEW_PATH ? [pathToFileURL(resolve(process.env.PREVIEW_PATH)).href] : [])]) {
     await page.goto(url);
-    await expect(page.locator('.topic')).toHaveCount(14);
-    await expect(page.locator('article')).toHaveCount(28);
+    await expect(page.locator('.topic')).toHaveCount(15);
+    await expect(page.locator('article')).toHaveCount(30);
+    await expect(page.locator('#topic-3-review .pages article')).toHaveCount(2);
     for (const article of await page.locator('article').all()) {
       await expect(article).toBeVisible();
       await expect(article.locator('.note')).toHaveCount(24);
@@ -119,7 +131,7 @@ test('no JavaScript over HTTP and file:// exposes everything and local downloads
       for (const [n, link] of (await group.locator('.downloads a[href^="notes/"]').all()).entries()) {
         await expect(link).toHaveText(n ? 'Open colored file' : 'Open original file');
         const href = await link.getAttribute('href');
-        expect(href).toBe(`notes/unit-${index < 7 ? 1 : 2}/${n ? 'Colored/' : ''}${topic.file}.txt`);
+        expect(href).toBe(`notes/unit-${index < 7 ? 1 : index < 14 ? 2 : 3}/${n ? 'Colored/' : ''}${topic.file}.txt`);
         const target = new URL(href, url);
         if (target.protocol === 'file:') {
           expect(readFileSync(target)).toEqual(Buffer.from(n ? topic.colored : topic.original));
@@ -136,7 +148,7 @@ test('no JavaScript over HTTP and file:// exposes everything and local downloads
           await link.click();
           const result = await download;
           expect(await result.failure()).toBeNull();
-          expect(result.suggestedFilename()).toBe(`${topic.file}.txt`);
+          expect(result.suggestedFilename()).toBe(`${topic.file}${n && index >= 14 ? '-colored' : ''}.txt`);
           expect(readFileSync(await result.path(), 'utf8')).toBe(n ? topic.colored : topic.original);
           // Chromium blocks more than ten downloads per second per frame.
           await page.waitForTimeout(250);
@@ -160,7 +172,8 @@ test('accessibility: only the documented approved-palette contrast exception', a
   }
 });
 
-test('print produces exactly 28 physical A4 pages', async ({ page }) => {
+test('print produces exactly 30 physical A4 pages', async ({ page }) => {
+  await page.setViewportSize({ width: Math.floor((210 - 24) * 96 / 25.4), height: 1123 });
   for (const url of ['/ap-world.html', ...(process.env.PREVIEW_PATH ? [pathToFileURL(resolve(process.env.PREVIEW_PATH)).href] : [])]) {
     await page.goto(url);
     await page.emulateMedia({ media: 'print' });
@@ -169,6 +182,20 @@ test('print produces exactly 28 physical A4 pages', async ({ page }) => {
     await expect(page.locator('.wrap')).toHaveCSS('padding-inline-end', '0px');
     await expect(page.locator('.page-title').first()).toBeVisible();
     const pdf = await page.pdf({ preferCSSPageSize: true, printBackground: true });
-    expect((pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) ?? []).length).toBe(28);
+    expect((pdf.toString('latin1').match(/\/Type\s*\/Page\b/g) ?? []).length).toBe(30);
+    const review = page.locator('#topic-3-review');
+    await expect(review.locator('article')).toHaveCount(2);
+    for (const article of await review.locator('article').all()) {
+      await expect(article.locator('.note')).toHaveCount(24);
+      expect(await article.evaluate(article => {
+        const sheet = article.querySelector('.sheet');
+        const sheetBottom = sheet.getBoundingClientRect().bottom;
+        return [...article.querySelectorAll('.line')].every(line => {
+          const note = line.querySelector('.note');
+          const lineRect = line.getBoundingClientRect();
+          return note.getBoundingClientRect().height <= lineRect.height + 1 && note.getBoundingClientRect().bottom <= lineRect.bottom + 1 && lineRect.bottom <= sheetBottom + 1;
+        });
+      })).toBe(true);
+    }
   }
 });
