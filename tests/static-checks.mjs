@@ -44,14 +44,18 @@ data.flatMap((unit, index) => unit.topics.flatMap(topic => ['', 'Colored'].map(f
 assert.deepEqual(html.match(/<link\b[^>]*>/gi) ?? [], ['<link rel="stylesheet" href="styles/site.css">'], 'exactly one local stylesheet link');
 assert.doesNotMatch(html, /<(script|iframe|img|object|embed)\b|\son\w+\s*=|@import|url\s*\(/i, 'no executable or remote resources');
 assert.doesNotMatch(readFileSync(resolve(root, 'styles/site.css'), 'utf8'), /@import|url\s*\(/i, 'shared stylesheet has no remote or additional resources');
-assert.deepEqual(palette, { g: '#168438', li: '#79c900', pu: '#883ac2', br: '#92552f', y: '#ebc600', r: '#df3034', db: '#173f88', p: '#ed8eb4', lb: '#59b8e7', hp: '#ec228c', pen: '#62615e' });
+assert.deepEqual(palette, { g: '#168438', li: '#79c900', pu: '#883ac2', br: '#92552f', y: '#369dce', p: '#ed8eb4', lb: '#59b8e7', hp: '#ec228c', pen: '#62615e' });
+assert.equal(Object.keys(palette).filter(token => token !== 'pen').length, 8, 'exactly eight available highlight inks');
 Object.entries(palette).forEach(([token, hex]) => assert.ok(html.includes(`--${token}: ${hex};`)));
 assert.equal(escapeHTML('<script>"&\'</script>'), '&lt;script&gt;&quot;&amp;&#39;&lt;/script&gt;');
 assert.equal(renderLine('(pen)<script>alert("&")</script>'), '&lt;script&gt;alert(&quot;&amp;&quot;)&lt;/script&gt;');
 const first = data[0].topics[0];
 assert.throws(() => validateSheet(first.original, first.colored.replace('(pen)', '(oops)'), 'bad'), /equality|markers/);
 assert.throws(() => validateSheet(first.original + '\n', first.colored, 'bad'), /equality/);
-assert.throws(() => validateSheet(first.original, first.colored.replace(/\((g|li|p|hp|r|pu)\)/, '(lb)'), 'bad'), /title|matching/);
+assert.throws(() => validateSheet(first.original, first.colored.replace(/\((g|li|p|hp|pu|br|y)\)/, '(lb)'), 'bad'), /title|matching/);
+for (const retired of ['r', 'db']) {
+  assert.throws(() => validateSheet(first.original, first.colored.replace('(g)', `(${retired})`), 'retired'), /equality/, 'retired inks cannot enter source downloads');
+}
 console.log('PASS: 18 topics, 36 pages, 864 notes, 48 lines per topic, Unit 3 four sheets, exact downloads and relative files, fragments, exact reproducibility, CNAME.');
 const lang = loadLangNotes();
 const langHTML = readFileSync(resolve(root, 'ap-lang.html'), 'utf8');

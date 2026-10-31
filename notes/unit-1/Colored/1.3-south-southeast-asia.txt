@@ -24,7 +24,7 @@
 (pen)-> Both (p)land(pen) and (p)maritime(pen) rulers tied wealth to royal (p)power(pen).
 (pen)o Overview
 (pen)-> (hp)Religious traditions(pen)
-(pen)-> (r)Social hierarchies(pen)
+(pen)-> (hp)Social hierarchies(pen)
 (pen)-> (pu)Economic networks(pen)
 (pen)o (hp)Religious traditions(pen)
 (pen)-> Hinduism linked dharma and caste duties in (lb)South Asia(pen).
@@ -33,8 +33,8 @@
 (pen)-> Theravada Buddhism spread among mainland populations.
 (pen)-> In Khmer (p)lands(pen), it gained ground over royal Hindu cults.
 (pen)-> Islam spread through conquest, merchants, and Sufi teachers.
-(pen)o (r)Social hierarchies(pen)
-(pen)-> (lb)South Asian(pen) caste (r)hierarchies(pen) persisted under Muslim rule.
+(pen)o (hp)Social hierarchies(pen)
+(pen)-> (lb)South Asian(pen) caste (hp)hierarchies(pen) persisted under Muslim rule.
 (pen)-> Brahmins gained status from ritual and temple patronage.
 (pen)-> Sufi and Bhakti teachers stressed personal devotion.
 (pen)-> (lb)Southeast Asian(pen) rulers adapted beliefs to local customs.

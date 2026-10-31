@@ -27,16 +27,16 @@
 (pen)-> Then 2(1) + 3y = 8 gives y = 2.
 (pen)-> (br)Check(pen): 5(1) - 2(2) = 1.
 (pen)-> Scaling changes the (br)form(pen), not the solution set.
-(pen)o (db)Special Outcomes(pen)
+(pen)o (y)Special Outcomes(pen)
 (pen)-> Example: 2x + 4y = 6 and x + 2y = 3.
-(pen)-> The second is the first (db)divided(pen) by 2.
-(pen)-> Same line: (db)infinitely many solutions(pen).
+(pen)-> The second is the first (y)divided(pen) by 2.
+(pen)-> Same line: (y)infinitely many solutions(pen).
 (pen)-> Multiply the second by -2 and add: 0 = 0.
 (pen)-> Example: 2x + 4y = 6 and x + 2y = 4.
-(pen)-> (db)Proportional left sides(pen), different constants.
+(pen)-> (y)Proportional left sides(pen), different constants.
 (pen)-> Multiply the second by -2 and add: 0 = -2.
-(pen)-> This is false, so there is (db)no solution(pen).
-(pen)-> A true (db)identity(pen) is dependent; a (db)contradiction(pen) is inconsistent.
+(pen)-> This is false, so there is (y)no solution(pen).
+(pen)-> A true (y)identity(pen) is dependent; a (y)contradiction(pen) is inconsistent.
 (pen)o (hp)Mixture Model(pen)
 (pen)-> Track total amount and the (hp)active ingredient(pen).
 (pen)-> Example: blend 12 L of 20% juice with 8 L of 45% juice.
@@ -47,12 +47,12 @@
 (pen)-> 0.45x + 0.20(20 - x) = 6.
 (pen)-> 0.25x + 4 = 6 gives x = 8 L of 45% juice.
 (pen)-> Then 12 L of 20% juice; (hp)check(pen) 0.45(8) + 0.20(12) = 6.
-(pen)o (r)Checks(pen)
-(pen)-> (r)Substitute(pen) into both original equations; one is not enough.
-(pen)-> Check (r)units(pen) and whether the answer is viable.
+(pen)o (hp)Checks(pen)
+(pen)-> (hp)Substitute(pen) into both original equations; one is not enough.
+(pen)-> Check (hp)units(pen) and whether the answer is viable.
 (pen)-> Example: (3, -1) in 2x + y = 5 and x - y = 4.
-(pen)-> (r)First(pen): 2(3) - 1 = 5, true.
-(pen)-> (r)Second(pen): 3 - (-1) = 4, true.
-(pen)-> (r)Negative amounts(pen) can satisfy algebra but fail context.
-(pen)-> For whole items, check that an (r)integer solution(pen) exists.
-(pen)-> Report the solution with the (r)variable meanings(pen).
+(pen)-> (hp)First(pen): 2(3) - 1 = 5, true.
+(pen)-> (hp)Second(pen): 3 - (-1) = 4, true.
+(pen)-> (hp)Negative amounts(pen) can satisfy algebra but fail context.
+(pen)-> For whole items, check that an (hp)integer solution(pen) exists.
+(pen)-> Report the solution with the (hp)variable meanings(pen).

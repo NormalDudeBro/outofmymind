@@ -27,17 +27,17 @@
 (pen)-> The (br)domain(pen) of floor(x) is all real numbers.
 (pen)-> The range of floor(x) is all integers.
 (pen)-> floor(x) = -1 on -1 <= x < 0, not -1 < x < 0.
-(pen)o (db)Transformed Floor Rule(pen)
+(pen)o (y)Transformed Floor Rule(pen)
 (pen)-> Let f(x) = floor(2x - 1); let k be an integer.
 (pen)-> f(x) = k exactly when k <= 2x - 1 < k + 1.
 (pen)-> Add 1: k + 1 <= 2x < k + 2.
 (pen)-> Divide by 2: (k + 1)/2 <= x < (k + 2)/2.
-(pen)-> Each step has (db)width(pen) 1/2, closed left and open right.
+(pen)-> Each step has (y)width(pen) 1/2, closed left and open right.
 (pen)-> The domain is all real numbers; the range is all integers.
-(pen)-> A positive input coefficient preserves (db)endpoint order(pen).
-(pen)-> A coefficient a > 0 makes each (db)step width(pen) 1/a.
-(pen)-> With 2x - 1 inside, steps break where 2x - 1 is an (db)integer(pen).
-(pen)o (r)Transformed Examples(pen)
+(pen)-> A positive input coefficient preserves (y)endpoint order(pen).
+(pen)-> A coefficient a > 0 makes each (y)step width(pen) 1/a.
+(pen)-> With 2x - 1 inside, steps break where 2x - 1 is an (y)integer(pen).
+(pen)o (hp)Transformed Examples(pen)
 (pen)-> For k = 0, f(x) = 0 on 1/2 <= x < 1.
 (pen)-> f(0.75) = floor(0.5) = 0.
 (pen)-> At x = 1, f(1) = floor(1) = 1, not 0.
@@ -45,8 +45,8 @@
 (pen)-> f(0.25) = floor(-0.5) = -1.
 (pen)-> For k = -2, f(x) = -2 on -1/2 <= x < 0.
 (pen)-> f(-0.25) = floor(-1.5) = -2.
-(pen)-> For k = 1, f(x) = 1 on the (r)next step(pen) to the right.
-(pen)-> f(0.6) = floor(0.2) = 0, so the (r)input(pen) lies in 1/2 to 1.
+(pen)-> For k = 1, f(x) = 1 on the (hp)next step(pen) to the right.
+(pen)-> f(0.6) = floor(0.2) = 0, so the (hp)input(pen) lies in 1/2 to 1.
 (pen)o (hp)Context and Endpoints(pen)
 (pen)-> Parking fees can stay (g)constant(pen) within each time bracket.
 (pen)-> Read each interval and its included endpoints from the source.

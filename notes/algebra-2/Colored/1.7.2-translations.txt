@@ -37,22 +37,22 @@
 (pen)-> Domain: R. Range: [-3,inf); axis: x = -5.
 (pen)-> (br)Symmetry(pen) pairs: (-6,-2) and (-4,-2) share output -2.
 (pen)-> The x-intercept: (x+5)^2 = 3, so x = -5 +/- sqrt(3).
-(pen)o (r)Absolute Value Worked Points(pen)
+(pen)o (hp)Absolute Value Worked Points(pen)
 (pen)-> For g(x) = |x+8| - 5, h = -8 and k = -5.
-(pen)-> Translate left 8 and down 5; (r)vertex(pen): (-8,-5).
+(pen)-> Translate left 8 and down 5; (hp)vertex(pen): (-8,-5).
 (pen)-> Parent (-1,1) becomes (-9,-4).
 (pen)-> Parent (1,1) becomes (-7,-4).
 (pen)-> Domain: R. Range: [-5,inf).
 (pen)-> The axis of symmetry is x = -8.
 (pen)-> Check: g(-7) = |-7+8| - 5 = -4.
-(pen)-> Each pair (r)equidistant(pen) from x = -8 gives one output.
+(pen)-> Each pair (hp)equidistant(pen) from x = -8 gives one output.
 (pen)-> x-intercepts: |x+8| = 5 gives x = -3 and x = -13.
-(pen)o (db)Factoring and Checks(pen)
-(pen)-> Read h from a (db)fully factored(pen) inside expression.
+(pen)o (y)Factoring and Checks(pen)
+(pen)-> Read h from a (y)fully factored(pen) inside expression.
 (pen)-> With a scale, use b(x-h), not the raw constant.
 (pen)-> Example: 2x-6 = 2(x-3), so h = 3, not 6.
 (pen)-> This combines horizontal scaling with a shift.
 (pen)-> For pure translations, the inside coefficient is 1.
 (pen)-> Shift (li)domain(pen) horizontally and (pu)range(pen) vertically.
 (pen)-> Verify a vertex and a second point by substitution.
-(pen)-> (db)Factored(pen) check: x^2 - 6x + 9 = (x-3)^2, so h = 3, k = 0.
+(pen)-> (y)Factored(pen) check: x^2 - 6x + 9 = (x-3)^2, so h = 3, k = 0.

@@ -24,7 +24,7 @@
 (pen)-> Credit and merchant ties reduced long-distance risks.
 (pen)o Overview
 (pen)-> (hp)Cultural and technological diffusion(pen)
-(pen)-> (r)Environmental consequences(pen)
+(pen)-> (hp)Environmental consequences(pen)
 (pen)-> (pu)Uneven integration and continuity(pen)
 (pen)o (hp)Cultural and technological diffusion(pen)
 (pen)-> c. 1200-1450: all (lb)networks(pen) moved ideas as well as (p)goods(pen).
@@ -33,7 +33,7 @@
 (pen)-> Mali's rulers adopted Islam but local beliefs persisted.
 (pen)-> Ocean diasporas fostered Swahili Islamic coastal culture.
 (pen)-> Silk Roads carried Chinese gunpowder knowledge westward.
-(pen)o (r)Environmental consequences(pen)
+(pen)o (hp)Environmental consequences(pen)
 (pen)-> Eurasian routes helped spread plague in the 1300s.
 (pen)-> Overland and sea links carried infection toward Europe.
 (pen)-> Black Death deaths disrupted labor and raised some wages.

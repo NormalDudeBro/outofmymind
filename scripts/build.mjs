@@ -6,7 +6,7 @@ import { parseArgs } from 'node:util';
 import { renderHome } from './home.mjs';
 
 export const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-export const palette = { g: '#168438', li: '#79c900', pu: '#883ac2', br: '#92552f', y: '#ebc600', r: '#df3034', db: '#173f88', p: '#ed8eb4', lb: '#59b8e7', hp: '#ec228c', pen: '#62615e' };
+export const palette = { g: '#168438', li: '#79c900', pu: '#883ac2', br: '#92552f', y: '#369dce', p: '#ed8eb4', lb: '#59b8e7', hp: '#ec228c', pen: '#62615e' };
 export const units = [
   { name: 'The Global Tapestry', topics: [
     ['1.1-east-asia', 'Developments in East Asia'],
@@ -33,7 +33,7 @@ export const units = [
     ['3.4-comparison', 'Comparison in Land-Based Empires'],
   ] },
 ];
-const marker = /\((g|li|pu|br|y|r|db|p|lb|hp|pen)\)/g;
+const marker = /\((g|li|pu|br|y|p|lb|hp|pen)\)/g;
 const normalize = text => text.replace(/\r\n/g, '\n');
 const lines = text => normalize(text).replace(/\n$/, '').split('\n');
 export const escapeHTML = text => text.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -245,7 +245,7 @@ export function renderSite(data, lang, algebra) {
     <nav aria-label="Units">${data.map((unit, index) => `<a href="#unit-${index + 1}">Unit ${index + 1}: ${escapeHTML(unit.name)}${unit.period ? `, ${escapeHTML(unit.period)}` : ''}</a>`).join('')}</nav>
     <ol class="contents">${data.flatMap(unit => unit.topics.map(topic => `<li><a href="#topic-${escapeHTML(topic.file.replaceAll('.', '-'))}">${escapeHTML(topic.heading)}</a></li>`)).join('')}</ol>
     <p>All notes are visible below. Use your browser’s Print command for one sheet per page. Colored text downloads contain the original color markers.</p>`}
-    <div class="legend" role="group" aria-label="Token color legend">${Object.keys(palette).map(token => `<span><i class="swatch ${token}" aria-hidden="true"></i>${token} ${({ g: 'green', li: 'lime', pu: 'purple', br: 'brown', y: 'yellow', r: 'red', db: 'dark blue', p: 'pink', lb: 'light blue', hp: 'hot pink', pen: 'pencil' })[token]}</span>`).join('')}</div>
+    <div class="legend" role="group" aria-label="Token color legend">${Object.keys(palette).map(token => `<span><i class="swatch ${token}" aria-hidden="true"></i>${token} ${({ g: 'dark green', li: 'lime green', pu: 'purple', br: 'brown', y: 'medium blue', p: 'pink', lb: 'light blue', hp: 'hot pink', pen: 'pencil' })[token]}</span>`).join('')}</div>
     </div>
   </header>
   <main id="notes" tabindex="-1"${study.length ? ' class="study"' : ''}>${study.length ? study.map(topic => `<section class="topic" id="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}" aria-labelledby="topic-${escapeHTML(topic.file.replaceAll('.', '-'))}-title">

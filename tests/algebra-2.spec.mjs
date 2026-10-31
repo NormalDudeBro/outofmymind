@@ -31,7 +31,7 @@ test('Algebra sources and all 754 HTML renderings use the shared marker renderer
     expect(note.sections).toHaveLength(6);
     expect(note.sections.map(section => section.lines.length)).toEqual([10, 10, 9, 10, 10, 9]);
     expect(note.sections.flatMap(section => section.lines)).toEqual(lines(note.source));
-    expect(note.colored.replace(/\((g|li|pu|br|y|r|db|p|lb|hp|pen)\)/g, '')).toBe(note.source);
+    expect(note.colored.replace(/\((g|li|pu|br|y|p|lb|hp|pen)\)/g, '')).toBe(note.source);
     for (const [index, line] of lines(note.colored).entries()) {
       const parts = spans(line);
       expect(line).toMatch(/^\(pen\)(o |-> )/);

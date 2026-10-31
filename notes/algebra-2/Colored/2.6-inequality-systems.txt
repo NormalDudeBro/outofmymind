@@ -27,16 +27,16 @@
 (pen)-> Point (5, 2) (br)fails(pen) y >= x.
 (pen)-> Example: y > x and y < x - 2 has (br)no overlap(pen).
 (pen)-> (br)Empty overlap(pen) means the system has no solution.
-(pen)o (db)Bounded Region(pen)
-(pen)-> A (db)bounded region(pen) fits inside a finite polygon.
-(pen)-> (db)Bounded(pen) describes extent, not whether edges are included.
-(pen)-> A (db)dashed boundary(pen) excludes its points, so it is not closed.
+(pen)o (y)Bounded Region(pen)
+(pen)-> A (y)bounded region(pen) fits inside a finite polygon.
+(pen)-> (y)Bounded(pen) describes extent, not whether edges are included.
+(pen)-> A (y)dashed boundary(pen) excludes its points, so it is not closed.
 (pen)-> Example: x >= 0, y >= 0, x + y <= 6.
-(pen)-> The (db)vertices(pen) are (0, 0), (6, 0), and (0, 6).
-(pen)-> Points on x + y = 6 are (db)included(pen) by <=.
-(pen)-> The region is a (db)triangle(pen) with finite area.
-(pen)-> Example with x > 0 (db)excludes(pen) the y-axis edge.
-(pen)-> It excludes (0, 0) and (0, 6), but stays (db)bounded(pen).
+(pen)-> The (y)vertices(pen) are (0, 0), (6, 0), and (0, 6).
+(pen)-> Points on x + y = 6 are (y)included(pen) by <=.
+(pen)-> The region is a (y)triangle(pen) with finite area.
+(pen)-> Example with x > 0 (y)excludes(pen) the y-axis edge.
+(pen)-> It excludes (0, 0) and (0, 6), but stays (y)bounded(pen).
 (pen)o (hp)Unbounded Region(pen)
 (pen)-> An (hp)unbounded region(pen) extends without limit.
 (pen)-> Example: y >= x + 1 and x >= 0.
@@ -47,12 +47,12 @@
 (pen)-> (hp)Boundedness(pen) concerns the whole region, not one corner.
 (pen)-> (hp)Parallel boundaries(pen) may leave a strip or no overlap.
 (pen)-> Example: y > x and y < x + 2 gives an (hp)unbounded strip(pen).
-(pen)o (r)Real Constraints(pen)
-(pen)-> Count variables in whole items; add (r)nonnegative constraints(pen).
+(pen)o (hp)Real Constraints(pen)
+(pen)-> Count variables in whole items; add (hp)nonnegative constraints(pen).
 (pen)-> Example: x caps and y shirts, with x + y <= 40.
-(pen)-> If (r)at least(pen) 10 caps are needed, add x >= 10.
+(pen)-> If (hp)at least(pen) 10 caps are needed, add x >= 10.
 (pen)-> If shirts cost $8 and caps $5, $300 gives 5x + 8y <= 300.
-(pen)-> The (r)feasible region(pen) is the overlap of all constraints.
+(pen)-> The (hp)feasible region(pen) is the overlap of all constraints.
 (pen)-> Check a candidate such as (20, 12): 20 + 12 <= 40.
 (pen)-> Cost: 5(20) + 8(12) = 196 <= 300.
-(pen)-> A (r)fractional point(pen) may be infeasible if items are discrete.
+(pen)-> A (hp)fractional point(pen) may be infeasible if items are discrete.

@@ -24,7 +24,7 @@
 (pen)-> Paper money eased exchange in a growing market economy.
 (pen)o Overview
 (pen)-> (hp)Confucian social order(pen)
-(pen)-> (r)Buddhist continuity(pen)
+(pen)-> (hp)Buddhist continuity(pen)
 (pen)-> (pu)Regional states and comparison(pen)
 (pen)o (hp)Confucian social order(pen)
 (pen)-> (hp)Confucian(pen) hierarchy supported rulers and family elders.
@@ -33,9 +33,9 @@
 (pen)-> Patriarchy limited women's authority and independence.
 (pen)-> Foot binding spread among elite women in (g)Song(pen) China.
 (pen)-> Scholar-gentry status rested on land and education.
-(pen)o (r)Buddhist continuity(pen)
+(pen)o (hp)Buddhist continuity(pen)
 (pen)-> Mahayana Buddhism remained influential in (lb)East Asia(pen).
-(pen)-> (r)Buddhist(pen) monasteries offered worship and charity.
+(pen)-> (hp)Buddhist(pen) monasteries offered worship and charity.
 (pen)-> Buddhism coexisted with (hp)Confucian(pen) and Daoist traditions.
 (pen)-> Chan Buddhism emphasized meditation and insight.
 (pen)-> Tibetan Buddhism joined Mahayana with tantric practices.

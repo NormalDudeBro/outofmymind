@@ -27,16 +27,16 @@
 (pen)-> Expand and solve for y to reach slope-intercept form.
 (pen)-> y + 3 = 7x - 14 gives y = 7x - 17.
 (pen)-> (br)Check(pen) (2, -3): 7(2) - 17 = -3, as required.
-(pen)o (db)Two Points(pen)
-(pen)-> Given two points, first compute the (db)slope(pen).
+(pen)o (y)Two Points(pen)
+(pen)-> Given two points, first compute the (y)slope(pen).
 (pen)-> m = (y2 - y1)/(x2 - x1), provided x2 != x1.
-(pen)-> (db)Example(pen): (1, 4) and (5, 16).
+(pen)-> (y)Example(pen): (1, 4) and (5, 16).
 (pen)-> m = (16 - 4)/(5 - 1) = 12/4 = 3.
 (pen)-> With (1, 4): y - 4 = 3(x - 1).
 (pen)-> With (5, 16): y - 16 = 3(x - 5).
-(pen)-> Both (db)simplify(pen) to y = 3x + 1.
-(pen)-> (db)Check(pen) (1, 4): 3 + 1 = 4.
-(pen)-> (db)Check(pen) (5, 16): 15 + 1 = 16.
+(pen)-> Both (y)simplify(pen) to y = 3x + 1.
+(pen)-> (y)Check(pen) (1, 4): 3 + 1 = 4.
+(pen)-> (y)Check(pen) (5, 16): 15 + 1 = 16.
 (pen)o (hp)Context Models(pen)
 (pen)-> Define the input and output with (hp)units(pen) before writing.
 (pen)-> Example: a gym charges $40 to join and $25 per month.
@@ -47,12 +47,12 @@
 (pen)-> After 6 months, y = 25(6) + 40 = 190 dollars.
 (pen)-> The point (6, 190) satisfies the model.
 (pen)-> Use the model only while the (hp)rate(pen) and fee stay fixed.
-(pen)o (r)Model Limits(pen)
-(pen)-> A linear model assumes a (r)constant rate(pen) of change.
-(pen)-> Real prices, populations, and demand often (r)change rates(pen).
-(pen)-> (r)Extrapolation(pen) far beyond the data is a claim, not a fact.
-(pen)-> (r)Rounded slopes(pen) make predictions approximate, not exact.
+(pen)o (hp)Model Limits(pen)
+(pen)-> A linear model assumes a (hp)constant rate(pen) of change.
+(pen)-> Real prices, populations, and demand often (hp)change rates(pen).
+(pen)-> (hp)Extrapolation(pen) far beyond the data is a claim, not a fact.
+(pen)-> (hp)Rounded slopes(pen) make predictions approximate, not exact.
 (pen)-> Example: slope 4/3 rounded to 1.33 loses precision.
 (pen)-> From (0, 2), x = 30 gives (4/3)(30) + 2 = 42 exactly.
-(pen)-> The (r)rounded model(pen) gives 1.33(30) + 2 = 41.9.
-(pen)-> State the domain and the (r)rounding(pen) when reporting a result.
+(pen)-> The (hp)rounded model(pen) gives 1.33(30) + 2 = 41.9.
+(pen)-> State the domain and the (hp)rounding(pen) when reporting a result.

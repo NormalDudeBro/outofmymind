@@ -24,7 +24,7 @@
 (pen)-> Women held property rights but faced patriarchal limits.
 (pen)o Overview
 (pen)-> (hp)Religious communities(pen)
-(pen)-> (r)Intellectual innovations(pen)
+(pen)-> (hp)Intellectual innovations(pen)
 (pen)-> (pu)Knowledge exchange(pen)
 (pen)o (hp)Religious communities(pen)
 (pen)-> (lb)Islam(pen) linked diverse regions through belief and law.
@@ -33,12 +33,12 @@
 (pen)-> Judaism and Christianity continued under (lb)Muslim(pen) rule.
 (pen)-> Jews and Christians often paid jizya for protected status.
 (pen)-> Legal protection did not mean (p)social(pen) or (hp)religious(pen) equality.
-(pen)o (r)Intellectual innovations(pen)
+(pen)o (hp)Intellectual innovations(pen)
 (pen)-> Scholars advanced algebra, astronomy, and medicine.
 (pen)-> Hospitals and medical texts supported clinical learning.
 (pen)-> Nasir al-Din al-Tusi improved astronomical models.
 (pen)-> Ibn Rushd's works shaped later philosophical debate.
-(pen)-> (r)Intellectual(pen) work built on Greek, Persian, Indian learning.
+(pen)-> (hp)Intellectual(pen) work built on Greek, Persian, Indian learning.
 (pen)o (pu)Knowledge exchange(pen)
 (pen)-> Arabic connected scholars across (lb)Muslim(pen) societies.
 (pen)-> Translations preserved and expanded older (pu)knowledge(pen).

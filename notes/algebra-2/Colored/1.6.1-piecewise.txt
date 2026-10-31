@@ -27,26 +27,26 @@
 (pen)-> The last branch includes (2, 3); the final point is (br)closed(pen).
 (pen)-> Thus f(0) = 3 and f(2) = 3, each with one output.
 (pen)-> f is (br)increasing(pen), flat, then decreasing across its domain.
-(pen)o (db)Jersey Total Cost(pen)
-(pen)-> Let n be the number of jerseys; C(n) is (db)total cost(pen).
-(pen)-> The domain is (db)positive integers(pen), not all real numbers.
+(pen)o (y)Jersey Total Cost(pen)
+(pen)-> Let n be the number of jerseys; C(n) is (y)total cost(pen).
+(pen)-> The domain is (y)positive integers(pen), not all real numbers.
 (pen)-> C(n) = 88n for 1 <= n <= 5.
 (pen)-> C(n) = 75n for 6 <= n <= 11.
 (pen)-> C(n) = 65n for 12 <= n <= 29.
 (pen)-> C(n) = 56n for n >= 30.
 (pen)-> These are all-units discounts: one rate for the whole order.
-(pen)-> The (db)tiers(pen) leave no gap: 1-5, 6-11, 12-29, then 30 and up.
-(pen)-> Reading the (db)domain(pen) first stops you from using 0 jerseys.
-(pen)o (r)Jersey Calculations(pen)
+(pen)-> The (y)tiers(pen) leave no gap: 1-5, 6-11, 12-29, then 30 and up.
+(pen)-> Reading the (y)domain(pen) first stops you from using 0 jerseys.
+(pen)o (hp)Jersey Calculations(pen)
 (pen)-> For 11 jerseys, choose the 6 through 11 tier.
 (pen)-> C(11) = 75(11) = 825 dollars.
 (pen)-> For 25 jerseys, choose the 12 through 29 tier.
 (pen)-> C(25) = 65(25) = 1625 dollars, not 1885.
 (pen)-> C(5) = 440, while C(6) = 450.
-(pen)-> C(11) = 825, while C(12) = 780: total cost can (r)fall(pen).
+(pen)-> C(11) = 825, while C(12) = 780: total cost can (hp)fall(pen).
 (pen)-> C(29) = 1885, while C(30) = 1680.
-(pen)-> (r)Rates(pen) step down: 88, 75, 65, then 56 per jersey.
-(pen)-> At n = 30 the (r)total drops(pen) the most: 205 dollars.
+(pen)-> (hp)Rates(pen) step down: 88, 75, 65, then 56 per jersey.
+(pen)-> At n = 30 the (hp)total drops(pen) the most: 205 dollars.
 (pen)o (hp)Rates and Model Checks(pen)
 (pen)-> An all-units price changes for every item at a tier boundary.
 (pen)-> A (hp)progressive rate(pen) applies each rate only to its own band.

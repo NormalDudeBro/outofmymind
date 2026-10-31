@@ -35,7 +35,7 @@ algebra.forEach(lesson => {
   assert.deepEqual(Buffer.from(lesson.colored), readFileSync(resolve(root, 'notes/algebra-2/Colored', `${lesson.file}.txt`)), 'exact colored source bytes');
   assert.doesNotMatch(lesson.source, /[^\x00-\x7f]|\r/, 'original ASCII and LF only');
   assert.doesNotMatch(lesson.colored, /[^\x00-\x7f]|\r/, 'colored ASCII and LF only');
-  assert.equal(lesson.colored.replace(/\((g|li|pu|br|y|r|db|p|lb|hp|pen)\)/g, ''), lesson.source, 'exact stripped equality including final newline');
+  assert.equal(lesson.colored.replace(/\((g|li|pu|br|y|p|lb|hp|pen)\)/g, ''), lesson.source, 'exact stripped equality including final newline');
   const lines = lesson.source.replace(/\n$/, '').split('\n');
   assert.equal(lines.length, 58);
   assert.equal(lesson.colored.replace(/\n$/, '').split('\n').length, 58);

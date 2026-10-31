@@ -27,16 +27,16 @@
 (pen)-> (5, 0): C = 10.
 (pen)-> (4, 3): C = 8 + 21 = 29.
 (pen)-> (0, 5): C = 35; the (br)minimum(pen) is 0 at (0, 0).
-(pen)o (db)Unbounded Case(pen)
-(pen)-> An (db)unbounded region(pen) may lack a maximum or minimum.
+(pen)o (y)Unbounded Case(pen)
+(pen)-> An (y)unbounded region(pen) may lack a maximum or minimum.
 (pen)-> Example: minimize C = 2x + 3y.
 (pen)-> Constraints: x >= 0, y >= 0, x + y >= 4.
-(pen)-> The (db)vertices(pen) are (0, 4) and (4, 0).
+(pen)-> The (y)vertices(pen) are (0, 4) and (4, 0).
 (pen)-> C(0, 4) = 12 and C(4, 0) = 8.
-(pen)-> At x = 0, C = 3y (db)grows without bound(pen), so no maximum exists.
+(pen)-> At x = 0, C = 3y (y)grows without bound(pen), so no maximum exists.
 (pen)-> Since x + y >= 4, C = 2(x + y) + y >= 8.
-(pen)-> Thus the (db)minimum(pen) is 8 at (4, 0).
-(pen)-> One extra test point cannot (db)prove(pen) that no maximum exists.
+(pen)-> Thus the (y)minimum(pen) is 8 at (4, 0).
+(pen)-> One extra test point cannot (y)prove(pen) that no maximum exists.
 (pen)o (hp)Application(pen)
 (pen)-> Each table needs 4 (hp)board feet(pen); each chair needs 2.
 (pen)-> Only 24 board feet are (hp)available(pen).
@@ -47,12 +47,12 @@
 (pen)-> Real-(hp)relaxation vertices(pen): (2, 3), (2, 8), and (4.5, 3).
 (pen)-> (hp)Check(pen) (2, 3): 8 + 6 = 14 <= 24.
 (pen)-> P values: 120, 220, and 195.
-(pen)o (r)Check and Interpret(pen)
-(pen)-> The (r)relaxed maximum(pen) is 220 at integer point (2, 8).
-(pen)-> (r)Integer points(pen) form a feasible subset of the relaxation.
-(pen)-> So no (r)feasible integer point(pen) can exceed 220.
-(pen)-> (r)Rounding(pen) a fractional optimal vertex is not a proof.
-(pen)-> If needed, (r)enumerate all feasible integer points(pen).
-(pen)-> Report the number of tables, chairs, and (r)profit(pen) with units.
-(pen)-> State whether the region is (r)bounded(pen) and the extreme claimed.
-(pen)-> (r)Confirm every constraint(pen) at the chosen point.
+(pen)o (hp)Check and Interpret(pen)
+(pen)-> The (hp)relaxed maximum(pen) is 220 at integer point (2, 8).
+(pen)-> (hp)Integer points(pen) form a feasible subset of the relaxation.
+(pen)-> So no (hp)feasible integer point(pen) can exceed 220.
+(pen)-> (hp)Rounding(pen) a fractional optimal vertex is not a proof.
+(pen)-> If needed, (hp)enumerate all feasible integer points(pen).
+(pen)-> Report the number of tables, chairs, and (hp)profit(pen) with units.
+(pen)-> State whether the region is (hp)bounded(pen) and the extreme claimed.
+(pen)-> (hp)Confirm every constraint(pen) at the chosen point.

@@ -24,7 +24,7 @@
 (pen)-> Credit financed costly journeys, enabling more commerce.
 (pen)o Overview
 (pen)-> (hp)Commercial growth and urban centers(pen)
-(pen)-> (r)Cultural and technological diffusion(pen)
+(pen)-> (hp)Cultural and technological diffusion(pen)
 (pen)-> (pu)Environmental effects and network limits(pen)
 (pen)o (hp)Commercial growth and urban centers(pen)
 (pen)-> c. 1200-1450: Eurasian overland trade expanded exchange.
@@ -33,7 +33,7 @@
 (pen)-> Merchants relayed goods; few traveled the entire (pu)network(pen).
 (pen)-> (hp)Urban(pen) markets supported artisans producing luxury goods.
 (pen)-> Yuan paper money aided trade within China, not everywhere.
-(pen)o (r)Cultural and technological diffusion(pen)
+(pen)o (hp)Cultural and technological diffusion(pen)
 (pen)-> Merchants and travelers carried ideas along trade routes.
 (pen)-> Muslim traders and scholars spread Islam in Central Asia.
 (pen)-> Buddhism persisted on routes despite Islam's (li)expansion(pen).

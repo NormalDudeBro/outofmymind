@@ -1,13 +1,13 @@
 (pen)o Overview
-(pen)-> (db)Bureaucratic and military service(pen)
+(pen)-> (y)Bureaucratic and military service(pen)
 (pen)-> (g)Taxation and imperial capacity(pen)
 (pen)-> (p)Central authority and local elites(pen)
-(pen)o (db)Bureaucratic and military service(pen)
-(pen)-> (db)Qing(pen) rulers retained (pu)Confucian(pen) exams and scholar-officials.
+(pen)o (y)Bureaucratic and military service(pen)
+(pen)-> (y)Qing(pen) rulers retained (pu)Confucian(pen) exams and scholar-officials.
 (pen)-> Exams recruited educated men; wealthy elites dominated office.
 (pen)-> (g)Ottoman(pen) (br)devshirme(pen) coerced Christian boys into state service.
-(pen)-> Converts could become (r)Janissaries(pen) or senior administrators.
-(pen)-> (r)Janissaries(pen) formed salaried professional infantry.
+(pen)-> Converts could become (hp)Janissaries(pen) or senior administrators.
+(pen)-> (hp)Janissaries(pen) formed salaried professional infantry.
 (pen)-> Janissary recruitment later widened beyond devshirme.
 (pen)o (g)Taxation and imperial capacity(pen)
 (pen)-> Ottoman tax farmers bid for rights to collect revenue.
@@ -19,17 +19,17 @@
 (pen)o (p)Central authority and local elites(pen)
 (pen)-> Mughal (br)mansabdars(pen) held ranks and supplied cavalry.
 (pen)-> Rank and revenue assignments tied nobles to the emperor.
-(pen)-> (db)Qing(pen) gentry mediated disputes and helped local officials.
+(pen)-> (y)Qing(pen) gentry mediated disputes and helped local officials.
 (pen)-> Officials depended on local knowledge and elite cooperation.
 (pen)-> Such ties extended state power but limited direct control.
 (pen)o Overview
 (pen)-> (g)Religion and imperial legitimacy(pen)
 (pen)-> (p)Art and monumental architecture(pen)
-(pen)-> (r)Limits on central power(pen)
+(pen)-> (hp)Limits on central power(pen)
 (pen)o (g)Religion and imperial legitimacy(pen)
 (pen)-> (g)Ottoman(pen) sultans used (li)Sunni(pen) Islam to support their authority.
 (pen)-> (pu)Safavids(pen) promoted Twelver Shi'a Islam as a state religion.
-(pen)-> (db)Qing(pen) emperors invoked Heaven's mandate and Confucian duties.
+(pen)-> (y)Qing(pen) emperors invoked Heaven's mandate and Confucian duties.
 (pen)-> France's (br)Louis XIV(pen) claimed divine right to rule.
 (pen)-> (p)Akbar(pen) built Mughal loyalty through Hindu elite alliances.
 (pen)-> Religious claims did not require identical policies.
@@ -40,7 +40,7 @@
 (pen)-> Qing portraits depicted ritual and military authority.
 (pen)-> Ottoman mosque complexes linked piety with public charity.
 (pen)-> Monumental building displayed command of labor and revenue.
-(pen)o (r)Limits on central power(pen)
+(pen)o (hp)Limits on central power(pen)
 (pen)-> Janissaries gained interests that could challenge sultans.
 (pen)-> Mughal zamindars bargained over revenue and resisted demands.
 (pen)-> Heavy taxes could fund rule but also provoke resistance.

@@ -1,14 +1,14 @@
 (pen)o Overview
-(pen)-> (r)Protestant Reformation(pen)
+(pen)-> (hp)Protestant Reformation(pen)
 (pen)-> (pu)Catholic responses(pen)
-(pen)-> (db)Confessional Europe(pen)
-(pen)o (r)Protestant Reformation(pen)
+(pen)-> (y)Confessional Europe(pen)
+(pen)o (hp)Protestant Reformation(pen)
 (pen)-> (g)Luther(pen) attacked indulgence sales in 1517.
 (pen)-> Luther taught (pu)justification by faith(pen), not works.
-(pen)-> Protestants put (db)scripture(pen) above papal authority.
+(pen)-> Protestants put (y)scripture(pen) above papal authority.
 (pen)-> (y)Printing(pen) spread Luther's arguments quickly across Europe.
 (pen)-> Some princes protected reform and gained church lands.
-(pen)-> (r)Lutheranism(pen) and (r)Calvinism(pen) became Protestant traditions.
+(pen)-> (hp)Lutheranism(pen) and (hp)Calvinism(pen) became Protestant traditions.
 (pen)-> Calvinists stressed (pu)predestination(pen) and discipline.
 (pen)o (pu)Catholic responses(pen)
 (pen)-> Catholic leaders answered Protestant challenges with reform.
@@ -16,7 +16,7 @@
 (pen)-> Trent also addressed clerical abuses and improved training.
 (pen)-> (br)Jesuits(pen) founded schools and carried Catholic missions abroad.
 (pen)-> Seven sacraments and papal authority endured Catholic reform.
-(pen)o (db)Confessional Europe(pen)
+(pen)o (y)Confessional Europe(pen)
 (pen)-> Religious division fueled Europe's Thirty Years' War.
 (pen)-> Catholic France fought Habsburgs for dynastic power, too.
 (pen)-> France granted Huguenot rights in 1598, revoked them in 1685.

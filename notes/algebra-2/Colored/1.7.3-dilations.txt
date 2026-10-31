@@ -37,22 +37,22 @@
 (pen)-> Since |-x| = |x|, this reflection is also invisible.
 (pen)-> The same trick works for |x| and every other even parent.
 (pen)-> (br)Even symmetry(pen) gives f(-b*x) = f(b*x), not f(b*x) = f(x).
-(pen)o (r)Combining Two Dilations(pen)
+(pen)o (hp)Combining Two Dilations(pen)
 (pen)-> In g(x) = a*f(b*x), use nonzero a and b.
-(pen)-> Map (u,v) to (u/b,a*v); (r)divide input(pen), scale output.
+(pen)-> Map (u,v) to (u/b,a*v); (hp)divide input(pen), scale output.
 (pen)-> Reflect x, compress horizontally 1/2, stretch vertically 8.
 (pen)-> For x^2, choose a = -8 and b = 2.
 (pen)-> g(x) = -8*(2*x)^2 = -32*x^2.
 (pen)-> For g(x) = -4*|2*x|, (-2,2) becomes (-1,-8).
 (pen)-> The other parent point (2,2) becomes (1,-8).
-(pen)-> For a power parent, the (r)coefficient(pen) becomes a*b^k.
+(pen)-> For a power parent, the (hp)coefficient(pen) becomes a*b^k.
 (pen)-> The sign of b is free for even parents: -2 works like 2.
-(pen)o (db)Equivalent Descriptions(pen)
+(pen)o (y)Equivalent Descriptions(pen)
 (pen)-> g(x) = (-3*x)^2 = 9*x^2.
 (pen)-> Inside form: compress horizontally 1/3; reflect y-axis.
 (pen)-> Outside form: stretch vertically by 9, with no reflection.
-(pen)-> Both descriptions produce the (db)same graph(pen).
+(pen)-> Both descriptions produce the (y)same graph(pen).
 (pen)-> Even parents satisfy f(-x) = f(x).
 (pen)-> Their y-axis reflections can be invisible.
 (pen)-> Parameter representations need not be unique.
-(pen)-> (db)Simplify first(pen): (-3*x)^2 = 9*x^2 keeps a positive a.
+(pen)-> (y)Simplify first(pen): (-3*x)^2 = 9*x^2 keeps a positive a.

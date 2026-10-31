@@ -27,26 +27,26 @@
 (pen)-> Multiplying or dividing by a negative reverses the sign.
 (pen)-> For x < c, the (br)vertical boundary(pen) is x = c; shade left.
 (pen)-> For x > c, use a (br)dashed(pen) vertical line and shade right.
-(pen)o (r)Rearrange and Test(pen)
+(pen)o (hp)Rearrange and Test(pen)
 (pen)-> 12 - 4y > x gives -4y > x - 12.
 (pen)-> Divide by -4: y < -x/4 + 3; dashed, shade below.
 (pen)-> 9 + 3y <= 8x gives y <= (8/3)x - 3.
 (pen)-> Use a solid boundary and shade below it.
 (pen)-> At (3, 5), 9 + 3(5) = 24 and 8(3) = 24.
-(pen)-> (r)Equality(pen) holds, so (3, 5) is included on the boundary.
-(pen)-> (r)Test(pen) a point off the line to confirm the shaded side.
-(pen)-> (r)Test(pen) (0, 0): 9 <= 0 is false, so the shade is below.
-(pen)-> The (r)boundary(pen) y = -x/4 + 3 passes (0, 3), (4, 2), (8, 1).
-(pen)o (db)Weighted Grade Constraints(pen)
+(pen)-> (hp)Equality(pen) holds, so (3, 5) is included on the boundary.
+(pen)-> (hp)Test(pen) a point off the line to confirm the shaded side.
+(pen)-> (hp)Test(pen) (0, 0): 9 <= 0 is false, so the shade is below.
+(pen)-> The (hp)boundary(pen) y = -x/4 + 3 passes (0, 3), (4, 2), (8, 1).
+(pen)o (y)Weighted Grade Constraints(pen)
 (pen)-> Let x = test grade and y = homework grade.
-(pen)-> With 0 <= x, y <= 100, (db)target(pen): 0.7x + 0.3y >= 90.
+(pen)-> With 0 <= x, y <= 100, (y)target(pen): 0.7x + 0.3y >= 90.
 (pen)-> Multiply by 10: 7x + 3y >= 900.
 (pen)-> Solve: y >= 300 - (7/3)x.
 (pen)-> If y = 100, then x >= 600/7, about 85.71.
 (pen)-> If x = 100, then y >= 200/3, about 66.67.
-(pen)-> Shade above the solid line within the (db)grade square(pen).
-(pen)-> y = 300 - (7/3)x has (db)intercept(pen) (0, 300), above the square.
-(pen)-> On the (db)boundary(pen), raising x by 3 lowers required y by 7.
+(pen)-> Shade above the solid line within the (y)grade square(pen).
+(pen)-> y = 300 - (7/3)x has (y)intercept(pen) (0, 300), above the square.
+(pen)-> On the (y)boundary(pen), raising x by 3 lowers required y by 7.
 (pen)o (hp)Regions and Functions(pen)
 (pen)-> A system's solution satisfies every inequality.
 (pen)-> Keep only the (hp)overlap(pen) of all allowed regions.

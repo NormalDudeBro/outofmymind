@@ -37,22 +37,22 @@
 (pen)-> The minimum is 0; opposite inputs give equal outputs.
 (pen)-> Rate of change: -1 on (-inf,0) and 1 on (0,inf).
 (pen)-> It is not (br)linear(pen): slopes jump from -1 to 1 at x = 0.
-(pen)o (r)Quadratic Parent(pen)
+(pen)o (hp)Quadratic Parent(pen)
 (pen)-> f(x) = x^2 squares each input.
 (pen)-> Domain: R. Range: [0,inf).
 (pen)-> Table inputs: x = -2, -1, 0, 1, 2.
 (pen)-> Table outputs: y = 4, 1, 0, 1, 4.
-(pen)-> The (r)parabola(pen) opens up with vertex (0,0).
+(pen)-> The (hp)parabola(pen) opens up with vertex (0,0).
 (pen)-> It has y-axis symmetry and a minimum of 0.
 (pen)-> Unlike |x|, it curves; both have nonnegative outputs.
-(pen)-> From 0 to h != 0, average (r)rate of change(pen) is h^2/h = h.
+(pen)-> From 0 to h != 0, average (hp)rate of change(pen) is h^2/h = h.
 (pen)-> Equal input steps give unequal changes in squared outputs.
-(pen)o (db)Choosing Models(pen)
+(pen)o (y)Choosing Models(pen)
 (pen)-> (li)Constant(pen): temperature held fixed over a time interval.
 (pen)-> (pu)Linear(pen): wages W(t) = r*t at a fixed hourly rate r.
 (pen)-> Identity is the linear parent; wages need scaling.
-(pen)-> (r)Quadratic(pen): hypothetical projectile height H(t).
+(pen)-> (hp)Quadratic(pen): hypothetical projectile height H(t).
 (pen)-> H(t) = -t^2 + 4*t; 0 <= t <= 4; range: [0,4].
 (pen)-> (br)Absolute value(pen): |s-c| is distance from reference c.
-(pen)-> s is (db)signed position(pen), not total distance traveled.
+(pen)-> s is (y)signed position(pen), not total distance traveled.
 (pen)-> Wages at $12 per hour: W(30) = 12*30 = 360 dollars.

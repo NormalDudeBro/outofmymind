@@ -24,7 +24,7 @@
 (pen)-> Restored in 1261, the (p)state(pen) faced shrinking territory.
 (pen)o Overview
 (pen)-> (hp)Religious communities(pen)
-(pen)-> (r)Manorial agriculture(pen)
+(pen)-> (hp)Manorial agriculture(pen)
 (pen)-> (pu)Social and economic change(pen)
 (pen)o (hp)Religious communities(pen)
 (pen)-> Latin Christianity linked western (lb)Europe(pen) under the pope.
@@ -33,7 +33,7 @@
 (pen)-> Judaism endured amid legal restrictions and expulsions.
 (pen)-> Islam shaped Iberian cities, trade, and scholarship.
 (pen)-> Crusades mobilized Christians and deepened (hp)religious(pen) rifts.
-(pen)o (r)Manorial agriculture(pen)
+(pen)o (hp)Manorial agriculture(pen)
 (pen)-> Manorialism organized estates around peasant labor.
 (pen)-> Serfs owed dues and labor; they were bound to the land.
 (pen)-> Free peasants also farmed; most (lb)Europeans(pen) lived rurally.

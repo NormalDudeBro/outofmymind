@@ -24,7 +24,7 @@
 (pen)-> Foot binding marked elite Chinese women, not Europeans.
 (pen)o Overview
 (pen)-> (hp)Economic structures(pen)
-(pen)-> (r)Environmental adaptation(pen)
+(pen)-> (hp)Environmental adaptation(pen)
 (pen)-> (pu)Religious communities(pen)
 (pen)o (hp)Economic structures(pen)
 (pen)-> (lb)Comparison(pen), c.1200-1450: farming sustained most states.
@@ -33,7 +33,7 @@
 (pen)-> Mali taxed gold trade; Swahili ports taxed ocean trade.
 (pen)-> Both gained wealth from commerce, but via different routes.
 (pen)-> Mexica took tribute; Inca rulers mobilized mit'a labor.
-(pen)o (r)Environmental adaptation(pen)
+(pen)o (hp)Environmental adaptation(pen)
 (pen)-> China and the Andes both adapted farming to terrain.
 (pen)-> Chinese wet-rice farming supported dense populations.
 (pen)-> Andean terraces expanded farming to support Inca rule.

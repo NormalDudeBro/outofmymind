@@ -37,22 +37,22 @@
 (pen)-> Domain: R. Range: (-inf,-5]; there are no real zeros.
 (pen)-> (br)Expand to confirm(pen): g(x) = -4*x^2 + 16*x - 21.
 (pen)-> The y-intercept (0,-21) lies 16 units below the maximum.
-(pen)o (r)Dolphin Model(pen)
+(pen)o (hp)Dolphin Model(pen)
 (pen)-> g(x) = -0.125*(x-12)^2 + 18 models height.
-(pen)-> Vertex: (12,18); maximum height: 18 (r)distance units(pen).
+(pen)-> Vertex: (12,18); maximum height: 18 (hp)distance units(pen).
 (pen)-> Zero height: 0 = -0.125*(x-12)^2 + 18.
 (pen)-> Thus (x-12)^2 = 144; x-12 = +/-12.
 (pen)-> Zeros: x = 0 and x = 24; symmetry axis: x = 12.
 (pen)-> Context domain: [0,24]; context range: [0,18].
 (pen)-> The packet does not specify distance units.
-(pen)-> (r)Spot check(pen) the middle: g(12) = 18, the peak of the arc.
+(pen)-> (hp)Spot check(pen) the middle: g(12) = 18, the peak of the arc.
 (pen)-> At x = 6 the height is 13.5, three quarters of 18.
-(pen)o (db)Reflection and Point Check(pen)
+(pen)o (y)Reflection and Point Check(pen)
 (pen)-> g(x) = -2*|-(x-5)| + 4 has a = -2, b = -1.
 (pen)-> Reflect y then x; stretch vertically 2; right 5; up 4.
 (pen)-> h = 5, k = 4; vertex: (5,4); range: (-inf,4].
 (pen)-> (0,0) maps to (5,4); domain: R.
 (pen)-> (-1,1) maps to (6,2); (1,1) maps to (4,2).
-(pen)-> Absolute value hides the y-axis (db)reflection(pen).
+(pen)-> Absolute value hides the y-axis (y)reflection(pen).
 (pen)-> Check each mapped point by substituting into g(x).
-(pen)-> Verify the (db)far ray(pen): g(9) = -2*4 + 4 = -4.
+(pen)-> Verify the (y)far ray(pen): g(9) = -2*4 + 4 = -4.

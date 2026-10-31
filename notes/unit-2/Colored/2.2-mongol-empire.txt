@@ -24,7 +24,7 @@
 (pen)-> Ming forces expelled Yuan from China in 1368.
 (pen)o Overview
 (pen)-> (hp)Trade and communication(pen)
-(pen)-> (r)Cultural and environmental effects(pen)
+(pen)-> (hp)Cultural and environmental effects(pen)
 (pen)-> (pu)Continuity and change(pen)
 (pen)o (hp)Trade and communication(pen)
 (pen)-> (lb)Mongol(pen) conquests joined Eurasian lands under related (li)states(pen).
@@ -33,7 +33,7 @@
 (pen)-> Merchant privileges and credit supported caravan commerce.
 (pen)-> Yam relay stations sped (li)imperial(pen) orders and diplomatic news.
 (pen)-> Paiza passes granted authorized travelers access to supplies.
-(pen)o (r)Cultural and environmental effects(pen)
+(pen)o (hp)Cultural and environmental effects(pen)
 (pen)-> (lb)Mongol(pen) courts moved artisans, often forcibly, across Eurasia.
 (pen)-> Relocated experts shared medicine and astronomical knowledge.
 (pen)-> Contacts helped Chinese gunpowder knowledge spread westward.

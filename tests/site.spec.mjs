@@ -166,6 +166,28 @@ test('no JavaScript over HTTP and file:// exposes everything and local downloads
   await context.close();
 });
 
+test('notes use only the eight available highlight inks, including print', async ({ page }) => {
+  for (const path of ['ap-world.html', 'ap-lang.html', 'algebra-2.html']) {
+    await page.goto(`/${path}`);
+    await expect(page.locator('.ink.r, .ink.db')).toHaveCount(0);
+    await expect(page.locator('.legend .swatch')).toHaveCount(9);
+    for (const media of ['screen', 'print']) {
+      await page.emulateMedia({ media });
+      await expect(page.locator('html')).toHaveCSS('--y', '#369dce');
+      if (await page.locator('.ink.y').count()) {
+        await expect(page.locator('.ink.y').first()).toHaveCSS('color', 'rgb(54, 157, 206)');
+      }
+      await expect(page.locator('.swatch.y')).toHaveCSS('background-color', 'rgb(54, 157, 206)');
+      await expect(page.locator('.topic-title').first()).toHaveCSS('color', 'rgb(89, 184, 231)');
+      const allowed = ['rgb(22, 132, 56)', 'rgb(121, 201, 0)', 'rgb(136, 58, 194)', 'rgb(146, 85, 47)', 'rgb(54, 157, 206)', 'rgb(237, 142, 180)', 'rgb(89, 184, 231)', 'rgb(236, 34, 140)'];
+      const colors = await page.locator('.ink').evaluateAll(elements => [...new Set(elements.map(element => getComputedStyle(element).color))]);
+      expect(colors.every(color => allowed.includes(color))).toBe(true);
+    }
+    await expect(page.locator('.legend')).toContainText('y medium blue');
+    expect(await page.content()).not.toContain('#ebc600');
+  }
+});
+
 test('accessibility: only the documented approved-palette contrast exception', async ({ page }) => {
   await page.goto('/ap-world.html');
   const results = await new AxeBuilder({ page }).analyze();

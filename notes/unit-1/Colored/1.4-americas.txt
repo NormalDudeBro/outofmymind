@@ -24,7 +24,7 @@
 (pen)-> (li)Tribute(pen) demands enriched rulers but fueled resistance.
 (pen)o Overview
 (pen)-> (hp)Inca centralization(pen)
-(pen)-> (r)Andean adaptations(pen)
+(pen)-> (hp)Andean adaptations(pen)
 (pen)-> (pu)American state comparison(pen)
 (pen)o (hp)Inca centralization(pen)
 (pen)-> (hp)Inca(pen) expansion accelerated under Pachacuti from 1438.
@@ -34,7 +34,7 @@
 (pen)-> Roads and runners linked troops, officials and supplies.
 (pen)-> Quipu knotted cords recorded labor and stored goods.
 (pen)-> Inti worship and royal ancestor veneration backed rule.
-(pen)o (r)Andean adaptations(pen)
+(pen)o (hp)Andean adaptations(pen)
 (pen)-> Terraces and irrigation expanded mountain farming.
 (pen)-> Potatoes and quinoa suited highland environments.
 (pen)-> Llamas carried goods; roads connected ecological zones.

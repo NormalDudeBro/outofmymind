@@ -25,7 +25,7 @@
 (pen)o Overview
 (pen)-> (li)Monsoons and maritime geography(pen)
 (pen)-> (hp)Merchant diasporas(pen)
-(pen)-> (r)Cultural and environmental exchange(pen)
+(pen)-> (hp)Cultural and environmental exchange(pen)
 (pen)o (li)Monsoons and maritime geography(pen)
 (pen)-> In c. 1200-1450, seasonal winds structured ocean (g)trade(pen).
 (pen)-> Summer (li)monsoons(pen) aided voyages from Arabia toward India.
@@ -39,7 +39,7 @@
 (pen)-> Muslim traders also formed communities in Indian ports.
 (pen)-> (hp)Diaspora(pen) ties supplied contacts, credit, and market news.
 (pen)-> Intermarriage linked foreign (hp)merchants(pen) to local families.
-(pen)o (r)Cultural and environmental exchange(pen)
+(pen)o (hp)Cultural and environmental exchange(pen)
 (pen)-> (hp)Merchant(pen) contacts spread Islam without universal conquest.
 (pen)-> Some Southeast Asian rulers adopted Islam and (g)trade(pen) ties.
 (pen)-> Swahili blended Bantu roots with Arabic loanwords.

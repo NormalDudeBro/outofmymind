@@ -1,14 +1,14 @@
 (pen)o Overview
 (pen)-> (g)Expansion and military organization(pen)
 (pen)-> (y)Geography and imperial motives(pen)
-(pen)-> (r)Bureaucratic recruitment(pen)
+(pen)-> (hp)Bureaucratic recruitment(pen)
 (pen)o (g)Expansion and military organization(pen)
 (pen)-> Both Ottomans and Mughals used cannon-equipped armies.
-(pen)-> (r)Janissaries(pen) drew pay; (p)mansabdars(pen) often held revenue grants.
+(pen)-> (hp)Janissaries(pen) drew pay; (p)mansabdars(pen) often held revenue grants.
 (pen)-> Janissaries were infantry; (p)mansabdars(pen) mustered cavalry.
-(pen)-> (db)Qing(pen) banners organized Manchu, Mongol, and Han soldiers.
+(pen)-> (y)Qing(pen) banners organized Manchu, Mongol, and Han soldiers.
 (pen)-> Qing banners were hereditary; (br)devshirme(pen) recruited outsiders.
-(pen)-> Ottoman and Mughal (r)firearms(pen) needed taxes and local allies.
+(pen)-> Ottoman and Mughal (hp)firearms(pen) needed taxes and local allies.
 (pen)-> Cavalry persisted in Ottoman and Mughal armies.
 (pen)o (y)Geography and imperial motives(pen)
 (pen)-> Russia sought Siberian (br)furs(pen); Qing sought frontier security.
@@ -16,7 +16,7 @@
 (pen)-> Siberia's rivers aided Cossacks; Qing crossed steppe routes.
 (pen)-> Unlike Russia's fur tribute, Mughal wealth relied on farms.
 (pen)-> Agrarian density made land taxes lucrative for Mughals.
-(pen)o (r)Bureaucratic recruitment(pen)
+(pen)o (hp)Bureaucratic recruitment(pen)
 (pen)-> Ottomans coerced (br)devshirme(pen) boys; Qing used Confucian exams.
 (pen)-> Both trained officials to serve imperial courts.
 (pen)-> Qing exams favored gentry; devshirme bypassed birth elites.
@@ -24,7 +24,7 @@
 (pen)-> Ottoman converts' dependence aimed to bind them to sultans.
 (pen)o Overview
 (pen)-> (pu)Revenue and local elites(pen)
-(pen)-> (db)Religion and monumental authority(pen)
+(pen)-> (y)Religion and monumental authority(pen)
 (pen)-> (p)Governing imperial diversity(pen)
 (pen)o (pu)Revenue and local elites(pen)
 (pen)-> Ottoman (g)tax farmers(pen) and Mughal zamindars collected revenue.
@@ -32,10 +32,10 @@
 (pen)-> Tax farmers bought rights; zamindars held local land claims.
 (pen)-> Both funded armies, but local collectors retained leverage.
 (pen)-> Distance made both courts depend on intermediaries.
-(pen)o (db)Religion and monumental authority(pen)
+(pen)o (y)Religion and monumental authority(pen)
 (pen)-> (br)Louis XIV(pen) claimed divine right; Qing used Heaven's mandate.
 (pen)-> Both justified kingship through a sacred political order.
-(pen)-> French (db)Versailles(pen) and Mughal Taj Mahal exalted dynasties.
+(pen)-> French (y)Versailles(pen) and Mughal Taj Mahal exalted dynasties.
 (pen)-> Versailles hosted nobles; the Taj Mahal was a royal tomb.
 (pen)-> Both used patronage, but buildings served different roles.
 (pen)-> Such displays reinforced claims, not total central control.

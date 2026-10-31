@@ -23,16 +23,16 @@
 (pen)-> Cattle and farming supported rulers and social hierarchies.
 (pen)-> (li)Gold(pen) exports reached Indian Ocean ports through middlemen.
 (pen)o Overview
-(pen)-> (r)Swahili city states(pen)
+(pen)-> (hp)Swahili city states(pen)
 (pen)-> (pu)Ethiopia and Christianity(pen)
-(pen)-> (db)Diverse African societies(pen)
-(pen)o (r)Swahili city states(pen)
+(pen)-> (y)Diverse African societies(pen)
+(pen)o (hp)Swahili city states(pen)
 (pen)-> Kilwa and Mombasa were independent coastal trading cities.
 (pen)-> Monsoon winds linked East (lb)Africa(pen) to Arabia and India.
 (pen)-> Merchants exported (li)gold(pen), ivory, and enslaved people.
 (pen)-> Port wealth supported ruling elites and urban growth.
 (pen)-> (p)Islam(pen) spread through (li)trade(pen); many coastal elites converted.
-(pen)-> (r)Swahili(pen) joined Bantu grammar with Arabic loanwords.
+(pen)-> (hp)Swahili(pen) joined Bantu grammar with Arabic loanwords.
 (pen)o (pu)Ethiopia and Christianity(pen)
 (pen)-> The Solomonic dynasty took power in (pu)Ethiopia(pen) in 1270.
 (pen)-> Claims of descent from Solomon legitimized kingship.
@@ -40,9 +40,9 @@
 (pen)-> (pu)Christianity(pen) tied (p)royal(pen) legitimacy to church institutions.
 (pen)-> Rock-cut churches at Lalibela expressed (pu)Christian(pen) devotion.
 (pen)-> (pu)Ethiopia(pen) retained (pu)Christianity(pen) amid nearby Muslim states.
-(pen)o (db)Diverse African societies(pen)
-(pen)-> (li)Mali(pen) was an empire; (r)Swahili(pen) ports were separate (r)city states(pen).
+(pen)o (y)Diverse African societies(pen)
+(pen)-> (li)Mali(pen) was an empire; (hp)Swahili(pen) ports were separate (hp)city states(pen).
 (pen)-> (hp)Zimbabwe(pen)'s stone walls marked elite wealth and power.
 (pen)-> (pu)Ethiopia(pen)'s (pu)Christian(pen) kings differed from Muslim (li)Mali(pen) rulers.
-(pen)-> Kinship councils governed many (db)societies(pen) without kings.
+(pen)-> Kinship councils governed many (y)societies(pen) without kings.
 (pen)-> (li)Trade(pen) enriched elites; local beliefs and kinship persisted.
